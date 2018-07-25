@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tool_nfc"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/ll_tool_nfc_head"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:background="@drawable/title_bar" >
+
+        <ImageButton
+            android:id="@+id/home_head_Rebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:background="@color/full_transparent"
+            android:src="@drawable/arrow_left" />
+
+        <TextView
+            android:id="@+id/ll_tool_nfc_head_title"
+            style="@style/main_head_title"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:text="@string/main_menu_tools_nfc_Title" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_tool_nfc_TextDesTitle"
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tool_nfc_TextDes_Name"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:text="@string/main_menu_tools_nfc_Des"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view_1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/face_bg" />
+
+    <RelativeLayout
+        android:id="@+id/ll_tool_nfc_tagContent"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tool_nfc_tagContent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_18"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view_2"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:background="@color/graywhite" />
+
+    <RelativeLayout
+        android:id="@+id/ll_tool_nfc_set"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/bottomLay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="5dp" >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+	            <CheckBox
+	                android:id="@+id/saveCheckBox"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_centerInParent="true"
+	                android:layout_alignParentRight="true"
+	                android:layout_marginRight="15dp"
+	                android:button="@drawable/login_checkbox_selector" />
+	            <TextView 
+	                android:layout_width="match_parent"
+	                android:layout_height="match_parent"	                
+	                android:paddingLeft="15dp"
+	                android:gravity="center|left"
+	                android:text="@string/main_menu_tools_save"
+	                android:textColor="@color/black"
+	                android:textSize="@dimen/text_size_18"/>
+            </RelativeLayout>
+            <include 
+                layout="@layout/vertical_split_line_1dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="15dp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+	            <CheckBox
+	                android:id="@+id/inputCheckBox"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:button="@drawable/login_checkbox_selector"
+	                android:layout_centerInParent="true"
+	                android:layout_alignParentRight="true"
+	                android:layout_marginRight="15dp" />
+	            <TextView 
+	                android:layout_width="match_parent"
+	                android:layout_height="match_parent"	                
+	                android:paddingLeft="35dp"
+	                android:gravity="center|left"
+	                android:text="@string/main_menu_tools_hand_input"
+	                android:textColor="@color/black"
+	                android:textSize="@dimen/text_size_18"/>
+	        </RelativeLayout>
+	        <include 
+                layout="@layout/vertical_split_line_1dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="35dp" />
+	        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+	            <CheckBox
+	                android:id="@+id/scaninputCheckBox"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:button="@drawable/login_checkbox_selector" 
+	                android:layout_centerInParent="true"
+	                android:layout_alignParentRight="true"
+	                android:layout_marginRight="15dp"/>
+	            <TextView 
+	                android:layout_width="match_parent"
+	                android:layout_height="match_parent"	                
+	                android:paddingLeft="35dp"
+	                android:gravity="center|left"
+	                android:text="@string/main_menu_tools_scan_input"
+	                android:textColor="@color/black"
+	                android:textSize="@dimen/text_size_18"/>
+            </RelativeLayout>
+            <include 
+                layout="@layout/vertical_split_line_1dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="35dp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+	            <CheckBox
+	                android:id="@+id/nfcCheckBox"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:button="@drawable/login_checkbox_selector"
+	                android:layout_centerInParent="true"
+	                android:layout_alignParentRight="true"
+	                android:layout_marginRight="15dp" />
+	            <TextView 
+	                android:layout_width="match_parent"
+	                android:layout_height="match_parent"	                
+	                android:paddingLeft="35dp"
+	                android:gravity="center|left"
+	                android:text="@string/main_menu_tools_only_sava_nfc"
+	                android:textColor="@color/black"
+	                android:textSize="@dimen/text_size_18"/>
+            </RelativeLayout>
+            <include 
+                layout="@layout/vertical_split_line_1dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    
+        <TextView
+            android:id="@+id/tv_nfc_save_file"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|bottom"
+            android:paddingBottom="15dp"
+            android:layout_weight="1"
+            android:textSize="@dimen/text_size_18" />
+   
+
+    <RelativeLayout
+        android:id="@+id/ll_tool_nfc_Save"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/face_bg">
+
+        <Button
+            android:id="@+id/btn_clearNFC"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="5dip"
+            android:background="@drawable/btn_style_blue"
+            android:clickable="true"
+            android:text="@string/main_menu_tools_clean_save"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_20" />
+    </RelativeLayout>
+
+</LinearLayout>

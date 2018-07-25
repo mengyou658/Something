@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/track_initcheckpoint_head"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/title_bar" >
+
+        <ImageButton
+            android:id="@+id/home_head_Rebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:background="@color/full_transparent"
+            android:src="@drawable/arrow_left" />
+
+        <TextView
+            android:id="@+id/track_initcheckpoint_head_title"
+            style="@style/main_head_title"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_track_initcheckpoint_Longitude_Latitude"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:layout_below="@id/track_initcheckpoint_head"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/rl_track_initcheckpoint_Longitude"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/track_initcheckpoint_Longitude_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"
+                android:gravity="center|left"
+                android:text="@string/initcp_longitude"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:id="@+id/track_initcheckpoint_Longitude_Value"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_toRightOf="@id/track_initcheckpoint_Longitude_desc"
+                android:gravity="center|left"
+                android:paddingLeft="10dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view_1"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/face_bg" />
+
+        <RelativeLayout
+            android:id="@+id/rl_track_initcheckpoint_Latitude"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/track_initcheckpoint_Latitude_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"
+                android:gravity="center|left"
+                android:text="@string/initcp_latitude"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:id="@+id/track_initcheckpoint_Latitude_Value"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_toRightOf="@id/track_initcheckpoint_Latitude_desc"
+                android:gravity="center|left"
+                android:paddingLeft="10dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/ll_track_initcheckpoint_Longitude_Latitude"
+        android:background="@color/graywhite" />
+
+    <RelativeLayout
+        android:id="@+id/track_initcheckpoint_Latitude"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:layout_below="@id/view_2"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/track_initcheckpoint_State_Name"
+            android:layout_width="40dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:gravity="center|left"
+            android:text="@string/main_menu_tools_GPS_State"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/track_initcheckpoint_State_Value"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toRightOf="@id/track_initcheckpoint_State_Name"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view_3"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:layout_below="@id/track_initcheckpoint_Latitude"
+        android:background="@color/graywhite" />
+
+    <RelativeLayout
+        android:id="@+id/track_initcheckpoint_Serach"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:layout_below="@id/view_3"
+        android:background="@drawable/listview_item_selector"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/query_tab"
+            android:layout_width="200dp"
+            android:layout_height="40dip"
+            android:layout_centerInParent="true"
+            android:background="@drawable/frame_layout_bg" >
+
+            <RelativeLayout
+                android:id="@+id/rl_total"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:clickable="true" >
+
+                <TextView
+                    android:id="@+id/tv_total"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@color/face_bg"
+                    android:gravity="center"
+                    android:text="@string/track_init_all"
+                    android:textSize="@dimen/text_size_16"
+                    android:textColor="@color/gray" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_uninit"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:clickable="true" >
+
+                <TextView
+                    android:id="@+id/tv_uninit"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_16"
+                    android:text="@string/initcp_noinitialize"
+                    android:textColor="@color/gray" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_search_pic"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="10dp"
+            android:clickable="true"
+            android:src="@drawable/search" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_search_initcheckpoint"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_below="@id/view_3"
+        android:background="@color/face_bg"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <RelativeLayout
+            android:id="@+id/rl_search_cancel"
+            android:layout_width="50dip"
+            android:layout_height="40dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:text="@string/cancel"
+                android:textSize="@dimen/text_size_14"
+                android:textColor="@color/gray" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlSearchFrameDelete"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/rl_search_cancel"
+            android:gravity="center_vertical" >
+
+            <EditText
+                android:id="@+id/search_content"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/search_frame"
+                android:hint="@string/initcp_importhint"
+                android:imeOptions="actionSearch"
+                android:paddingLeft="32dp"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_14"
+                 />
+
+            <ImageView
+                android:id="@+id/delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:paddingRight="20dp"
+                android:src="@drawable/delete"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/track_initcheckpoint_TextDesValue"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/track_initcheckpoint_Serach"
+        android:layout_weight="1.14"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/comm_download_listview_status"
+            style="@style/widget_listview2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="@color/author_text"
+            android:divider="@color/graywhite" >
+        </ListView>
+    </RelativeLayout>
+
+    <!--
+    <RelativeLayout
+        android:id="@+id/track_initcheckpoint_tips"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/face_bg" >
+
+        <Button
+            android:id="@+id/btn_Save"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="5dip"
+            android:background="@drawable/btn_style_green"
+            android:clickable="true"
+            android:text="@string/track_inputbug_desc_btn"
+            android:textColor="@color/white"
+            android:textSize="20dip" />
+    </RelativeLayout>
+    -->
+
+</RelativeLayout>

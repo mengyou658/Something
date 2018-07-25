@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawableLeft="@drawable/icon_djpc_conditions"
+            android:drawablePadding="10dp"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingLeft="10dp"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:textSize="@dimen/text_size_18" />
+
+        <RelativeLayout
+            android:id="@+id/ll_more"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:clickable="true" >
+
+            <ImageView
+                android:id="@+id/iv_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/icon_down" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <include layout="@layout/vertical_split_line_1dp" />
+
+</LinearLayout>

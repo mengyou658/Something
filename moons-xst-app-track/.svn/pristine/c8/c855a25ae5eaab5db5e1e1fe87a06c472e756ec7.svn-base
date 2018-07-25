@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:background="@drawable/btn_selected"
+    android:orientation="horizontal" 
+  	android:layout_height="60dip"
+	>   
+	
+	<RelativeLayout 
+		android:id="@+id/layout_djidpos_listitem_icon" 
+	  	android:layout_width="50dip" 
+	  	android:layout_height="60dip"
+	  	android:layout_alignParentLeft="true"
+	  	android:layout_alignParentTop="true"
+	    android:layout_gravity="center_vertical"
+	  	android:gravity="center"
+	  	>     
+	  	
+        <ImageView 
+            android:id="@+id/djidpos_listitem_icon"
+	      	android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content"
+			android:scaleType="matrix"
+	        android:layout_marginLeft="2dip"
+	        android:layout_gravity="center_vertical"
+	        />	  	
+    </RelativeLayout>
+    
+	<RelativeLayout 
+		android:id="@+id/layout_djidpos_listitem_titledesc" 
+	  	android:layout_width="match_parent" 
+	  	android:layout_height="60dip"
+	  	android:layout_toRightOf="@id/layout_djidpos_listitem_icon"
+	  	android:layout_alignParentRight="true"
+	  	android:orientation="vertical" 
+	  	>     
+	  	
+	    <RelativeLayout 
+	        android:id="@+id/layout_djidpos_listitem_title" 
+	        android:layout_width="match_parent"  
+	        android:layout_height="35dp"
+	        android:orientation="horizontal" 
+	        android:layout_alignParentTop="true"
+	        >
+	
+	    
+		    <TextView android:id="@+id/djidpos_listitem_title" 
+		        style="@style/widget_listview_title2"
+		        android:layout_width="wrap_content" 
+		     	android:layout_height="fill_parent"
+		     	android:gravity="center|left"
+		     	android:paddingLeft="4dp" 
+		     	android:singleLine="true"/> 
+	   	</RelativeLayout>
+	
+	    <RelativeLayout 
+	        android:layout_width="match_parent"  
+	        android:layout_height="25dp"
+	    	android:orientation="horizontal" 
+	    	android:layout_below="@id/layout_djidpos_listitem_title"
+	    	
+	        >   
+	       	
+			<ImageView 
+			    android:id="@+id/djidpos_listitem_plancounticon" 
+		      	android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content"
+	           	android:layout_alignParentLeft="true"
+		        android:layout_marginLeft="8dip"
+	           	android:layout_gravity="center_vertical"
+	           	android:visibility="gone"
+		        android:src="@drawable/count_time_icon"/>
+	       	
+	       					
+	       	<TextView android:id="@+id/djidpos_listitem_planCount"  
+	    		android:layout_width="wrap_content" 
+	           	android:layout_height="wrap_content"
+	           	android:layout_toRightOf="@id/djidpos_listitem_plancounticon"
+	           	android:layout_marginLeft="3dip" 
+	           	android:layout_gravity="center_vertical"
+	           	style="@style/widget_listview_subdesc"
+	            />
+	       	<TextView android:id="@+id/djidpos_listitem_lastTime"  
+	    		android:layout_width="wrap_content" 
+	           	android:layout_height="wrap_content" 
+	           	android:layout_alignParentRight="true"
+	           	android:layout_marginRight="10dp"
+	           	android:layout_gravity="center_vertical"
+	           	style="@style/widget_listview_subdesc"
+	            />	        
+	       			
+	    </RelativeLayout>	    
+	    
+    </RelativeLayout>	
+	
+
+
+</RelativeLayout> 

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="white">#FFFFFF</color>
+	<color name="black">#272636</color>
+	<color name="gray">#BEBEBE</color>
+	<color name="darkgray">#8A8A8A</color>
+	<color name="red">#FF0000</color>
+	<color name="gold">#FFD700</color>
+	<color name="yellow">#FFFF00</color>
+	<color name="green">#008000</color>
+	<color name="blue">#0000FF</color>
+	<color name="purple">#800080</color>
+	<color name="pink">#FFC0CB</color>
+	<color name="orange">#FFA500</color>
+	<color name="lemonyellow">#FFFACD</color>
+	<color name="graywhite">#F5F5F5</color>
+	<color name="graysplit">#E6E6E6</color>
+	<color name="grayslate">#708090</color>
+	<color name="lightblue">#0061B2</color>
+	<color name="buttombuttonColor">#46BA14</color>
+	<color name="buttombuttonColorNormal">#A9A9A9</color>
+	<color name="xstblue">#00AEFF</color>
+	<color name="framecolor">#F4C600</color>
+	<color name="alertdialog_line">#C6C6C6</color>
+	<color name="actionsheet_gray">#8F8F8F</color>
+	<color name="actionsheet_blue">#037BFF</color>
+	<color name="cancelmenubg_gray">#c7c7cc</color>
+	
+    <color name="full_transparent">#00000000</color>
+    <color name="half_transparent">#aa000000</color>
+    <color name="light_transparent">#33000000</color>
+    <color name="lighter_transparent">#22000000</color>
+    
+    <color name="bright_foreground_light">#ff000000</color>
+    <color name="bright_foreground_light_inverse">#ffffffff</color>
+    <color name="bright_foreground_light_disabled">#80000000</color>
+    
+    <color name="dim_foreground_light">#808080</color>
+    <color name="dim_foreground_light_disabled">#80323232</color>
+    <color name="dim_foreground_light_inverse">#ff006eaa</color>
+    <color name="dim_foreground_light_inverse_disabled">#80bebebe</color>
+    <color name="half_transparent_white">#7f80858f</color>
+    <color name="head_text">#FFFFFF</color>
+    <color name="author_text">#0e5986</color>
+    
+    <color name="catefory_text">#000000</color>
+    
+    <color name="face_bg">#eef1f4</color>
+    
+    <color name="frame_button_text_nor">#033a5c</color>
+    <color name="frame_button_text_select">#FFFFFF</color>
+    
+    <color name="weight_bar_buttondown">#63A3D7</color>
+    <color name="weight_bar_buttonup">#A4A9AE</color>
+    
+    <color name="listitem_transparent">#00000000</color>
+    <color name="listitem_black">#ff000000</color>
+    <color name="listitem_white">#ffffffff</color>
+    <color name="listitem_blue">#0e5986</color>
+    <color name="listitem_gray">#ff9da19e</color>
+    <color name="listitem_lightgray">#f5f5f5</color>
+    <color name="listitem_green">#ffe3ffc6</color>
+    <color name="listitem_greenyellow">#ff87b869</color>
+    <color name="listitem_yellow">#fffaffbf</color>  
+    <color name="listitem_bulewhite">#a9a9a9</color>
+    <color name="fff1f2f3">#fff1f2f3</color>
+    <color name="ff40ab54">#ff40ab54</color>
+    
+    <color name="popmenu_bgcolor">#ededed</color>
+    <color name="alert_bgcolor">#fcfcfc</color>
+    
+    <!-- 二维码扫描颜色值 -->
+	<color name="contents_text">#ff000000</color>
+	<color name="encode_view">#ffffffff</color>
+	<color name="possible_result_points">#c0ffbd21</color> <!-- Android standard ICS color -->
+	<color name="result_minor_text">#ffc0c0c0</color>
+	<color name="result_points">#c099cc00</color> <!-- Android standard ICS color -->
+	<color name="result_text">#ffffffff</color>
+	<color name="result_view">#b0000000</color>
+	<color name="status_text">#ffffffff</color>
+	<color name="transparent">#00000000</color>
+	<color name="viewfinder_laser">#ffcc0000</color> <!-- Android standard ICS color -->
+	<color name="viewfinder_mask">#60000000</color>
+	
+	
+	    <color name="main_menu_bg">#aa111213</color>
+    <color name="common_title_bg">#aa111213</color>
+    <color name="primary_title_text_color">#ff888888</color>
+    <color name="common_title_text">#ff565555</color>
+    <color name="common_text_yellow">#ffffe049</color>
+    <color name="album_item_bg">#fffcfcfd</color>
+    <color name="video_playter_bg">#333333</color>
+	<color name="jituploadoncenumber">#fffafa</color>
+	
+
+    <color name="color1_deepskyblue">#00BFFF</color>
+    <color name="color2_PeachPuff">#FFDAB9</color>
+    <color name="color3_DeepSkyBlue">#00BFFF</color>
+    <color name="color4_Cyan">#00FFFF</color>
+    <color name="color5_SlateBlue">#6A5ACD</color>
+    <color name="color6_LightSeaGreen">#20B2AA</color>
+    <color name="color7_Yellow">#FFFF00</color>
+    <color name="color8_IndianRed">#CD5C5C</color>
+    <color name="color9_DarkGoldenrod">#8B658B</color>
+    <color name="color10_Peru">#CD853F</color>
+    <color name="color11_Beige">#F5F5DC</color>
+    <color name="color12_OrangeRed">#FF4500</color>
+    <color name="color13_Thistle">#D8BFD8</color>
+    <color name="color14_RoyalBlue">#4876FF</color>
+    <color name="color15_Magenta">#FF00FF</color>
+    <color name="color16_Orchid">#FF83FA</color>
+    <color name="color17_Blue">#0000FF</color>
+    <color name="color18_grey">#363636</color>
+    <color name="color19_LightGreen">#90EE90</color>
+    <color name="color20_DarkMagenta">#8B008B</color>
+    <color name="color21_DarkCyan">#008B8B</color>
+    <color name="color22_Yellow">#FFFF00</color>
+    <color name="color23_Green">#00FF00</color>
+    <color name="color24_DarkGreen">#006400</color>
+    <color name="color25_Cyan">#00FFFF</color>
+    <color name="color26_PaleTurquoise">#668B8B</color>
+    <color name="color27_NavyBlue">#000080</color>
+    
+</resources>

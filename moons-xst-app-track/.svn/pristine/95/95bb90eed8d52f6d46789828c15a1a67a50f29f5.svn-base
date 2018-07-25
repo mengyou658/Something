@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    style="@style/widget_listview_Item"
+    android:orientation="horizontal" 
+  	android:layout_height="60dip"
+  	android:background="@drawable/btn_selected"
+	>   
+	
+	<RelativeLayout 
+		android:id="@+id/layout_operatelog_itemicon" 
+	  	android:layout_width="60dip" 
+	  	android:layout_height="60dp"
+	  	android:layout_alignParentLeft="true"
+	  	android:layout_alignParentTop="true"
+	    android:layout_gravity="center_vertical"
+	  	android:gravity="center"
+	  	>     
+	  	
+        <ImageView 
+            android:id="@+id/operatelog_listitem_icon"
+	      	android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content"
+			android:scaleType="matrix"
+	        android:layout_marginLeft="2dip"
+	        android:layout_gravity="center_vertical"
+	        android:src="@drawable/ic_fileinfo_unknown"
+	        />	  	
+    </RelativeLayout>
+    
+	<RelativeLayout 
+		android:id="@+id/layout_operatelog_detail" 
+	  	android:layout_width="50dip" 
+	  	android:layout_height="60dip"
+	  	android:layout_alignParentRight="true"
+	  	android:layout_alignParentTop="true"
+	    android:layout_gravity="center_vertical"
+	  	android:gravity="center"
+	  	>     
+	  	
+        <ImageView 
+            android:id="@+id/operatelog_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/icon_right" />
+    </RelativeLayout>
+    
+	<RelativeLayout 
+		android:id="@+id/layout_operatelog_itemdesc" 
+	  	android:layout_width="match_parent" 
+	  	android:layout_height="60dip"
+	  	android:layout_toRightOf="@id/layout_operatelog_itemicon"
+	  	android:layout_toLeftOf="@id/layout_operatelog_detail"
+	  	android:orientation="vertical" 
+	  	>	    
+	    <TextView
+	        android:id="@+id/listitem_operatelog_itemdesc" 
+	        android:layout_width="fill_parent" 
+	        android:layout_height="35dp"
+	        android:paddingLeft="10dp"
+	        android:gravity="bottom|left"
+	        android:paddingBottom="3dp"
+	        android:textSize="@dimen/text_size_18"
+        	android:textColor="@color/black" />
+	    <TextView
+	       	    style="@style/widget_memu_subdesc"
+	       	    android:id="@+id/listitem_operatelog_itemdesc_subdesc"
+	       	    android:layout_width="wrap_content"
+	       	    android:layout_height="wrap_content"
+	       	    android:layout_gravity="center_vertical"
+	       	    android:layout_below="@id/listitem_operatelog_itemdesc"
+	       	    android:paddingLeft="10dp" />
+    </RelativeLayout>
+</RelativeLayout> 

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    style="@style/widget_listview_Item"
+    android:orientation="horizontal" 
+  	android:layout_height="40dip"
+  	android:background="@drawable/listitem_corner1"
+	>   
+	
+	<RelativeLayout 
+		android:id="@+id/layout_listitem_multi_itemicon" 
+	  	android:layout_width="40dip" 
+	  	android:layout_height="40dip"
+	  	android:layout_alignParentLeft="true"
+	  	android:layout_alignParentTop="true"
+	    android:layout_gravity="center_vertical"
+	  	android:gravity="center"
+	  	>     
+	  	
+        <ImageView 
+            android:id="@+id/listitem_multi_icon"
+	      	android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content"
+			android:scaleType="matrix"
+	        android:layout_marginLeft="2dip"
+	        android:layout_gravity="center_vertical"
+	        />	  	
+    </RelativeLayout>
+    <RelativeLayout 
+		android:id="@+id/layout_listitem_multi_itemcheckbox" 
+	  	android:layout_width="30dip" 
+	  	android:layout_height="40dip"
+	  	android:layout_alignParentRight="true"
+	  	android:layout_alignParentTop="true"
+	    android:layout_gravity="center_vertical"
+	  	android:gravity="center"
+	  	>     
+       
+	  	<CheckBox
+	  	    android:id="@+id/listitem_multi_itemcheckbox"
+	  	    android:layout_width="40dip"
+	  	    android:layout_height="40dip"
+	  	    android:layout_alignParentRight="true"
+	  	    android:layout_gravity="center_vertical"
+	  	    android:layout_marginRight="2dip"
+	  	    android:button="@drawable/checkbox_style_green"
+	  	    android:gravity="center"
+	  	    android:clickable="false"
+	  	    android:focusable="false"
+	  	    android:scaleType="matrix" />
+	     	
+    </RelativeLayout>
+	<RelativeLayout 
+		android:id="@+id/layout_multi_itemdesc" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_height="40dip"
+	  	android:layout_toRightOf="@id/layout_listitem_multi_itemicon"
+	  	android:layout_toLeftOf="@id/layout_listitem_multi_itemcheckbox"
+	  	android:orientation="vertical" 
+	  	>     
+	  	<RelativeLayout 
+	        android:id="@+id/layout_listitem_multi_itemdesc2" 
+	        android:layout_width="wrap_content"  
+	        android:layout_height="40dip"
+	        android:orientation="horizontal" 
+	        android:layout_marginRight="5dp"
+	        android:layout_alignParentRight="true"
+	        >	    
+
+		    <TextView
+		        android:id="@+id/listitem_multi_itemdesc2"
+		        style="@style/widget_listview_title3"
+		        android:layout_width="wrap_content"
+		        android:layout_height="fill_parent"
+		        android:gravity="center|left"
+		        android:layout_marginRight="5dp"
+		        android:singleLine="true" />
+		    
+	   	</RelativeLayout>   
+	    
+	   	<RelativeLayout 
+	   	    android:id="@+id/ll_wwsr_listitem_lasttime"
+	        android:layout_width="fill_parent"  
+	        android:layout_height="15dp"
+	    	android:orientation="horizontal" 
+	    	android:layout_alignParentBottom="true"
+	    	android:visibility="gone"
+	        >
+		    <TextView android:id="@+id/wwsr_listitem_lasttime"  
+	    		android:layout_width="wrap_content" 
+	           	android:layout_height="wrap_content"
+	           	android:layout_marginLeft="0dip"
+	           	android:layout_gravity="center_vertical"
+	           	style="@style/widget_listview_subdesc3"
+	            />
+		</RelativeLayout>	
+		<RelativeLayout 
+	        android:id="@+id/layout_listitem_multi_itemdesc" 
+	        android:layout_width="fill_parent"  
+	        android:layout_height="match_parent"
+	        android:orientation="horizontal" 
+	        android:layout_alignParentLeft="true"
+	        android:layout_toLeftOf="@id/layout_listitem_multi_itemdesc2"
+	        android:layout_above="@id/ll_wwsr_listitem_lasttime"
+	        >	    
+
+		    <TextView
+		        android:id="@+id/listitem_multi_itemdesc"
+		        style="@style/widget_listview_multi_des"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:gravity="center|left"
+		        android:singleLine="true" />
+		    
+	   	</RelativeLayout>
+    </RelativeLayout>
+	
+	
+
+
+</RelativeLayout> 

@@ -1,0 +1,85 @@
+package com.moons.xst.track.ui;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ListView;
+
+import com.moons.xst.track.AppManager;
+import com.moons.xst.track.R;
+import com.moons.xst.track.adapter.CommonAdapter;
+import com.moons.xst.track.bean.DJLine;
+import com.moons.xst.track.bean.OperateLogBean;
+
+public class CommDownloadErrorResultBack extends BaseActivity {
+	
+	ListView mlistview;		
+	CommonAdapter mAdapter;
+	
+	private HashMap<DJLine, String> upLoadFailingMap=new HashMap<DJLine, String>();
+	
+	List<OperateLogBean> mDatas = new ArrayList<OperateLogBean>();
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.operatelog_detail);
+		
+		//获得意图
+        Intent intent=getIntent();
+        //得到数据集
+        Bundle bundle=intent.getExtras();
+        upLoadFailingMap = (HashMap<DJLine, String>)(bundle.get("errorResult"));
+		
+		ImageButton returnButton = (ImageButton) findViewById(R.id.home_head_Rebutton);
+		returnButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO 自动生成的方法存根
+				upLoadFailingMap.clear();
+				AppManager.getAppManager().finishActivity(CommDownloadErrorResultBack.this);
+			}
+		});	
+		
+		loadData();
+	}
+	
+	private void loadData() {
+		Iterator it = upLoadFailingMap.entrySet().iterator();
+        while (it.hasNext()) {
+        	@SuppressWarnings("unchecked")
+			Entry<DJLine, String> entry = (Entry<DJLine, String>) it.next();
+        	OperateLogBean bean = new OperateLogBean();
+        	bean.setOperate_TX(getString(R.string.cumm_cummdownload_uploadfilefailed, entry.getKey().getLineID()));
+        	bean.setState_TX(getString(R.string.system_failed));
+        	bean.setMessage_TX(entry.getValue());
+        	
+        	mDatas.add(bean);
+        }
+        
+        mlistview = (ListView) findViewById(R.id.lv_operatelog_detail);
+		mlistview.setAdapter(mAdapter = new CommonAdapter<OperateLogBean>(
+				CommDownloadErrorResultBack.this, mDatas, R.layout.listitem_operatelog_detail){
+
+			@Override
+			public void convert(com.moons.xst.track.adapter.ViewHolder helper,
+					OperateLogBean bean) {
+				// TODO 自动生成的方法存根
+				helper.setImageResource(R.id.operatelog_listitem_icon, R.drawable.commu_fail_50dp);
+				helper.setText(R.id.listitem_operatelog_detail_itemdesc, bean.getOperate_TX());
+				helper.setText(R.id.tv_error_desc, bean.getMessage_TX());
+				helper.setText(R.id.listitem_operatelog_state_itemdesc, bean.getState_TX());
+				helper.setColor(R.id.listitem_operatelog_state_itemdesc, getResources().getColor(R.color.red));
+			}  
+        });
+	}
+}

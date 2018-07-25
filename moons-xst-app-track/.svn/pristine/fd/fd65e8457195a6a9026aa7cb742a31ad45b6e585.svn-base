@@ -1,0 +1,1187 @@
+package com.moons.xst.track.ui;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
+
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.provider.MediaStore;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnCreateContextMenuListener;
+import android.view.View.OnTouchListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.moons.xst.buss.DJLineHelper;
+import com.moons.xst.track.AppConfig;
+import com.moons.xst.track.AppConst;
+import com.moons.xst.track.AppContext;
+import com.moons.xst.track.AppException;
+import com.moons.xst.track.AppManager;
+import com.moons.xst.track.R;
+import com.moons.xst.track.adapter.Comm_DJLine_ListViewAdapter;
+import com.moons.xst.track.bean.DJLine;
+import com.moons.xst.track.common.DateTimeHelper;
+import com.moons.xst.track.common.LoadAppConfigHelper;
+import com.moons.xst.track.common.NetWorkHelper;
+import com.moons.xst.track.common.ResponseLogInfoHelper;
+import com.moons.xst.track.common.StringUtils;
+import com.moons.xst.track.common.UIHelper;
+import com.moons.xst.track.common.ZipUtils;
+import com.moons.xst.track.communication.DownLoad;
+import com.moons.xst.track.communication.UpLoad;
+import com.moons.xst.track.communication.WebserviceFactory;
+import com.moons.xst.track.dao.DataTransHelper;
+import com.moons.xst.track.widget.ActionSheetDialog;
+import com.moons.xst.track.widget.LoadingDialog;
+import com.moons.xst.track.widget.ActionSheetDialog.OnSheetItemClickListener;
+import com.moons.xst.track.widget.ActionSheetDialog.SheetItemColor;
+
+/**
+ * 通信--下载
+ * 
+ * @author LKZ
+ * @version 1.0
+ * @created 2014-12-26
+ */
+public class CommDownload extends BaseActivity {
+
+	private final static String TAG = "CommDownload";
+	private String appVersion = "";
+	public static DianjianTouchIDPos instance = null;
+
+	public static final int PopMenu_LOGIN_OR_LOGOUT = 0;
+	public static final int PopMenu_CONFIG = 1;
+	public static final int PopMenu_ABOUT = 2;
+	public static final int PopMenu_QUIT = 3;
+
+	// 路线列表长按菜单三项操作
+	private static final int MENUACTION_DOWNLOAD = 0;// 下载
+	private static final int MENUACTION_RETURN = 1;// 返回
+	
+	//xml文件是否已经修复
+	private boolean isRepairXML=false;
+	private boolean downloading = false;
+	private boolean isUploadingExit = false;// 记录当前是否在上传数据
+	private LoadingDialog loading;
+	private Handler mLoadHandler, mDwonHandler, mProgBarHandler,
+			mUploadProgBarHandler;
+
+	private AppContext appContext;// 全局Context
+	HashMap<Integer, DJLine> needDownLineList = new HashMap<Integer, DJLine>();
+	private Comm_DJLine_ListViewAdapter lvDJLineAdapter;
+	private ListView lvCommLineListView;
+	private Button downloadPlanButton;
+	private TextView commLineNeednedCount;
+	private ImageButton returnButton;
+	private LinearLayout ll_statistic;
+	// 结果上传--popupWindow
+	private RelativeLayout rl_upload;
+
+	// private PopupWindow resultUploadPopupWindow;
+	// private LayoutInflater lm_inflater;
+	// private View lm_layout;
+	private TextView uploadResultDesTextView, uploadResultTitleTextView;
+	private ProgressBar uploadResultProBar;
+	Thread downloadThread, uploadThread, loadDataThread;
+	private boolean stopThreadYN = false;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		appVersion = AppContext.getAppVersion(this);
+		stopThreadYN = false;
+		setContentView(R.layout.comm_download);
+		appContext = (AppContext) getApplication();
+		initDownLoadButton();
+		// 初始化Head
+		this.initHeadViewAndMoreBar();
+		try {
+			loadCommLineStatusThread(false);
+		} catch (AppException e) {
+		}
+		loadCommLineToListViewHander();
+		downLoadPlanHander();
+		InitUploadProgBarHandler();
+		InitProgBarHandler();
+		// downLoadCommLineThread(false);
+		initUploadResult();
+		appContext.refreshDao();
+	}
+
+	/**
+	 * 初始化下载界面的button
+	 */
+	private void initDownLoadButton() {
+		downloadPlanButton = (Button) findViewById(R.id.btn_linedownload);
+		downloadPlanButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO 自动生成的方法存根
+				if (!downloading) {
+					downloading = true;
+					if (AppContext.resultDataFileListBuffer != null
+							&& AppContext.resultDataFileListBuffer.size() > 0
+								&&!AppContext.getPlanType().equals(AppConst.PlanType_DJPC)) {
+						rl_upload.setVisibility(View.VISIBLE);
+						isUploadingExit = true;
+						upLoadResultThread();
+					} else {
+						try {
+							downLoadCommLineThread(false, null, null);
+						} catch (AppException e) {
+							// TODO 自动生成的 catch 块
+							e.printStackTrace();
+						}
+					}
+				}
+			}
+		});
+	}
+
+	/**
+	 * 初始化头部视图
+	 */
+	private void initHeadViewAndMoreBar() {
+		TextView head_title = (TextView) findViewById(R.id.ll_comm_download_head_title);
+		head_title.setText(R.string.commu_receive_download_title);
+		returnButton = (ImageButton) findViewById(R.id.home_head_Rebutton);
+		returnButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO 自动生成的方法存根
+				if (isUploadingExit) {
+					UIHelper.ToastMessage(CommDownload.this,
+							R.string.cumm_cummdownload_headtitle_promptinfo);
+				}
+				if (!downloading) {
+					// 为上位机配置，APP中不可见的配置项赋值
+					/*LoadAppConfigHelper.getAppConfigHelper(
+							AppConst.AppConfigType.Invisible.toString())
+							.LoadConfigByType();*/
+					AppManager.getAppManager()
+							.finishActivity(CommDownload.this);
+				}
+			}
+		});
+	}
+
+	/**
+	 * 加载路线Hander初始化
+	 */
+	private void loadCommLineToListViewHander() {
+		mLoadHandler = new Handler() {
+			public void handleMessage(Message msg) {
+				if (loading != null)
+					loading.dismiss();
+				if (msg.what == 1 && msg.obj != null) {
+					bindingCommLineData();// 获取的数据绑定到列表中
+				} else if (msg.what == -1 && msg.obj != null) {
+					String msgString = String.valueOf(msg.obj);
+					UIHelper.ToastMessage(getBaseContext(), msgString);
+				}
+			}
+		};
+	}
+
+	private void InitProgBarHandler() {
+		mProgBarHandler = new Handler() {
+			@Override
+			public void handleMessage(Message msg) {
+				if (msg.what == 1) {
+					View _view = (View) msg.obj;
+					int progBarDoNum = (int) msg.arg1;
+					int _pos = (int) msg.arg2;
+					if (progBarDoNum == -1) {
+						lvDJLineAdapter.updateDownLoadState(_view,
+								R.string.download_state_encode, false, false);
+						return;
+					}
+					if (progBarDoNum == -2) {
+						lvDJLineAdapter.updateDownLoadState(_view,
+								R.string.download_state_encodeErr, true, false);
+						return;
+					}
+					if (progBarDoNum == -3) {
+						lvDJLineAdapter.updateDownLoadState(_view,
+								R.string.download_state_downErr, true, false);
+						return;
+					}
+					int _count = lvDJLineAdapter.updateView(_pos, _view,
+							progBarDoNum);
+					if (progBarDoNum == 100)
+						lvDJLineAdapter.updateDownLoadState(_view,
+								R.string.download_state_finish, false, true);
+					commLineNeednedCount.setText(getString(
+							R.string.download_message_count,
+							String.valueOf(_count)));
+					// commLineNeednedCount.setText("需更新：" + _count + " 条");
+				}
+				if (msg.what == 2) {// 提示信息
+					String obj = (String) msg.obj;
+					if (!StringUtils.isEmpty(obj)) {
+						UIHelper.ToastMessage(CommDownload.this, obj);
+					}
+				}
+			}
+		};
+	}
+
+	/**
+	 * 加载路线数据的线程
+	 */
+	private void loadCommLineStatusThread(final boolean isRefresh)
+			throws AppException {
+		if (!NetWorkHelper.isNetworkAvailable(getBaseContext())) {
+			UIHelper.ToastMessage(getBaseContext(),
+					R.string.network_not_connected);
+			return;
+		}
+		loading = new LoadingDialog(this);
+		loading.setCanceledOnTouchOutside(false);
+		loading.show();
+		loadDataThread = new Thread() {
+			public void run() {
+				Message msg = Message.obtain();
+				if (!WebserviceFactory.checkWS()) {
+					msg = Message.obtain();
+					msg.what = -1;
+					msg.obj = getString(R.string.cumm_twobill_webcheckPromptinfo);
+					mLoadHandler.sendMessage(msg);
+				} else {
+
+					try {
+						// 重新加载数据
+						loadLineListData();
+						Thread.sleep(1000);
+						msg = Message.obtain();
+						msg.what = 1;
+						msg.obj = AppContext.CommDJLineBuffer;
+						mLoadHandler.sendMessage(msg);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						msg = Message.obtain();
+						msg.what = -1;
+						msg.obj = e;
+						mLoadHandler.sendMessage(msg);
+					}
+				}
+
+			}
+		};
+		loadDataThread.start();
+	}
+
+	/**
+	 * 加载路线数据
+	 */
+	private DJLineHelper djLineHelper;
+
+	private void loadLineListData() {
+		// 加载数据
+		if (Thread.currentThread().isInterrupted())
+			return;
+		Context context = getBaseContext();
+		djLineHelper = new DJLineHelper();
+		djLineHelper.loadCommLineData(appVersion, context);
+
+		// // 为上位机配置，APP中不可见的配置项赋值
+		// appContext.LoadConfigForInvisible();
+		//
+		// // 更新手势密码配置文件
+		// updateGestureInfo();
+	}
+
+	/**
+	 * 绑定到列表
+	 */
+	private void bindingCommLineData() {
+		// 绑定列表
+		lvDJLineAdapter = new Comm_DJLine_ListViewAdapter(this,
+				AppContext.CommDJLineBuffer, R.layout.listitem_comm_djline,false);
+		lvCommLineListView = (ListView) findViewById(R.id.comm_download_listview_status);
+		lvCommLineListView.setAdapter(lvDJLineAdapter);
+		lvCommLineListView.setOnItemClickListener(new myListener());
+		lvCommLineListView.setOnTouchListener(new OnTouchListener() {
+
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO 自动生成的方法存根
+				int action = event.getAction();
+				switch (action) {
+				case MotionEvent.ACTION_MOVE: {
+					if (downloading)
+						return true;
+					else {
+						return false;
+					}
+				}
+				default:
+					return false;
+				}
+			}
+		});
+		lvCommLineListView.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO 自动生成的方法存根
+				if (AppContext.getConfigLongClickDownloadLine()) {
+					if (downloading)
+						return false;
+					showSheetDialog(position,view);
+				}
+				return false;
+			}
+		});
+		/*lvCommLineListView
+				.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
+					@Override
+					public void onCreateContextMenu(ContextMenu menu, View v,
+							ContextMenuInfo menuInfo) {
+						
+						if (AppContext.getConfigLongClickDownloadLine()) {
+							if (downloading)
+								return;
+							AdapterContextMenuInfo info =(AdapterContextMenuInfo)menuInfo;
+							showSheetDialog(info.position,v);
+						}
+						//
+						if (AppContext.getConfigLongClickDownloadLine()) {
+							if (downloading)
+								return;
+							menu.setHeaderTitle(R.string.commu_receive_lvMemu);
+							menu.add(0, MENUACTION_DOWNLOAD, 0,
+									R.string.commu_receive_lvMemu__toDown);
+						}
+					}
+				});*/
+		needDownLineList.clear();
+		for (DJLine _djline : AppContext.CommDJLineBuffer) {
+			if (_djline.getneedUpdate())
+				needDownLineList.put(_djline.getLineID(), _djline);
+		}
+		// 显示汇总信息
+		TextView commLineCount = (TextView) findViewById(R.id.comm_download_count);
+		commLineCount.setText(getString(R.string.download_message_count,
+				String.valueOf(AppContext.CommDJLineBuffer.size())));
+		commLineNeednedCount = (TextView) findViewById(R.id.comm_download_needCount);
+		commLineNeednedCount.setText(getString(R.string.download_message_count,
+				String.valueOf(needDownLineList.size())));
+	}
+
+	/**
+	 * 下载计划Hander初始化
+	 */
+	private void downLoadPlanHander() {
+		mDwonHandler = new Handler() {
+			public void handleMessage(Message msg) {
+				if (loading != null)
+					loading.dismiss();
+				if (msg.what == 1 && msg.obj != null) {
+					UIHelper.ToastMessage(CommDownload.this,
+							String.valueOf(msg.obj));
+					if (msg.arg1 == -1) {
+						showUploadResultView();
+					} else if (msg.arg1 == -2) {
+						rl_upload.setVisibility(View.INVISIBLE);
+						try {
+							AppContext.resultDataFileListBuffer.clear();
+							downLoadCommLineThread(false, null, null);
+						} catch (AppException e) {
+							// TODO 自动生成的 catch 块
+							e.printStackTrace();
+						}
+					}
+				} else if (msg.what == -1 && msg.obj != null) {
+					UIHelper.ToastMessage(CommDownload.this,
+							R.string.cumm_cummdownload_fail_promptinfo);
+					rl_upload.setVisibility(View.INVISIBLE);
+					downloading = false;
+				} else if (msg.what == -2 && msg.obj != null) {
+					UIHelper.ToastMessage(CommDownload.this, msg.obj.toString());
+					rl_upload.setVisibility(View.INVISIBLE);
+					downloading = false;
+				}
+				super.handleMessage(msg);
+			}
+		};
+	}
+
+	/**
+	 * 下载路线数据的线程
+	 */
+	private void downLoadCommLineThread(final boolean isSelected,
+			final DJLine djLine, final Integer pos) throws AppException {
+		if (!NetWorkHelper.isNetworkAvailable(getBaseContext())) {
+			UIHelper.ToastMessage(getBaseContext(),
+					R.string.network_not_connected);
+			return;
+		}
+		downloadThread = new Thread() {
+			public void run() {
+
+				if (!WebserviceFactory.checkWS()) {
+					Message msg = Message.obtain();
+					msg.what = -2;
+					msg.obj = getString(R.string.cumm_twobill_webcheckPromptinfo);
+					mDwonHandler.sendMessage(msg);
+				} else {
+					try {
+						if (!isSelected)
+							downLoadLineListData();
+						else {
+							int i = pos;
+							downLoadOneSelectedLineData(djLine, pos);
+						}
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						Message msg = Message.obtain();
+						msg.what = -1;
+						msg.obj = e;
+						mDwonHandler.sendMessage(msg);
+					}
+
+				}
+				AppContext.SetRefreshLineYN(true);
+			}
+		};
+		downloadThread.start();
+	}
+
+	/**
+	 * 下载计划数据
+	 */
+	@SuppressWarnings("unchecked")
+	private void downLoadLineListData() {
+		// 下载
+		Message msg = Message.obtain();
+		Context context = getBaseContext();
+		DownLoad downLoad = new DownLoad(context);
+		HashMap<Integer, DJLine> _hashHashMap;
+		synchronized (lvDJLineAdapter) {
+			_hashHashMap = (HashMap<Integer, DJLine>) lvDJLineAdapter
+					.GetNeedUpgrateLineList(lvCommLineListView).clone();
+		}
+
+		try {
+			if (_hashHashMap != null && _hashHashMap.size() > 0) {
+				downloading = true;
+
+				if (!stopThreadYN) {
+					DJLine value = null;
+					int i = 0;
+					// 获取勾选的路线
+					List<String> SelectedList = lvDJLineAdapter
+							.getSelectedLineID();
+					if (SelectedList.size() == 0
+							&& AppContext.getPlanType().equals(
+									AppConst.PlanType_DJPC)) {
+						Message _msg = Message.obtain();
+						_msg.what = 2;
+						_msg.obj = getString(R.string.download_message_selected_hint);
+						mProgBarHandler.sendMessage(_msg);
+					}
+					for (i = 0; i < AppContext.CommDJLineBuffer.size(); i++) {
+						if (this.isFinishing())
+							return;
+						if (AppContext.CommDJLineBuffer.get(i).getneedUpdate() == true) {
+							// 如果是点检排程,且没勾选当前任务，则跳过该路线
+							if (!SelectedList.contains(Integer
+									.toString(AppContext.CommDJLineBuffer
+											.get(i).getLineID()))
+									&& AppContext.getPlanType().equals(
+											AppConst.PlanType_DJPC)) {
+								continue;
+							}
+							value = AppContext.CommDJLineBuffer.get(i);
+
+							int _pos = i;
+							View currView = lvDJLineAdapter.getViewByPosition(
+									_pos, lvCommLineListView);
+							Message _msg = Message.obtain();
+							try {
+								_msg = Message.obtain();
+								_msg.what = 1;
+								_msg.obj = currView;
+								_msg.arg1 = -1;
+								_msg.arg2 = _pos;
+								mProgBarHandler.sendMessage(_msg);
+								String lineNameString = value.getLineName();
+								String dbFileNameString = "";
+								if (AppContext.getPlanType().equals(
+										AppConst.PlanType_XDJ)) {// 巡检下载
+									dbFileNameString = WebserviceFactory
+											.RequestPlanDownLoad(context,
+													AppContext.GetxjqCD(),
+													value.getLineID());
+								} else if (AppContext.getPlanType().equals(
+										AppConst.PlanType_DJPC)) {// 点检排程
+									String Value = AppContext.DJPCLineMap
+											.get(String.valueOf(value.getLineID()));
+									if (Value
+											.contains(getString(R.string.download_state_encodeErr))) {
+										_msg = Message.obtain();
+										_msg.what = -1;
+										_msg.obj = Value;
+										mLoadHandler.sendMessage(_msg);
+									} else {
+										dbFileNameString = Value;
+									}
+								}
+								if (!StringUtils.isEmpty(dbFileNameString)) {
+									_msg = Message.obtain();
+									_msg.what = 1;
+									_msg.obj = currView;
+									_msg.arg1 = 0;
+									_msg.arg2 = _pos;
+									mProgBarHandler.sendMessage(_msg);
+									downLoad.DownLoadPlanDB(context, currView,
+											_pos, value, mProgBarHandler,
+											dbFileNameString);
+								} else {
+									_msg = Message.obtain();
+									_msg.what = 1;
+									_msg.obj = currView;
+									_msg.arg1 = -2;
+									_msg.arg2 = _pos;
+									mProgBarHandler.sendMessage(_msg);
+								}
+								Thread.sleep(1000);
+							} catch (Exception e) {
+								_msg = Message.obtain();
+								_msg.what = 1;
+								_msg.obj = currView;
+								_msg.arg1 = -3;
+								_msg.arg2 = _pos;
+								mProgBarHandler.sendMessage(_msg);
+								msg = Message.obtain();
+								msg.what = -1;
+								msg.obj = getString(R.string.cumm_cummdownload_downloadfail)
+										+ e.getMessage();
+								mDwonHandler.sendMessage(msg);
+								return;
+							}
+							if (!stopThreadYN){
+								for (DJLine djLine : AppContext.CommDJLineBuffer) {
+									if (String.valueOf(djLine.getLineID()).equals(String.valueOf(value.getLineID())))
+										djLine.setneedUpdate(false);
+								}
+								if(!isRepairXML){
+									boolean Line=DownLoad.UpdateLineListFile(
+											AppContext.getPlanType().equals(AppConst.PlanType_DJPC));
+									boolean User=DataTransHelper.RepairUserListXML();
+									isRepairXML=Line&&User;
+								}
+							}
+						}
+					}
+				}
+			} else {
+				if (AppContext.CommDJLineBuffer.size() <= 0) {
+					msg = Message.obtain();
+					msg.what = 1;
+					msg.obj = getString(R.string.drawleft_msg_noline);
+				} else {
+					msg = Message.obtain();
+					msg.what = 1;
+					msg.obj = getString(R.string.cumm_cummdownload_planislast);
+				}
+				mDwonHandler.sendMessage(msg);
+				// if (!stopThreadYN)
+				// downLoad.UpdateLineListFile();
+			}
+		} catch (Exception e) {
+			UIHelper.ToastMessage(this,
+					R.string.cumm_cummdownload_failtoupdateplan);
+			// TODO: handle exception
+		} finally {
+			downloading = false;
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	private void downLoadOneSelectedLineData(DJLine djLine, Integer pos) {
+		Message msg = Message.obtain();
+		Context context = getBaseContext();
+		DownLoad downLoad = new DownLoad(context);
+		
+		@SuppressWarnings("unused")
+		HashMap<Integer, DJLine> _hashHashMap;
+		synchronized (lvDJLineAdapter) {
+			_hashHashMap = (HashMap<Integer, DJLine>) lvDJLineAdapter
+					.GetNeedUpgrateLineList(lvCommLineListView).clone();
+		}
+		
+		try {
+			downloading = true;
+			Integer key = pos;
+			DJLine value = djLine;
+			View currView = lvDJLineAdapter.getViewByPosition(pos,
+					lvCommLineListView);
+			Message _msg = Message.obtain();
+			try {
+				_msg = Message.obtain();
+				_msg.what = 1;
+				_msg.obj = currView;
+				_msg.arg1 = -1;
+				_msg.arg2 = pos;
+				mProgBarHandler.sendMessage(_msg);
+				String lineNameString = value.getLineName();
+				if (stopThreadYN)
+					return;
+				String dbFileNameString = "";
+				if (AppContext.getPlanType().equals(AppConst.PlanType_XDJ)) {// 巡检下载
+					dbFileNameString = WebserviceFactory.RequestPlanDownLoad(
+							context, AppContext.GetxjqCD(), value.getLineID());
+				} else if (AppContext.getPlanType().equals(
+						AppConst.PlanType_DJPC)) {// 点检排程
+					String Value = AppContext.DJPCLineMap.get(value.getLineID()
+							+ "");
+					if (Value
+							.contains(getString(R.string.download_state_encodeErr))) {
+						_msg = Message.obtain();
+						_msg.what = -1;
+						_msg.obj = Value;
+						mLoadHandler.sendMessage(_msg);
+					} else {
+						dbFileNameString = Value;
+					}
+				}
+
+				if (!StringUtils.isEmpty(dbFileNameString)) {
+					_msg = Message.obtain();
+					_msg.what = 1;
+					_msg.obj = currView;
+					_msg.arg1 = 0;
+					_msg.arg2 = pos;
+					mProgBarHandler.sendMessage(_msg);
+					if (stopThreadYN)
+						return;
+					downLoad.DownLoadPlanDB(context, currView, key, value,
+							mProgBarHandler, dbFileNameString);
+				} else {
+					_msg = Message.obtain();
+					_msg.what = 1;
+					_msg.obj = currView;
+					_msg.arg1 = -2;
+					_msg.arg2 = pos;
+					mProgBarHandler.sendMessage(_msg);
+					return;
+				}
+				Thread.sleep(1000);
+			} catch (Exception e) {
+				_msg = Message.obtain();
+				_msg.what = 1;
+				_msg.obj = currView;
+				_msg.arg1 = -3;
+				_msg.arg2 = pos;
+				mProgBarHandler.sendMessage(_msg);
+				msg = Message.obtain();
+				msg.what = -1;
+				msg.obj = R.string.cumm_cummdownload_downloadfail
+						+ e.getMessage();
+				mDwonHandler.sendMessage(msg);
+				return;
+			}
+			if (!stopThreadYN){
+				for (DJLine mLine : AppContext.CommDJLineBuffer) {
+					if (String.valueOf(mLine.getLineID()).equals(String.valueOf(value.getLineID())))
+						mLine.setneedUpdate(false);
+				}
+				if(!isRepairXML){
+					boolean Line=DownLoad.UpdateLineListFile(AppContext.getPlanType().equals(AppConst.PlanType_DJPC));
+					boolean User=DataTransHelper.RepairUserListXML();
+					isRepairXML=Line&&User;
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			downloading = false;
+		}
+	}
+
+	private class myListener implements OnItemClickListener {
+
+		@Override
+		public void onItemClick(AdapterView<?> arg0, View view, int position,
+				long ID) {
+			// TODO Auto-generated method stub
+			// int id = AppContext.CommDJLineBuffer.get(position).getLineID();
+			// loadCommLineToListView();
+			lvDJLineAdapter.refreshItemCheckbox(position, lvCommLineListView);
+		}
+
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+	}
+
+	@Override
+	protected void onDestroy() {
+		if (loading != null)
+			loading.dismiss();
+		// if (resultUploadPopupWindow != null)
+		// resultUploadPopupWindow.dismiss();
+		super.onDestroy();
+		stopThreadYN = true;
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		switch (keyCode) {
+		case KeyEvent.KEYCODE_BACK:
+			if (isUploadingExit) {
+				UIHelper.ToastMessage(this,
+						R.string.cumm_cummdownload_headtitle_promptinfo);
+				return true;
+			}
+			// 如果正在下载
+			if (downloading) {
+				LayoutInflater factory = LayoutInflater.from(this);
+				final View view = factory.inflate(R.layout.textview_layout,
+						null);
+				new com.moons.xst.track.widget.AlertDialog(this)
+						.builder()
+						.setTitle(getString(R.string.goback))
+						.setView(view)
+						.setMsg(getString(R.string.download_state_cancel_notice))
+						.setPositiveButton(getString(R.string.sure),
+								new OnClickListener() {
+									@Override
+									public void onClick(View v) {
+										stopThreadYN = true;
+										// 为上位机配置，APP中不可见的配置项赋值
+										/*LoadAppConfigHelper
+												.getAppConfigHelper(
+														AppConst.AppConfigType.Invisible
+																.toString())
+												.LoadConfigByType();*/
+										AppManager.getAppManager()
+												.finishActivity(
+														CommDownload.this);
+									}
+								})
+						.setNegativeButton(getString(R.string.cancel),
+								new OnClickListener() {
+									@Override
+									public void onClick(View v) {
+									}
+								}).show();
+			} else {
+				// 为上位机配置，APP中不可见的配置项赋值
+				/*LoadAppConfigHelper.getAppConfigHelper(
+						AppConst.AppConfigType.Invisible.toString())
+						.LoadConfigByType();*/
+				AppManager.getAppManager().finishActivity(CommDownload.this);
+			}
+
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
+	@Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);
+	}
+
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+
+		// TODO Auto-generated method stub
+		int action = event.getAction();
+		if (action == MotionEvent.ACTION_MOVE) {
+			return true;
+		}
+		return true;
+	}
+
+	/**
+	 * 创建menu TODO 停用原生菜单
+	 */
+	public boolean onCreateOptionsMenu(Menu menu) {
+		return false;
+	}
+
+	// 长按菜单响应函数
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+
+		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item
+				.getMenuInfo();
+
+		int po = lvCommLineListView.getFirstVisiblePosition();
+
+		View v = (View) lvCommLineListView.getChildAt(info.position - po);
+		DJLine adjline = null;
+		if (v == null) {
+			return false;
+		}
+		TextView aTitle = (TextView) v
+				.findViewById(R.id.comm_djline_listitem_title);
+		if (aTitle == null) {
+			return false;
+		}
+		adjline = (DJLine) aTitle.getTag();
+
+		if (adjline == null) {
+			return false;
+		}
+		UIHelper.ToastMessage(this, String.valueOf(item.getTitle()) + ":"
+				+ adjline.getLineName());
+		switch (item.getItemId()) {
+		case MENUACTION_DOWNLOAD:
+			if (!downloading)
+				try {
+					downLoadCommLineThread(true, adjline,
+							(Integer) info.position);
+				} catch (AppException e) {
+					// TODO 自动生成的 catch 块
+					e.printStackTrace();
+				}
+			break;
+		case MENUACTION_RETURN:
+			return false;
+		}
+
+		return super.onContextItemSelected(item);
+	}
+
+	private void initUploadResult() {
+
+		// 获取LayoutInflater实例
+		// lm_inflater = (LayoutInflater) this
+		// .getSystemService(LAYOUT_INFLATER_SERVICE);
+		// // 获取弹出菜单的布局
+		// //lm_layout = lm_inflater.inflate(R.layout.comm_upload, null);
+		// // 设置popupWindow的布局
+		// resultUploadPopupWindow = new PopupWindow(lm_layout,
+		// WindowManager.LayoutParams.FILL_PARENT, 180);
+		// resultUploadPopupWindow.setBackgroundDrawable(getResources()
+		// .getDrawable(R.drawable.rounded_corners_pop));
+		rl_upload = (RelativeLayout) findViewById(R.id.rl_upload);
+		rl_upload.setVisibility(View.INVISIBLE);
+		uploadResultDesTextView = (TextView) findViewById(R.id.comm_upload_mes);
+		uploadResultTitleTextView = (TextView) findViewById(R.id.comm_upload_title);
+		uploadResultTitleTextView
+				.setText(R.string.cumm_cummdownload_uploadresultfile);
+		uploadResultProBar = (ProgressBar) findViewById(R.id.comm_upload_progressBar);
+	}
+
+	private void InitUploadProgBarHandler() {
+		mUploadProgBarHandler = new Handler() {
+			@Override
+			public void handleMessage(Message msg) {
+				if (msg.what == 1) {
+					String mesString = String.valueOf(msg.obj);
+					int progBarDoNum = (int) msg.arg1;
+					uploadResultProBar.setProgress(progBarDoNum);
+					uploadResultDesTextView.setText(mesString);
+				} else if (msg.what == -1) {
+					downloading = false;
+					rl_upload.setVisibility(View.INVISIBLE);
+					UIHelper.ToastMessage(CommDownload.this,
+							String.valueOf(msg.obj));
+				} else if (msg.what == 0) {
+					UIHelper.ToastMessage(CommDownload.this,
+							String.valueOf(msg.obj), Toast.LENGTH_LONG);
+				}
+			}
+		};
+	}
+
+	private void showUploadResultView() {
+		// View parentView = findViewById(R.id.ll_comm_download_head);
+		// resultUploadPopupWindow.showAsDropDown(parentView, 0, 0); //
+		// 设置在屏幕中的显示位置
+		rl_upload.setVisibility(View.VISIBLE);
+		uploadResultDesTextView.setText(getString(
+				R.string.cumm_cummdownload_uploadresultfile_count,
+				String.valueOf(AppContext.resultDataFileListBuffer.size())));
+	}
+
+	private void copyFile(String oldPath, String newPath) {
+		try {
+			int bytesum = 0;
+			int byteread = 0;
+			File oldfile = new File(oldPath);
+			if (oldfile.exists()) { // 文件存在时
+				InputStream inStream = new FileInputStream(oldPath); // 读入原文件
+				FileOutputStream fs = new FileOutputStream(newPath);
+				byte[] buffer = new byte[1444];
+				int length;
+				while ((byteread = inStream.read(buffer)) != -1) {
+					bytesum += byteread; // 字节数 文件大小
+					System.out.println(bytesum);
+					fs.write(buffer, 0, byteread);
+				}
+				inStream.close();
+				fs.close();
+			}
+		} catch (Exception e) {
+			System.out.println(R.string.cumm_cummdownload_copyfilefail);
+			e.printStackTrace();
+
+		}
+	}
+
+	/**
+	 * 上传结果数据
+	 * 
+	 * @throws InterruptedException
+	 */
+	private boolean upLoadResultListData() throws InterruptedException {
+		Context context = getBaseContext();
+		UpLoad uploadRes = new UpLoad(context);
+		if (AppContext.resultDataFileListBuffer != null
+				&& AppContext.resultDataFileListBuffer.size() > 0) {
+			String tempString = uploadRes.GetNeedUploadFileInfo();
+			boolean isUpPlan = tempString.toUpperCase().contains("|NEEDPLAN");
+			for (DJLine _djLine : AppContext.resultDataFileListBuffer) {
+				if (stopThreadYN)
+					return false;
+				try {
+
+					File _file = new File(_djLine.getResultDBPath());
+					// 判断有没有结果库，有的话上传
+					if (_file.exists()) {
+						if (isUpPlan) {
+							int lineID = _djLine.getLineID();
+							String planFileName = AppConst.XSTDBPath()
+									+ File.separator
+									+ AppConst.PlanDBName(lineID);
+							File planFile = new File(planFileName);
+							if (planFile.exists()) {
+								String resultPathString = _file.getParent();
+
+								String sPlanFileNameString = resultPathString
+										+ File.separator
+										+ AppConst.PlanDBName(lineID);
+								copyFile(planFileName, sPlanFileNameString);
+							}
+						}
+
+						Message _msg = Message.obtain();
+
+						_msg.what = 1;
+						_msg.obj = getString(
+								R.string.cumm_cummdownload_iszipfile,
+								_djLine.getLineID());
+						_msg.arg1 = 0;
+						mUploadProgBarHandler.sendMessage(_msg);
+						boolean b=ZipUtils.zipFolder(
+								_file.getParent(),
+								AppConst.XSTZipResultPath()
+										+ _djLine.getLineID());
+						if(!b){
+							_msg = Message.obtain();
+							_msg.what = 0;
+							_msg.obj = getString(R.string.cumm_cummdownload_iszipfileerror,_djLine.getLineID());
+							mUploadProgBarHandler.sendMessage(_msg);
+							return false;
+						}
+						_msg = Message.obtain();
+						_msg.what = 1;
+						_msg.obj = getString(
+								R.string.cumm_cummdownload_isuploadfile,
+								_djLine.getLineID());
+						_msg.arg1 = 0;
+						mUploadProgBarHandler.sendMessage(_msg);
+						if (uploadRes.UploadResultDB(
+								appVersion,
+								context,
+								mUploadProgBarHandler,
+								AppConst.XSTZipResultPath()
+										+ _djLine.getLineID())) {
+							_msg = Message.obtain();
+							_msg.what = 1;
+							_msg.obj = getString(
+									R.string.cumm_cummdownload_uploadfilesucced,
+									_djLine.getLineID());
+							_msg.arg1 = 0;
+	
+							// 上传完临时数据后，有视频缩略图的话，删除缩略图
+							File file = new File(
+									AppConst.XSTTempThumbnailImagePath());
+							if (_djLine.getLineID() == 0 && file.list().length > 0) {
+								File[] files = file.listFiles();
+								for (File f : files) {
+									f.delete();
+								}
+							}
+							
+							// 插入操作日志
+							ResponseLogInfoHelper.getHelper(AppConfig.ANDROID_DATA_UPLOADING, 
+									true, 
+									AppConfig.DATA_UPLOADING_SUCCEED
+										+ "[" + _djLine.getLineID() + "]",
+									AppConst.CommunicationType_Wireless)
+									.ResponseLogInfoToServer();
+	
+							mUploadProgBarHandler.sendMessage(_msg);
+						} else {
+							// 插入操作日志
+							ResponseLogInfoHelper.getHelper(AppConfig.ANDROID_DATA_UPLOADING, 
+									false, 
+									AppConfig.DATA_UPLOADING_DEFEATED
+										+ "[" + _djLine.getLineID() + "]",
+									AppConst.CommunicationType_Wireless)
+									.ResponseLogInfoToServer();
+							return false;
+						}
+					}
+				} catch (Exception e) {
+					Message _msg = Message.obtain();
+					_msg.what = 1;
+					_msg.obj = getString(R.string.cumm_cummdownload_uploadresultfilefailed)
+							+ e.getMessage();
+					_msg.arg1 = 0;
+					mUploadProgBarHandler.sendMessage(_msg);
+					// 插入操作日志
+					ResponseLogInfoHelper.getHelper(AppConfig.ANDROID_DATA_UPLOADING, 
+							false, 
+							AppConfig.DATA_UPLOADING_DEFEATED
+								+ "[" + _djLine.getLineID() + "]",
+							AppConst.CommunicationType_Wireless)
+							.ResponseLogInfoToServer();
+					
+					return false;
+				}
+			}
+			return true;
+		}
+		return true;
+	}
+
+	/**
+	 * 数据上传线程
+	 */
+	private void upLoadResultThread() {
+		if (!NetWorkHelper.isNetworkAvailable(getBaseContext())) {
+			UIHelper.ToastMessage(getBaseContext(),
+					R.string.network_not_connected);
+			rl_upload.setVisibility(View.INVISIBLE);
+			isUploadingExit = false;
+			downloading = false;
+			return;
+		}
+		uploadThread = new Thread() {
+			public void run() {
+				Message msg = Message.obtain();
+				if (!WebserviceFactory.checkWS()) {
+					msg = Message.obtain();
+					msg.what = -2;
+					msg.obj = getString(R.string.cumm_twobill_webcheckPromptinfo);
+					isUploadingExit = false;
+					mDwonHandler.sendMessage(msg);
+				} else {
+					try {
+						msg = Message.obtain();
+						msg.what = 1;
+						msg.obj = getString(R.string.cumm_cummdownload_startupload);
+						msg.arg1 = -1;
+						mDwonHandler.sendMessage(msg);
+						if (upLoadResultListData()) {// 注释掉上传，现在是实时上传
+							msg = Message.obtain();
+							msg.what = 1;
+							msg.obj = getString(R.string.cumm_cummdownload_uploadfinished);
+							msg.arg1 = -2;
+							
+							mDwonHandler.sendMessage(msg);
+						}
+						isUploadingExit = false;
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						msg = Message.obtain();
+						e.printStackTrace();
+						msg.what = -1;
+						msg.obj = e;
+						
+						mDwonHandler.sendMessage(msg);
+						isUploadingExit = false;
+					}
+				}
+			}
+		};
+		uploadThread.start();
+	}
+	
+	//长按弹框
+	private void showSheetDialog(final int position,final View v){
+		new ActionSheetDialog(CommDownload.this)
+		.builder()
+		.setCancelable(false)
+		.setCanceledOnTouchOutside(true)
+		.addSheetItem(getString(R.string.commu_receive_lvMemu__toDown),
+				SheetItemColor.Blue,
+				new OnSheetItemClickListener() {
+					@Override
+					public void onClick(int which) {
+						
+						DJLine adjline = null;
+						if (v == null) {
+							return ;
+						}
+						TextView aTitle = (TextView) v
+								.findViewById(R.id.comm_djline_listitem_title);
+						if (aTitle == null) {
+							return ;
+						}
+						adjline = (DJLine) aTitle.getTag();
+
+						if (adjline == null) {
+							return ;
+						}
+						UIHelper.ToastMessage(CommDownload.this, getString(R.string.commu_receive_lvMemu__toDown) + ":"
+								+ adjline.getLineName());
+						
+						try {
+							downLoadCommLineThread(true, adjline,position);
+						} catch (Exception e) {
+							// TODO 自动生成的 catch 块
+							e.printStackTrace();
+						}
+					}
+				}).show();
+	}
+}

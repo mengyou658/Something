@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="MyArray">
+        <item welcomepic="welcome" mainpagelogo="ic_logo" loginlogo="company_logo" 
+            aboutlogo="ic_product" hometitle="home_head_title" aboutname="main_about_appnameXST"
+            welcomenamevisible="true" welcomename="main_about_appnameXDJ" copyrightvisible="true"
+            copyrightstr="main_about_copyright" xjqcdlength="5">小神探</item>
+        <item welcomepic="welcome_qdlh" mainpagelogo="ic_logo_qdlh" loginlogo="company_logo_qdlh" 
+            aboutlogo="ic_product_qdlh" hometitle="home_head_title_qdlh" aboutname="main_about_appnameQDLH"
+            welcomenamevisible="false" welcomename="main_about_appnameXDJ" copyrightvisible="false"
+            copyrightstr="main_about_copyright" xjqcdlength="10">青炼巡检</item>
+        <item welcomepic="welcome_zhlh" mainpagelogo="ic_logo_zhlh" loginlogo="company_logo_zhlh" 
+            aboutlogo="ic_product_zhlh" hometitle="home_head_title_zhlh" aboutname="main_about_appnameZHLH"
+            welcomenamevisible="true" welcomename="main_about_appname_ZHLH" copyrightvisible="false"
+            copyrightstr="main_about_copyright" xjqcdlength="5">镇海炼化</item>
+    </string-array> 
+</resources>

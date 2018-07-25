@@ -1,0 +1,801 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="network_not_connected">网络连接失败，请检查网络设置</string>
+    <string name="xml_parser_failed">数据解析异常</string>
+    <string name="io_exception_error">文件流异常</string>
+    <string name="http_status_code_error">网络异常，错误码：%d</string>
+    <string name="http_exception_error">网络异常，请求超时</string>
+    <string name="socket_exception_error">网络异常，读取数据超时</string>
+    <string name="app_run_code_error">应用程序运行时异常</string>
+    <string name="db_run_code_error">数据库运行时异常</string>
+    <string name="app_error">应用程序错误</string>
+    <string name="app_error_message">很抱歉，应用程序出现错误，即将退出。\n请提交错误报告，我们会尽快修复这个问题</string>
+    <string name="submit_report">提交报告</string>
+    <string name="msg_camera_framework_bug">抱歉，Android相机出现问题。您可能需要重启设备。</string>
+    <string name="software_version_update">软件版本更新</string>
+    <string name="update_now">立即更新</string>
+    <string name="update_talklater">以后再说</string>
+    <string name="update_download">正在下载···</string>
+    <string name="gps_not_open">GPS已关闭，是否开启GPS？</string>
+    <string name="tips">提示</string>
+    <string name="choice">请选择</string>
+    <string name="back_exit_tips">再按一次退出程序</string>
+    <string name="app_menu_logouttitle">退出程序</string>
+    <string name="app_menu_surelogout">确定退出程序吗？</string>
+    <string name="user_menu_surelogout">确定要注销吗？</string>
+    <string name="delete_line_surelogout">确定删除该路线吗？</string>
+    <string name="delete_line_defeated">删除失败</string>
+    <string name="sure">确定</string>
+    <string name="goback">退出提示</string>
+    <string name="cancel">取消</string>
+    <string name="system_notice">系统提示</string>
+    <string name="titles">标题</string>
+    <string name="contents">内容</string>
+    <string name="pass">通过</string>
+    <string name="unpass">不通过</string>
+    <string name="function_not_supported">该机型不支持此功能</string>
+    <string name="os_timeset_close">确定要屏蔽OS时间设置吗?</string>
+    <string name="os_timeset_hadclose">OS时间设置已屏蔽，无需更改</string>
+    <string name="workdate_error">获取节假日信息出错</string>
+    <string name="workdate_nodata">没有节假日信息</string>
+
+    <!-- Main_Page -->
+    <string name="mainpage_message_notlogin">未登录</string>
+    <string name="mainpage_message_clicklogin">点击登录</string>
+
+    <!-- 点检相关 -->
+    <string name="dj_confirm_gotodianjian_title">执行点检</string>
+    <string name="dj_confirm_speaking">您将要执行点检操作，路线名称为：</string>
+    <string name="dj_confirm_gotodianjian_desc">确定要对路线 %s 执行点检吗？</string>
+    <string name="dj_confirm_hisdatachart_markerview_des"> 检查时间:   %1$s \n检查结果:   %2$s</string>
+    <string name="dj_confirm_hisdatachart_des">显示 %1$s   ~~  %2$s的数据</string>
+
+    <!-- 巡线相关 -->
+    <string name="dj_confirm_choice_speccase">请选择特巡条件</string>
+    <string name="dj_confirm_speccase_list">特巡条件列表</string>
+    <string name="track_confirm_gototrack_title">执行巡线</string>
+    <string name="track_confirm_gototrack_desc">确定要对路线 %s 执行巡线吗？</string>
+    <string name="track_confirm_gobacktrack_desc">确定要退出执行巡视路线 %s 吗？</string>
+
+    <!-- 点检排程相关 -->
+    <string name="djpc_confirm_outofcycle_msg">点检排程路线已过期，请重新下载</string>
+
+    <!-- 初始化相关 -->
+    <string name="track_confirm_init_desc1"> 确定要将到位点 : %s\n初始化为当前位置吗? </string>
+    <string name="track_confirm_init_desc2"> \n经度：%f </string>
+    <string name="track_confirm_init_desc3"> \n纬度：%g </string>
+    <string name="track_confirm_init_desc4">未能获取到当前位置信息，请确认经度、纬度及状态信息</string>
+
+    <!-- 外围启停相关 -->
+    <string name="dj_sr_nolastresult_notice">存在没有上次结果的启停点</string>
+    <string name="dj_sr_list">启停列表：</string>
+    <string name="dj_srstate_list">启停点状态列表</string>
+    <string name="dj_sr_count">启停点数量：%1$s</string>
+    <string name="dj_sr_current">当前启停点：%1$s</string>
+    <string name="dj_sr_notset">未设置</string>
+    <string name="dj_sr_unknown">未知</string>
+    <string name="dj_sr_statenotset">未设置启停状态数据</string>
+
+    <!-- 下载相关 -->
+    <string name="download_message_count">%1$s条</string>
+    <string name="download_message_errorxjqcd">请正确设置巡检器标识符后继续操作</string>
+    <string name="download_message_notsupportusb">暂不支持USB通信方式</string>
+    <string name="download_message_errorwsaddress">请正确设置通信地址后继续操作</string>
+    <string name="download_message_errormacaddress">未获取到该PDA的IMEI及MAC地址</string>
+    <string name="download_message_selected_hint">请选择下载路线</string>
+
+    <!-- 到位相关 -->
+    <string name="djidpos_message_speccase">特巡钮扣列表</string>
+    <string name="djidpos_message_idposloding">钮扣加载中，请稍候···</string>
+    <string name="djidpos_message_notsupportnfc">设备不支持NFC</string>
+    <string name="djidpos_message_opennfc">请在系统设置中先启用NFC功能</string>
+    <string name="djidpos_message_cannotsetsrforspeccase">特巡条件下不能设置启停</string>
+    <string name="djidpos_message_cannotsetsrforcasexj">条件巡检下不能设置启停</string>
+    <string name="djidpos_message_idposisloding">或钮扣正在加载中</string>
+    <string name="djidpos_message_idposname">钮扣编码[%1$s]</string>
+    <string name="djidpos_message_sortidposcompleted">强制次序钮扣已完成</string>
+    <string name="djidpos_message_wrongsortnoidpos">当前钮扣次序不对\n应碰钮扣[%1$s]</string>
+    <string name="djidpos_message_sortidposmustloadcompleted">强制次序钮扣需等待全部钮扣加载完成</string>
+    <string name="djidpos_message_nosr">该路线下无启停点</string>
+    <string name="djidpos_message_dbwrong">数据库加载出错,请重新下载</string>
+    <string name="load_more">更多</string>
+    <string name="load_ing">加载中···</string>
+    <string name="save_ing">保存中···</string>
+    <string name="load_full">已加载全部</string>
+    <string name="load_empty">暂无数据</string>
+    <string name="load_error">加载数据出错</string>
+    <string name="Inputbug_gpslocationmes">未能获取到GPS定位信息，请开启GPS重试</string>
+    <string name="select">选择</string>
+    <string name="share">分享</string>
+    <string name="sharing">分享中···</string>
+    <string name="publishing">发布中···</string>
+    <string name="query_nullmsg">数据不存在，请检查数据是否已下载</string>
+    <string name="msg_login_email_null">请输入账号</string>
+    <string name="msg_login_pwd_null">请输入密码</string>
+    <string name="msg_login_success">登录成功</string>
+    <string name="msg_login_logout">已注销</string>
+    <string name="msg_login_fail">登录失败</string>
+    <string name="msg_login_notin_fail">登录失败\n用户不在此路线中</string>
+    <string name="msg_geasture_login_fail">登录失败\n密码输入错误</string>
+    <string name="msg_login_error">用户未登录 或 密码错误</string>
+
+    <!-- Login -->
+    <string name="sinalogin_check_account">账号不能为空</string>
+    <string name="sinalogin_check_pass">密码不能为空</string>
+    <string name="sinalogin_check_server">服务器验证中···</string>
+    <string name="sinalogin_check_wrongpassword">密码输入错误</string>
+    <string name="sinalogin_check_wrongaccount">用户名不存在</string>
+    <string name="sinalogin_check_nocommunication">请先进行数据通信</string>
+
+    <!-- Login 手势相关 -->
+    <string name="login_gesturelogin_min_connectnum">最少链接4个点, 请重新输入</string>
+    <string name="login_gesturelogin_savefailed">保存失败</string>
+    <string name="login_gesturelogin_setsucceed">设置成功</string>
+    <string name="login_gesturelogin_twotimediff">与上一次绘制不一致，请重新绘制</string>
+    <string name="login_gesturelogin_pwdisused">此密码已被占用，请重设</string>
+
+    <!-- setting -->
+    <string name="setting_comm_xjqcd">设置巡检器标识符(内网)</string>
+    <string name="setting_comm_webaddr">设置内网WebService地址</string>
+    <string name="setting_comm_wlan_xjqcd">设置巡检器标识符(外网)</string>
+    <string name="setting_comm_wlan_webaddr">设置外网WebService地址</string>
+    <string name="setting_comm_other_webaddr">设置管线信息WebService地址</string>
+    <string name="setting_comm_xjqcd_mes">设置巡检器标识符</string>
+    <string name="setting_comm_webaddr_mes">设置WebService地址</string>
+    <string name="setting_function_voice_on">已开启语音提示</string>
+    <string name="setting_function_voice_off">已关闭语音提示</string>
+    <string name="setting_function_checkupdate">启动程序时检查版本更新</string>
+    <string name="setting_function_uploadfile">程序运行时后台同步文件到服务器</string>
+    <string name="setting_sys_updatesystime_gps">GPS校准</string>
+    <string name="setting_sys_updatesystime_web">WEB校准</string>
+    <string name="setting_sys_updatesystime_defaultvalue">GPS校准</string>
+    <string name="setting_sys_changedate">2015/04/22</string>
+    <string name="setting_sys_changetime">10:10</string>
+    <string name="setting_sys_gps_on">已开启GPS定位检查</string>
+    <string name="setting_sys_gps_off">已关闭GPS定位检查</string>
+    <string name="setting_sys_his_datasaved_default">31天</string>
+    <string name="setting_sys_gps_settings">GPS定位模式、时间间隔等相关设置</string>
+    <string name="setting_function_cleardatatitle">数据清理</string>
+    <string name="setting_function_surecleardata">确定清除应用数据吗？</string>
+    <string name="setting_gpssetting_mode_highprecision">高精度定位模式下，会同时使用GPS、Wifi和基站定位，返回的是当前条件下精度最好的定位结果</string>
+    <string name="setting_gpssetting_mode_lowpower">低功耗定位模式下，仅使用网络定位即Wifi和基站定位，返回的是当前条件下精度最好的网络定位结果</string>
+    <string name="setting_gpssetting_mode_local">仅用设备定位模式下，只使用用户的GPS进行定位，这个模式下，首次定位速度会需要一定时间</string>
+
+    <!-- setting 关于我们 -->
+    <string name="setting_sys_enterdia_pwd_errorinfo">密码不正确</string>
+    <string name="setting_sys_enterdia_pwd_inputinfo">请输入密码</string>
+    <string name="setting_sys_aboutus_logo_entered_data_obtainerror">获取数据失败</string>
+    <string name="setting_sys_aboutus_logo_enterdia_pwd_inputinfo">提示信息</string>
+    <string name="setting_sys_aboutus_logo_enterdia_msginfo">一键还原将软件还原到最初始状态，是否还原？</string>
+    <string name="setting_sys_aboutus_logoentered_filefinddiainfo">压缩中···</string>
+    <string name="setting_sys_aboutus_logoentered_filefind_emailtitle">XST压缩文件</string>
+    <string name="setting_sys_aboutus_logoentered_filefind_email_choosetosend">请选择发送软件</string>
+    <string name="setting_sys_aboutus_logoentered_filefind_email_ziperror">压缩文件出错</string>
+    <string name="setting_sys_aboutus_logoentered_errorLog_chooseprompt">请选择日志文件</string>
+    <string name="setting_sys_aboutus_logoentered_errorLog_cannotdelete">错误日志不能删除</string>
+    <string name="setting_sys_aboutus_logoentered_errorLog_detailinfo">详细信息</string>
+    <string name="setting_sys_aboutus_checkupdata_diapromptinfo">正在检测，请稍等···</string>
+    <string name="setting_sys_aboutus_checkupdata_webaddresscanotuse">WEB服务不可用</string>
+    <string name="setting_sys_aboutus_checkupdata_nosdprompt">无法下载安装文件，请检查SD卡是否挂载</string>
+    <string name="setting_sys_aboutus_checkupdata_diamsg_islast">当前已经是最新版本</string>
+    <string name="setting_sys_aboutus_checkupdata_diamsg_canotobtainupdateinfo">无法获取版本更新信息</string>
+    <string name="setting_sys_aboutus_checkupdata_diamsg_prompttoupdate_isupdating">正在下载新版本</string>
+    <string name="setting_sys_aboutus_checkupdata_diamsg_prompttoupdate_updatefail">下载失败</string>
+    <string name="setting_sys_aboutus_checkupdata_diamsg_prompttoupdate_updatefinish">下载完成</string>
+    <string name="setting_sys_aboutus_versioninfo">Version：%1$s(%2$s)</string>
+
+    <!-- setting 参数设置 -->
+    <string name="setting_sys_jitupload_onceupload_maxuploadpromptinfo">单次最大上传%s条</string>
+    <string name="setting_jitupload_xdjresult_maxload">单次最大上传条数为100条</string>
+    <string name="setting_sys_hisdatasaveddays_diatitle">历史数据保存天数</string>
+    <string name="setting_sys_gpsisopen_isopenpromptinfo">APP已启用GPS检查，重启APP后生效</string>
+    <string name="setting_sys_gpsisopen_isclosedpromptinfo">APP已关闭GPS检查，重启APP后生效</string>
+    <string name="setting_sys_gpssetting_time_interval_promptinfo">注: 定位时间选择3~5s为最佳</string>
+    <string name="setting_sys_gpssetting_gpsfilter_promptinfo">注: GPS坐标过滤条件为%1$s分钟内两点间距超过%2$s米，请根据实地GPS环境调整设置</string>
+    <string name="setting_sys_gpssetting_geocodingerror_promptinfo">抱歉，未能找到结果；error:</string>
+    <string name="setting_sys_clearappcach_clearsucced_promptinfo">数据清除成功</string>
+    <string name="setting_sys_clearappcach_clearfail_promptinfo">数据清除失败</string>
+    <string name="setting_sys_settingconfig_needpwd_msg">参数设置需要密码</string>
+
+    <!-- 下载相关 -->
+    <string name="download_state_encode">正在标准化···</string>
+    <string name="download_state_finish">下载完成</string>
+    <string name="download_state_encodeErr">标准化失败</string>
+    <string name="download_state_downErr">下载失败</string>
+    <string name="download_state_cancel_notice">数据通信正在进行，\n如果强行退出需要重新执行路线下载，\n确定退出吗？</string>
+    <string name="appupdate_hasnewapp">小神探客户端有新版本</string>
+    <string name="dataupdate_hasnewline">服务端路线有更新，请下载</string>
+    <string name="new_temptask">有临时任务，请打开</string>
+    <string name="jitupload_overstepmaxsize">附件超过最大限制2M，请同步上传</string>
+    <string name="jitupload_errordata">存在转换错误的数据，请通过同步上传</string>
+    <string name="cumm_twobill_webcheckPromptinfo">Web服务不可用，请检查</string>
+    <string name="cumm_twobill_diatitle_warninfo">警告</string>
+    <string name="cumm_twobill_diamsg_warninfo">该操作会导致之前下载的操作票和结果库信息丢失，是否继续？</string>
+    <string name="cumm_twobill_chooseczp_promptinfo">请选择操作票</string>
+    <string name="cumm_cummdownload_headtitle_promptinfo">数据上传中···</string>
+    <string name="cumm_cummdownload_fail_promptinfo">数据同步出错，请退出后重试</string>
+    <string name="cumm_cummdownload_downloadfail">下载错误</string>
+    <string name="cumm_cummdownload_planislast">计划已最新，无需下载</string>
+    <string name="cumm_cummdownload_failtoupdateplan">更新计划出错</string>
+    <string name="cumm_cummdownload_uploadresultfile">结果文件上传</string>
+    <string name="cumm_cummdownload_uploadresultfile_count">需上传结果文件：%s个</string>
+    <string name="cumm_cummdownload_copyfilefail">复制文件操作出错</string>
+    <string name="cumm_cummdownload_operatetickethasunfinished_promptinfo">操作票中有未完成的操作项</string>
+    <string name="cumm_cummdownload_iszipfile">正在压缩结果文件：%s 请稍等···</string>
+    <string name="cumm_cummdownload_isuploadfile">开始上传结果文件：%s</string>
+    <string name="cumm_cummdownload_uploadfilesucced">结果文件：%s 上传完成</string>
+    <string name="cumm_cummdownload_uploadresultfilefailed">结果文件上传失败--</string>
+    <string name="cumm_cummdownload_startupload">开始上传</string>
+    <string name="cumm_cummdownload_uploadfinished">上传完成</string>
+    <string name="cumm_cummdownload_usbuploadfailed_socketcanotused">Socket不可用，请检查</string>
+    <string name="cumm_cummdownload_usbdownloadfail">下载失败--</string>
+    <string name="cumm_cummdownload_usbdownloadsinished">通信完成</string>
+    <string name="cumm_cummdownload_usbdownload_servicestartip">service start ip地址是:  %s</string>
+    <string name="cumm_cummdownload_usbdownload_serviceendip">service end ip地址是: %s</string>
+    <string name="cumm_cummdownload_usbdownload_receiveconnect">收到连接···</string>
+    <string name="cumm_cummdownload_usbdownload_socketerror">Socket出现严重错误，请重新插拔USB线。%s</string>
+    <string name="cumm_cummdownload_usbdownload_sockettimeout">Socket连接超时</string>
+    <string name="cumm_cummdownload_usbdownload_hint">下载失败</string>
+    <string name="cumm_cummdownload_usbdisconnect_hint">USB未连接</string>
+    <string name="cumm_usb_connectdisconnect_hint">连接中断</string>
+    <string name="cumm_usb_communicating">数据通信中，请稍后···</string>
+    <string name="cumm_wifi_checkwsversion">检查通信程序Webservice版本</string>
+
+    <!-- 语音听写与阅读 -->
+    <string name="xf_listen_install">安装科大讯飞语音+</string>
+    <string name="xf_listen_use_desc">最多输入250字(长按输入框试试语音输入)</string>
+    <string name="xf_listen_begin_desc">请开始说话···</string>
+    <string name="xf_listen_end_desc">结束说话</string>
+    <string name="xf_listen_begin_err">听写失败,错误码-</string>
+    <string name="xf_listen_end_err">听写失败,错误码-</string>
+    <string name="xf_listen_init_error">初始化失败,错误码-</string>
+    <string name="xf_listen_together_error">语音合成失败,错误码-</string>
+
+    <!-- 钮扣界面 -->
+    <string name="idpos_noidpos">路线下无钮扣信息</string>
+    <string name="idpos_notuse">不可用</string>
+    <string name="idpos_scannotuse">扫码功能被禁用</string>
+
+    <!-- 计划界面 -->
+    <string name="plan_stringEmpty_result">点检结果不能为空</string>
+    <string name="plan_wrongFormat_result">点检结果格式错误</string>
+    <string name="plan_wrongFormat_hisresult">上次结果格式错误</string>
+    <string name="plan_most_memo_length">备注不能超过80个字符</string>
+    <string name="plan_save_ok">保存成功</string>
+    <string name="plan_edit_ok">修改成功</string>
+    <string name="plan_del_notice">删除提示</string>
+    <string name="plan_del_ok">已删除</string>
+    <string name="plan_photo_del">确定要删除该图片吗？</string>
+    <string name="plan_recorder_del">确定要删除该录音吗？</string>
+    <string name="plan_vedio_del">确定要删除该录像吗？</string>
+    <string name="plan_resitem_notice1">请选择</string>
+    <string name="plan_cl_notice1">请先停止测量</string>
+    <string name="plan_cl_notice2">本机型不支持此测量类型</string>
+    <string name="plan_save_notice1">该计划下结果已上传，无法进行修改</string>
+    <string name="plan_jl_notice1">注意：请注意异常值</string>
+    <string name="plan_lk_cancel_notice1">将取消主控点下计划的批量处理，取消后需逐条完成计划任务。\n确定要取消批处理吗？</string>
+    <string name="plan_statistic_notice">计划完成情况\n计划合计： %1$s条\n未完成数： %2$s条\n无需做计划数：%3$s条\n‘确定’退出，‘取消’继续。</string>
+    <string name="plan_statistic_notice1">钮扣： %1$s \n计划合计：%2$s条 \n未完成数：%3$s条 \n无需做计划数：%4$s条 \n确定要退出吗？</string>
+    <string name="plan_speccase_statistic_notice">计划完成情况\n特巡计划合计：%1$s条\n‘确定’退出，‘取消’继续。</string>
+    <string name="plan_noplan_notice">该钮扣下无可做计划</string>
+    <string name="plan_speccasecount">特巡条目：%1$s</string>
+    <string name="plan_casexjcount">条目：%1$s</string>
+    <string name="plan_lastresult_detail">上次结果详情</string>
+    <string name="plan_choosedataitems">请选择结果选项</string>
+    <string name="plan_photo">拍照</string>
+    <string name="plan_audio">录音</string>
+    <string name="plan_video">录像</string>
+    <string name="plan_tempcl_temperature">温度测量</string>
+    <string name="plan_tempcl_vibration">振动测量</string>
+    <string name="plan_backtofirstundoplan">长按此按钮快速到达第一条未做计划</string>
+    <string name="plan_idpos">ID位置：</string>
+    <string name="plan_audiodeleted">录音已删除</string>
+    <string name="plan_deletefile">确定删除该文件？</string>
+    <string name="plan_plandesc">计划内容：%1$s\n\n判断标准：%2$s</string>
+    <string name="plan_plandesc1">计划内容：%1$s</string>
+    <string name="plan_checkinput">点击输入</string>
+    <string name="plan_checkmeasure">点击测量</string>
+    <string name="plan_checkchoose">点击选择</string>
+    <string name="plan_backdoplan">退出计划执行</string>
+    <string name="plan_speccase">特巡</string>
+    <string name="plan_undo">未检：</string>
+    <string name="plan_sr">启停点-%1$s</string>
+    <string name="plan_lk">主控点-%1$s</string>
+    <string name="plan_gc_defaultresult">正常</string>
+    <string name="plan_totheend">条目到底</string>
+    <string name="plan_tothefirst">条目到顶</string>
+    <string name="plan_result_outofrange_notice">超出量程范围,请重新输入</string>
+    <string name="plan_result_notinrange_notice">输入值不在量程范围</string>
+    <string name="plan_errordata_notice1">异常数据(与上次的差值过大,级别:%1$s)</string>
+    <string name="plan_errordata_notice2">异常数据(级别:%1$s)</string>
+    <string name="plan_mincoast_notice1">该位置区域的检查时间必须满%1$s分钟才能返回,剩余%2$s秒,请继续检查</string>
+    <string name="plan_mincoast_notice2">该位置区域的检查时间必须满%1$s分钟才能返回,剩余%2$s分%3$s秒,请继续检查</string>
+    <string name="plan_mincoast_notice3">未达到该区域检查时间,请继续检查</string>
+    <string name="plan_maxphotocount">最多只能拍摄10张照片</string>
+    <string name="plan_maxaudiocount">最多只能录制5个录音</string>
+    <string name="plan_gpsinfo">经：%1$s   纬：%2$s</string>
+    <string name="plan_positioning">定位中</string>
+    <string name="plan_checkmethod_ms">目视</string>
+    <string name="plan_checkmethod_sm">手摸</string>
+    <string name="plan_checkmethod_jt">解体</string>
+    <string name="plan_checkmethod_qt">其他</string>
+    <string name="plan_checkmethod_jm">精密</string>
+    <string name="plan_checkmethod_xj">嗅觉</string>
+    <string name="plan_checkmethod_qd">敲打</string>
+    <string name="plan_checkmethod_ty">听音</string>
+    <string name="plan_lkforplan_count">受控的计划数量：%1$s</string>
+    <string name="plan_detail">计划详情</string>
+    <string name="plan_detail_content">计划内容</string>
+    <string name="plan_detail_standard">判断标准</string>
+    <string name="plan_detail_cycle">周期</string>
+    <string name="plan_detail_checkmethod">检查方法</string>
+    <string name="plan_detail_standardvalue">典型值</string>
+    <string name="plan_detail_unit">单位</string>
+    <string name="plan_detail_lc">量程</string>
+    <string name="plan_detail_upperwarning">超上限报警</string>
+    <string name="plan_detail_lowerwarning">超下限报警</string>
+    <string name="plan_detail_innerwarning">窗内报警</string>
+    <string name="plan_detail_outterwarning">窗外报警</string>
+    <string name="plan_detail_diffwarning">差值报警(差值:%1$s)</string>
+    <string name="plan_detail_alarmtype">报警类型</string>
+    <string name="plan_detail_alarmlimit">报警上下限</string>
+    <string name="plan_detail_upper">上限：</string>
+    <string name="plan_detail_lower">下限：</string>
+    <string name="plan_alarmlevel_Pre_Alarm">预警</string>
+    <string name="plan_alarmlevel_Warning">警告</string>
+    <string name="plan_alarmlevel_Pre_Alert">报警</string>
+    <string name="plan_alarmlevel_Pre_Dangerous">危险</string>
+    <string name="plan_count">计划数:</string>
+    <string name="plan_type_gc">观察类</string>
+    <string name="plan_type_jl">记录类</string>
+    <string name="plan_type_cw">测温类</string>
+    <string name="plan_type_cz">测振类</string>
+    <string name="plan_type_cs">测速类</string>
+    <string name="plan_overcycle_msg">检查到已经跨时段，请重新碰钮扣</string>
+    <string name="plan_remain_msg">还有  %d 条计划未完成，确定退出?</string>
+
+    <!-- 其他点设置界面 -->
+    <string name="plan_sr_notice1">选择启停点长按设置启停状态</string>
+    <string name="plan_sr_notice2">请设置当前计划启停点状态</string>
+    <string name="plan_sr_notice3">未设置过启停点状态</string>
+
+    <!-- 路线列表 -->
+    <string name="line_list_buildTime_noBuild">该路线在服务端未标准化</string>
+    <string name="home_line_noplanfile_notice">该路线计划数据不存在，请至数据通信下载</string>
+    <string name="twobill_operate_noplanfile_notice">操作票数据库不存在,是否下载操作票信息？</string>
+    <string name="twobill_work_noplanfile_notice">工作票数据库不存在,是否下载工作票信息？</string>
+    <string name="overhaul_operate_noplanfile_notice">检修管理数据库不存在,是否下载检修管理信息？</string>
+
+    <!-- 硬件验证 -->
+    <string name="pda_product_factory_info">SHMZ</string>
+    <!-- 调试模式参数设置 -->
+    <!-- 调试设备使用 TEST / 正式发布使用REALSE  此标识不再使用 设置调试模式到AppContent中设置 debug参数 -->
+    <string name="pda_checkhardwave_info">请在指定设备上使用该程序</string>
+    <!-- 下拉上拉相关提示 -->
+    <string name="pull_to_refresh">下拉刷新</string>
+    <string name="release_to_refresh">释放立即刷新</string>
+    <string name="refreshing">正在刷新···</string>
+    <string name="refresh_succeed">刷新成功</string>
+    <string name="refresh_fail">刷新失败</string>
+    <string name="pullup_to_load">上拉加载更多</string>
+    <string name="release_to_load">释放立即加载</string>
+    <string name="loading">正在加载···</string>
+    <string name="load_succeed">加载成功</string>
+    <string name="load_fail">加载失败</string>
+    <string name="nomoredata">没有更多数据</string>
+
+    <!-- Map_main -->
+    <string name="mapmain_message_noacquirelocation">未获取到位置信息</string>
+    <string name="mapmain_message_nowlocation">当前位置</string>
+    <string name="mapmain_message_recentlysite">最近考核点</string>
+    <string name="mapmain_message_locationunderway">定位中</string>
+    <string name="mapmain_message_inquiredata">查询数据-</string>
+    <string name="mapmain_message_quithint">此路线仍有 %s 个考核点未到位\n确定要退出吗？</string>
+    <string name="mapmain_message_nodoablehint">该点无可做计划</string>
+    <string name="mapmain_message_latitude">纬:</string>
+    <string name="mapmain_message_longitude">经:</string>
+    <string name="mapmain_message_latitude2">纬度：</string>
+    <string name="mapmain_message_longitude2">经度：</string>
+    <string name="mapmain_message_plan">计划</string>
+    <string name="mapmain_message_beginpatrol">开始巡线</string>
+    <string name="mapmain_message_consumingtimehint">注意，您从%1$s到目前考核点位置，计划耗时：%2$d分钟，实际耗时：%3$d分钟。</string>
+    <string name="track_confirm_gobacktrack_title">退出巡线</string>
+    <string name="mapmain_message_menu_repair">报缺</string>
+    <string name="mapmain_message_menu_addpo">初始化</string>
+    <string name="mapmain_message_menu_doplan">计划</string>
+    <string name="mapmain_message_menu_offmap">离线地图</string>
+    <string name="mapmain_message_absentscope">当前考核点不在周期内</string>
+    <string name="mapmain_message_entranceareahint">您已进入:%s考核区域</string>
+    <string name="mapmain_message_assessaccomplishhint">当前考核点已完成</string>
+    <string name="mapmain_messagez_fasteneridposnotuse">钮扣编码：%s，不可用</string>
+    <string name="mapmain_message_fastenerpastduehint">当前纽扣不在周期内</string>
+    <string name="mapmain_message_fastenercannot">当前钮扣次序不对或不在周期内，应碰%s</string>
+    <string name="mapmain_message_baiduversionshint">您尚未安装百度地图app或app版本过低，点击确认安装？</string>
+    <string name="mapmain_message_zoomMaxMes">地图已放大到最大级别</string>
+    <string name="mapmain_message_zoomMinMes">地图已缩小到最小级别</string>
+    <string name="mapmain_message_tasksum">任务数:%d</string>
+    <string name="mapmain_message_spendtime">时间:%1$s分钟</string>
+    <string name="mapmain_message_calculateunderway">计算中</string>
+    <string name="mapmain_message_meterwithin">%1$s米以内</string>
+    <string name="mapmain_message_kilometrewithin">%1$s公里以内</string>
+    <string name="mapmain_message_importpwd">请输入密码</string>
+    <string name="mapmain_message_pwdmistake">密码不正确</string>
+
+    <!-- 缺报 -->
+    <string name="temptask_more">更多</string>
+    <string name="temptask_return">返回</string>
+    <string name="temptask_message_selecttype">选择事件类型</string>
+    <string name="temptask_message_importhitn">请输入半径大小(单位为米)</string>
+    <string name="temptask_message_picturesum">共有%d张照片</string>
+    <string name="temptask_message_recordsum">共有%d段录音</string>
+    <string name="temptask_message_videosum">共有%d段录像</string>
+    <string name="temptask_message_presshitn">点击了长按菜单里面的第%d个项目</string>
+    <string name="temptask_message_recordoperation">录音文件操作</string>
+    <string name="temptask_message_pictureoperation">图片操作</string>
+    <string name="temptask_message_videooperation">录像操作</string>
+    <string name="temptask_message_anewgainhitn">未获取到管线信息，请重新获取</string>
+    <string name="temptask_message_GPSgainhint">未获取到GPS信号</string>
+    <string name="temptask_message_selectpipeline">请选择管线：</string>
+    <string name="temptask_message_selectpipelinehint">您未选择任何管线</string>
+    <string name="temptask_message_nophotograph">未拍照</string>
+    <string name="temptask_message_norecord">未录音</string>
+    <string name="temptask_message_novideo">未录像</string>
+    <string name="temptask_message_photographmaxsum">最多只能拍摄10张照片</string>
+    <string name="temptask_message_recordmaxsum">最多只能录制5个录音</string>
+    <string name="temptask_message_videomaxsum">最多只能拍摄3个视频</string>
+    <string name="temptask_message_savesucceed">保存成功</string>
+    <string name="new_data_toast_message">有 %d 条更新</string>
+    <string name="new_data_toast_none">没有新更新</string>
+    <string name="Inputbug_mess">请添加故障分类并选择最底层级</string>
+    <string name="Inputbug_desmessMax">报缺描述过长，请重新填写</string>
+    <string name="Inputbug_desmessMin">报缺描述不能为空，请重新填写</string>
+    <string name="Inputbug_desmessEventType">请选择事件类型</string>
+
+    <!-- 初始化 -->
+    <string name="initcp_message_savesucceed">保存成功</string>
+    <string name="initcp_message_savedefeated">保存失败</string>
+    <string name="initcp_message_insertdefeatedhint">定位结果为空，插入数据库失败</string>
+    <string name="initcp_message_locationsucceedhint">GPS定位成功   卫星数：</string>
+    <string name="initcp_message_locationsucceed">网络定位成功</string>
+
+    <!-- 离线地图下载 -->
+    <string name="offmap_already_download">(已下载)</string>
+    <string name="offmap_underway_download">(正在下载)</string>
+
+    <!-- 巡线任务 -->
+    <string name="gpsplan_normal">正常</string>
+    <string name="gpsplan_abnormal">异常</string>
+    <string name="gpsplan_whether_normal">正常/异常</string>
+    <string name="gpsplan_abnormal_type">异常类型</string>
+    <string name="gpsplan_incident_report">事件上报</string>
+    <string name="gpsplan_xj_content">巡检内容</string>
+    <string name="gpsplan_xj_condition">巡检情况</string>
+    <string name="gpsplan_describe">描述</string>
+
+    <!-- NFC界面 -->
+    <string name="nfc_file_exist">IDTemp.txt文件存在</string>
+    <string name="nfc_file_inexistence">IDTemp.txt文件不存在</string>
+    <string name="confirm_clear_file">确定要清空文件内容？</string>
+    <string name="nfc_touchdesc_notsupport">设备不支持NFC</string>
+    <string name="nfc_touchdesc_starthint">请在系统设置中先启用NFC功能</string>
+    <string name="nfc_defeated_hint">保存失败</string>
+    <string name="nfc_save_success">保存成功</string>
+    <string name="nfc_hint_save_succeed">保存成功</string>
+    <string name="import_scutcheon_name">输入标牌名称</string>
+    <string name="cancel_file_hint">文件内容已存在</string>
+    <string name="scutcheon_exist_fint">标牌信息已存在，是否修改？</string>
+    <string name="file_exist_fint">文件中已存在，是否修改？</string>
+
+    <!-- 扫一扫 -->
+    <string name="capture_scan_hint">将二维码/条形码放入框内，即可自动扫描</string>
+    <string name="capture_scan_result">扫描结果</string>
+    <string name="capture_scan_content">内容：</string>
+    <string name="capture_copy">复制</string>
+    <string name="capture_copy_succeed">复制</string>
+    <string name="capture_return">返回</string>
+    <string name="capture_abnormal_hint">json数据解析异常</string>
+
+    <!-- 照片页面 -->
+    <string name="camera_delete_picture_hint">请选择要删除的照片</string>
+    <string name="camera_delete_picture">删除照片</string>
+    <string name="camera_confirm_delete">确定要删除吗？</string>
+    <string name="camera_delete_video_hint">请选择要删除的视频</string>
+    <string name="camera_delete_video">删除视频</string>
+    <string name="camera_no_sdcard">该设备没有SD存储</string>
+    <string name="camera_choose">选择</string>
+    <string name="camera_cancel">取消</string>
+    <string name="camera_delete">删除</string>
+
+    <!-- GPS界面 -->
+    <string name="GPS_import_max_number">最多输入250字</string>
+    <string name="GPS_underway_location">定位中</string>
+    <string name="GPS_import_hint">字符数超过250，请重新填写</string>
+    <string name="GPS_no_gain_location">未获取到位置信息</string>
+    <string name="GPS_satellite_number">GPS定位成功   卫星数：</string>
+    <string name="GPS_network_location_hint">网络定位成功</string>
+
+    <!-- 测转速界面 -->
+    <string name="speed_currurrentSpeed">当前转速</string>
+    <string name="speed_maxspeed">最大值</string>
+    <string name="speed_minspeed">最小值</string>
+    <string name="speed_start">启动</string>
+    <string name="speed_start_desc">Start</string>
+    <string name="speed_stop">停止</string>
+    <string name="speed_stop_desc">Stop</string>
+    <string name="speed_ok">确定</string>
+    <string name="speed_ok_desc">OK</string>
+    <string name="speed_split">|</string>
+    <string name="speed_measure_zs">转速测量</string>
+    <string name="speed_measure_hint">暂不支持外接转速测量</string>
+    <string name="speed_start_process">启动中···</string>
+    <string name="speed_tendency">转速趋势</string>
+
+    <!-- 操作详情 -->
+    <string name="operationDetails_number">编号: </string>
+    <string name="operationDetails_title">操作票详情 </string>
+    <string name="operationDetails_operation_ticket">操作票</string>
+    <string name="operationDetails_risk_analyze">危险点分析</string>
+    <string name="operationDetails_operation_option">操作项</string>
+    <string name="operationDetails_operation_person">操作人: </string>
+    <string name="operationDetails_tutelage_person">监护人: </string>
+    <string name="operationDetails_main_person">主值: </string>
+    <string name="operationDetails_person">值长: </string>
+    <string name="operationDetails_whether_delete">是否刪除录音?</string>
+    <string name="operationDetails_save_hint">保存提示</string>
+    <string name="operationDetails_whether_save">是否保存录音?</string>
+    <string name="operationDetails_record_defeated">录音失败</string>
+    <string name="operationDetails_record_defeated_hint">录音合成出错，请重试</string>
+    <string name="operationDetails_skip_hint">之前有未完成操作项，请按顺序操作</string>
+    <string name="operationDetails_state">状态</string>
+    <string name="operationDetails_order">序号</string>
+    <string name="operationDetails_content">操作内容</string>
+    <string name="operationDetails_time">操作时间</string>
+
+    <!-- 操作项详情 -->
+    <string name="clause_must_save_record">请先保存录音</string>
+    <string name="clause_title">操作项详情</string>
+    <string name="clause_save">保存</string>
+    <string name="clause_state">执行状态</string>
+    <string name="clause_inexecution">不执行</string>
+    <string name="clause_executed">已执行</string>
+
+    <!-- 两票下载 -->
+    <string name="operate_none_msg">该钮扣下无操作票</string>
+    <string name="operateDownLoad_cannot_download_hint">无法下载安装文件，请检查SD卡是否挂载</string>
+    <string name="operateDownLoad_download_hint">下载提示</string>
+    <string name="operateDownLoad_standardization_mistake">标准化出错</string>
+    <string name="operateDownLoad_standardization_succeed">标准化成功</string>
+    <string name="operateDownLoad_download_ticket">正在下载操作票</string>
+    <string name="workDownLoad_download_ticket">正在下载工作票</string>
+    <string name="workDownLoad_unable_uploading">存在待签名的工作票，完成后再进行数据同步</string>
+    <string name="datasync_msg">数据同步提示</string>
+
+    <!-- 检修下载 -->
+    <string name="overhaul_download_underway_uploading">上传检修数据···</string>
+    <string name="overhaul_download_uploading_defeated">上传检修数据出错</string>
+    <string name="overhaul_download_underway_download">正在下载检修数据</string>
+    <string name="overhaul_project_content_diashow">项目内容</string>
+    <string name="overhaul_project_tips_signname_empt">请签名</string>
+    <string name="overhaul_project_save_ok">保存成功</string>
+    <string name="overhaul_project_implement_unFinished">实施</string>
+    <string name="overhaul_project_examine_one_unFinished">一审</string>
+    <string name="overhaul_project_examine_two_unFinished">二审</string>
+    <string name="overhaul_project_examine_three_unFinished">三审</string>
+    <string name="overhaul_project_examine_isFinished">已完成</string>
+    <string name="overhaul_btn_saved_diatitle">是否保存签名?</string>
+
+    <!-- 搜索界面 -->
+    <string name="search_overhaulplan_hint_message">输入计划编号/名称/内容</string>
+    <string name="search_overhaulproject_hint_message">输入项目编号/名称/内容</string>
+    <string name="search_djline_hint_message">输入路线名称</string>
+
+    <!-- WebserviceFactory -->
+    <string name="download_mistake_hint">下载出错，请重新下载</string>
+    <string name="uploading_file_hint">正在上传文件：%1$s，已上传：%2$s</string>
+    <string name="real_time_uploading">实时上传</string>
+
+    <!-- 两票界面 -->
+    <string name="twobill_update_hint">请选择</string>
+    <string name="twobill_operate_uploading_hint">上传操作票···</string>
+    <string name="twobill_work_uploading_hint">上传工作票···</string>
+    <string name="twobill_operate_login">操作票登录</string>
+    <string name="twobill_work_login">工作票登录</string>
+
+    <!-- 工作票界面 -->
+    <string name="workbill_licensor_signature">许可人签名</string>
+    <string name="workbill_principal_signature">负责人签名</string>
+    <string name="workbill_licensor">许可人签名：</string>
+    <string name="workbill_principal">负责人签名：</string>
+    <string name="workbill_precedence_signature">请签名</string>
+    <string name="workbill_accomplish_hint">隔离措施已全部完成</string>
+    <string name="query_uncheck_notsupport">该路线类型不支持漏检统计</string>
+    <string name="query_hisdata_notsupport">该路线类型不支持历史数据查询</string>
+    <string name="query_uncheck_totalcount">漏检合计(条)</string>
+    <string name="query_uncheck_desc">漏检数(条)：</string>
+    <string name="query_uncheck_nodata">无漏检数据</string>
+    <string name="query_select_conditions_all">全部</string>
+    <string name="msg_input_without_emoji">不支持输入表情符号</string>
+
+    <!-- 蓝牙相关 -->
+    <string name="msg_bluetootn_search">搜索设备中···</string>
+    <string name="msg_bluetootn_search_notfound">没有找到其它蓝牙设备</string>
+    <string name="msg_bluetootn_open_fail">打开蓝牙失败</string>
+    <string name="msg_bluetooth_conn_fail">蓝牙连接失败</string>
+    <string name="msg_bluetooth_getvalue_fail">获取数据失败</string>
+    <string name="msg_bluetooth_open_message">蓝牙未开启,是否打开?</string>
+    <string name="msg_bluetooth_battery_fail">获取电量失败</string>
+    <string name="msg_bluetooth_battery_tip">低电量提示</string>
+    <string name="msg_bluetooth_battery_low">外接蓝牙设备当前电量过低，请及时充电</string>
+    <string name="msg_bluetooth_zdtype_notsupport">外接设备不支持测量此振动类型</string>
+    <string name="msg_bluetooth_device_restart_tip">请重启外接蓝牙设备</string>
+
+    <!-- 日期相关 -->
+    <string name="date_select_hint1">结束时间不能小于开始时间</string>
+    <string name="date_select_hint2">已选择结束时间</string>
+    <string name="date_confirm_hint1">请选择开始时间</string>
+    <string name="date_confirm_hint2">请选择结束时间</string>
+    <string name="date_week_monday">周一</string>
+    <string name="date_week_tuesday">周二</string>
+    <string name="date_week_wednesday">周三</string>
+    <string name="date_week_thursday">周四</string>
+    <string name="date_week_friday">周五</string>
+    <string name="date_week_saturday">周六</string>
+    <string name="date_week_weekday">周日</string>
+    <!-- <string name="date_year_month_day">%1$s年%2$s月%3$s日</string> -->
+    <string name="date_year_month_day">%1$s年%2$s月</string>
+    <string name="date_month_day">%1$s月%2$s日</string>
+    <string name="date_year">年</string>
+    <string name="date_month">月</string>
+    <string name="date_day">日</string>
+    <string name="date_festival_qingming">清明节</string>
+    <string name="date_festival_father">父亲节</string>
+    <string name="date_festival_mother">母亲节</string>
+    <string name="date_festival_Christmas">圣诞节</string>
+    <string name="date_festival_safeness">平安夜</string>
+    <string name="date_festival_bachelordom">光棍节</string>
+    <string name="date_festival_National">国庆节</string>
+    <string name="date_festival_teacher">教师节</string>
+    <string name="date_festival_jianjun">建军节</string>
+    <string name="date_festival_jiandan">建党节</string>
+    <string name="date_festival_child">儿童节</string>
+    <string name="date_festival_nurse">护士节</string>
+    <string name="date_festival_youth">青年节</string>
+    <string name="date_festival_labour">劳动节</string>
+    <string name="date_festival_yuren">愚人节</string>
+    <string name="date_festival_zhishu">植树节</string>
+    <string name="date_festival_woman">妇女节</string>
+    <string name="date_festival_lover">情人节</string>
+    <string name="date_festival_duanwu">端午节</string>
+    <string name="date_festival_yuanxiao">元宵节</string>
+    <string name="date_festival_zhongqiu">中秋节</string>
+    <string name="date_festival_chongyang">重阳节</string>
+    <string name="date_festival_yuedan">元旦</string>
+    <string name="date_solar_spring">春节</string>
+    <string name="date_solar_taidou">龙抬头</string>
+    <string name="date_solar_qixi">七夕</string>
+    <string name="date_solar_kalends">初一</string>
+    <string name="date_solar_laba">腊八</string>
+    <string name="date_solar_xiaonian">小年</string>
+    <string name="date_solar_chuxi">除夕</string>
+    <string name="date_solar_chu">初</string>
+    <string name="date_solar_sa">卅</string>
+    <string name="date_solar_nian">廿</string>
+    <string name="date_solar_run">闰</string>
+    <string name="date_solar_chu_ten">初十</string>
+    <string name="date_solar_january">正月</string>
+    <string name="date_solar_february">二月</string>
+    <string name="date_solar_march">三月</string>
+    <string name="date_solar_april">四月</string>
+    <string name="date_solar_may">五月</string>
+    <string name="date_solar_June">六月</string>
+    <string name="date_solar_July">七月</string>
+    <string name="date_solar_August">八月</string>
+    <string name="date_solar_September">九月</string>
+    <string name="date_solar_October">十月</string>
+    <string name="date_solar_November">冬月</string>
+    <string name="date_solar_December">腊月</string>
+    
+    <string name="date_solar_one">一</string>
+    <string name="date_solar_two">二</string>
+    <string name="date_solar_three">三</string>
+    <string name="date_solar_four">四</string>
+    <string name="date_solar_five">五</string>
+    <string name="date_solar_six">六</string>
+    <string name="date_solar_seven">七</string>
+    <string name="date_solar_eight">八</string>
+    <string name="date_solar_nine">九</string>
+    <string name="date_solar_ten">十</string>
+    <string name="date_solar_twenty">二十</string>
+    <string name="date_solar_thirty">三十</string>
+    
+    <string name="date_solar_xiaohan">小寒</string>
+    <string name="date_solar_dahan">大寒</string>
+    <string name="date_solar_lichu">立春</string>
+    <string name="date_solar_yushui">雨水</string>
+    <string name="date_solar_jingzhe">惊蛰</string>
+    <string name="date_solar_chunfen">春分</string>
+    <string name="date_solar_qingming">清明</string>
+    <string name="date_solar_guyu">谷雨</string>
+    <string name="date_solar_lixia">立夏</string>
+    <string name="date_solar_xiaoman">小满</string>
+    <string name="date_solar_mangzhong">芒种</string>
+    <string name="date_solar_xiazhi">夏至</string>
+    <string name="date_solar_xiaoshu">小暑</string>
+    <string name="date_solar_dashu">大暑</string>
+    <string name="date_solar_liqiu">立秋</string>
+    <string name="date_solar_chushu">处暑</string>
+    <string name="date_solar_bailu">白露</string>
+    <string name="date_solar_qiufen">秋分</string>
+    <string name="date_solar_hanlu">寒露</string>
+    <string name="date_solar_shuangjiang">霜降</string>
+    <string name="date_solar_lidong">立冬</string>
+    <string name="date_solar_xiaoxue">小雪</string>
+    <string name="date_solar_daxue">大雪</string>
+    <string name="date_solar_dongzhi">冬至</string>
+
+    <!-- 左侧抽屉控件 -->
+    <string name="drawleft_btn_syncdata">一键同步</string>
+    <string name="drawleft_msg_syncing">数据同步中···</string>
+    <string name="drawleft_msg_startloadlineinfo">开始加载路线信息</string>
+    <string name="drawleft_msg_loadlineinfosuccess">加载路线信息完成</string>
+    <string name="drawleft_msg_uploadcount">共有   %d  条结果文件需要上传</string>
+    <string name="drawleft_msg_downloadcount">共有   %d  条路线需下载</string>
+    <string name="drawleft_msg_encoding">正在标准化路线：  %d  请稍等···</string>
+    <string name="drawleft_msg_startdownload">开始下载路线 ：  %d</string>
+    <string name="drawleft_msg_downloadsucess">路线：%d  下载完成</string>
+    <string name="drawleft_msg_downloadfail">路线：%d  下载失败</string>
+    <string name="drawleft_msg_noline">该标识符下没有路线</string>
+    <string name="drawleft_msg_syncsuccess">数据同步全部完成</string>
+    <string name="drawleft_msg_notsupportdipc">点检排程不支持一键同步</string>
+    
+    <string name="query_result_msg_total">总计：%d</string>
+    <string name="query_result_msg_normal">正常：%d</string>
+    <string name="query_result_msg_error">异常：%d</string>
+    
+    <string name="vibration_impact_notsupport">冲击类型不支持此参数配置</string>
+
+    <!-- 翻译到此结束，以下为程序中不再使用的描述，无需翻译 -->
+
+
+    <!-- 记录日志相关，无需翻译 -->
+    <string name="operatelog_dianjiansrdialog_setsr_memory">内存取出时：%s</string>
+    <string name="operatelog_dianjiansrdialog_setsr_db_before">插入数据库前：%s</string>
+    <string name="operatelog_dianjiansrdialog_setsr_db">插入数据库后：%s</string>
+    <string name="operatelog_mainpage_updatesystemtime">校准了系统时间</string>
+    <string name="operatelog_loaddjplan_srpoint">计划ID：%1$s, 计划内容：%2$s, 点检计划启停点ID：%3$s, 绑定的启停点ID：%4$s</string>
+    <string name="operatelog_djplan_exit">退出做计划界面记录启停点状态</string>
+    <string name="operatelog_djplan_exit_over">记录完毕</string>
+    <string name="operatelog_login">登录</string>
+
+    <!-- 启动相关 -->
+    <string name="appstart_notice1">小神探客户端已升级完成，升级后首次使用需要重新下载路线计划库。\n是否马上下载？</string>
+    <string name="appstart_notice2">小神探客户端已安装完成，安装后首次使用需要设置通信地址和巡检器标识符。\n是否马上设置？</string>
+    <string name="dj_sr_countdesc">有 %d个启停点</string>
+    <string name="djidpos_message_count">%1$s个</string>
+    <string name="djidpos_message_neededcount">该路线下尚有 %d 个ID钮扣有未完成任务</string>
+    <string name="djidpos_message_finishcount">已完成钮扣 %d 个</string>
+    <string name="djidpos_message_notfinishcount">有计划的钮扣%d 个</string>
+    <string name="djidpos_message_allcount">该路线下钮扣总数%d 个</string>
+    <string name="djidpos_message_neededcount0">该路线下没有需要到位的ID位置</string>
+    <string name="djidpos_message_neededcount0_tx">特巡钮扣位置列表</string>
+    <string name="djidpos_message_scan_notice">请将点检仪中部靠近钮扣标牌，请将点检仪中部靠近钮扣标牌。请将点检仪中部靠近钮扣标牌，请将点检仪中部靠近钮扣标牌。</string>
+    <string name="djplan_zoomMaxMes">文字已放大到最大级别</string>
+    <string name="djplan_zoomMinMes">文字已缩小到最小级别</string>
+    <string name="choose_image">请选择图片文件</string>
+    <string name="delete_image">确定删除该图片吗？</string>
+    <string name="delete_tweet">确定删除该动弹吗？</string>
+    <string name="delete_blog">确定删除该博客吗？</string>
+    <string name="republish_tweet">网络超时，是否重新发布动弹？</string>
+    <string name="clearwords">清除文字吗？</string>
+    <string name="msg_load_is_null">读取失败，可能已被删除</string>
+    <string name="msg_load_audio_fail">读取语音文件失败</string>
+    <string name="msg_login_email_error">无效的账号</string>
+    <string name="msg_load_userface_fail">用户头像加载失败</string>
+    <string name="msg_load_image_fail">图片加载失败</string>
+    <string name="msg_read_detail_fail">无法获取文章信息</string>
+    <string name="msg_noaccess_delete">您没有删除权限</string>
+    <string name="setting_function_scroll_on">已开启左右滑动</string>
+    <string name="setting_function_scroll_off">已关闭左右滑动</string>
+
+</resources>

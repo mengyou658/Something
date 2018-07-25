@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    style="@style/widget_listview_Item"
+    android:orientation="horizontal" 
+  	android:layout_height="300dip"
+	>
+    
+	<RelativeLayout
+	    android:id="@+id/layout_cp_plan_listitem"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentRight="true"
+	    android:orientation="vertical" >
+	  	
+	   <RelativeLayout 
+	        android:id="@+id/layout_cp_plan_listitem_image" 
+	        android:layout_width="50dip"  
+	        android:layout_height="50dip"
+	        android:orientation="horizontal" 
+	        android:layout_alignParentTop="true"
+	        >
+        <ImageView 
+            android:id="@+id/cp_plan_listitem_image"
+	  		android:layout_width="wrap_content" 
+	  		android:layout_height="wrap_content"
+			android:scaleType="matrix"
+	        android:layout_marginLeft="10dip"
+	        android:src="@drawable/task_unfinish"
+	        android:layout_centerInParent="true"
+	        /> 
+	   	</RelativeLayout>
+	    
+	    <RelativeLayout 
+	        android:id="@+id/layout_cp_plan_listitem_desc" 
+	        android:layout_width="match_parent"  
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal" 
+	        android:layout_toRightOf="@id/layout_cp_plan_listitem_image"
+	        android:layout_alignParentTop="true"
+	        >
+	
+	    
+		    <TextView android:id="@+id/cp_plan_listitem_desc" 
+		        style="@style/widget_listview_title2"
+		        android:layout_width="fill_parent" 
+		     	android:layout_height="wrap_content"
+		     	android:text="巡检内容-1#1考核点检查内容1"
+		     	android:singleLine="true"/> 
+	   	</RelativeLayout>
+	
+	    <RelativeLayout
+	        android:id="@+id/layout_cp_plan_listitem_basedetail"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/layout_cp_plan_listitem_desc"
+	        android:layout_toRightOf="@id/layout_cp_plan_listitem_image"
+	        android:layout_marginTop="4dip"
+	        android:orientation="horizontal" >
+	       					
+	       	<TextView android:id="@+id/cp_plan_listitem_basedetail_cptype"  
+	    		android:layout_width="wrap_content" 
+	           	android:layout_height="wrap_content"
+	           	android:layout_toRightOf="@id/djidpos_listitem_plancounticon"
+	           	android:layout_marginLeft="3dip" 
+	           	android:layout_gravity="center_vertical"
+	           	style="@style/widget_listview_subdesc"
+	           	android:text="管廊架"
+	            />
+	       	<TextView android:id="@+id/cp_plan_listitem_basedetail_cpdate"  
+	    		android:layout_width="wrap_content" 
+	           	android:layout_height="wrap_content" 
+	           	android:layout_toRightOf="@id/cp_plan_listitem_basedetail_cptype"
+	           	android:layout_marginLeft="8dip"
+	           	android:layout_gravity="center_vertical"
+	           	style="@style/widget_listview_subdesc"
+	           	android:text="2015-09-15 10:10:09"
+	            />	       
+	       			
+	    </RelativeLayout>	
+	    
+	    <RelativeLayout
+	        android:id="@+id/layout_cp_plan_listitem_detail"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_below="@id/layout_cp_plan_listitem_basedetail"
+	        android:layout_marginTop="4dip"
+	        android:orientation="horizontal" >
+	       					
+	       	<RelativeLayout
+		        android:id="@+id/layout_cp_plan_listitem_detail_ok"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentBottom="true"
+		        android:layout_above="@id/ll_dj_lk_ok"
+		        android:layout_centerHorizontal ="true"
+		        android:orientation="vertical" >
+		        <Button
+			       android:id="@+id/btn_gpsxx_plan_ok"
+			       android:layout_centerInParent="true"
+			       android:layout_width="100dip"
+			       android:layout_height="wrap_content"
+			       android:background="@drawable/btn_style_green"
+			       android:clickable="true"
+			       android:text="@string/simple_text_dialog_btnok"
+			       android:textColor="@color/white"
+			       android:textSize="15dip" />
+            </RelativeLayout>
+            <RelativeLayout
+		        android:id="@+id/layout_cp_plan_listitem_detail_plandesc"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_above="@id/ll_dj_lk_ok"
+		        android:layout_centerHorizontal ="true"
+		        android:orientation="vertical" >
+		        <TextView
+	       	    android:id="@+id/cp_plan_listitem_detail_plandesc"
+	       	    style="@style/widget_listview_subdesc2"
+	       	    android:layout_width="match_parent"
+	       	    android:layout_height="wrap_content"
+	       	    android:singleLine="false"
+	       	    android:layout_marginLeft="5dp"
+	       	    android:layout_marginRight="5dp"
+	       	    android:layout_marginTop="5dp"
+	       	    android:text="巡检内容-1#1考核点检查内容1\n这里是巡检内容的具体描述信息" />  
+            </RelativeLayout>
+            <RelativeLayout
+		        android:id="@+id/layout_cp_plan_listitem_detail_gxxx"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@id/layout_cp_plan_listitem_detail_plandesc"
+		        android:layout_centerHorizontal ="true"
+		        android:layout_marginTop="5dp"
+		        android:orientation="vertical" >
+		        <TextView
+	       	    android:id="@+id/cp_plan_listitem_detail_gxxx"
+	       	    style="@style/widget_listview_subdesc2"
+	       	    android:layout_width="match_parent"
+	       	    android:layout_height="wrap_content"
+	       	    android:layout_marginLeft="5dp"
+	       	    android:layout_marginRight="5dp"
+	       	    android:text="管线信息-管线信息描述" />  
+            </RelativeLayout>
+	       	<RelativeLayout
+		        android:id="@+id/layout_cp_plan_listitem_detail_result"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@id/layout_cp_plan_listitem_detail_gxxx"
+		        android:layout_centerHorizontal ="true"
+		        android:layout_marginTop="5dp"
+		        android:orientation="vertical" >
+		        <TextView
+	       	    android:id="@+id/cp_plan_listitem_detail_result"
+	       	    style="@style/widget_listview_subdesc2"
+	       	    android:layout_width="match_parent"
+	       	    android:layout_height="wrap_content"
+	       	    android:layout_marginLeft="5dp"
+	       	    android:layout_marginRight="5dp"
+	       	    android:text="巡检情况" />
+  
+            </RelativeLayout>
+            <RelativeLayout
+		        android:id="@+id/layout_cp_plan_listitem_detail_bugtype"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@id/layout_cp_plan_listitem_detail_result"
+		        android:layout_centerHorizontal ="true"
+		        android:layout_marginTop="5dp"
+		        android:orientation="vertical" >
+		        <TextView
+	       	    android:id="@+id/cp_plan_listitem_detail_bugtype"
+	       	    style="@style/widget_listview_subdesc2"
+	       	    android:layout_width="match_parent"
+	       	    android:layout_height="wrap_content"
+	       	    android:layout_marginLeft="5dp"
+	       	    android:layout_marginRight="5dp"
+	       	    android:text="故障类型" />
+  
+            </RelativeLayout>
+            <RelativeLayout
+		        android:id="@+id/layout_cp_plan_listitem_detail_meno"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@id/layout_cp_plan_listitem_detail_bugtype"
+		        android:layout_centerHorizontal ="true"
+		        android:layout_marginTop="5dp"
+		        android:orientation="vertical" >
+		        <TextView
+	       	    android:id="@+id/cp_plan_listitem_detail_meno"
+	       	    android:layout_height="40dp"
+	       	    android:singleLine="false"
+	       	    style="@style/widget_listview_subdesc2"
+	       	    android:layout_width="match_parent"
+	       	    android:layout_marginLeft="5dp"
+	       	    android:layout_marginRight="5dp"
+	       	    android:text="描述" />
+  
+            </RelativeLayout>	
+            <RelativeLayout
+		        android:id="@+id/layout_cp_plan_listitem_detail_event"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@id/layout_cp_plan_listitem_detail_meno"
+		        android:layout_centerHorizontal ="true"
+		        android:layout_marginTop="5dp"
+		        android:orientation="vertical" >
+		        <TextView
+	       	    android:id="@+id/cp_plan_listitem_detail_event"
+	       	    android:layout_height="wrap_content"
+	       	    android:singleLine="false"
+	       	    style="@style/widget_listview_subdesc2"
+	       	    android:layout_width="match_parent"
+	       	    android:layout_marginLeft="5dp"
+	       	    android:layout_marginRight="5dp"
+	       	    android:text="事件上报" />
+  
+            </RelativeLayout>       			
+	    </RelativeLayout>
+	    
+    </RelativeLayout>	
+	
+
+
+</RelativeLayout> 

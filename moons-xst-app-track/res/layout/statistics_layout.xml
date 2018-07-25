@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0EFF3" >
+    
+    <LinearLayout 
+    android:id="@+id/layout_title"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:onClick="backOnClick">
+
+            <ImageView
+                android:id="@+id/icon_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ellipsize="middle"
+            android:gravity="center"
+            android:singleLine="true"/>
+
+        <LinearLayout
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:onClick="nextOnClick">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/date_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal" 
+        android:layout_below="@id/layout_title">
+
+        <TextView
+            android:id="@+id/last"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/tv_bg1"
+            android:gravity="left"
+            android:paddingLeft="10dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/curr"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:textSize="@dimen/text_size_20"
+            android:gravity="center"
+            android:textColor="#ff000000" />
+
+        <TextView
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/tv_bg"
+            android:gravity="right"
+            android:paddingRight="10dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_piechart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date_layout"
+        android:layout_marginTop="20dp" >
+
+        <RelativeLayout
+            android:id="@+id/pieLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" >
+
+            <com.moons.xst.track.widget.PieChart.piechartview.PieChartView
+                android:id="@+id/parbar_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingTop="40dp" >
+
+                <TextView
+                    android:id="@+id/statisticstitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#BBBDC4"
+                    android:textSize="@dimen/text_size_14" />
+
+                <!-- <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3,870.30"
+                    android:textColor="#6B6363"
+                    android:textSize="24sp" /> -->
+                
+                <com.moons.xst.track.widget.PieChart.custom.view.CountView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#6B6363"
+                    android:textSize="@dimen/text_size_24" 
+                    android:id="@+id/txtCount"/>
+                    
+
+                <TextView
+                    android:id="@+id/txt_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/dianjian_plan_details"
+                    android:textColor="@color/xstblue"
+                    android:textSize="@dimen/text_size_14"
+                    android:clickable="true" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/text_item_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pieLayout"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/show_chart_bg"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:visibility="gone" />
+        
+        <RelativeLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pieLayout"
+            android:id="@+id/infoLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:visibility="gone">
+            
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textColor="#333333"
+                android:textSize="@dimen/text_size_16"
+                android:id="@+id/txtView3"/>
+            
+            <RelativeLayout 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="30dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="20dp"
+                android:background="@drawable/group"
+                android:layout_below="@+id/txtView3"
+                android:id="@+id/layoutBaseInfo">
+                
+                <TextView 
+                    android:id="@+id/tv_item_desc1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"                   
+                    android:textSize="@dimen/text_size_14"
+                    android:textColor="#808080"/>
+                
+                <TextView 
+                    android:id="@+id/tv_item_value1"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tv_item_desc1"
+                    android:gravity="right"
+                    android:textSize="@dimen/text_size_14"
+                    android:textColor="#333333"
+                    />
+                
+                <TextView 
+                    android:id="@+id/tv_item_desc2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_14"
+                    android:textColor="#808080"
+                    android:layout_below="@id/tv_item_desc1"
+                    android:visibility="gone"
+                    />
+                
+                <TextView 
+                    android:id="@+id/tv_item_value2"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tv_item_desc2"
+                    android:layout_below="@id/tv_item_desc1"
+                    android:gravity="right"
+                    android:textSize="@dimen/text_size_14"
+                    android:textColor="#333333"
+                    android:visibility="gone"/>
+                
+            </RelativeLayout>
+            
+        </RelativeLayout>
+        
+    </RelativeLayout>
+
+</RelativeLayout>

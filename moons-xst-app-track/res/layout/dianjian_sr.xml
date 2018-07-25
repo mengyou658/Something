@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+<!-- 启停 -->
+   <RelativeLayout
+       android:id="@+id/ll_dj_sr"
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       android:layout_marginRight="0dp"
+       android:layout_centerHorizontal="true"
+       android:layout_centerVertical="true"
+       android:background="#AA9E9E9E"
+       android:orientation="vertical" >
+    
+        <RelativeLayout
+        android:id="@+id/ll_dj_sr_title"
+        android:layout_width="match_parent"
+        android:layout_height="30dip"
+        android:background="#AA888888"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/dj_sr_title"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="left|center"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_14"
+            android:singleLine="true" 
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_dj_sr_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="3dp"
+        android:orientation="horizontal" >
+        <Button
+	       android:id="@+id/btn_sr_lastresult"
+	       android:layout_width="match_parent"
+	       android:layout_height="wrap_content"
+	       android:background="@drawable/btn_style_green"
+	       android:layout_weight="1"
+	       android:clickable="true"
+	       android:text="@string/idpos_srset_dialog_lastresultbtn"
+	       android:textColor="@color/white"
+	       android:textSize="20dip" />
+        <Button
+	       android:id="@+id/btn_sr_ok"
+	       android:layout_width="fill_parent"
+	       android:layout_height="wrap_content"
+	       android:layout_weight="1"
+	       android:background="@drawable/btn_style_green"
+	       android:clickable="true"
+	       android:text="@string/dianjian_sr_btn_ok"
+	       android:textColor="@color/white"
+	       android:textSize="20dip" />
+    </LinearLayout>    
+        <RelativeLayout
+        android:id="@+id/ll_dj_sr_curr"
+        android:layout_width="fill_parent"
+        android:layout_height="35dip"
+        android:layout_below="@id/ll_dj_sr_title"
+        android:background="#AA888888"
+        android:orientation="vertical" >
+        <TextView
+            android:id="@+id/dj_sr_curr_item"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="left|center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="70dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_14"
+            android:singleLine="true" 
+            android:textStyle="bold" />
+        <!--  
+        <Button
+	       android:id="@+id/btn_sr_curr_set"
+	       android:layout_width="60dp"
+	       android:layout_height="wrap_content"
+	       android:layout_alignParentRight="true"
+	       android:layout_marginRight="5dip"
+	       android:background="@drawable/btn_style_green"
+	       android:clickable="true"
+	       android:text="@string/dianjian_sr_btn_set"
+	       android:textColor="@color/white"
+	       android:textSize="18dip" />
+	    -->
+    </RelativeLayout>  
+    <RelativeLayout
+        android:id="@+id/ll_dj_sr_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_dj_sr_curr"
+        android:layout_above="@id/ll_dj_sr_ok"
+        android:orientation="vertical" >
+        <ListView
+            android:id="@+id/dj_sr_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:cacheColorHint="#0000"
+            android:divider="@null"
+            android:dividerHeight="5dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:stackFromBottom="false" >
+        </ListView>
+        
+    </RelativeLayout>
+</RelativeLayout>
+</RelativeLayout>

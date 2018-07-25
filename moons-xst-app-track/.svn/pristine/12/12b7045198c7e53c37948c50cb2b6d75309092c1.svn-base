@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    
+    <RelativeLayout
+        android:id="@+id/rl_search_mywork"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:background="@color/face_bg" >
+    	
+        <RelativeLayout 
+            android:id="@+id/rl_search_cancel"
+        	android:layout_width="wrap_content"
+        	android:layout_height="40dip"
+        	android:gravity="center"
+        	android:layout_centerVertical="true"
+        	android:layout_alignParentRight="true"
+        	android:clickable="true" >
+        	<TextView 
+        	    android:layout_width="wrap_content" 
+        	    android:layout_height="fill_parent"
+        	    android:gravity="center"
+        	    android:textColor="@color/gray"
+        	    android:textSize="@dimen/text_size_16"
+        	    android:text="@string/cancel"/>
+        </RelativeLayout>
+           
+        
+        <RelativeLayout 
+            android:id="@+id/rlSearchFrameDelete"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+        	android:layout_centerVertical="true"
+			android:gravity="center_vertical"
+            android:layout_toLeftOf="@id/rl_search_cancel">
+            
+		    	<EditText 
+		    	    android:id="@+id/search_content"
+		        	android:layout_width="fill_parent"
+		        	android:layout_height="wrap_content"
+					android:singleLine="true"
+		        	android:background="@drawable/search_frame"
+		        	android:layout_marginRight="10dp"
+		        	android:imeOptions="actionSearch" 
+		        	android:paddingLeft="32dp"
+		        	android:textSize="@dimen/text_size_14"
+		        	android:hint="@string/main_menu_home_title"/>
+		    	
+		    	<ImageView 
+		    	    android:id="@+id/delete"
+		    	    android:layout_width="wrap_content"
+		    	    android:layout_height="wrap_content"
+		    	    android:layout_alignParentRight="true"
+		    	    android:src="@drawable/delete"
+		    	    android:layout_centerInParent="true"
+		    	    android:paddingRight="20dp"
+		    	    android:visibility="gone"/>         
+        </RelativeLayout>    	
+    </RelativeLayout>
+    <RelativeLayout  
+        android:id="@+id/rl_search_mywork_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:layout_below="@id/rl_search_mywork">
+        <ListView
+		  	android:id="@+id/listview_dianjian_djline"
+		  	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:dividerHeight="1px"
+        	android:divider="@color/graywhite"/>
+        <ImageView
+	        android:layout_width="match_parent"
+	        android:layout_height="1px"
+	        android:layout_below="@id/listview_dianjian_djline"
+	        android:background="@color/graywhite"/>
+    </RelativeLayout>
+</RelativeLayout>

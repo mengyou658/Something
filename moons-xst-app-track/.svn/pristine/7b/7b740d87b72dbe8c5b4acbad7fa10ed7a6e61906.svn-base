@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+   <!--    xmlns:panel="http://schemas.android.com/apk/res/com.moons.xst.track"-->
+
+      <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/home_head"
+        android:clickable="true" />
+    <RelativeLayout 
+		android:id="@+id/home_head" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_height="50dip"
+	  	 android:layout_alignParentTop="true"
+	  	android:background="@drawable/title_bar"> 
+	  	
+	    <ImageButton 
+	        android:id="@+id/home_head_Rebutton"
+	        android:src="@drawable/arrow_left"
+	        android:background="@color/full_transparent"
+	        android:layout_width="wrap_content"
+	    	android:layout_height="50dip"
+	    	android:layout_alignParentLeft="true"
+           	android:layout_gravity="center_vertical"
+	        android:layout_marginRight="10dp"
+	        /> 
+	    
+	    <ImageButton 
+	        android:id="@+id/home_head_morebutton"
+	        android:src="@drawable/widget_bar_option_nor"
+	        android:background="@color/full_transparent"
+	        android:layout_width="wrap_content"
+	    	android:layout_height="50dip"
+	    	android:layout_alignParentRight="true"
+           	android:layout_gravity="center_vertical"
+	        android:layout_marginRight="5dp"
+	        />
+	    <RelativeLayout 
+		android:id="@+id/ll_map_mode" 
+	  	android:layout_width="wrap_content" 
+	  	android:layout_height="50dip"
+	  	android:layout_alignParentTop="true"
+	  	android:layout_centerInParent="true"
+	  	android:background="#00000000"> 
+	    
+         <TextView 
+	        android:id="@+id/map_mode_mapmode"
+		  	android:layout_width="100dip" 
+		  	android:layout_height="50dip"
+		  	android:layout_centerVertical="true"
+		  	android:background="#00000000"
+		  	android:gravity="center|right"
+	        style="@style/main_head_title_tab"
+	        android:text="@string/track_mapmain_title_mapmode"
+	        android:clickable="true"
+			/>
+	    <TextView 
+	        android:id="@+id/map_mode_splitline"
+		  	android:layout_width="wrap_content" 
+		  	android:layout_height="50dip"
+		  	android:layout_centerVertical="true"
+		  	android:background="#00000000"
+			android:gravity="center"
+	        style="@style/main_head_title"
+	        android:text="@string/track_mapmain_title_splitline"
+	        android:layout_toRightOf="@id/map_mode_mapmode"		
+			/>
+	   
+	    <TextView 
+	        android:id="@+id/map_mode_listmode"
+		  	android:layout_width="100dip" 
+		  	android:layout_height="50dip"
+		  	android:layout_centerVertical="true"
+		  	android:background="#00000000"
+		  	android:gravity="center|left"
+	        style="@style/main_head_title_tab"
+	        android:text="@string/track_mapmain_title_listmode"			
+			android:layout_toRightOf="@id/map_mode_splitline"
+			android:clickable="true"
+			/>
+	</RelativeLayout>
+	</RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/pointinfo"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_below="@id/home_head"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/message_corner1"
+        android:orientation="horizontal" >
+	    
+    
+    <RelativeLayout 
+        android:id="@+id/spped"
+    	android:layout_width="100dip" 
+    	android:layout_height="50dip"
+    	android:background="#00000000"
+    	android:layout_marginLeft="10dip"
+        android:layout_alignParentRight="true"
+        >
+	    <TextView
+        android:id="@+id/sppedtv"
+        android:layout_width="fill_parent"
+        android:layout_height="30dip"
+        android:background="#00000000"
+        android:textColor= "@color/white"
+        android:layout_marginLeft="0dip"
+        android:textStyle="bold"
+        android:gravity="center|bottom"
+        android:textSize="@dimen/text_size_22"
+        android:text= "50"/>
+	    <TextView
+        android:id="@+id/sppedtvunit"
+        android:layout_width="fill_parent"
+        android:layout_height="20dip"
+        android:background="#00000000"
+        android:textColor= "@color/white"
+        android:layout_marginLeft="0dip"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_12"
+        android:layout_below="@id/sppedtv"
+        android:text= "@string/track_map_title_speedunit"/>
+	    </RelativeLayout>
+	    <RelativeLayout 
+        android:id="@+id/timeshort"
+    	android:layout_width="100dip" 
+    	android:layout_height="50dip"
+    	android:background="#00000000"
+    	android:layout_alignParentLeft="true"
+        >
+	    <TextView
+        android:id="@+id/timeshorttv"
+        android:layout_width="fill_parent"
+        android:layout_height="30dip"
+        android:background="#00000000"
+        android:textColor= "@color/white"
+        android:layout_marginLeft="0dip"
+        android:textStyle="bold"
+        android:gravity="center|bottom"
+        android:textSize="@dimen/text_size_22"
+        android:text= "100"/>
+	    <TextView
+        android:id="@+id/timeshorttvunit"
+        android:layout_width="fill_parent"
+        android:layout_height="20dip"
+        android:background="#00000000"
+        android:textColor= "@color/white"
+        android:layout_marginLeft="0dip"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_12"
+        android:layout_below="@id/timeshorttv"
+        android:text= "@string/track_map_title_timeunit"/>
+	       </RelativeLayout>
+	   <RelativeLayout 
+        android:id="@+id/timelong"
+    	android:layout_width="fill_parent" 
+    	android:layout_height="50dip"
+    	android:background="#00000000"
+        android:layout_marginLeft="10dip"
+        android:layout_toLeftOf="@id/spped"
+        android:layout_toRightOf="@id/timeshort"
+        >
+	    <TextView
+        android:id="@+id/timelongtv"
+        android:layout_width="fill_parent"
+        android:layout_height="30dip"
+        android:background="#00000000"
+        android:textColor= "@color/white"
+        android:layout_marginLeft="0dip"
+        android:textStyle="bold"
+        android:gravity="center|bottom"
+        android:textSize="@dimen/text_size_22"
+        android:text= "10"/>
+	    <TextView
+        android:id="@+id/timelongtvunit"
+        android:layout_width="fill_parent"
+        android:layout_height="20dip"
+        android:background="#00000000"
+        android:textColor= "@color/white"
+        android:layout_marginLeft="0dip"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_12"
+        android:layout_below="@id/timelongtv"
+        android:text= "@string/track_map_title_distanceunit"/>
+	    </RelativeLayout>
+         </RelativeLayout >
+         
+      <ImageButton
+        android:id="@+id/btn_native"
+        android:layout_width="40dip"
+        android:layout_height="40dip"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="70dip"
+        android:src="@drawable/bd_native"/>
+    <ImageButton
+        android:id="@+id/btn_pomode"
+        android:layout_width="40dip"
+        android:layout_height="40dip"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="30dip"
+        android:src="@drawable/po_nor" />
+    <ImageButton
+        android:id="@+id/btn_showcp"
+        android:layout_width="40dip"
+        android:layout_height="40dip"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="165dip"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/message_corner2"
+        android:src="@drawable/map_bar_listmode" />
+    <ImageButton
+        android:id="@+id/btn_mapmodechange"
+        android:layout_width="40dip"
+        android:layout_height="40dip"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="115dip"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/message_corner2"
+        android:src="@drawable/map_changemode" />
+    <RelativeLayout 
+		android:id="@+id/ll_map_zoombar" 
+	  	android:layout_width="40dip" 
+	  	android:layout_height="90dip"
+	  	android:layout_marginRight="5dp"
+	  	android:layout_marginBottom="100dp"
+	  	android:layout_alignParentBottom="true"
+	  	android:layout_alignParentRight="true"
+	  	android:background="@drawable/map_zoombar"> 
+         <TextView 
+	        android:id="@+id/map_zoom_large"
+		  	android:layout_width="40dip" 
+		  	android:layout_height="45dip"
+		  	android:background="#00000000"
+		  	android:gravity="center"
+	        android:clickable="true"
+	        android:textSize="@dimen/text_size_18"
+	        android:layout_alignParentTop="true"
+			/>
+	    <TextView 
+	        android:id="@+id/map_zoom_small"
+		  	android:layout_width="40dip" 
+		  	android:layout_height="45dip"
+		  	android:background="#00000000"
+			android:gravity="center"
+	        style="@style/main_head_title"
+	        android:clickable="true"
+	        android:layout_alignParentBottom="true"		
+			/>
+	</RelativeLayout>
+	<ImageButton
+        android:id="@+id/btn_map_quick_memu"
+        android:layout_width="35dip"
+        android:layout_height="21dip"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="7dip"
+        android:layout_marginRight="5dp"
+        android:tag="up"
+        android:background="@drawable/map_buttom_up_btn" />
+	<RelativeLayout
+        android:id="@+id/map_quick_memu"
+        android:layout_width="fill_parent"
+        android:layout_height="40dip"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/message_corner3"
+        android:orientation="horizontal" >
+   <RelativeLayout 
+        android:id="@+id/ll_idpos_memu_idpos_select"
+    	android:layout_width="80dip" 
+    	android:layout_height="40dip"
+    	android:background="@drawable/layout_selected"
+    	android:layout_marginLeft="0dip"
+        android:layout_alignParentRight="true"
+        android:clickable="true"
+        >
+	    <TextView
+        android:id="@+id/map_quick_memu_plan"
+        android:layout_width="fill_parent"
+        android:layout_height="25dip"
+        android:background="#00000000"
+        android:textColor= "@color/white"
+        android:layout_marginLeft="0dip"
+        android:textStyle="bold"
+        android:gravity="center|bottom"
+        android:textSize="@dimen/text_size_16"
+        android:text= "@string/track_map_quickmemu_plan"/>
+	    <TextView
+        android:id="@+id/map_quick_memu_plan_desc"
+        android:layout_width="fill_parent"
+        android:layout_height="15dip"
+        android:background="#00000000"
+        android:textColor= "@color/white"
+        android:layout_marginLeft="0dip"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_10"
+        android:layout_below="@id/map_quick_memu_plan"
+        android:text= "@string/track_map_quickmemu_plan_desc"/>
+	    </RelativeLayout>
+	    <RelativeLayout 
+        android:id="@+id/ll_idpos_memu_srsetup"
+    	android:layout_width="80dip" 
+    	android:layout_height="40dip"
+    	android:background="@drawable/layout_selected"
+    	android:layout_alignParentLeft="true"
+    	android:clickable="true"
+        >
+	    <TextView
+        android:id="@+id/map_quick_memu_inputbug"
+        android:layout_width="fill_parent"
+        android:layout_height="25dip"
+        android:background="#00000000"
+        android:textColor= "@color/white"
+        android:layout_marginLeft="0dip"
+        android:textStyle="bold"
+        android:gravity="center|bottom"
+        android:textSize="@dimen/text_size_16"
+        android:text= "@string/track_map_quickmemu_bug"/>
+	    <TextView
+        android:id="@+id/map_quick_memu_inputbug_desc"
+        android:layout_width="fill_parent"
+        android:layout_height="15dip"
+        android:background="#00000000"
+        android:textColor= "@color/white"
+        android:layout_marginLeft="0dip"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_10"
+        android:layout_below="@id/map_quick_memu_inputbug"
+        android:text= "@string/track_map_quickmemu_bug_desc"/>
+	       </RelativeLayout>
+	   <RelativeLayout 
+        android:id="@+id/ll_idpos_memu_scan"
+    	android:layout_width="fill_parent" 
+    	android:layout_height="40dip"
+    	android:background="@drawable/layout_selected"
+        android:layout_marginLeft="0dip"
+        android:layout_toLeftOf="@id/ll_idpos_memu_idpos_select"
+        android:layout_toRightOf="@id/ll_idpos_memu_srsetup"
+        android:clickable="true"
+        >
+	    <TextView
+        android:id="@+id/map_quick_memu_history"
+        android:layout_width="fill_parent"
+        android:layout_height="25dip"
+        android:background="#00000000"
+        android:textColor= "@color/white"
+        android:layout_marginLeft="0dip"
+        android:textStyle="bold"
+        android:gravity="center|bottom"
+        android:textSize="@dimen/text_size_16"
+        android:text= "@string/track_map_quickmemu_history"/>
+	    <TextView
+        android:id="@+id/ll_map_quick_memu_history_desc"
+        android:layout_width="fill_parent"
+        android:layout_height="15dip"
+        android:background="#00000000"
+        android:textColor= "@color/white"
+        android:layout_marginLeft="0dip"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_10"
+        android:layout_below="@id/map_quick_memu_history"
+        android:text= "@string/track_map_quickmemu_history_desc"/>
+	    </RelativeLayout>
+         </RelativeLayout >
+         
+	
+	<RelativeLayout
+        android:id="@+id/map_gps_state"
+        android:layout_width="fill_parent"
+        android:layout_height="20dip"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/message_corner3"
+        android:orientation="horizontal" >
+	    <TextView
+        android:id="@+id/map_gps_state_tv"
+        android:layout_width="fill_parent"
+        android:layout_height="20dip"
+        android:background="#00000000"
+        android:textColor= "@color/white"
+        android:layout_marginLeft="0dip"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_12"/>
+         </RelativeLayout >
+	
+	
+    <RelativeLayout
+        android:id="@+id/ll_track_listmode"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:background="@color/white"
+	    android:layout_marginTop="50dip"
+	    android:orientation="vertical" >
+    <RelativeLayout
+        android:id="@+id/track_listmode_line"
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+	    <ImageView
+		  	 	android:id="@+id/djline_type_icon"
+		        android:layout_width="wrap_content"
+		       	android:layout_height="wrap_content"        	     	
+		       	android:scaleType="matrix"
+		       	android:layout_centerVertical="true"
+		       	android:layout_alignParentLeft="true"
+		    	android:layout_marginLeft="@dimen/image_marginLeft" />
+	    <RelativeLayout
+	            android:id="@+id/ll_1"
+	            android:layout_width="20dip"
+	            android:layout_height="fill_parent"
+	            android:layout_toRightOf="@id/djline_type_icon"
+            />
+        <!--  
+        <TextView
+            android:id="@+id/track_listmode_line_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center_vertical|left"
+            android:text="@string/track_listmode_line_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16"
+            android:textStyle="bold" />
+        -->
+        <TextView
+            android:id="@+id/track_listmode_line_Value"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center|left"
+            android:textColor="@color/black"
+            android:maxLines="2"
+            android:textSize="@dimen/text_size_20"
+            android:layout_toRightOf="@id/ll_1" />
+    </RelativeLayout>
+    
+    <View  
+        android:id="@+id/view_3"  
+        android:layout_width="match_parent"  
+        android:layout_height="1dp"  
+        android:layout_below="@+id/track_listmode_line"
+        android:layout_marginLeft="20dp" 
+        android:background="@color/graywhite"/>
+
+    <RelativeLayout
+        android:id="@+id/track_listmode_currcp"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:layout_below="@+id/view_3"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/track_listmode_currcp_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center_vertical|left"
+            android:paddingLeft="15dp"
+            android:text="@string/track_listmode_currcp_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/track_listmode_currcp_Value"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical|left"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@id/track_listmode_currcp_Name"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+    
+    <View  
+        android:id="@+id/view_2"  
+        android:layout_width="match_parent"  
+        android:layout_height="12dp"  
+        android:layout_below="@+id/track_listmode_currcp"
+        android:background="@color/graywhite" />
+
+    <RelativeLayout
+        android:id="@+id/track_listmode_cplist_Title"
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:layout_below="@id/view_2"
+        android:orientation="vertical"
+        android:background="@drawable/listview_item_selector"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/track_listmode_cplist_Name"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:text="@string/track_listmode_cplist_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_track_listmode_cplist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/track_listmode_cplist_Title"
+        android:layout_weight="1.14"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/track_listmode_cplist"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:dividerHeight="1px"
+        	android:divider="@color/graywhite" >
+        </ListView>
+        <ImageView
+	        android:layout_width="match_parent"
+	        android:layout_height="1px"
+	        android:layout_below="@id/track_listmode_cplist"
+	        android:background="@color/graywhite"/>
+    </RelativeLayout>
+</RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dianjian"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/face_bg" >  
+
+
+    
+	<RelativeLayout 
+		android:id="@+id/layout_dianjian_head" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_height="50dip"
+	  	android:layout_alignParentTop="true"
+	  	android:background="@drawable/title_bar"> 
+	  	
+	    <ImageButton 
+	        android:id="@+id/dianjian_head_morebutton"
+	        android:src="@drawable/widget_bar_option_edit"
+	        android:background="@color/full_transparent"
+	        android:layout_width="wrap_content"
+	    	android:layout_height="50dip"
+	    	android:layout_alignParentRight="true"
+           	android:layout_gravity="center"
+	        android:layout_marginRight="5dp"
+	        />	 
+	        
+	    <ImageButton
+	        android:id="@+id/home_head_Rebutton"
+	        android:layout_width="wrap_content"
+	        android:layout_height="50dip"
+	        android:layout_alignParentLeft="true"
+	        android:layout_gravity="center"
+	        android:background="@color/full_transparent"
+	        android:src="@drawable/arrow_left" />
+	    <TextView
+	        android:id="@+id/dianjian_head_title"
+	        style="@style/main_head_title"
+	        android:layout_width="match_parent"
+	        android:layout_height="28dp"
+	        android:layout_toLeftOf="@id/dianjian_head_morebutton"
+	        android:layout_toRightOf="@+id/home_head_Rebutton"
+	        android:ellipsize="marquee"
+	        android:focusable="true"
+	        android:focusableInTouchMode="true"
+	        android:gravity="center"
+	        android:marqueeRepeatLimit="marquee_forever" />
+	    <ViewAnimator
+	        android:id="@+id/animator"  
+	        android:layout_width="wrap_content"  
+	        android:layout_height="match_parent"  
+	        android:layout_toLeftOf="@id/dianjian_head_morebutton"
+	        android:layout_toRightOf="@+id/home_head_Rebutton"
+	        android:layout_below="@id/dianjian_head_title"
+	        android:layout_alignParentBottom="true"  
+	        android:layout_marginBottom="3dp" >
+	        <TextView  
+	            android:id="@+id/dianjian_main_username"  
+	            android:layout_width="wrap_content"  
+	            android:layout_height="wrap_content"  
+	            android:layout_gravity="center"
+	            android:gravity="center"  
+	            android:drawableLeft="@drawable/login_account"
+	            android:drawablePadding="5dp" />
+	        <TextView  
+	            android:id="@+id/dianjian_main_gpsinfo"  
+	            android:layout_width="wrap_content"  
+	            android:layout_height="match_parent"  
+	            android:layout_gravity="center"
+	            android:gravity="center"
+	            android:drawablePadding="5dp"
+	            android:text="定位中" />
+	    </ViewAnimator>
+	</RelativeLayout>
+
+	
+    <RelativeLayout 
+        android:id="@+id/layout_plan_move"
+        android:layout_width="fill_parent"
+        android:layout_height="40dip"
+    	android:layout_gravity="center_vertical" 
+    	android:layout_below="@id/layout_dianjian_head"     	
+    	android:background="@color/face_bg"
+    	>
+        <Button 
+			android:id="@+id/btn_goto_pre" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:layout_alignParentLeft="true"
+			android:layout_centerVertical="true"
+			android:layout_marginLeft="5dip"
+			android:background="@drawable/arrow_left_plan" 
+			android:clickable="true"
+	        android:onClick="btn_pre_djplan"
+			
+		/>   
+		<TextView
+     		android:id="@+id/plan_remained"
+ 			android:layout_width="wrap_content"
+ 			android:layout_height="wrap_content"        	     	
+        	android:layout_toRightOf="@id/btn_goto_pre"
+    		android:layout_centerVertical="true"
+    		android:layout_marginLeft="5dip"
+      		android:textSize="17sp"		
+			android:textColor="@color/red" />		
+		<Button 
+	        android:id="@+id/btn_goto_next" 
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+    		android:layout_alignParentRight="true"
+    		android:layout_centerVertical="true"
+    		android:layout_marginRight="5dip"
+	        
+	        android:textSize="@dimen/text_size_20"
+	        android:background="@drawable/arrow_right_plan"
+	        android:clickable="true"
+	        android:onClick="btn_next_djplan"
+		/>       
+		
+		<TextView
+     		android:id="@+id/plan_neworedit"
+ 			android:layout_width="wrap_content"
+ 			android:layout_height="wrap_content"        	     	
+        	android:layout_toLeftOf="@id/btn_goto_next"
+    		android:layout_centerVertical="true"
+    		android:layout_marginRight="5dip"
+      		android:textSize="17sp"		
+			android:textColor="@color/red" />
+		
+        <TextView
+	        android:id="@+id/plan_index" 
+      		android:layout_width="fill_parent" 
+      		android:layout_height="fill_parent"
+      		android:gravity="center_vertical|center_horizontal"
+        	android:layout_toRightOf="@id/plan_remained"
+        	android:layout_toLeftOf="@id/plan_neworedit"
+      		android:text="--/--"
+      		android:textSize="17sp"		
+			android:textColor="#000" />
+    </RelativeLayout>       
+    
+     <RelativeLayout
+        android:id="@+id/layout_plan_saveaction"
+        android:layout_width="fill_parent"
+        android:layout_height="70dip"
+       	android:layout_gravity="center_vertical" 
+    	android:layout_alignParentBottom="true"
+       	>
+
+		<Button 
+	        android:id="@+id/btn_saveResult_data" 
+	        android:layout_width="fill_parent" 
+	        android:layout_height="fill_parent" 
+	        android:layout_centerInParent="true"
+	        android:layout_margin="10dip"
+	        android:text="确认" 
+	        android:textSize="@dimen/btn_big_textsize"
+	        android:textColor="@color/white"
+	        android:background="@drawable/btn_style_green" 
+	        android:clickable="true"
+	        />   
+				                
+	</RelativeLayout>
+    
+    
+    <RelativeLayout
+        android:id="@+id/layout_plan_viewpager"
+        android:layout_width="fill_parent"
+    	android:layout_height="150dip" 
+    	android:layout_above="@id/layout_plan_saveaction"
+        android:orientation="vertical" >
+        
+        <android.support.v4.view.ViewPager
+        	android:id="@+id/DianjianTabpager"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_gravity="center" > 
+        </android.support.v4.view.ViewPager>  
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/layout_plan_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:layout_above="@id/layout_plan_viewpager"
+        android:orientation="vertical"
+        android:background="#fff"
+        >             
+      
+         <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+        	android:layout_gravity="center_vertical" 
+        	android:background="@color/white"
+        	>
+        	
+            <LinearLayout
+                android:id="@+id/ll_dianjian_tab_result"
+            	android:layout_width="wrap_content"
+            	android:layout_height="match_parent"
+              	android:gravity="center_vertical"
+              	android:orientation="vertical"
+	        	android:background="@drawable/pager_select"   
+	        	android:state_enabled="true"
+              	android:layout_weight="1">               	
+                <TextView
+	                android:id="@+id/dianjian_tab_result"
+                    style="@style/TextPagerMenuTextStyle"
+		        	android:gravity="center"            	
+	                android:padding="5dip"
+	                android:layout_width="match_parent"
+	    			android:layout_height="wrap_content"
+            		android:text="@string/dianjian_tabtitle_result"
+        			android:clickable="true"
+            		/>                
+        	 </LinearLayout>
+        	 <LinearLayout
+                android:id="@+id/ll_dianjian_tab_memo"
+            	android:layout_width="wrap_content"
+            	android:layout_height="match_parent"
+              	android:gravity="center_vertical"
+              	android:orientation="horizontal"
+	        	android:background="@drawable/pager_select"   
+	        	android:state_enabled="false"
+              	android:layout_weight="1">             
+              	
+	        	 <LinearLayout
+	                android:id="@+id/ll_dianjian_tab_memo1"
+	            	android:layout_width="match_parent"
+	            	android:layout_height="match_parent"
+	              	android:gravity="center_vertical|center_horizontal"
+	              	android:orientation="horizontal"
+	              	>            	     	
+        	     <TextView
+	                android:id="@+id/dianjian_tab_memo"
+                    style="@style/TextPagerMenuTextStyle"
+	                android:layout_width="wrap_content"
+	    			android:layout_height="wrap_content"
+		        	android:gravity="center"            	
+	                android:padding="5dip"
+            		android:text="@string/dianjian_tabtitle_memo"
+        			android:clickable="true"
+            		/>     
+				<ImageView
+		            android:id="@+id/dianjian_tab_memo_flag"
+		            android:layout_width="16dip"
+		            android:layout_height="16dip"
+		        	android:gravity="left"            	
+		            android:scaleType="matrix"
+		            android:src="@drawable/datamark" 
+		            android:visibility="gone"
+		            />   
+		        </LinearLayout>         	
+        	     
+        	 </LinearLayout>
+        	 <LinearLayout
+                android:id="@+id/ll_dianjian_tab_picture"
+            	android:layout_width="wrap_content"
+            	android:layout_height="match_parent"
+              	android:gravity="center_vertical"
+              	android:orientation="horizontal"
+	        	android:background="@drawable/pager_select"   
+	        	android:state_enabled="false"
+              	android:layout_weight="1">     
+              	
+	        	 <LinearLayout
+	                android:id="@+id/ll_dianjian_tab_memo2"
+	            	android:layout_width="match_parent"
+	            	android:layout_height="wrap_content"
+	              	android:gravity="center_vertical|center_horizontal"
+	              	android:orientation="horizontal"
+	              	>           	     	
+                <TextView
+	                android:id="@+id/dianjian_tab_picture"
+                    style="@style/TextPagerMenuTextStyle"
+		        	android:gravity="center"            	
+	                android:padding="5dip"
+	                android:layout_width="wrap_content"
+	    			android:layout_height="wrap_content"
+            		android:text="@string/dianjian_tabtitle_picture"
+        			android:clickable="true"
+				 	/>         
+				<ImageView
+		            android:id="@+id/dianjian_tab_picture_flag"
+		            android:layout_width="16dip"
+		            android:layout_height="16dip"
+		            android:scaleType="matrix"
+		            android:src="@drawable/datamark" 
+		            android:visibility="gone"
+		            />     	
+		        </LinearLayout>			 	
+                
+        	 </LinearLayout>
+        	 
+        	 <LinearLayout
+                android:id="@+id/ll_dianjian_tab_audio"
+            	android:layout_width="wrap_content"
+            	android:layout_height="match_parent"
+              	android:gravity="center_vertical"
+              	android:orientation="horizontal"
+	        	android:background="@drawable/pager_select"   
+	        	android:state_enabled="false"
+              	android:layout_weight="1">     
+              	
+	        	 <LinearLayout
+	                android:id="@+id/ll_dianjian_tab_memo3"
+	            	android:layout_width="match_parent"
+	            	android:layout_height="wrap_content"
+	              	android:gravity="center_vertical|center_horizontal"
+	              	android:orientation="horizontal"
+	              	>           	     	
+                <TextView
+	                android:id="@+id/dianjian_tab_audio"
+                    style="@style/TextPagerMenuTextStyle"
+		        	android:gravity="center"            	
+	                android:padding="5dip"
+	                android:layout_width="wrap_content"
+	    			android:layout_height="wrap_content"
+            		android:text="@string/dianjian_tabtitle_audio"
+        			android:clickable="true"
+            		/>          
+				<ImageView
+		            android:id="@+id/dianjian_tab_audio_flag"
+		            android:layout_width="16dip"
+		            android:layout_height="16dip"
+		            android:scaleType="matrix"
+		            android:src="@drawable/datamark" 
+		            android:visibility="gone"
+		            />   
+		            
+				</LinearLayout>	            		
+                
+        	 </LinearLayout>        
+          
+        </LinearLayout>     
+       
+    </RelativeLayout>
+
+
+    
+    <RelativeLayout
+        android:id="@+id/layout_plan_desc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+    	android:layout_below="@id/layout_plan_move"
+    	android:layout_above="@id/layout_plan_sheet"
+    	android:layout_marginRight="35dp"
+        >
+	    <ScrollView  
+		    android:layout_width="match_parent"  
+		    android:layout_height="match_parent"   
+		    android:background="@color/white"
+	        android:fillViewport="true"
+	        >            
+	        <TextView
+	            android:id="@+id/plan_description" 
+	    		android:layout_width="match_parent" 
+	    		android:layout_height="match_parent"
+	    		android:padding="8dp" 
+	       		android:textSize="@dimen/dj_plandesc_textsize"		
+				android:textColor="#000" />         	
+	    </ScrollView>        
+	</RelativeLayout> 
+	
+   
+    <RelativeLayout 
+		android:id="@+id/ll_plan_zoombar" 
+	  	android:layout_width="35dip" 
+	  	android:layout_height="80dip"
+	  	android:layout_marginRight="5dp"
+	  	android:layout_above="@id/layout_plan_sheet"
+	  	android:layout_alignParentLeft="true"
+	  	android:background="@drawable/map_zoombar"> 
+         <TextView 
+	        android:id="@+id/map_zoom_large"
+		  	android:layout_width="35dip" 
+		  	android:layout_height="40dip"
+		  	android:background="#00000000"
+		  	android:gravity="center"
+	        android:clickable="true"
+	        android:layout_alignParentTop="true"
+			/>
+	    <TextView 
+	        android:id="@+id/map_zoom_small"
+		  	android:layout_width="35dip" 
+		  	android:layout_height="40dip"
+		  	android:background="#00000000"
+			android:gravity="center"
+	        style="@style/main_head_title"
+	        android:clickable="true"
+	        android:layout_alignParentBottom="true"		
+			/>
+	</RelativeLayout>
+	<RelativeLayout 
+		android:id="@+id/ll_plan_gotofirstundo" 
+	  	android:layout_width="32dip" 
+	  	android:layout_height="32dip"
+	  	android:layout_marginLeft="6dp"
+	  	android:layout_above="@id/layout_plan_sheet"
+	  	android:layout_alignParentRight="true"
+	  	android:layout_marginBottom="5dp"
+	  	android:background="#00000000" >
+    <ImageButton
+        android:id="@+id/btn_goto_firstundo"
+        android:layout_width="30dip"
+        android:layout_height="30dip"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="#00000000"
+        android:src="@drawable/po_nor"
+         />
+    
+   </RelativeLayout>
+	<RelativeLayout 
+		android:id="@+id/ll_plan_detail_show" 
+	  	android:layout_width="35dip" 
+	  	android:layout_height="35dip"
+	  	android:layout_marginLeft="5dp"
+	  	android:layout_above="@id/layout_plan_sheet"
+	  	android:layout_alignParentRight="true"
+	  	android:layout_marginBottom="45dp"
+	  	android:background="#00000000">
+    
+    <ImageButton
+        android:id="@+id/btn_plan_detail_show"
+        android:layout_width="35dip"
+        android:layout_height="35dip"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/bar_plan_detail"
+        android:background="#00000000" />
+    
+   </RelativeLayout>
+   <ImageButton
+        android:id="@+id/btn_dj_sr"
+        android:layout_width="35dip"
+        android:layout_height="35dip"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="90dp"
+        android:background="#00000000"
+        android:layout_above="@id/layout_plan_sheet"
+        android:src="@drawable/widget_bar_sr" />
+   
+   <ImageButton
+        android:id="@+id/btn_dj_lk"
+        android:layout_width="35dip"
+        android:layout_height="35dip"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="135dp"
+        android:background="#00000000"
+        android:layout_above="@id/layout_plan_sheet"
+        android:src="@drawable/widget_bar_lk" />
+   -->
+   <!-- 历史查询  -->
+        <!--
+      <RelativeLayout
+        android:id="@+id/ll_plan_query_history_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+    	android:layout_below="@id/layout_dianjian_head"
+    	android:layout_above="@id/layout_plan_saveaction"
+        android:orientation="vertical" >
+
+        <TextView 
+	        android:id="@+id/hisdata_head_title"
+	        android:layout_width="fill_parent"
+	    	android:layout_height="40dp"
+			android:gravity="center"		
+      		android:textSize="17sp"	
+      		android:textColor="@color/black"
+      		android:text="历史结果"
+			android:background="@color/face_bg"
+			/>
+        <ListView
+            android:id="@+id/hisdata_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:cacheColorHint="#0000"
+            android:divider="@null"
+            android:dividerHeight="3dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:stackFromBottom="false" >
+        </ListView>
+    </RelativeLayout>  
+    -->
+</RelativeLayout>

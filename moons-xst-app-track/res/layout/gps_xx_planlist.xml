@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/white"  >
+        <RelativeLayout 
+		android:id="@+id/layout_gpsxx_head" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_height="50dip"
+	  	android:layout_alignParentTop="true"
+	  	android:background="@drawable/title_bar"> 
+        <ImageButton 
+	        android:id="@+id/gpsxx_head_Rebutton"
+	        android:src="@drawable/arrow_left"
+	        android:background="@color/full_transparent"
+	        android:layout_width="wrap_content"
+	    	android:layout_height="50dp"
+	    	android:layout_alignParentLeft="true"
+           	android:layout_gravity="center_vertical"
+	        android:layout_marginRight="10dp"
+	        />
+	    <TextView 
+	        android:id="@+id/gpsxx__head_title"
+	        android:layout_width="fill_parent" 
+		  	android:layout_height="fill_parent"
+			android:gravity="center"
+	        style="@style/main_head_title"
+			android:ellipsize="marquee" 
+	        android:marqueeRepeatLimit="marquee_forever"
+	        android:focusable="true" 
+	        android:focusableInTouchMode="true"			
+			android:text="@string/xxplan_title"
+			/>  
+	</RelativeLayout>
+    
+        <RelativeLayout
+        android:id="@+id/ll_gpsxx_planlist_title"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/white" 
+        android:orientation="vertical"
+        android:layout_below="@id/layout_gpsxx_head" >	
+
+            	<RelativeLayout
+	                android:id="@+id/layout_cp_plan_listitem_detail_gxxx"
+	                android:layout_width="match_parent"
+	                android:layout_height="50dip"
+	                android:layout_centerHorizontal="true"
+	                android:orientation="vertical"
+	                android:background="@drawable/listview_item_selector" >
+
+		        <TextView
+		       	    android:id="@+id/cp_plan_listitem_detail_gxxx"
+		       	    style="@style/widget_listview_subdesc2"
+		       	    android:layout_width="100dp"
+		       	    android:layout_height="fill_parent"
+		       	    android:gravity="center"            	
+				    android:textSize="@dimen/text_size_16"
+		         	android:textColor="@color/black" 
+		         	android:layout_alignParentLeft="true"
+		       	    android:text="@string/xxplan_point" />  
+		         <TextView
+		       	    android:id="@+id/cp_plan_listitem_detail_gxxxname"
+		       	    style="@style/widget_listview_subdesc2"
+		       	    android:layout_width="fill_parent"
+		       	    android:layout_height="fill_parent"
+		       	    android:gravity="center|left"
+		       	    android:textColor="@color/black"
+	            	android:textSize="@dimen/text_size_16"
+		       	    android:layout_toRightOf="@id/cp_plan_listitem_detail_gxxx" />  
+            	</RelativeLayout>
+            <RelativeLayout
+		        android:id="@+id/layout_cp_plan_listitem_detail_bugtype"
+		        android:layout_width="match_parent"
+		        android:layout_height="50dp"
+		        android:layout_below="@id/layout_cp_plan_listitem_detail_gxxx"
+		        android:layout_centerHorizontal ="true"
+				android:background="@drawable/listview_item_selector"
+		        android:orientation="vertical" >
+		       <TextView
+		       	    android:id="@+id/cp_plan_listitem_detail_bugtype"
+		       	    style="@style/widget_listview_subdesc2"
+		       	    android:layout_width="100dp"
+		       	    android:layout_height="fill_parent"
+		       	    android:gravity="center" 
+		       	   	android:textColor="@color/black"
+	            	android:textSize="@dimen/text_size_16"
+		       	    android:text="@string/xxplan_point_type" />
+		      <TextView
+		       	    android:id="@+id/cp_plan_listitem_detail_bugtype_value"
+		       	    style="@style/widget_listview_subdesc2"
+		       	    android:layout_width="fill_parent"
+		       	    android:layout_height="fill_parent"
+		       	    android:layout_toRightOf="@id/cp_plan_listitem_detail_bugtype"
+		       	    android:gravity="center|left"
+		       	   	android:textColor="@color/black"
+	            	android:textSize="@dimen/text_size_16"
+		       	    android:text="NFC/GPS" />
+            </RelativeLayout> 
+            <RelativeLayout
+		        android:id="@+id/layout_cp_desc"
+		        android:layout_width="match_parent"
+		        android:layout_height="50dp"
+		        android:layout_below="@id/layout_cp_plan_listitem_detail_bugtype"
+		        android:layout_centerHorizontal ="true"
+		        android:orientation="vertical" >
+		        <TextView
+		       	    android:id="@+id/cp_desc"
+		       	    style="@style/widget_listview_subdesc2"
+		       	    android:layout_width="100dp"
+		       	    android:layout_height="fill_parent"
+		       	    android:gravity="center" 
+		       	    android:textColor="@color/black"
+	            	android:textSize="@dimen/text_size_16"
+		       	    android:text="@string/xxplan_des" />
+		     <TextView
+		       	    android:id="@+id/cp_desc_value"
+		       	    style="@style/widget_listview_subdesc2"
+		       	    android:layout_width="fill_parent"
+		       	    android:layout_height="fill_parent"
+		       	    android:layout_toRightOf="@id/cp_desc"
+		       	    android:gravity="center|left"
+		       	 	android:textColor="@color/black"
+	            	android:textSize="@dimen/text_size_16" />
+            </RelativeLayout>       			
+
+    </RelativeLayout>
+    <View  
+        android:id="@+id/view_1"  
+        android:layout_width="match_parent"  
+        android:layout_height="12dp"  
+        android:layout_below="@id/ll_gpsxx_planlist_title"
+        android:background="@color/graywhite" />
+    <RelativeLayout
+        android:id="@+id/ll_gpsxx_planlist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/view_1"
+        android:orientation="vertical" >
+        <ListView
+            android:id="@+id/gpsxx_planlist"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:cacheColorHint="#0000"
+            android:divider="@null"
+            android:scrollbarStyle="outsideOverlay"
+            android:stackFromBottom="false" >
+        </ListView>
+    </RelativeLayout>
+</RelativeLayout>

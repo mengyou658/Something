@@ -1,0 +1,432 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pad_app_bg"
+    android:orientation="vertical" >
+    <RelativeLayout
+        android:id="@+id/layout_home_title_part"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/pad_main_title_bar">
+
+         <RelativeLayout
+             android:id="@+id/layout_home_logo"
+             android:layout_width="70dp"
+             android:layout_height="45dp"
+             android:layout_alignParentLeft="true"
+             android:layout_marginLeft="5dp"
+             android:gravity="left|center"
+             android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/pad_home_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/pad_logo_moons" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_home_appname"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/layout_home_logo"
+                android:gravity="left|center"
+                android:orientation="vertical" >
+
+                <TextView 
+			        android:id="@+id/home_head_title"
+			        style="@style/pad_main_head_title"
+					android:layout_centerVertical="true"
+					android:text="@string/main_about_appnamePAD"
+					android:textColor="@color/white"
+			        android:textSize="@dimen/text_size_14" />
+            </RelativeLayout>
+         <RelativeLayout
+                android:id="@+id/layout_home_morebutton"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:gravity="center"
+                android:layout_alignParentRight="true"
+                android:orientation="vertical" > 
+             <ImageButton 
+	        android:id="@+id/home_head_morebutton"
+	        android:src="@drawable/widget_bar_option_nor"
+	        android:background="@color/full_transparent"
+	        android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_alignParentRight="true"
+           	android:layout_gravity="center_vertical"
+	        android:layout_marginRight="5dp"
+	        />
+         </RelativeLayout>
+         <RelativeLayout
+                android:id="@+id/layout_home_username"
+                android:layout_width="105dp"
+                android:layout_height="37dp"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:background="@drawable/pad_home_title_user_bg"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:layout_marginRight="50dp"
+                android:orientation="vertical" >
+            <TextView 
+			        android:id="@+id/home_head_username"
+			        style="@style/pad_main_head_title"
+					android:layout_centerVertical="true"
+					android:text="李克强"/>
+          </RelativeLayout>
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/layout_home_main_part"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/layout_home_title_part">
+   <RelativeLayout
+        android:id="@+id/layout_memu_bg"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:gravity="center|top"
+        android:background="@drawable/pad_tab_bg" >
+   <ScrollView 
+        android:id="@+id/layout_home_main_part_scrollview"
+        android:layout_width="fill_parent"  
+        android:layout_height="fill_parent"  
+        android:scrollbars="none"
+        android:layout_marginBottom="1dp"
+        android:background="@drawable/pad_item_unpress"
+        android:fadingEdge="vertical"> 
+    <RelativeLayout
+        android:id="@+id/layout_memu"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|top" >
+
+        <LinearLayout
+            android:id="@+id/layout_home"
+            style="@style/pad_home_menu_style"
+            android:background="@drawable/pad_item_press">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/pad_home_main_imagebtn"
+                    android:layout_width="20dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/pad_tab_home_pressed" />
+
+                <TextView
+                    android:id="@+id/pad_home_main_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center_horizontal"
+                    style="@style/PagerMenuTextStyle"
+            		android:text="@string/pad_main_menu_home"
+            		android:layout_toRightOf="@id/pad_home_main_imagebtn"
+            		android:layout_marginLeft="5dp"
+                    android:textColor="#82858b" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_wdzl"
+            style="@style/pad_home_menu_style"
+            android:background="@drawable/pad_item_unpress"
+            android:layout_below="@id/layout_home">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/pad_home_wdzl_imagebtn"
+                    android:layout_width="20dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/pad_tab_wdzl_normal" />
+
+                <TextView
+                    android:id="@+id/pad_home_wdzl_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    style="@style/PagerMenuTextStyle"
+            		android:text="@string/pad_main_menu_wdzl"
+            		android:layout_toRightOf="@id/pad_home_wdzl_imagebtn"
+            		android:layout_marginLeft="5dp"
+                    android:textColor="#82858b" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_sbda"
+            style="@style/pad_home_menu_style"
+            android:background="@drawable/pad_item_unpress"
+            android:layout_below="@id/layout_wdzl">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/pad_home_sbda_imagebtn"
+                    android:layout_width="20dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/pad_tab_sbda_normal" />
+
+                <TextView
+                    android:id="@+id/pad_home_sbda_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    style="@style/PagerMenuTextStyle"
+            		android:text="@string/pad_main_menu_sbda"
+            		android:layout_toRightOf="@id/pad_home_sbda_imagebtn"
+            		android:layout_marginLeft="5dp"
+                    android:textColor="#82858b" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_xjgl"
+            style="@style/pad_home_menu_style"
+            android:background="@drawable/pad_item_unpress"
+            android:layout_below="@id/layout_sbda">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/pad_home_xjgl_imagebtn"
+                    android:layout_width="20dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/pad_tab_xjgl_normal" />
+
+                <TextView
+                    android:id="@+id/pad_home_xjgl_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    style="@style/PagerMenuTextStyle"
+            		android:text="@string/pad_main_menu_xjgl"
+            		android:layout_toRightOf="@id/pad_home_xjgl_imagebtn"
+            		android:layout_marginLeft="5dp"
+                    android:textColor="#82858b" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_yxgl"
+            style="@style/pad_home_menu_style"
+            android:background="@drawable/pad_item_unpress"
+            android:layout_below="@id/layout_xjgl">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/pad_home_yxgl_imagebtn"
+                    android:layout_width="20dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/pad_tab_yxgl_normal" />
+
+                <TextView
+                    android:id="@+id/pad_home_yxgl_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    style="@style/PagerMenuTextStyle"
+            		android:text="@string/pad_main_menu_yxgl"
+            		android:layout_toRightOf="@id/pad_home_yxgl_imagebtn"
+            		android:layout_marginLeft="5dp"
+                    android:textColor="#82858b" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_ztjc"
+            style="@style/pad_home_menu_style"
+            android:background="@drawable/pad_item_unpress"
+            android:layout_below="@id/layout_yxgl">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/pad_home_ztjc_imagebtn"
+                    android:layout_width="20dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/pad_tab_ztjc_normal" />
+
+                <TextView
+                    android:id="@+id/pad_home_ztjc_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    style="@style/PagerMenuTextStyle"
+            		android:text="@string/pad_main_menu_ztjc"
+            		android:layout_toRightOf="@id/pad_home_ztjc_imagebtn"
+            		android:layout_marginLeft="5dp"
+                    android:textColor="#82858b" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_qxgl"
+            style="@style/pad_home_menu_style"
+            android:background="@drawable/pad_item_unpress"
+            android:layout_below="@id/layout_ztjc">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/pad_home_qxgl_imagebtn"
+                    android:layout_width="20dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/pad_tab_qxgl_normal" />
+
+                <TextView
+                    android:id="@+id/pad_home_qxgl_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    style="@style/PagerMenuTextStyle"
+            		android:text="@string/pad_main_menu_qxgl"
+            		android:layout_toRightOf="@id/pad_home_qxgl_imagebtn"
+            		android:layout_marginLeft="5dp"
+                    android:textColor="#82858b" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_jxcl"
+            style="@style/pad_home_menu_style"
+            android:background="@drawable/pad_item_unpress"
+            android:layout_below="@id/layout_qxgl">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/pad_home_jxcl_imagebtn"
+                    android:layout_width="20dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/pad_tab_jxcl_normal" />
+
+                <TextView
+                    android:id="@+id/pad_home_jxcl_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    style="@style/PagerMenuTextStyle"
+            		android:text="@string/pad_main_menu_jxcl"
+            		android:layout_toRightOf="@id/pad_home_jxcl_imagebtn"
+            		android:layout_marginLeft="5dp"
+                    android:textColor="#82858b" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_lpgl"
+            style="@style/pad_home_menu_style"
+            android:background="@drawable/pad_item_unpress"
+            android:layout_below="@id/layout_jxcl">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/pad_home_lpgl_imagebtn"
+                    android:layout_width="20dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/pad_tab_lpgl_normal" />
+
+                <TextView
+                    android:id="@+id/pad_home_lpgl_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    style="@style/PagerMenuTextStyle"
+            		android:text="@string/pad_main_menu_lpgl"
+            		android:layout_toRightOf="@id/pad_home_lpgl_imagebtn"
+            		android:layout_marginLeft="5dp"
+                    android:textColor="#82858b" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_xtsz"
+            style="@style/pad_home_menu_style"
+            android:background="@drawable/pad_item_unpress"
+            android:layout_below="@id/layout_lpgl">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/pad_home_xtsz_imagebtn"
+                    android:layout_width="20dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/pad_tab_sys_normal" />
+
+                <TextView
+                    android:id="@+id/pad_home_xtsz_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    style="@style/PagerMenuTextStyle"
+            		android:text="@string/pad_main_menu_xtsz"
+            		android:layout_toRightOf="@id/pad_home_xtsz_imagebtn"
+            		android:layout_marginLeft="5dp"
+                    android:textColor="#82858b" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    </ScrollView>  
+    </RelativeLayout>
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/layout_memu_bg">
+    </FrameLayout>
+   </RelativeLayout>
+    
+</RelativeLayout>

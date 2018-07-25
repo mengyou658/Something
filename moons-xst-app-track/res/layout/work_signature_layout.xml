@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/alertdia_editbox_background"
+        android:maxHeight="70dp"
+        android:minHeight="40dp"
+        android:maxLength="50" >
+
+        <requestFocus>
+        </requestFocus>
+    </EditText>
+
+    <RadioGroup
+        android:id="@+id/commutype_rg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/radiopass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:checked="true"
+            android:gravity="center_vertical"
+            android:button="@drawable/radiobutton"
+            android:padding="5dp"
+            android:text="@string/pass"
+            android:textColor="#000000" />
+
+        <RadioButton
+            android:id="@+id/radiounpass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:button="@drawable/radiobutton"
+            android:padding="5dp"
+            android:text="@string/unpass"
+            android:textColor="#000000" />
+    </RadioGroup>
+
+</LinearLayout>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    style="@style/widget_listview2"
+    android:orientation="horizontal" 
+  	android:layout_height="50dip"
+	> 
+	<TextView
+	        android:id="@+id/listitem_systemsettingauth_value" 
+	        android:layout_width="wrap_content" 
+	        android:layout_height="fill_parent"
+	        android:layout_alignParentRight="true"
+	        android:gravity="center|left"
+	        android:paddingRight="20dp"
+	        android:textSize="@dimen/text_size_18"
+        	android:textColor="@color/black" />
+    <TextView
+	        android:id="@+id/listitem_systemsettingauth_itemdesc" 
+	        android:layout_width="fill_parent" 
+	        android:layout_height="fill_parent"
+	        android:paddingLeft="20dp"
+	        android:layout_toLeftOf="@id/listitem_systemsettingauth_value"
+	        android:gravity="center|left"
+	        android:textSize="@dimen/text_size_18"
+        	android:textColor="@color/black" />
+
+</RelativeLayout>

@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/comm_download"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/ll_dianjian_touchidpos_head"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/title_bar" >
+
+        <ImageButton
+            android:id="@+id/home_head_Rebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:background="@color/full_transparent"
+            android:src="@drawable/arrow_left" />
+
+        <ImageButton
+            android:id="@+id/home_head_morebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="5dp"
+            android:background="@color/full_transparent"
+            android:src="@drawable/widget_bar_option_nor"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/dianjian_touchidpos_username"
+            android:textSize="@dimen/text_size_14"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:drawableLeft="@drawable/login_account"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            android:paddingBottom="3dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp" />
+
+        <TextView
+            android:id="@+id/djanjian_touchidpos_head_title"
+            style="@style/main_head_title"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toLeftOf="@id/dianjian_touchidpos_username"
+            android:layout_toRightOf="@id/home_head_Rebutton"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever" />
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="4dp"
+        android:layout_below="@id/ll_dianjian_touchidpos_head"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@drawable/progressbar1"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/ll_dianjian_touchidpos_statussummary"
+        android:layout_width="match_parent"
+        android:layout_height="80dip"
+        android:layout_below="@id/progressBar"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/ll_dianjian_touchidpos_statistics"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:baselineAligned="false"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:id="@+id/rl_dianjian_touchidpos_statistics_total"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:clickable="true" >
+
+                <View
+                    android:id="@+id/view_total"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="#56abe4" />
+
+                <TextView
+                    android:id="@+id/dianjian_touchidpos_statistics_total_desc"
+                    android:layout_width="fill_parent"
+                    android:layout_height="20dp"
+                    android:layout_above="@id/view_total"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="@string/idpos_statics_total"
+                    android:textColor="#56abe4"
+                    android:textSize="@dimen/text_size_15" />
+
+                <ImageView
+                    android:id="@+id/dianjian_touchidpos_statistics_total_pic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/dianjian_touchidpos_statistics_total_desc"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_idpos_total_selected_xh" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/view_2"
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/face_bg" />
+
+            <RelativeLayout
+                android:id="@+id/rl_dianjian_touchidpos_statistics_uncomplete"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:clickable="true" >
+
+                <View
+                    android:id="@+id/view_uncomplete"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/red"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/dianjian_touchidpos_statistics_uncomplete_desc"
+                    android:layout_width="fill_parent"
+                    android:layout_height="20dp"
+                    android:layout_above="@id/view_uncomplete"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="@string/idpos_statics_uncomplete"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_size_15" />
+
+                <ImageView
+                    android:id="@+id/dianjian_touchidpos_statistics_uncomplete_pic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/dianjian_touchidpos_statistics_uncomplete_desc"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_idpos_uncomplete_xh" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/view_3"
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/face_bg" />
+
+            <RelativeLayout
+                android:id="@+id/rl_dianjian_touchidpos_statistics_complete"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:clickable="true" >
+
+                <View
+                    android:id="@+id/view_complete"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/green"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/dianjian_touchidpos_statistics_complete_desc"
+                    android:layout_width="fill_parent"
+                    android:layout_height="20dp"
+                    android:layout_above="@id/view_complete"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="@string/idpos_statics_complete"
+                    android:textColor="@color/green"
+                    android:textSize="@dimen/text_size_15" />
+
+                <ImageView
+                    android:id="@+id/dianjian_touchidpos_statistics_complete_pic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/dianjian_touchidpos_statistics_complete_desc"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_idpos_complete_xh" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view_1"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:layout_below="@id/ll_dianjian_touchidpos_statussummary"
+        android:background="@color/graywhite" />
+
+    <RelativeLayout
+        android:id="@+id/ll_map_quick_memu"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:background="@color/face_bg" >
+
+        <RelativeLayout
+            android:id="@+id/map_quick_memu"
+            android:layout_width="fill_parent"
+            android:layout_height="40dip"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/message_corner3"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:id="@+id/ll_idpos_memu_idpos_select"
+                android:layout_width="100dip"
+                android:layout_height="40dip"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="0dip"
+                android:background="@drawable/layout_selected"
+                android:clickable="true" >
+
+                <ImageView
+                    android:id="@+id/idpos_memu_idpos_select"
+                    android:layout_width="fill_parent"
+                    android:layout_height="25dip"
+                    android:gravity="center"
+                    android:src="@drawable/scan" />
+                <!--
+	    <TextView
+        android:id="@+id/idpos_memu_idpos_select"
+        android:layout_width="fill_parent"
+        android:layout_height="25dip"
+        android:background="#00000000"
+        android:textColor= "@color/white"
+        android:layout_marginLeft="0dip"
+        android:textStyle="bold"
+        android:gravity="center|bottom"
+        android:textSize="@dimen/text_size_16"
+        android:text= "扫一扫"/>
+                -->
+
+                <TextView
+                    android:id="@+id/idpos_memu_idpos_select_desc"
+                    android:layout_width="fill_parent"
+                    android:layout_height="15dip"
+                    android:layout_below="@id/idpos_memu_idpos_select"
+                    android:layout_marginLeft="0dip"
+                    android:background="#00000000"
+                    android:gravity="center"
+                    android:text="@string/idpos_menu_scan"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_10" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/ll_idpos_memu_srsetup"
+                android:layout_width="100dip"
+                android:layout_height="40dip"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/layout_selected"
+                android:clickable="true" >
+
+                <ImageView
+                    android:id="@+id/idpos_memu_srsetup"
+                    android:layout_width="fill_parent"
+                    android:layout_height="25dip"
+                    android:gravity="center"
+                    android:src="@drawable/widget_bar_wwsr" />
+                <!--
+	    <TextView
+        android:id="@+id/idpos_memu_srsetup"
+        android:layout_width="fill_parent"
+        android:layout_height="25dip"
+        android:background="#00000000"
+        android:textColor= "@color/white"
+        android:layout_marginLeft="0dip"
+        android:textStyle="bold"
+        android:gravity="center|bottom"
+        android:textSize="@dimen/text_size_16"
+        android:text= "@string/idpos_memu_startstop"/>
+                -->
+
+                <TextView
+                    android:id="@+id/idpos_memu_srsetup_desc"
+                    android:layout_width="fill_parent"
+                    android:layout_height="15dip"
+                    android:layout_below="@id/idpos_memu_srsetup"
+                    android:layout_marginLeft="0dip"
+                    android:background="#00000000"
+                    android:gravity="center"
+                    android:text="@string/idpos_memu_startstop_desc"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_10" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/ll_idpos_memu_scan"
+                android:layout_width="fill_parent"
+                android:layout_height="40dip"
+                android:layout_marginLeft="0dip"
+                android:layout_toLeftOf="@id/ll_idpos_memu_idpos_select"
+                android:layout_toRightOf="@id/ll_idpos_memu_srsetup"
+                android:background="#00000000"
+                android:clickable="true" >
+
+                <ImageButton
+                    android:id="@+id/btn_idpos_scan"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="2dip"
+                    android:background="@drawable/scan_yes"
+                    android:tag="yes" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_dianjian_touchidpos_statuslist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/ll_map_quick_memu"
+        android:layout_below="@id/view_1" >
+
+        <ListView
+            android:id="@+id/dianjian_djidpos_listview_status"
+            android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:dividerHeight="1px"
+	        android:divider="@color/graywhite" />
+        <ImageView
+	        android:layout_width="match_parent"
+	        android:layout_height="1px"
+	        android:layout_below="@id/dianjian_djidpos_listview_status"
+	        android:background="@color/graywhite"/>
+        <!--
+		<ListView
+		    android:id="@+id/dianjian_djidpos_listview_status"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:cacheColorHint="@null"
+		    android:divider="@color/white"
+		    android:dividerHeight="1dp"
+		    android:scrollbarStyle="outsideOverlay"
+		    android:stackFromBottom="false" 
+		   />
+        -->
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_dianjian_touchidpos_scanImge"
+        android:layout_width="200dip"
+        android:layout_height="200dip"
+        android:layout_centerInParent="true"
+        android:background="#00000000" >
+
+        <!--
+	  	<TextView 
+	        android:id="@+id/dianjian_touchidpos_scanBtnDesc" 
+		  	android:layout_width="wrap_content" 
+		  	android:layout_height="60dip"
+			android:background="#00000000"
+		  	android:gravity="center|right"
+		  	android:textColor="@color/blue"
+			android:layout_alignParentBottom="true"
+			android:layout_centerHorizontal="true"
+			android:layout_marginBottom="2dp"
+			android:textSize="@dimen/text_size_18"
+			android:text="@string/idpos_scan_desc"
+			/>	
+        -->
+
+        <ProgressBar
+            android:id="@+id/nfc_scan_bar"
+            style="@style/nfc_scan"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <!-- 历史查询 -->
+    <!--
+    <RelativeLayout
+        android:id="@+id/ll_idpos_query_history_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+    	android:layout_below="@id/ll_dianjian_touchidpos_head"
+        android:orientation="vertical" >
+
+        <TextView 
+	        android:id="@+id/hisdata_head_title"
+	        android:layout_width="fill_parent"
+	    	android:layout_height="40dp"
+			android:gravity="center"		
+      		android:textSize="17sp"	
+      		android:textColor="@color/black"
+      		android:text="历史结果"
+			android:background="@color/face_bg"
+			/>
+        <ListView
+            android:id="@+id/hisdata_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:cacheColorHint="#0000"
+            android:divider="@null"
+            android:dividerHeight="3dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="70dp"
+            android:stackFromBottom="false" >
+        </ListView>
+        <Button 
+	        android:id="@+id/btn_idpos_query_hisdata_close" 
+	        android:layout_width="fill_parent" 
+	        android:layout_height="50dip" 
+	        android:layout_alignParentBottom="true"
+	        android:layout_margin="10dip"
+	        android:text="关闭" 
+	        android:textSize="@dimen/btn_big_textsize"
+	        android:textColor="@color/white"
+	        android:background="@drawable/btn_style_green" 
+	        android:clickable="true"
+	        />
+    </RelativeLayout>
+    -->
+
+</RelativeLayout>

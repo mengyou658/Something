@@ -1,0 +1,45 @@
+<com.moons.xst.track.widget.MainBottomBar 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_tab_bar"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" >
+
+    <TextView
+        style="@style/main_bar_item"
+        android:id="@+id/tv_main_menu_home"
+        android:drawableTop="@drawable/menu_item_home"
+        android:drawablePadding="5dp"
+        android:text="@string/main_menu_home"/>
+    
+    <TextView
+        style="@style/main_bar_item"
+        android:id="@+id/tv_main_menu_communication"
+        android:drawableTop="@drawable/menu_item_commu"
+        android:drawablePadding="5dp"
+        android:text="@string/main_menu_communication" />
+  
+    <TextView
+        style="@style/main_bar_item"
+        android:id="@+id/tv_main_menu_query"
+        android:drawableTop="@drawable/menu_item_query"
+        android:drawablePadding="5dp"
+        android:text="@string/main_menu_query" /> 
+    
+    <TextView
+        style="@style/main_bar_item"
+        android:id="@+id/tv_main_menu_tools"
+        android:drawableTop="@drawable/menu_item_tools"
+        android:drawablePadding="5dp"
+        android:text="@string/main_menu_tools" />
+
+    <TextView
+        style="@style/main_bar_item"
+        android:id="@+id/tv_main_menu_system"
+        android:drawableTop="@drawable/menu_item_sys"
+        android:drawablePadding="5dp"
+        android:text="@string/main_menu_system" />
+
+</com.moons.xst.track.widget.MainBottomBar>

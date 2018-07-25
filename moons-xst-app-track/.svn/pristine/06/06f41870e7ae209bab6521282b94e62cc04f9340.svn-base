@@ -1,0 +1,307 @@
+package com.moons.xst.track.widget;
+
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import android.app.Dialog;
+import android.content.Context;
+import android.text.method.ScrollingMovementMethod;
+import android.view.Display;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.moons.xst.track.R;
+import com.moons.xst.track.adapter.AlertDialogAdapter;
+
+public class AlertDialog {
+	private Context context;
+	private Dialog dialog;
+	private LinearLayout lLayout_bg;
+	private FrameLayout flayout;
+	private TextView txt_title;
+	private TextView txt_msg;
+	private Button btn_neg;
+	private Button btn_pos;
+	private ImageView img_line;
+	private ListView listView;
+	private ImageView view1;
+	private View v;
+	private Display display;
+	private boolean showTitle = false;
+	private boolean showMsg = false;
+	private boolean showPosBtn = false;
+	private boolean showNegBtn = false;
+	private boolean showListView = false;
+	private boolean showSure = false;
+
+	private AlertDialogAdapter mAdapter;
+
+	public AlertDialog(Context context) {
+		this.context = context;
+		WindowManager windowManager = (WindowManager) context
+				.getSystemService(Context.WINDOW_SERVICE);
+		display = windowManager.getDefaultDisplay();
+	}
+
+	public AlertDialog builder() {
+		// 获取Dialog布局
+		View view = LayoutInflater.from(context).inflate(
+				R.layout.view_alertdialog, null);
+
+		// 获取自定义Dialog布局中的控件
+		lLayout_bg = (LinearLayout) view.findViewById(R.id.lLayout_bg);
+		flayout = (FrameLayout) view.findViewById(R.id.frame_layout);
+		txt_title = (TextView) view.findViewById(R.id.txt_title);
+		txt_title.setVisibility(View.GONE);
+		view1 = (ImageView) view.findViewById(R.id.view);
+		// txt_msg = (TextView) view.findViewById(R.id.txt_msg);
+		// txt_msg.setVisibility(View.GONE);
+		// txt_msg.setMovementMethod(ScrollingMovementMethod.getInstance());
+		btn_neg = (Button) view.findViewById(R.id.btn_neg);
+		btn_neg.setVisibility(View.GONE);
+		btn_pos = (Button) view.findViewById(R.id.btn_pos);
+		btn_pos.setVisibility(View.GONE);
+		img_line = (ImageView) view.findViewById(R.id.img_line);
+		img_line.setVisibility(View.GONE);
+
+		// 定义Dialog布局和参数
+		dialog = new Dialog(context, R.style.AlertDialogStyle);
+		dialog.setContentView(view);
+
+		// 调整dialog背景大小
+		lLayout_bg.setLayoutParams(new FrameLayout.LayoutParams((int) (display
+				.getWidth() * 0.85), LayoutParams.WRAP_CONTENT));
+
+		return this;
+	}
+
+	public AlertDialog setTitle(String title) {
+		showTitle = true;
+		if ("".equals(title)) {
+			txt_title.setText(R.string.titles);
+		} else {
+			txt_title.setText(title);
+		}
+		return this;
+	}
+
+	public AlertDialog setMsg(String msg) {
+		showMsg = true;
+		txt_msg = (TextView) v.findViewById(R.id.text);
+		txt_msg.setVisibility(View.GONE);
+		txt_msg.setMovementMethod(ScrollingMovementMethod.getInstance());
+		if ("".equals(msg)) {
+			txt_msg.setText(R.string.contents);
+		} else {
+			txt_msg.setText(msg);
+		}
+		return this;
+	}
+
+	public AlertDialog setCancelable(boolean cancel) {
+		dialog.setCancelable(cancel);
+		return this;
+	}
+
+	public AlertDialog setListViewItems(List<String> list, int checkItem,
+			AdapterView.OnItemClickListener listener) {
+		showListView = true;
+		listView = (ListView) v.findViewById(R.id.listView);
+		mAdapter = new AlertDialogAdapter(context, list, checkItem);
+		listView.setOnItemClickListener(listener);
+		mAdapter.notifyDataSetChanged();
+		return this;
+	}
+
+	public void refresh(List<String> list, int check) {
+		mAdapter = new AlertDialogAdapter(context, list, check);
+		listView.setAdapter(mAdapter);
+	}
+
+	public AlertDialog setPositiveButton(String text,
+			final OnClickListener listener) {
+		showPosBtn = true;
+		if ("".equals(text)) {
+			btn_pos.setText(R.string.sure);
+		} else {
+			btn_pos.setText(text);
+		}
+		btn_pos.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (listener != null)
+					listener.onClick(v);
+				dialog.dismiss();
+			}
+		});
+		return this;
+	}
+
+	public AlertDialog setNegativeButton(String text,
+			final OnClickListener listener) {
+		showNegBtn = true;
+		if ("".equals(text)) {
+			btn_neg.setText(R.string.cancel);
+		} else {
+			btn_neg.setText(text);
+		}
+		btn_neg.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (listener != null)
+					listener.onClick(v);
+				dialog.dismiss();
+			}
+		});
+		return this;
+	}
+
+	public AlertDialog setCanceledOnTouchOutside(boolean b) {
+		dialog.setCanceledOnTouchOutside(b);
+		return this;
+	}
+
+	public AlertDialog setView(View view) {
+		flayout.addView(view);
+		v = view;
+		return this;
+	}
+
+	public AlertDialog setEditView(View view, int type, String hint) {
+		flayout.addView(view);
+		final EditText et = (EditText) view.findViewById(R.id.editText);
+		et.setInputType(type);
+		et.setHint(hint);
+		et.setHorizontallyScrolling(false);
+		et.setSingleLine(false);
+
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask() {
+			public void run() {
+				InputMethodManager inputManager = (InputMethodManager) et
+						.getContext().getSystemService(
+								Context.INPUT_METHOD_SERVICE);
+				inputManager.showSoftInput(et, 0);
+			}
+		}, 500);
+		return this;
+	}
+
+	public AlertDialog setEditView(View view, int type, String hint,
+			boolean pwdYN) {
+		flayout.addView(view);
+		final EditText et = (EditText) view.findViewById(R.id.editText);
+		et.setInputType(type);
+		et.setHint(hint);
+
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask() {
+			public void run() {
+				InputMethodManager inputManager = (InputMethodManager) et
+						.getContext().getSystemService(
+								Context.INPUT_METHOD_SERVICE);
+				inputManager.showSoftInput(et, 0);
+			}
+		}, 500);
+		return this;
+	}
+
+	private void setLayout() {
+		if (!showTitle && !showMsg) {
+			txt_title.setText(R.string.tips);
+			txt_title.setVisibility(View.VISIBLE);
+		}
+
+		if (showTitle) {
+			txt_title.setVisibility(View.VISIBLE);
+		}
+
+		if (showMsg) {
+			txt_msg.setVisibility(View.VISIBLE);
+		}
+
+		if (!showPosBtn && !showNegBtn && !showSure) {
+			btn_pos.setText(R.string.sure);
+			btn_pos.setVisibility(View.VISIBLE);
+			btn_pos.setBackgroundResource(R.drawable.alertdialog_single_selector);
+			btn_pos.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					dialog.dismiss();
+				}
+			});
+		}
+
+		if (showPosBtn && showNegBtn) {
+			btn_pos.setVisibility(View.VISIBLE);
+			btn_pos.setBackgroundResource(R.drawable.alertdialog_right_selector);
+			btn_neg.setVisibility(View.VISIBLE);
+			btn_neg.setBackgroundResource(R.drawable.alertdialog_left_selector);
+			img_line.setVisibility(View.VISIBLE);
+		}
+
+		if (showPosBtn && !showNegBtn) {
+			btn_pos.setVisibility(View.VISIBLE);
+			btn_pos.setBackgroundResource(R.drawable.alertdialog_single_selector);
+		}
+
+		if (!showPosBtn && showNegBtn) {
+			btn_neg.setVisibility(View.VISIBLE);
+			btn_neg.setBackgroundResource(R.drawable.alertdialog_single_selector);
+		}
+
+		if (showListView) {
+			listView.setAdapter(mAdapter);
+			setListViewHeightBasedOnChildren(listView);
+		}
+	}
+
+	// 隐藏确定按钮
+	public AlertDialog setButtonGone() {
+		showSure = true;
+		view1.setVisibility(View.GONE);
+		return this;
+	}
+
+	public void setListViewHeightBasedOnChildren(ListView listView) {
+
+		int size = mAdapter.getCount();
+		if (size >= 7) {
+			LinearLayout.LayoutParams params = (LayoutParams) flayout
+					.getLayoutParams();
+			params.height = display.getHeight() / 2;
+			listView.setLayoutParams(params);
+		}
+	}
+
+	public void show() {
+		setLayout();
+		if (!dialog.isShowing()) {
+			dialog.show();
+		}
+	}
+
+	public boolean isShowing() {
+		return dialog.isShowing();
+	}
+
+	public void dismiss() {
+		if (dialog != null) {
+			dialog.dismiss();
+			dialog = null;
+		}
+	}
+}

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#fff"
+        android:orientation="vertical" >
+        <RelativeLayout
+            android:id="@+id/ll_commu_type"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            android:background="@color/graywhite">
+            <TextView 
+                android:id="@+id/txt_commu_type_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@color/graywhite"
+                android:text="@string/setting_head_title_sys_communicationtype"
+                android:textColor="@color/black"
+                android:paddingLeft="10dp"
+                android:textSize="@dimen/text_size_16"
+                android:layout_alignParentLeft="true" />
+            <RadioGroup
+                 android:id="@+id/commutype_rg"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_toRightOf="@+id/txt_commu_type_desc"
+                 android:gravity="center|left"
+                 android:orientation="horizontal"
+                 android:layout_marginLeft="10dp"
+                 android:background="@color/face_bg"
+                 android:textColor="@color/black" >
+
+                 <RadioButton
+                     android:id="@+id/radiowireless"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:checked="true"
+                     android:layout_weight="1"
+                     android:layout_marginLeft="10dp"
+                     android:text="@string/commu_type_wireless"
+                     android:textColor="@color/gray"
+                     android:textSize="@dimen/text_size_16" />
+
+                 <RadioButton
+                     android:id="@+id/radiousb"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_weight="1"
+                     android:text="@string/commu_type_usb"
+                     android:textColor="@color/gray"
+                     android:textSize="@dimen/text_size_16" />
+             </RadioGroup>
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/rl_tips"
+	        android:layout_width="match_parent"
+		 	android:layout_height="40dip"
+		 	android:layout_above="@+id/ll_commu_type"
+		 	android:visibility="gone"
+		 	android:orientation="vertical" >
+
+	    	<TextView
+	    	    android:id="@+id/tv_tips_desc"
+	    	    android:layout_width="fill_parent"
+	    	    android:layout_height="fill_parent"
+	    	    android:gravity="center"
+	    	    android:textSize="@dimen/text_size_14"
+	    	    android:text="@string/commu_type_desc"
+	    	    android:textColor="@color/gray" />
+
+	 </RelativeLayout>
+        
+		<ScrollView 
+    		android:layout_width="fill_parent"
+    		android:layout_height="fill_parent"
+    		android:scrollbarStyle="outsideOverlay" 
+    		android:layout_above="@id/rl_tips"
+    		 >
+        	<LinearLayout
+            	android:layout_width="fill_parent"
+            	android:layout_height="wrap_content"
+            	android:orientation="vertical" >
+      			<RelativeLayout
+      			    android:id="@+id/ll_commu_receive"
+            		style="@style/widget_listview_Item"
+            		android:clickable="true"
+            		android:onClick="btn_planDownLoad" >
+			      	<ImageView
+			      	 	android:id="@+id/img_commu_receive"
+			            android:layout_width="wrap_content"
+			        	android:layout_height="wrap_content"        	     	
+			        	android:scaleType="matrix"
+			        	android:layout_centerVertical="true"
+			        	android:layout_alignParentLeft="true"
+			        	android:layout_marginLeft="@dimen/image_marginLeft"
+			        	android:src="@drawable/widget_bar_updown" /> 
+	               <RelativeLayout 
+						android:id="@+id/layout_memu_recevice_itemdesc" 
+					  	android:layout_width="match_parent" 
+					  	android:layout_height="50dip"
+					  	android:layout_toRightOf="@id/img_commu_receive"
+					  	android:layout_alignParentRight="true"
+					  	android:orientation="vertical" 
+					  	android:layout_marginLeft ="@dimen/texttoimage_marginLeft"
+					  	>     
+					    <RelativeLayout 
+					        android:id="@+id/layout_memu_recevice_itemdesc_title" 
+					        android:layout_width="match_parent"  
+					        android:layout_height="wrap_content"
+					        android:orientation="horizontal" 
+					        android:layout_alignParentTop="true"
+					        >
+		    			<TextView
+               			    style="@style/widget_memu_title_desc"
+        					android:layout_width="fill_parent" 
+        					android:layout_height="wrap_content"
+        					android:padding="4dp" 
+        					android:text="@string/main_menu_commu_receive"
+        					android:layout_centerVertical="true"
+        					 /> 		    
+	   					</RelativeLayout>
+					    <RelativeLayout 
+					        android:layout_width="match_parent"  
+					        android:layout_height="match_parent"
+					    	android:orientation="horizontal" 
+					    	android:layout_below="@id/layout_memu_recevice_itemdesc_title"
+					    	android:layout_marginTop="2dip"
+					        >     	
+					       	<TextView
+					       	    android:id="@+id/djline_listitem_BuildTime"
+					       	    style="@style/widget_memu_subdesc"
+					       	    android:layout_width="wrap_content"
+					       	    android:layout_height="wrap_content"
+					       	    android:layout_gravity="center_vertical"
+					       	    android:text="@string/main_menu_commu_receive_desc"
+					       	    android:layout_marginLeft="3dip" />    			
+					    </RelativeLayout>	    
+                        </RelativeLayout>
+                          	   
+      				</RelativeLayout>
+      				<RelativeLayout
+      				    android:id="@+id/ll_commu_appUpdate"
+            			style="@style/widget_listview_Item"
+            			android:clickable="true"
+            			android:onClick="btn_appUpdate" >
+            			>
+			      		<ImageView
+			      		    android:id="@+id/img_commu_appUpdate"
+			            	android:layout_width="wrap_content"
+			        		android:layout_height="wrap_content"        	     	
+			        		android:scaleType="matrix"
+			        		android:layout_centerVertical="true"
+			        		android:layout_alignParentLeft="true"
+			        		android:layout_marginLeft="@dimen/image_marginLeft"
+			        		android:src="@drawable/widget_bar_appupdate" />  
+			        		
+			        	<RelativeLayout 
+						android:id="@+id/layout_memu_appUpdate_itemdesc" 
+					  	android:layout_width="match_parent" 
+					  	android:layout_height="50dip"
+					  	android:layout_toRightOf="@id/img_commu_appUpdate"
+					  	android:layout_alignParentRight="true"
+					  	android:orientation="vertical" 
+					  	android:layout_marginLeft ="@dimen/texttoimage_marginLeft"
+					  	>     
+					    <RelativeLayout 
+					        android:id="@+id/layout_memu_appUpdate_itemdesc_title" 
+					        android:layout_width="match_parent"  
+					        android:layout_height="wrap_content"
+					        android:orientation="horizontal" 
+					        android:layout_alignParentTop="true"
+					        >
+		    			<TextView
+      				        android:id="@+id/txt_commu_appUpdate"
+               			    style="@style/widget_listview_title2"
+        					android:layout_width="fill_parent" 
+        					android:layout_height="wrap_content"
+        					android:padding="4dp" 
+        					android:text="@string/main_menu_commu_appUpdate"
+        					android:layout_centerVertical="true"
+        					 />   		    
+	   					</RelativeLayout>
+					    <RelativeLayout 
+					        android:layout_width="match_parent"  
+					        android:layout_height="match_parent"
+					    	android:orientation="horizontal" 
+					    	android:layout_below="@id/layout_memu_appUpdate_itemdesc_title"
+					    	android:layout_marginTop="2dip"
+					        >     	
+					       	<TextView
+					       	    style="@style/widget_memu_subdesc"
+					       	    android:layout_width="wrap_content"
+					       	    android:layout_height="wrap_content"
+					       	    android:layout_gravity="center_vertical"
+					       	    android:text="@string/main_menu_commu_appUpdate_desc"
+					       	    android:layout_marginLeft="3dip" />    			
+					    </RelativeLayout>	    
+                        </RelativeLayout>	
+			      		
+			      		
+			      		
+			      		
+			      		
+      				    
+      				</RelativeLayout>
+      				
+      				<RelativeLayout
+      				    android:id="@+id/ll_commu_mapUpdate"
+            			style="@style/widget_listview_Item"
+            			android:clickable="true"
+            			android:onClick="btn_mapUpdate" >
+            			>
+			      		<ImageView
+			      		    android:id="@+id/img_commu_mapUpdate"
+			            	android:layout_width="wrap_content"
+			        		android:layout_height="wrap_content"        	     	
+			        		android:scaleType="matrix"
+			        		android:layout_centerVertical="true"
+			        		android:layout_alignParentLeft="true"
+			        		android:layout_marginLeft="@dimen/image_marginLeft"
+			        		android:src="@drawable/widget_bar_mapupdate" />
+			      		<RelativeLayout 
+						android:id="@+id/layout_memu_mapUpdate_itemdesc" 
+					  	android:layout_width="match_parent" 
+					  	android:layout_height="50dip"
+					  	android:layout_toRightOf="@id/img_commu_mapUpdate"
+					  	android:layout_alignParentRight="true"
+					  	android:orientation="vertical" 
+					  	android:layout_marginLeft ="@dimen/texttoimage_marginLeft"
+					  	>     
+					    <RelativeLayout 
+					        android:id="@+id/layout_memu_mapUpdate_itemdesc_title" 
+					        android:layout_width="match_parent"  
+					        android:layout_height="wrap_content"
+					        android:orientation="horizontal" 
+					        android:layout_alignParentTop="true"
+					        >
+		    			<TextView
+               			    style="@style/widget_listview_title2"
+        					android:layout_width="fill_parent" 
+        					android:layout_height="wrap_content"
+        					android:padding="4dp" 
+        					android:text="@string/main_menu_commu_mapUpdate"
+        					android:layout_centerVertical="true"
+        					 />    		    
+	   					</RelativeLayout>
+					    <RelativeLayout 
+					        android:layout_width="match_parent"  
+					        android:layout_height="match_parent"
+					    	android:orientation="horizontal" 
+					    	android:layout_below="@id/layout_memu_mapUpdate_itemdesc_title"
+					    	android:layout_marginTop="2dip"
+					        >     	
+					       	<TextView
+					       	    style="@style/widget_memu_subdesc"
+					       	    android:layout_width="wrap_content"
+					       	    android:layout_height="wrap_content"
+					       	    android:layout_gravity="center_vertical"
+					       	    android:text="@string/main_menu_commu_mapUpdate_desc"
+					       	    android:layout_marginLeft="3dip" />    			
+					    </RelativeLayout>	    
+                        </RelativeLayout>  
+      				</RelativeLayout>     				
+        	</LinearLayout>
+    </ScrollView>
+</RelativeLayout>

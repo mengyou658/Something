@@ -1,0 +1,123 @@
+/**
+ * 
+ */
+package com.moons.xst.track.common;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.moons.xst.track.R;
+
+/**
+ * Toast封装
+ * 
+ * @author LKZ
+ * 
+ */
+public class MoonsToast {
+
+	private static Toast mToast;
+
+	private static MoonsToast _intance = null;
+
+	/**
+	 * MoonsToast单例
+	 * 
+	 * @param context
+	 * @return
+	 */
+	public static MoonsToast getToastIntance() {
+		if (_intance == null)
+			_intance = new MoonsToast();
+		return _intance;
+	}
+
+	public MoonsToast() {
+	}
+
+	/**
+	 * 显示提示信息
+	 * 
+	 * @param context
+	 * @param meString
+	 * @param errMessage
+	 */
+	public void ShowMessage(Context context, String meString, Boolean errMessage) {
+		try {
+			LayoutInflater inflater = LayoutInflater.from(context);
+			View view = inflater.inflate(R.layout.moons_toast_dialog, null);
+			TextView textView = (TextView) view
+					.findViewById(R.id.moons_toast_mes);
+			int color = errMessage ? Color.RED : Color.WHITE;
+			textView.setText(meString);
+			textView.setTextColor(color);
+			textView.setTextSize(18);
+			if (mToast == null) {
+				mToast = new Toast(context);
+				mToast.setDuration(Toast.LENGTH_SHORT);
+				mToast.setGravity(Gravity.CENTER, 0, 50);
+				// mToast.show();
+			}
+			mToast.setView(view);
+			mToast.show();
+
+		} catch (Exception e) {
+			mToast.makeText(context, meString, Toast.LENGTH_LONG);
+		}
+	}
+	
+	
+	/**
+	 * 线程吐司初始化
+	 * 
+	 * 在线程需要吐司前如果mToast为空则new mToast,即可在线程中Toast
+	 */
+	public void InitToast(Context context) {
+		try {
+			if (mToast == null) {
+				mToast = new Toast(context);
+				mToast.setDuration(Toast.LENGTH_SHORT);
+				mToast.setGravity(Gravity.CENTER, 0, 50);
+				// mToast.show();
+			}
+		} catch (Exception e) {
+		}
+	}
+
+	// public void ShowMessage(Context context, String meString, Boolean
+	// errMessage) {
+	// try {
+	// if (mToast == null)
+	// mToast = new Toast(context);
+	// mToast = Toast.makeText(context, meString,
+	// Toast.LENGTH_SHORT);
+	// LinearLayout layout = (LinearLayout) mToast.getView();
+	// ImageView image = new ImageView(context);
+	// image.setImageResource(R.drawable.ic_information);
+	// layout.addView(image, 0);
+	// mToast.setGravity(Gravity.CENTER, 0, 50);
+	// mToast.show();
+	// } catch (Exception e) {
+	// mToast.makeText(context, meString, Toast.LENGTH_LONG);
+	// }
+	// }
+
+	public void ShowMessageForSaveOK(Context context, String mesString) {
+		if (mToast == null)
+			mToast = new Toast(context);
+		mToast = Toast.makeText(context, mesString, Toast.LENGTH_SHORT);
+		LinearLayout layout = (LinearLayout) mToast.getView();
+		ImageView image = new ImageView(context);
+		image.setImageResource(R.drawable.save_success);
+		layout.addView(image, 0);
+		mToast.setGravity(Gravity.CENTER, 0, 50);
+		mToast.show();
+	}
+}

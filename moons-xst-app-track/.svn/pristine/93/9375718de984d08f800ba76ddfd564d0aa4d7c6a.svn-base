@@ -1,0 +1,679 @@
+package com.moons.xst.track.common;
+
+import android.content.Context;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
+import com.moons.xst.track.AppContext;
+import com.moons.xst.track.R;
+
+import android.annotation.SuppressLint;
+
+@SuppressLint("UseValueOf")
+public class DateTimeHelper {
+
+	private static int dayCount;
+
+	/**
+	 * 获取当前时间
+	 * 
+	 * @return
+	 */
+	public static Date GetDateTimeNow() {
+		return StringToDate(getDateTimeNow());
+	}
+
+	public static Date StringToDate(String str) {
+		return StringToDate(str, "yyyy-MM-dd HH:mm:ss");
+	}
+
+	/**
+	 * 字符串转日期，根据输入的格式
+	 * 
+	 * @param str
+	 * @param format
+	 * @return
+	 */
+	@SuppressLint("SimpleDateFormat")
+	public static Date StringToDate(String str, String format) {
+
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat(format);
+		try {
+			date = sdf.parse(str);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return date;
+	}
+
+	/**
+	 * 日期转字符串，默认格式
+	 * 
+	 * @param date
+	 * @return
+	 */
+	public static String DateToString(Date date) {
+		return DateToString(date, "yyyy-MM-dd HH:mm:ss");
+	}
+
+	/**
+	 * 日期转字符串，根据输入的格式
+	 * 
+	 * @param date
+	 * @param format
+	 * @return
+	 */
+	@SuppressLint("SimpleDateFormat")
+	public static String DateToString(Date date, String format) {
+
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat(format);
+			return sdf.format(date);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
+	 * 在指定的日期上加小时
+	 * 
+	 * @param currentDate
+	 * @param n
+	 * @return
+	 */
+	public static Date AddHours(Date currentDate, int n) {
+		try {
+			Date resultDate = new Date();
+			Calendar cd = Calendar.getInstance();
+			cd.setTime(currentDate);
+			cd.add(Calendar.HOUR, n);
+			resultDate = cd.getTime();
+
+			return resultDate;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	/**
+	 * 在指定的日期上加分钟
+	 * 
+	 * @param currentDate
+	 * @param n
+	 * @return
+	 */
+	public static Date AddMinutes(Date currentDate, int n) {
+		try {
+			Date resultDate = new Date();
+			Calendar cd = Calendar.getInstance();
+			cd.setTime(currentDate);
+			cd.add(Calendar.MINUTE, n);
+			resultDate = cd.getTime();
+
+			return resultDate;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	/**
+	 * 在指定的日期上加秒
+	 * 
+	 * @param currentDate
+	 * @param n
+	 * @return
+	 */
+	public static Date AddSeconds(Date currentDate, int n) {
+		try {
+			Date resultDate = new Date();
+			Calendar cd = Calendar.getInstance();
+			cd.setTime(currentDate);
+			cd.add(Calendar.SECOND, n);
+			resultDate = cd.getTime();
+
+			return resultDate;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	/**
+	 * 在指定的日期上加天数
+	 * 
+	 * @param currentDate
+	 * @param n
+	 * @return
+	 */
+	public static Date AddDays(Date currentDate, int n) {
+		try {
+			Date resultDate = new Date();
+			Calendar cd = Calendar.getInstance();
+			cd.setTime(currentDate);
+			cd.add(Calendar.DATE, n);
+			resultDate = cd.getTime();
+
+			return resultDate;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
+	 * 在指定的日期上加周数
+	 * 
+	 * @param currentDate
+	 * @param n
+	 * @return
+	 */
+	public static Date AddWeeks(Date currentDate, int n) {
+		return AddDays(currentDate, n * 7);
+	}
+
+	/**
+	 * 在指定的日期上加季度数
+	 * 
+	 * @param currentDate
+	 * @param n
+	 * @return
+	 */
+	public static Date AddQuarter(Date currentDate, int n) {
+		return AddMonths(currentDate, n * 3);
+	}
+
+	/**
+	 * 获取日期当月最大天数
+	 * 
+	 * @param currentDate
+	 * @return
+	 */
+	public static int GetMaxDayofMonth(Date dt) {
+		Calendar cd = Calendar.getInstance();
+		cd.setTime(dt);
+		int maxDay = cd.getActualMaximum(Calendar.DAY_OF_MONTH);
+		return maxDay;
+	}
+
+	/**
+	 * 获取日期当前旬最大天数
+	 * 
+	 * @param dt
+	 * @return
+	 */
+	public static int GetMaxDayofXun(Date dt) {
+		int maxDayofXun = 10;
+		int day = GetDayOfMonth(dt);
+		int maxDayofMonth = GetMaxDayofMonth(dt);
+		if (day >= 21)
+			maxDayofXun = maxDayofMonth - 20;
+		return maxDayofXun;
+	}
+
+	/**
+	 * 计算日期所在月中的旬,从1开始计数
+	 * 
+	 * @param dt
+	 * @return
+	 */
+	public static int GetXunOfMonth(Date dt) {
+		int xun = 1;
+		int day = GetDayOfMonth(dt);
+		if (day <= 10)
+			xun = 1;
+		else if (day >= 11 && day <= 20)
+			xun = 2;
+		else if (day >= 21)
+			xun = 3;
+		return xun;
+	}
+
+	/**
+	 * 获取日期所在月的第几天
+	 * 
+	 * @param dt
+	 * @return
+	 */
+	public static int GetDayOfMonth(Date dt) {
+		Calendar c = Calendar.getInstance();
+		c.setTime(dt);
+
+		int day = c.get(Calendar.DAY_OF_MONTH);
+		return day;
+	}
+
+	/**
+	 * 获取日期在旬的第几天
+	 * 
+	 * @param dt
+	 * @return
+	 */
+	public static int GetDayOfXun(Date dt) {
+		int day = GetDayOfMonth(dt);
+		int dayOfXun = 1;
+		if (day <= 10)
+			dayOfXun = day;
+		else if (day <= 20)
+			dayOfXun = day - 10;
+		else
+			dayOfXun = day - 20;
+		return dayOfXun;
+	}
+
+	/**
+	 * 在指定的日期上加旬数，如果加完旬后当前月没有该天就返回当月的最后一天
+	 * 
+	 * @param currentDate
+	 * @param n
+	 * @return
+	 */
+	public static Date AddXuns(Date currentDate, int n) {
+		try {
+
+			// 基准日期所在旬的第几天
+			int beginDayofXun = GetDayOfXun(currentDate);
+
+			// 离开基准的月数
+			int monthCount = n / 3;
+			// 离基准除掉月数后剩余的旬数
+			int xunCountMode = n % 3;
+			// 基准日期所在旬的第一天对应日期
+			Date beginTempDate = AddDays(currentDate, 0 - beginDayofXun + 1);
+
+			// 开始计算加旬后对应旬第一天日期
+			Date endTempDate = AddMonths(beginTempDate, monthCount);
+			// 每旬最多11天，离基准除掉月数后剩余的旬包含最大天数，dayTemp最多22天
+			int dayTemp = xunCountMode * 11;
+			// 注意旬第一天加上dayTemp不会垮月
+			endTempDate = AddDays(endTempDate, dayTemp);
+			int dayofXunTemp = GetDayOfXun(endTempDate);
+			// 结束加旬后对应旬第一天日期
+			endTempDate = AddDays(endTempDate, 0 - dayofXunTemp + 1);
+			// 加旬后对应旬的最大天数
+			int endmaxDay = GetMaxDayofXun(endTempDate);
+
+			dayTemp = beginDayofXun - 1;
+			if (dayTemp > endmaxDay)
+				dayTemp = endmaxDay;
+
+			Date resultDate = AddDays(endTempDate, dayTemp);
+
+			return resultDate;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	/**
+	 * 在指定的日期上加月数
+	 * 
+	 * @param currentDate
+	 * @param n
+	 * @return
+	 */
+	public static Date AddMonths(Date currentDate, int n) {
+		try {
+			Date resultDate = new Date();
+			Calendar cd = Calendar.getInstance();
+			cd.setTime(currentDate);
+			cd.add(Calendar.MONTH, n);
+			resultDate = cd.getTime();
+
+			return resultDate;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	/**
+	 * 当前日期前减几天
+	 * 
+	 * @param currentDate
+	 * @param date
+	 * @return
+	 */
+	public static String beforeDate(int date) {
+		try {
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(df.parse(getDateNow()));
+			calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - date);
+			String timeBefore = df.format(calendar.getTime());
+			return timeBefore;
+		} catch (ParseException e) {
+			return null;
+		}
+	}
+
+	/**
+	 * 获取当前时间（format:yyyy-MM-dd HH:mm:ss）
+	 * 
+	 * @return
+	 */
+	@SuppressLint("SimpleDateFormat")
+	public static String getDateTimeNow() {
+
+		Date date = new Date();
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String curDate = format.format(date);
+
+		// String curDate = DateTimeHelper.DateToString(
+		// new java.util.Date(System.currentTimeMillis()),
+		// "yyyy-MM-dd HH:mm:ss");
+		return curDate;
+	}
+
+	/**
+	 * 获取当前时间（format:yyyyMMddHHmmss）
+	 * 
+	 * @return
+	 */
+	public static String getDateTimeNow1() {
+		String curDate = DateTimeHelper.DateToString(
+				new java.util.Date(System.currentTimeMillis()),
+				"yyyyMMddHHmmss");
+		return curDate;
+	}
+
+	/**
+	 * 获取当前时间（format:yyyyMMddHH）
+	 * 
+	 * @return
+	 */
+	public static String getDateTimeNow2() {
+		String curDate = DateTimeHelper.DateToString(
+				new java.util.Date(System.currentTimeMillis()), "yyyyMMddHH");
+		return curDate;
+	}
+	
+	/**
+	 * 获取当前时间（format:yyyyMMdd）
+	 * 
+	 * @return
+	 */
+	public static String getDateTimeNow3() {
+		String curDate = DateTimeHelper.DateToString(
+				new java.util.Date(System.currentTimeMillis()), "yyyyMMdd");
+		return curDate;
+	}
+
+	/**
+	 * 获取当前日期（format:yyyy-MM-dd）
+	 * 
+	 * @return
+	 */
+	public static String getDateNow() {
+		String curDate = DateTimeHelper.DateToString(
+				new java.util.Date(System.currentTimeMillis()), "yyyy-MM-dd");
+		return curDate;
+	}
+
+	/**
+	 * 获取当前日期（format:HH:mm）
+	 * 
+	 * @return
+	 */
+	public static String getTimeNow() {
+		String curDate = DateTimeHelper.DateToString(
+				new java.util.Date(System.currentTimeMillis()), "HH:mm");
+		return curDate;
+	}
+
+	/**
+	 * 获取当前日期（format:HH:mm:ss）
+	 * 
+	 * @return
+	 */
+	public static String getTimeNow1() {
+		String curDate = DateTimeHelper.DateToString(
+				new java.util.Date(System.currentTimeMillis()), "HH:mm:ss");
+		return curDate;
+	}
+
+	/**
+	 * 时间字符串格式转换
+	 * 
+	 * @param datetimeString
+	 *            原时间字符串
+	 * @param datetimeformat
+	 *            转换完成后的时间格式
+	 * @return
+	 */
+	public static String TransDateTime(String datetimeString,
+			String datetimeformat) {
+		String curDate = DateTimeHelper.DateToString(
+				StringToDate(datetimeString), datetimeformat);
+		return curDate;
+	}
+
+	/**
+	 * 获取年
+	 * 
+	 * @param date
+	 * @return
+	 */
+	public static Integer getYear(Date date) {
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		int year = c.get(Calendar.YEAR);
+		return year;
+	}
+
+	/**
+	 * 获取月
+	 * 
+	 * @param date
+	 * @return
+	 */
+	public static Integer getMonth(Date date) {
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		int month = c.get(Calendar.MONTH);
+		return month + 1;
+	}
+
+	/**
+	 * 获取日
+	 * 
+	 * @param date
+	 * @return
+	 */
+	public static Integer getDay(Date date) {
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		int day = c.get(Calendar.DATE);
+		return day;
+	}
+
+	// 计算两个时间差几天
+	public static Integer getDiffDays(Date start, Date end) {
+		long nd = 1000 * 24 * 60 * 60;
+		long diff = end.getTime() - start.getTime();
+		long day = diff / nd;
+
+		return (int) day;
+	}
+
+	// 计算两个时间差几天(只计算天数)
+	@SuppressWarnings("deprecation")
+	public static int getDiffDays(String Last, String his) {
+		Date endData;
+		Date startData;
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			startData = sdf.parse(Last);
+			endData = sdf.parse(his);
+			GregorianCalendar cal1 = new GregorianCalendar();
+			GregorianCalendar cal2 = new GregorianCalendar();
+			cal1.setTime(startData);
+			cal2.setTime(endData);
+			double dayCount1 = (cal1.getTimeInMillis() - cal2.getTimeInMillis())
+					/ (1000 * 3600 * 24);// 从间隔毫秒变成间隔天数
+			dayCount = new Double(dayCount1).intValue();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dayCount;
+	}
+
+	// 计算两个时间差几小时
+	public static Integer getDiffHours(Date start, Date end) {
+		long nd = 1000 * 24 * 60 * 60;
+		long nh = 1000 * 60 * 60;
+		long diff = end.getTime() - start.getTime();
+		long hour = diff % nd / nh + diff / nd * 24;
+
+		return (int) hour;
+	}
+
+	// 计算两个时间差几分钟
+	public static Integer getDiffMins(Date start, Date end) {
+		long nd = 1000 * 24 * 60 * 60;
+		long nh = 1000 * 60 * 60;
+		long nm = 1000 * 60;
+		long diff = end.getTime() - start.getTime();
+		long min = diff % nd % nh / nm + diff / nd * 24 * 60;
+
+		return (int) min;
+	}
+
+	// 计算两个时间差几秒钟
+	public static Integer getDiffSeconds(Date start, Date end) {
+		long nd = 1000 * 24 * 60 * 60;
+		long nh = 1000 * 60 * 60;
+		long nm = 1000 * 60;
+		long ns = 1000;
+		long diff = end.getTime() - start.getTime();
+		long sec = diff % nd % nh % nm / ns;
+
+		return (int) sec;
+	}
+
+	/**
+	 * 判断当前日期是星期几
+	 * 
+	 * @param pTime
+	 *            设置的需要判断的时间 //格式如2012-09-08
+	 * 
+	 * @return dayForWeek 判断结果
+	 * @Exception 发生异常
+	 */
+
+	// String pTime = "2012-03-12";
+	public static String getWeek(String pTime) {
+		Context context = AppContext.baseContext;
+		String Week = "";
+
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar c = Calendar.getInstance();
+		try {
+
+			c.setTime(format.parse(pTime));
+
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (c.get(Calendar.DAY_OF_WEEK) == 1) {
+			Week += context.getString(R.string.date_week_weekday);
+		}
+		if (c.get(Calendar.DAY_OF_WEEK) == 2) {
+			Week += context.getString(R.string.date_week_monday);
+		}
+		if (c.get(Calendar.DAY_OF_WEEK) == 3) {
+			Week += context.getString(R.string.date_week_tuesday);
+		}
+		if (c.get(Calendar.DAY_OF_WEEK) == 4) {
+			Week += context.getString(R.string.date_week_wednesday);
+		}
+		if (c.get(Calendar.DAY_OF_WEEK) == 5) {
+			Week += context.getString(R.string.date_week_thursday);
+		}
+		if (c.get(Calendar.DAY_OF_WEEK) == 6) {
+			Week += context.getString(R.string.date_week_friday);
+		}
+		if (c.get(Calendar.DAY_OF_WEEK) == 7) {
+			Week += context.getString(R.string.date_week_saturday);
+		}
+		return Week;
+	}
+
+	/**
+	 * 两个时间相差距离多少天多少小时多少分多少秒
+	 * 
+	 * @param str1
+	 *            时间参数 1 格式：1990-01-01 12:00:00
+	 * @param str2
+	 *            时间参数 2 格式：2009-01-01 12:00:00
+	 * @return long[] 返回值为：{天, 时, 分, 秒}
+	 */
+	public static long[] getDistanceTimes(String str1, String str2) {
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date one;
+		Date two;
+		long day = 0;
+		long hour = 0;
+		long min = 0;
+		long sec = 0;
+		try {
+			one = df.parse(str1);
+			two = df.parse(str2);
+			long time1 = one.getTime();
+			long time2 = two.getTime();
+			long diff;
+			if (time1 < time2) {
+				diff = time2 - time1;
+			} else {
+				diff = time1 - time2;
+			}
+			day = diff / (24 * 60 * 60 * 1000);
+			hour = (diff / (60 * 60 * 1000) - day * 24);
+			min = ((diff / (60 * 1000)) - day * 24 * 60 - hour * 60);
+			sec = (diff / 1000 - day * 24 * 60 * 60 - hour * 60 * 60 - min * 60);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		long[] times = { day, hour, min, sec };
+		return times;
+	}
+
+	/**
+     * 判断给定字符串时间是否为今日
+     * @param sdate
+     * @return boolean
+     */
+    public static boolean isToday(String sdate){
+        boolean b = false;
+        Date time = StringToDate(sdate,"yyyy-MM-dd'T'HH:mm:ss");
+        Date today = new Date();
+        if(time != null){
+            String nowDate = dateFormater2.get().format(today);
+            String timeDate = dateFormater2.get().format(time);
+            if(nowDate.equals(timeDate)){
+                b = true;
+            }
+        }
+        return b;
+    }
+    private final static ThreadLocal<SimpleDateFormat> dateFormater2 = new ThreadLocal<SimpleDateFormat>() {
+        @Override
+        protected SimpleDateFormat initialValue() {
+            return new SimpleDateFormat("yyyy-MM-dd");
+        }
+    };
+    
+    public static void setSystemDatatime(long sysdatetime) {
+    	if (sysdatetime > 0) {
+			long timeSpan = sysdatetime - System.currentTimeMillis();
+			if (Math.abs(timeSpan) > 1000 * 60) {
+				SystemControlHelper.setSystemDatatime(sysdatetime);
+			}
+		}
+    }
+}

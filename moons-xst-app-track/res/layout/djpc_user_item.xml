@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/btn_selected"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/user_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/image_marginLeft"
+        android:src="@drawable/icon_djpcuser"
+        android:scaleType="matrix" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="@dimen/texttoimage_marginLeft"
+        android:layout_toRightOf="@id/user_icon"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/layout_title"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/widget_listview_title2"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center|left"
+                android:paddingLeft="4dp"
+                android:singleLine="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="25dp"
+            android:layout_below="@id/layout_title"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_tv_number"
+                style="@style/widget_listview_subdesc"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:gravity="top|left"
+                android:paddingLeft="3dip" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

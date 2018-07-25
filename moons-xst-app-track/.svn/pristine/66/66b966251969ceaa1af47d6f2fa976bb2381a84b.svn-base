@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    style="@style/widget_listview_Item"
+    android:orientation="horizontal" 
+  	android:layout_height="60dip"
+	>   
+	
+	<RelativeLayout 
+		android:id="@+id/tt_list_itemicon" 
+	  	android:layout_width="60dip" 
+	  	android:layout_height="60dip"
+	  	android:layout_alignParentLeft="true"
+	  	android:layout_alignParentTop="true"
+	    android:layout_gravity="center_vertical"
+	  	android:gravity="center"
+	  	>     
+	  	
+        <ImageView 
+            android:id="@+id/icon_point"
+	      	android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content"
+			android:scaleType="matrix"
+	        android:layout_marginLeft="2dip"
+	        android:layout_gravity="center_vertical"
+	        />	  	
+    </RelativeLayout>
+    
+	<RelativeLayout 
+		android:id="@+id/tt_list_itemdesc" 
+	  	android:layout_width="match_parent" 
+	  	android:layout_height="60dip"
+	  	android:layout_toRightOf="@id/tt_list_itemicon"
+	  	android:layout_alignParentRight="true"
+	  	android:orientation="vertical" 
+	  	>     
+	  	
+	    <RelativeLayout 
+	        android:id="@+id/tt_list_itemdesc_title" 
+	        android:layout_width="match_parent"  
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal" 
+	        android:layout_alignParentTop="true"
+	        >
+	
+	    
+		    <TextView android:id="@+id/tt_list_listitem_title" 
+		        style="@style/widget_listview_title2"
+		        android:layout_width="fill_parent" 
+		     	android:layout_height="wrap_content"
+		     	android:paddingTop="5dp"
+		     	android:singleLine="true"/>  
+		    
+	   	</RelativeLayout>
+	
+	    <RelativeLayout 
+	        android:layout_width="match_parent"  
+	        android:layout_height="match_parent"
+	    	android:orientation="horizontal" 
+	    	android:layout_below="@id/tt_list_itemdesc_title"
+	    	android:layout_marginTop="4dip"
+	        >   
+	       	
+	        
+			<ImageView 
+			    android:id="@+id/tt_list_itemdesc_crename" 
+		      	android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentLeft="true"
+	           	android:layout_gravity="center_vertical"
+		        android:src="@drawable/count_idpod_icon"/>
+	        
+	       	<TextView android:id="@+id/tt_list_listitem_crename"  
+	    		android:layout_width="wrap_content" 
+	           	android:layout_height="wrap_content" 
+	           	android:layout_toRightOf="@id/tt_list_itemdesc_crename"
+	           	android:layout_gravity="center_vertical"
+	           	style="@style/widget_listview_subdesc"
+	            />
+	
+	       	
+			<ImageView 
+			    android:id="@+id/tt_list_itemdesc_time" 
+		      	android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content"
+	           	android:layout_toRightOf="@id/tt_list_listitem_crename"
+		        android:layout_marginLeft="10dip"
+	           	android:layout_gravity="center_vertical"
+		        android:src="@drawable/count_plan_icon"/>
+	       			        
+	       	<TextView android:id="@+id/tt_list_listitem_time"  
+	    		android:layout_width="wrap_content" 
+	           	android:layout_height="wrap_content" 
+	           	android:layout_toRightOf="@id/tt_list_itemdesc_time"
+	           	android:layout_marginLeft="3dip"
+	           	android:layout_gravity="center_vertical"
+	           	style="@style/widget_listview_subdesc"
+	            />
+	       			
+	    </RelativeLayout>	    
+	    
+    </RelativeLayout>	
+	
+
+
+</RelativeLayout> 

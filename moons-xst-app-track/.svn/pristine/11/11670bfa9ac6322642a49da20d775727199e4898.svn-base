@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:layout_marginTop="40dip"
+    android:orientation="vertical" >
+    <RelativeLayout
+        android:id="@+id/track_listmode_line"
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:background="@drawable/category"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/track_listmode_line_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center_vertical|left"
+            android:text="@string/track_listmode_line_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/track_listmode_line_Value"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical|left"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@id/track_listmode_line_Name"
+            android:textSize="@dimen/text_size_16"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/track_listmode_currcp"
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:background="@drawable/category"
+        android:layout_below="@+id/track_listmode_line"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/track_listmode_currcp_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center_vertical|left"
+            android:text="@string/track_listmode_currcp_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/track_listmode_currcp_Value"
+            android:layout_width="225dip"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical|left"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@id/track_listmode_currcp_Name"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/track_listmode_cplist_Title"
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:background="@drawable/category"
+        android:layout_below="@+id/track_listmode_currcp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/track_listmode_cplist_Name"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:text="@string/track_listmode_cplist_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_track_listmode_cplist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/track_initcheckpoint_CheckPointTitle"
+        android:layout_weight="1.14"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/track_listmode_cplist"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:cacheColorHint="#0000"
+            android:divider="@null"
+            android:dividerHeight="5dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:stackFromBottom="false" >
+        </ListView>
+    </RelativeLayout>
+</LinearLayout>

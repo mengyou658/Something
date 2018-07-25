@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/widget_listview_Item"
+    android:orientation="horizontal" 
+    android:descendantFocusability="blocksDescendants"
+  	android:layout_height="80dip">
+    
+    <RelativeLayout 
+		android:id="@+id/layout_walkie_talkie_setting_itemicon" 
+	  	android:layout_width="50dip" 
+	  	android:layout_height="80dip"
+	  	android:layout_alignParentLeft="true"
+	  	android:layout_alignParentTop="true"
+	    android:layout_gravity="center_vertical"
+	  	android:gravity="center"
+	  	>     
+	  	
+        <ImageView 
+            android:id="@+id/walkie_talkie_setting_listitem_icon"
+	      	android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content"
+			android:scaleType="matrix"
+	        android:layout_marginLeft="2dip"
+	        android:layout_gravity="center_vertical"
+	        android:src="@drawable/icon_walkie_talk_blue"
+	        />	  	
+    </RelativeLayout>
+    
+    <RelativeLayout 
+        android:id="@+id/layout_walkie_talkie_setting_deleteicon"
+	  	android:layout_width="50dip" 
+	  	android:layout_height="80dip"
+	  	android:layout_alignParentRight="true"
+	  	android:layout_alignParentTop="true"
+	    android:layout_gravity="center_vertical"
+	    android:clickable="true"
+	  	android:gravity="center"
+	  	>   
+	  	<ImageView 
+            android:id="@+id/walkie_talkie_setting_btn_delete"
+	      	android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content"
+			android:scaleType="matrix"
+	        android:layout_marginLeft="2dip"
+	        android:layout_gravity="center_vertical"
+	        android:src="@drawable/icon_dustbin"
+	        />
+	  	</RelativeLayout>
+    
+    <RelativeLayout 
+	  	android:layout_width="match_parent" 
+	  	android:layout_height="80dip"
+	  	android:layout_toRightOf="@id/layout_walkie_talkie_setting_itemicon"
+	  	android:layout_toLeftOf="@id/layout_walkie_talkie_setting_deleteicon"
+	  	android:orientation="vertical" 
+	  	>   
+	  	
+	    <RelativeLayout 
+	        android:id="@+id/layout_walkie_talkie_setting_itemdesc_title" 
+	        android:layout_width="match_parent"  
+	        android:layout_height="50dip"
+	        android:orientation="horizontal" 
+	        android:layout_alignParentTop="true"
+	        >
+	
+		    <TextView
+		        android:id="@+id/walkie_talkie_setting_listitem_title"
+		        style="@style/widget_listview_title2"
+		        android:layout_width="fill_parent"
+		        android:layout_height="50dip"
+		        android:singleLine="true"
+		        android:textSize="@dimen/text_size_22" />
+		    
+	   	</RelativeLayout>
+	
+	    <RelativeLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="30dip"
+	        android:layout_below="@id/layout_walkie_talkie_setting_itemdesc_title"
+	        android:layout_marginTop="4dip"
+	        android:orientation="horizontal" >
+            <CheckBox
+                android:id="@+id/walkie_talkie_setting_chk_setting" 
+                android:layout_width="100dp" 
+		        android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dip"
+                android:layout_gravity="center_vertical"
+                android:text="@string/walkie_talkie_setting_defaultvalue"
+                android:textColor= "@color/gray"
+                style="@style/App.Preference.CheckBox"
+                android:checked="false"
+                android:textSize="@dimen/text_size_15"/>
+			<ImageView 
+			    android:id="@+id/comm_walkie_talkie_setting_frequencyicon" 
+		      	android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content"
+	           	android:layout_toRightOf="@id/walkie_talkie_setting_chk_setting"
+	           	android:layout_gravity="center_vertical"
+		        android:src="@drawable/icon_frequency"/>
+	       	
+	       	<TextView
+	       	    android:id="@+id/walkie_talkie_setting_frequency"
+	       	    style="@style/widget_listview_subdesc"
+	       	    android:layout_width="wrap_content"
+	       	    android:layout_height="wrap_content"
+	       	    android:layout_gravity="center_vertical"
+	       	    android:layout_marginLeft="3dip"
+	       	    android:layout_toRightOf="@id/comm_walkie_talkie_setting_frequencyicon"
+	       	    android:textSize="@dimen/text_size_16"/>
+
+	    </RelativeLayout>	
+	  </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/app_start_pad_view"
+    android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:gravity="bottom"
+    android:background="@drawable/pad_start_background">
+
+    <TextView
+        android:id="@+id/start_app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="190dp"
+        android:text="@string/main_about_appnamePAD"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold" />
+
+    <TextView 
+        android:id="@+id/about_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="30dip"
+        android:textColor="@color/white"
+        android:text="Version：1.0.0"/>
+</FrameLayout>

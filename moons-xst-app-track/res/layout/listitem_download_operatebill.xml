@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/widget_listview_Item"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal" >
+    
+    <RelativeLayout 
+		android:id="@+id/layout_download_operatebill_chk_setting" 
+	  	android:layout_width="50dip" 
+	  	android:layout_height="60dip"
+	  	android:layout_alignParentRight="true"
+	  	>
+	    <CheckBox
+	        android:id="@+id/download_operatebill_chk_setting" 
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="15dp"
+	        android:layout_centerInParent="true"
+	        style="@style/App.Preference.CheckBox"
+	        android:checked="false"/>
+	</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@id/layout_download_operatebill_chk_setting">
+        <TextView 
+            android:id="@+id/download_operatebill_listitem_operatebill_code"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:paddingLeft="15dp"
+            android:maxLines="1"
+            android:gravity="left|bottom"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_18"/>
+        <TextView 
+            android:id="@+id/download_operatebill_listitem_operatebill_content"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@id/download_operatebill_listitem_operatebill_code"
+            android:paddingLeft="15dp"
+            android:maxLines="1"
+            android:gravity="left|top"
+            android:textColor="@color/listitem_bulewhite"
+            android:textSize="@dimen/text_size_14"/>
+    </RelativeLayout>
+</RelativeLayout>

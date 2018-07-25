@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/title_bar" >
+
+        <ImageButton
+            android:id="@+id/home_head_Rebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:background="@color/full_transparent"
+            android:src="@drawable/arrow_left" />
+
+        <TextView
+            android:id="@+id/ll_head_title"
+            style="@style/main_head_title"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:text="@string/commu_djpc_standardization_title" />
+
+        <ImageButton
+            android:id="@+id/query_djline_serach"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:background="@color/full_transparent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/search" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_user"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:divider="@color/graywhite"
+        android:dividerHeight="1px" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/graywhite" />
+
+</LinearLayout>

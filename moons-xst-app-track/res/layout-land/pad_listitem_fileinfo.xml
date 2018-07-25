@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    style="@style/widget_listview_Item"
+    android:orientation="horizontal" 
+    android:background="#00000000"
+	>        
+    <ImageView
+  	 	android:id="@+id/djline_listitem_icon"
+        android:layout_width="20dp"
+       	android:layout_height="20dp"        	     	
+       	android:scaleType="fitCenter"
+       	android:layout_centerVertical="true"
+       	android:layout_alignParentLeft="true"
+    	android:layout_marginLeft="@dimen/image_marginLeft"/> 	  	  
+	<RelativeLayout 
+		android:id="@+id/layout_djline_itemdesc" 
+	  	android:layout_width="match_parent" 
+	  	android:layout_height="35dip"
+	  	android:layout_toRightOf="@id/djline_listitem_icon"
+	  	android:layout_alignParentRight="true"
+	  	android:layout_marginLeft ="@dimen/texttoimage_marginLeft"
+	  	android:orientation="vertical" 
+	  	>     
+	  	
+	    <RelativeLayout 
+	        android:id="@+id/layout_djline_itemdesc_title" 
+	        android:layout_width="match_parent" 
+		  	android:layout_height="wrap_content"
+		  	android:layout_alignParentRight="true"
+		  	android:orientation="vertical" 
+	        >
+	
+	    
+		    <TextView android:id="@+id/djline_listitem_title" 
+		        style="@style/pad_home_listview_des_style"
+		        android:layout_width="fill_parent" 
+		     	android:layout_height="wrap_content"
+		     	android:padding="2dp" 
+		     	android:singleLine="true"/>     	    
+	   	</RelativeLayout>
+	
+	    <RelativeLayout 
+	        android:layout_width="fill_parent"  
+	        android:layout_height="match_parent"
+	    	android:orientation="horizontal" 
+	    	android:layout_below="@id/layout_djline_itemdesc_title"
+	    	android:layout_marginTop="2dip"
+	        >   
+	       	
+	        
+			<ImageView 
+			    android:id="@+id/djline_itemdesc_idposicon" 
+		      	android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentLeft="true"
+	           	android:layout_gravity="center_vertical"
+	           	android:layout_marginLeft="3dip"/>
+	        
+	       	<TextView android:id="@+id/djline_listitem_IDCount"  
+	    		android:layout_width="wrap_content" 
+	           	android:layout_height="wrap_content" 
+	           	android:layout_toRightOf="@id/djline_itemdesc_idposicon"
+	           	android:layout_gravity="center_vertical"
+	           	style="@style/widget_listview_subdesc"
+	            />
+	
+	       	
+			<ImageView 
+			    android:id="@+id/djline_itemdesc_planicon" 
+		      	android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content"
+	           	android:layout_toRightOf="@id/djline_listitem_IDCount"
+		        android:layout_marginLeft="10dip"
+	           	android:layout_gravity="center_vertical"/>
+	       			        
+	       	<TextView android:id="@+id/djline_listitem_PlanCount"  
+	    		android:layout_width="wrap_content" 
+	           	android:layout_height="wrap_content" 
+	           	android:layout_toRightOf="@id/djline_itemdesc_planicon"
+	           	android:layout_marginLeft="3dip"
+	           	android:layout_gravity="center_vertical"
+	           	style="@style/widget_listview_subdesc"
+	            />
+			<ImageView 
+			    android:id="@+id/djline_itemdesc_timeicon" 
+		      	android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content"
+	           	android:layout_toRightOf="@id/djline_listitem_PlanCount"
+		        android:layout_marginLeft="10dip"
+	           	android:layout_gravity="center_vertical"
+		        android:src="@drawable/count_time_icon"/>
+	       	
+	       					
+	       	<TextView android:id="@+id/djline_listitem_BuildTime"  
+	    		android:layout_width="wrap_content" 
+	           	android:layout_height="wrap_content"
+	           	android:layout_toRightOf="@id/djline_itemdesc_timeicon"
+	           	android:layout_marginLeft="3dip" 
+	           	android:layout_gravity="center_vertical"
+	           	style="@style/pad_home_listview_subdesc_style"
+	            />
+	       			
+	    </RelativeLayout>	    
+	    
+    </RelativeLayout>	
+	
+
+
+</RelativeLayout> 

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/setting_jitupload_head"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:background="@drawable/title_bar" >
+
+        <ImageButton
+            android:id="@+id/home_head_Rebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:background="@color/full_transparent"
+            android:src="@drawable/arrow_left" />
+
+        <TextView
+            android:id="@+id/setting_jitupload_head_title"
+            style="@style/main_head_title"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:text="@string/setting_jitupload_head_title" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_setting_jitupload_yn"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/ll_setting_jitupload_yn_checked"
+            android:layout_width="60dp"
+            android:layout_height="50dip"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical" >
+
+            <com.moons.xst.track.widget.SlipButton
+                android:id="@+id/setting_jitupload_checked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="20dip" >
+            </com.moons.xst.track.widget.SlipButton>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ll_setting_jitupload_desc"
+            android:layout_width="fill_parent"
+            android:layout_height="50dip"
+            android:layout_toLeftOf="@+id/ll_setting_jitupload_yn_checked"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/setting_jitupload_desc"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="10dp"
+                android:gravity="bottom|left"
+                android:text="@string/setting_jitupload"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:id="@+id/setting_jitupload_state"
+                android:layout_width="fill_parent"
+                android:layout_height="20dip"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/setting_jitupload_desc"
+                android:layout_marginLeft="12dp"
+                android:gravity="center|left"
+                android:text="@string/setting_jitupload_state_on"
+                android:textSize="@dimen/text_size_12" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <include layout="@layout/separationline_horizontal" />
+
+    <RelativeLayout
+        android:id="@+id/rl_layout_xdjresult"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" >
+
+        <com.moons.xst.track.widget.SlipButton
+            android:id="@+id/setting_jitupload_xdjresult_checked"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dip" >
+        </com.moons.xst.track.widget.SlipButton>
+
+        <TextView
+            android:id="@+id/textview_jitupload_xdjresult"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/setting_jitupload_xdjresult_checked"
+            android:gravity="left|center"
+            android:paddingLeft="25dp"
+            android:text="@string/setting_jitupload_xdjresult"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        layout="@layout/separationline_horizontal" />
+
+    <LinearLayout
+        android:id="@+id/ll_setting_jitupload_once_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/re_setting_jitupload_once_number"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/jituploadoncenumber" >
+
+            <RelativeLayout
+                android:id="@+id/re_setting_jitupload_xxonce_number"
+                android:layout_width="187dp"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@+id/tv_setting_jitupload_once_number"
+                android:background="#fffafa" >
+
+                <EditText
+                    android:id="@+id/setting_jitupload_once_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:background="@null"
+                    android:maxLines="1"
+                    android:maxLength="3"
+                    android:numeric="integer"
+                    android:selectAllOnFocus="true"
+                    android:singleLine="true"
+                    android:textSize="@dimen/text_size_16" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_setting_jitupload_once_number"
+                android:layout_width="wrap_content"
+                android:layout_height="20dip"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="35dp"
+                android:text="@string/setting_jitupload_once_unmber_title"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+        </RelativeLayout>
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="35dp"
+            layout="@layout/separationline_horizontal" />
+
+        <RelativeLayout
+            android:id="@+id/re_setting_jitupload_once_upload_time"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/jituploadoncenumber" >
+
+            <EditText
+                android:id="@+id/setting_jitupload_once_upload_time"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/tv_setting_jitupload_once_upload_time"
+                android:background="@null"
+                android:focusableInTouchMode="true"
+                android:maxLines="1"
+                android:numeric="integer"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:id="@+id/tv_setting_jitupload_once_upload_time"
+                android:layout_width="wrap_content"
+                android:layout_height="20dip"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="35dp"
+                android:text="@string/setting_jitupload_once_upload_time_title"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        layout="@layout/separationline_horizontal" />
+
+    <RelativeLayout
+        android:id="@+id/rl_layout_xxresult"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" >
+
+        <com.moons.xst.track.widget.SlipButton
+            android:id="@+id/setting_jitupload_xxresult_checked"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dip" >
+        </com.moons.xst.track.widget.SlipButton>
+
+        <TextView
+            android:id="@+id/textview_jitupload_xxresult"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/setting_jitupload_xxresult_checked"
+            android:gravity="left|center"
+            android:paddingLeft="25dp"
+            android:text="@string/setting_jitupload_xxresult"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+
+    <include
+        layout="@layout/separationline_horizontal"
+        android:background="@color/gray" />
+    
+    <LinearLayout
+        android:id="@+id/ll_setting_jitupload_xxonce_upload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/re_setting_jitupload_xxonce_upload_number"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#fffafa" >
+
+            <EditText
+                android:id="@+id/et_setting_jitupload_xxonce_upload"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tv_setting_jitupload_xxonce_upload"
+                android:background="@null"
+                android:layout_marginLeft="20dp"
+                android:text="@string/setting_jitupload_xdjresult_once_defaultload"
+                android:maxLines="1"
+                android:maxLength="3"
+                android:numeric="integer"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:id="@+id/tv_setting_jitupload_xxonce_upload"
+                android:layout_width="wrap_content"
+                android:layout_height="20dip"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="35dp"
+                android:text="@string/setting_jitupload_once_unmber_title"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+        </RelativeLayout>
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            layout="@layout/separationline_horizontal" />
+
+        <RelativeLayout
+            android:id="@+id/re_setting_jitupload_xxonce_upload_time"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#fffafa" >
+
+            <EditText
+                android:id="@+id/et_setting_jitupload_xxonce_upload_time"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tv_setting_jitupload_xxonce_upload_time"
+                android:background="@null"
+                android:layout_marginLeft="20dp"
+                android:text="@string/setting_jitupload_xxresult_defaultload_time"
+                android:maxLines="1"
+                android:numeric="integer"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:focusableInTouchMode="true"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:id="@+id/tv_setting_jitupload_xxonce_upload_time"
+                android:layout_width="wrap_content"
+                android:layout_height="20dip"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="35dp"
+                android:text="@string/setting_jitupload_once_upload_time_title"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+        </RelativeLayout>
+    </LinearLayout>
+   
+
+</LinearLayout>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/ll_query_hisresult_perplan_head"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/title_bar" >
+
+        <ImageButton
+            android:id="@+id/home_head_Rebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:background="@color/full_transparent"
+            android:src="@drawable/arrow_left" />
+
+        <TextView
+            android:id="@+id/query_hisresult_perplan_title"
+            style="@style/main_head_title"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:text="@string/query_data_hisresult" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_query_hisresult_perplan_plandesc"
+        android:layout_width="match_parent"
+        android:layout_height="80dip"
+        android:layout_below="@+id/view_1"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/djline_type_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/image_marginLeft"
+            android:background="@drawable/rate_star_big_on_holo_dark"
+            android:scaleType="matrix" />
+
+        <RelativeLayout
+            android:id="@+id/ll_1"
+            android:layout_width="15dip"
+            android:layout_height="50dip"
+            android:layout_toRightOf="@id/djline_type_icon" />
+
+        <TextView
+            android:id="@+id/query_data_line_Value"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toRightOf="@id/ll_1"
+            android:gravity="center|left"
+            android:maxLines="3"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:background="@color/graywhite" />
+    
+    <include layout="@layout/hisdata_chart_expandable_layout" />
+
+    <View
+        android:id="@+id/view_3"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:background="@color/graywhite" />
+
+    <RelativeLayout
+        android:id="@+id/ll_query_hisresult_perplan_hisresult"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/query_hisresult_perplan_hisresult"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="10dp"
+            android:gravity="center|left"
+            android:text="@string/query_data_hisresult"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+    <include layout="@layout/vertical_split_line_1dp" />
+    <RelativeLayout
+        android:id="@+id/ll_query_hisresult_perplan_listview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.14"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/query_hisresult_perplan_listview"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            style="@style/widget_listview2"
+	        android:cacheColorHint="@color/author_text"
+	        android:divider="@color/graywhite" >
+        </ListView>
+    </RelativeLayout>
+
+</LinearLayout>

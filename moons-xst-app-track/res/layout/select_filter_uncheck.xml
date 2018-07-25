@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#fff" >
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" >
+            <TextView
+                android:id="@+id/tv_login_othertype_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/statistics_select_conditions_idpos"
+                android:textSize="@dimen/text_size_15" />
+            <View  
+		        android:id="@+id/view_1"  
+		        android:layout_width="fill_parent"  
+		        android:layout_height="0.5dp"  
+		        android:layout_toLeftOf="@id/tv_login_othertype_desc"
+		        android:layout_marginLeft="15dp"
+		        android:layout_marginRight="15dp"
+		        android:layout_centerInParent="true"
+		        android:background="@color/graywhite"/>
+            <View  
+		        android:id="@+id/view_2"  
+		        android:layout_width="fill_parent"  
+		        android:layout_height="0.5dp"  
+		        android:layout_toRightOf="@id/tv_login_othertype_desc"
+		        android:layout_marginLeft="15dp"
+		        android:layout_marginRight="15dp"
+		        android:layout_centerInParent="true"
+		        android:background="@color/graywhite"/>
+        </RelativeLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/graywhite" />
+    <ListView
+        android:id="@+id/select_idpos_list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:dividerHeight="1px"
+        android:divider="@color/graywhite" >
+    </ListView>
+</LinearLayout>

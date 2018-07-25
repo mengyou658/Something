@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#fff"
+        android:orientation="vertical" >
+
+	<ScrollView 
+   		android:layout_width="fill_parent"
+   		android:layout_height="fill_parent"
+   		android:scrollbars="none"
+   		android:scrollbarStyle="outsideOverlay" 
+   		 >
+   		 
+        <LinearLayout
+            	android:layout_width="fill_parent"
+            	android:layout_height="wrap_content"
+            	android:orientation="vertical" >   		 
+
+        <LinearLayout
+            	android:layout_width="fill_parent"
+            	android:layout_height="40dip"
+            	android:background="@drawable/category"
+            	android:orientation="vertical" >   	    
+		    <TextView
+		    	android:id="@+id/home_txt_tipsdj"
+	         	android:layout_width="fill_parent" 
+	         	android:layout_height="fill_parent"
+	         	android:gravity="left|center" 
+		        android:layout_marginLeft="10dip"
+	         	android:textSize="@dimen/text_size_16"
+	         	android:textColor="@color/catefory_text" 
+	         	android:textStyle="bold" 
+		        android:text="系统工具"/>      		 
+	    </LinearLayout>            
+        
+		<RelativeLayout 
+		    android:id="@+id/ll_tools_readid"   				    
+   			style="@style/widget_listview_Item"
+            android:clickable="true"
+            android:onClick="btn_NFCScran" >
+             >
+            
+      		<ImageView
+      		    android:id="@+id/img_tools_readid"
+            	android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"        	     	
+        		android:scaleType="matrix"
+        		android:layout_centerVertical="true"
+        		android:layout_alignParentLeft="true"
+        		android:layout_marginLeft="@dimen/image_marginLeft"
+        		android:src="@drawable/widget_bar_readid" />    
+      		<RelativeLayout 
+						android:id="@+id/layout_memu_tools_nfc_itemdesc" 
+					  	android:layout_width="match_parent" 
+					  	android:layout_height="50dip"
+					  	android:layout_toRightOf="@id/img_tools_readid"
+					  	android:layout_alignParentRight="true"
+					  	android:orientation="vertical" 
+					  	android:layout_marginLeft ="@dimen/texttoimage_marginLeft"
+					  	>     
+					    <RelativeLayout 
+					        android:id="@+id/layout_memu_tools_capture_itemdesc_title" 
+					        android:layout_width="match_parent"  
+					        android:layout_height="wrap_content"
+					        android:orientation="horizontal" 
+					        android:layout_alignParentTop="true"
+					        >
+		    			<TextView
+			      		    style="@style/widget_listview_title2"
+			        		android:layout_width="wrap_content" 
+			        		android:layout_height="wrap_content"
+			        		android:layout_centerVertical="true"
+			        		android:padding="4dp" 
+			        		android:text="@string/main_menu_tools_readid"
+			        		/> 		    
+	   					</RelativeLayout>
+					    <RelativeLayout 
+					        android:layout_width="match_parent"  
+					        android:layout_height="match_parent"
+					    	android:orientation="horizontal" 
+					    	android:layout_below="@id/layout_memu_tools_capture_itemdesc_title"
+					    	android:layout_marginTop="2dip"
+					        >     	
+					       	<TextView
+					       	    style="@style/widget_memu_subdesc"
+					       	    android:layout_width="wrap_content"
+					       	    android:layout_height="wrap_content"
+					       	    android:layout_gravity="center_vertical"
+					       	    android:text="@string/main_menu_tools_readid_desc"
+					       	    android:layout_marginLeft="3dip" />    			
+					    </RelativeLayout>	    
+                        </RelativeLayout> 
+   		</RelativeLayout>
+   		 
+   		
+		<RelativeLayout     
+		    android:id="@+id/ll_tools_capture"
+   			style="@style/widget_listview_Item"
+            android:clickable="true"
+            android:onClick="btn_captureScran" >
+      		<ImageView
+      		    android:id="@+id/img_tools_capture"
+            	android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"        	     	
+        		android:scaleType="matrix"
+        		android:layout_centerVertical="true"
+        		android:layout_alignParentLeft="true"
+        		android:layout_marginLeft="@dimen/image_marginLeft"
+        		android:src="@drawable/widget_bar_scan" />  
+        	<RelativeLayout 
+						android:id="@+id/layout_memu_tools_capture_itemdesc" 
+					  	android:layout_width="match_parent" 
+					  	android:layout_height="50dip"
+					  	android:layout_toRightOf="@id/img_tools_capture"
+					  	android:layout_alignParentRight="true"
+					  	android:orientation="vertical" 
+					  	android:layout_marginLeft ="@dimen/texttoimage_marginLeft"
+					  	>     
+					    <RelativeLayout 
+					        android:id="@+id/layout_memu_tools_capture_itemdesc_title1" 
+					        android:layout_width="match_parent"  
+					        android:layout_height="wrap_content"
+					        android:orientation="horizontal" 
+					        android:layout_alignParentTop="true"
+					        >
+		    			<TextView
+			      		    style="@style/widget_listview_title2"
+			        		android:layout_width="wrap_content" 
+			        		android:layout_height="wrap_content"
+			        		android:layout_centerVertical="true"
+			        		android:padding="4dp" 
+			        		android:text="@string/main_menu_tools_capture"
+			        		/> 		    
+	   					</RelativeLayout>
+					    <RelativeLayout 
+					        android:layout_width="match_parent"  
+					        android:layout_height="match_parent"
+					    	android:orientation="horizontal" 
+					    	android:layout_below="@id/layout_memu_tools_capture_itemdesc_title1"
+					    	android:layout_marginTop="2dip"
+					        >     	
+					       	<TextView
+					       	    style="@style/widget_memu_subdesc"
+					       	    android:layout_width="wrap_content"
+					       	    android:layout_height="wrap_content"
+					       	    android:layout_gravity="center_vertical"
+					       	    android:text="@string/main_menu_tools_capture_desc"
+					       	    android:layout_marginLeft="3dip" />    			
+					    </RelativeLayout>	    
+                        </RelativeLayout>	
+   		</RelativeLayout>
+
+   		<RelativeLayout 
+   		    android:id="@+id/ll_tools_Carema"    
+   			style="@style/widget_listview_Item"
+            android:clickable="true"
+            android:onClick="btn_capture" >
+      		<ImageView
+      		    android:id="@+id/img_tools_Carema"
+            	android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"        	     	
+        		android:scaleType="matrix"
+        		android:layout_centerVertical="true"
+        		android:layout_alignParentLeft="true"
+        		android:layout_marginLeft="@dimen/image_marginLeft"
+        		android:src="@drawable/img_tools_carema" />  
+        	<RelativeLayout 
+						android:id="@+id/layout_memu_tool_Carema_itemdesc" 
+					  	android:layout_width="match_parent" 
+					  	android:layout_height="50dip"
+					  	android:layout_toRightOf="@id/img_tools_Carema"
+					  	android:layout_alignParentRight="true"
+					  	android:orientation="vertical" 
+					  	android:layout_marginLeft ="@dimen/texttoimage_marginLeft"
+					  	>     
+					    <RelativeLayout 
+					        android:id="@+id/layout_memu_tool_Carema_itemdesc_title" 
+					        android:layout_width="match_parent"  
+					        android:layout_height="wrap_content"
+					        android:orientation="horizontal" 
+					        android:layout_alignParentTop="true"
+					        >
+			    			<TextView
+				      		    style="@style/widget_listview_title2"
+				        		android:layout_width="wrap_content" 
+				        		android:layout_height="wrap_content"
+				        		android:layout_centerVertical="true"
+				        		android:padding="4dp" 
+				        		android:text="@string/main_menu_tools_Camera"
+	        		        />    		    
+	   					</RelativeLayout>
+					    <RelativeLayout 
+					        android:layout_width="match_parent"  
+					        android:layout_height="match_parent"
+					    	android:orientation="horizontal" 
+					    	android:layout_below="@id/layout_memu_tool_Carema_itemdesc_title"
+					    	android:layout_marginTop="2dip"
+					        >     	
+					       	<TextView
+					       	    style="@style/widget_memu_subdesc"
+					       	    android:layout_width="wrap_content"
+					       	    android:layout_height="wrap_content"
+					       	    android:layout_gravity="center_vertical"
+					       	    android:text="@string/main_menu_tools_Camera_desc"
+					       	    android:layout_marginLeft="3dip" />    			
+					    </RelativeLayout>	    
+                        </RelativeLayout>
+   		</RelativeLayout>
+   		<RelativeLayout     
+   		    android:id="@+id/ll_tools_Recorder"
+   			style="@style/widget_listview_Item"
+            android:clickable="true"
+            android:onClick="btn_recorder" >
+      		<ImageView
+      		    android:id="@+id/img_tools_Recorder"
+            	android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"        	     	
+        		android:scaleType="matrix"
+        		android:layout_centerVertical="true"
+        		android:layout_alignParentLeft="true"
+        		android:layout_marginLeft="@dimen/image_marginLeft"
+        		android:src="@drawable/widget_bar_recorder" />  
+        	<RelativeLayout 
+						android:id="@+id/layout_memu_Recorder_itemdesc" 
+					  	android:layout_width="match_parent" 
+					  	android:layout_height="50dip"
+					  	android:layout_toRightOf="@id/img_tools_Recorder"
+					  	android:layout_alignParentRight="true"
+					  	android:orientation="vertical" 
+					  	android:layout_marginLeft ="@dimen/texttoimage_marginLeft"
+					  	>     
+					    <RelativeLayout 
+					        android:id="@+id/layout_memu_Recorder_itemdesc_title" 
+					        android:layout_width="match_parent"  
+					        android:layout_height="wrap_content"
+					        android:orientation="horizontal" 
+					        android:layout_alignParentTop="true"
+					        >
+		    			<TextView
+			      		    style="@style/widget_listview_title2"
+			        		android:layout_width="wrap_content" 
+			        		android:layout_height="wrap_content"
+			        		android:layout_centerVertical="true"
+			        		android:padding="4dp" 
+			        		android:text="@string/main_menu_tools_Recorder"
+			        		/> 		    
+	   					</RelativeLayout>
+					    <RelativeLayout 
+					        android:layout_width="match_parent"  
+					        android:layout_height="match_parent"
+					    	android:orientation="horizontal" 
+					    	android:layout_below="@id/layout_memu_Recorder_itemdesc_title"
+					    	android:layout_marginTop="2dip"
+					        >     	
+					       	<TextView
+					       	    style="@style/widget_memu_subdesc"
+					       	    android:layout_width="wrap_content"
+					       	    android:layout_height="wrap_content"
+					       	    android:layout_gravity="center_vertical"
+					       	    android:text="@string/main_menu_tools_Recorder_desc"
+					       	    android:layout_marginLeft="3dip" />    			
+					    </RelativeLayout>	    
+                        </RelativeLayout>	
+      		
+      		
+      		
+      		
+   		</RelativeLayout>  			
+   		<RelativeLayout     
+   		    android:id="@+id/ll_tools_GPS"
+   			style="@style/widget_listview_Item"
+            android:clickable="true"
+            android:onClick="btn_GPS" >
+      		<ImageView
+      		    android:id="@+id/img_tools_GPS"
+            	android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"        	     	
+        		android:scaleType="matrix"
+        		android:layout_centerVertical="true"
+        		android:layout_alignParentLeft="true"
+        		android:layout_marginLeft="@dimen/image_marginLeft"
+        		android:src="@drawable/widget_bar_gps" />    
+        	<RelativeLayout 
+						android:id="@+id/layout_memu_appUpdate_itemdesc" 
+					  	android:layout_width="match_parent" 
+					  	android:layout_height="50dip"
+					  	android:layout_toRightOf="@id/img_tools_GPS"
+					  	android:layout_alignParentRight="true"
+					  	android:orientation="vertical" 
+					  	android:layout_marginLeft ="@dimen/texttoimage_marginLeft"
+					  	>     
+					    <RelativeLayout 
+					        android:id="@+id/layout_memu_appUpdate_itemdesc_title" 
+					        android:layout_width="match_parent"  
+					        android:layout_height="wrap_content"
+					        android:orientation="horizontal" 
+					        android:layout_alignParentTop="true"
+					        >
+		    			<TextView
+			      		    style="@style/widget_listview_title2"
+			        		android:layout_width="wrap_content" 
+			        		android:layout_height="wrap_content"
+			        		android:layout_centerVertical="true"
+			        		android:padding="4dp" 
+			        		android:text="@string/main_menu_tools_GPS"
+			        		/>   		    
+	   					</RelativeLayout>
+					    <RelativeLayout 
+					        android:layout_width="match_parent"  
+					        android:layout_height="match_parent"
+					    	android:orientation="horizontal" 
+					    	android:layout_below="@id/layout_memu_appUpdate_itemdesc_title"
+					    	android:layout_marginTop="2dip"
+					        >     	
+					       	<TextView
+					       	    style="@style/widget_memu_subdesc"
+					       	    android:layout_width="wrap_content"
+					       	    android:layout_height="wrap_content"
+					       	    android:layout_gravity="center_vertical"
+					       	    android:text="@string/main_menu_tools_GPS_desc"
+					       	    android:layout_marginLeft="3dip" />    			
+					    </RelativeLayout>	    
+                        </RelativeLayout>	
+      		
+      		
+      		
+      		
+      		
+   		</RelativeLayout>
+   		
+   		<RelativeLayout     
+   		    android:id="@+id/ll_tools_Voice"
+   			style="@style/widget_listview_Item"
+            android:clickable="true"
+            android:onClick="btn_Voice" >
+      		<ImageView
+      		    android:id="@+id/img_tools_Voice"
+            	android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"        	     	
+        		android:scaleType="matrix"
+        		android:layout_centerVertical="true"
+        		android:layout_alignParentLeft="true"
+        		android:layout_marginLeft="@dimen/image_marginLeft"
+        		android:src="@drawable/widget_bar_voice" />    
+        	<RelativeLayout 
+						android:id="@+id/layout_memu_voice_itemdesc" 
+					  	android:layout_width="match_parent" 
+					  	android:layout_height="50dip"
+					  	android:layout_toRightOf="@id/img_tools_Voice"
+					  	android:layout_alignParentRight="true"
+					  	android:orientation="vertical" 
+					  	android:layout_marginLeft ="@dimen/texttoimage_marginLeft"
+					  	>     
+					    <RelativeLayout 
+					        android:id="@+id/layout_memu_voice_itemdesc_title" 
+					        android:layout_width="match_parent"  
+					        android:layout_height="wrap_content"
+					        android:orientation="horizontal" 
+					        android:layout_alignParentTop="true"
+					        >
+		    			<TextView
+			      		    style="@style/widget_listview_title2"
+			        		android:layout_width="wrap_content" 
+			        		android:layout_height="wrap_content"
+			        		android:layout_centerVertical="true"
+			        		android:padding="4dp" 
+			        		android:text="@string/main_menu_tools_Voice"
+			        		/>   		    
+	   					</RelativeLayout>
+					    <RelativeLayout 
+					        android:layout_width="match_parent"  
+					        android:layout_height="match_parent"
+					    	android:orientation="horizontal" 
+					    	android:layout_below="@id/layout_memu_voice_itemdesc_title"
+					    	android:layout_marginTop="2dip"
+					        >     	
+					       	<TextView
+					       	    style="@style/widget_memu_subdesc"
+					       	    android:layout_width="wrap_content"
+					       	    android:layout_height="wrap_content"
+					       	    android:layout_gravity="center_vertical"
+					       	    android:text="@string/main_menu_tools_Voice_Desc"
+					       	    android:layout_marginLeft="3dip" />    			
+					    </RelativeLayout>	    
+                        </RelativeLayout>	      		
+   		</RelativeLayout>
+   		
+        <LinearLayout
+            	android:layout_width="fill_parent"
+            	android:layout_height="40dip"
+            	android:background="@drawable/category"
+            	android:orientation="vertical" >   	    
+		    <TextView
+		    	android:id="@+id/home_txt_tipstools"
+	         	android:layout_width="fill_parent" 
+	         	android:layout_height="fill_parent"
+	         	android:gravity="left|center" 
+		        android:layout_marginLeft="10dip"
+	         	android:textSize="@dimen/text_size_16"
+	         	android:textColor="@color/catefory_text" 
+	         	android:textStyle="bold" 
+		        android:text="测量工具"/>      		 
+	    </LinearLayout>     
+        <RelativeLayout     
+   		    android:id="@+id/ll_tools_cewen"
+   			style="@style/widget_listview_Item"
+            android:clickable="true" 
+            android:onClick="btn_cewen">
+      		<ImageView
+      		    android:id="@+id/img_tools_cewen"
+            	android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"        	     	
+        		android:scaleType="matrix"
+        		android:layout_centerVertical="true"
+        		android:layout_alignParentLeft="true"
+        		android:layout_marginLeft="@dimen/image_marginLeft"
+        		android:src="@drawable/widget_bar_temperature" 
+        		/>    
+            <RelativeLayout
+                android:id="@+id/layout_memu_cewen_itemdesc" 
+					  	android:layout_width="match_parent" 
+					  	android:layout_height="50dip"
+					  	android:layout_toRightOf="@id/img_tools_cewen"
+					  	android:layout_alignParentRight="true"
+					  	android:orientation="vertical" 
+					  	android:layout_marginLeft ="@dimen/texttoimage_marginLeft"
+					  	>
+					    <RelativeLayout 
+					        android:id="@+id/layout_memu_cewen_itemdesc_title" 
+					        android:layout_width="match_parent"  
+					        android:layout_height="wrap_content"
+					        android:orientation="horizontal" 
+					        android:layout_alignParentTop="true"
+					        >
+					    <TextView
+      		                style="@style/widget_listview_title2"
+      		                android:layout_width="wrap_content"
+      		                android:layout_height="wrap_content"
+      		                android:layout_centerVertical="true"
+      		                android:padding="4dp"
+      		                android:text="@string/main_menu_tools_cewen" 
+      		                />
+					    </RelativeLayout>
+					    <RelativeLayout 
+					        android:layout_width="match_parent"  
+					        android:layout_height="match_parent"
+					    	android:orientation="horizontal" 
+					    	android:layout_below="@id/layout_memu_cewen_itemdesc_title"
+					    	android:layout_marginTop="2dip"
+					        >     	
+					       	<TextView
+					       	    style="@style/widget_memu_subdesc"
+					       	    android:layout_width="wrap_content"
+					       	    android:layout_height="wrap_content"
+					       	    android:layout_gravity="center_vertical"
+					       	    android:text="@string/main_menu_tools_cewen_desc"
+					       	    android:layout_marginLeft="3dip" />    			
+					    </RelativeLayout>	 
+                  </RelativeLayout>
+      		
+ 
+   		</RelativeLayout> 
+   		<RelativeLayout     
+   		    android:id="@+id/ll_tools_cezhen"
+   			style="@style/widget_listview_Item"
+            android:clickable="true" 
+            android:onClick="btn_cezhen">
+      		<ImageView
+      		    android:id="@+id/img_tools_cezhen"
+            	android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"        	     	
+        		android:scaleType="matrix"
+        		android:layout_centerVertical="true"
+        		android:layout_alignParentLeft="true"
+        		android:layout_marginLeft="@dimen/image_marginLeft"
+        		android:src="@drawable/widget_bar_vibration" 
+        		/>    
+            <RelativeLayout
+                android:id="@+id/layout_memu_cezhen_itemdesc" 
+					  	android:layout_width="match_parent" 
+					  	android:layout_height="50dip"
+					  	android:layout_toRightOf="@id/img_tools_cezhen"
+					  	android:layout_alignParentRight="true"
+					  	android:orientation="vertical" 
+					  	android:layout_marginLeft ="@dimen/texttoimage_marginLeft"
+					  	>
+					    <RelativeLayout 
+					        android:id="@+id/layout_memu_cezhen_itemdesc_title" 
+					        android:layout_width="match_parent"  
+					        android:layout_height="wrap_content"
+					        android:orientation="horizontal" 
+					        android:layout_alignParentTop="true"
+					        >
+					    <TextView
+      		                style="@style/widget_listview_title2"
+      		                android:layout_width="wrap_content"
+      		                android:layout_height="wrap_content"
+      		                android:layout_centerVertical="true"
+      		                android:padding="4dp"
+      		                android:text="@string/main_menu_tools_cezhen" 
+      		                />
+					    </RelativeLayout>
+					    <RelativeLayout 
+					        android:layout_width="match_parent"  
+					        android:layout_height="match_parent"
+					    	android:orientation="horizontal" 
+					    	android:layout_below="@id/layout_memu_cezhen_itemdesc_title"
+					    	android:layout_marginTop="2dip"
+					        >     	
+					       	<TextView
+					       	    style="@style/widget_memu_subdesc"
+					       	    android:layout_width="wrap_content"
+					       	    android:layout_height="wrap_content"
+					       	    android:layout_gravity="center_vertical"
+					       	    android:text="@string/main_menu_tools_cezhen_desc"
+					       	    android:layout_marginLeft="3dip" />    			
+					    </RelativeLayout>	 
+                  </RelativeLayout>
+      		
+ 
+   		</RelativeLayout> 	
+   		<RelativeLayout     
+   		    android:id="@+id/ll_tools_cezs"
+   			style="@style/widget_listview_Item"
+            android:clickable="true" 
+            android:onClick="btn_cezs">
+      		<ImageView
+      		    android:id="@+id/img_tools_cezs"
+            	android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"        	     	
+        		android:scaleType="matrix"
+        		android:layout_centerVertical="true"
+        		android:layout_alignParentLeft="true"
+        		android:layout_marginLeft="@dimen/image_marginLeft"
+        		android:src="@drawable/widget_bar_speed" 
+        		/>    
+            <RelativeLayout
+                android:id="@+id/layout_memu_cezs_itemdesc" 
+					  	android:layout_width="match_parent" 
+					  	android:layout_height="50dip"
+					  	android:layout_toRightOf="@id/img_tools_cezs"
+					  	android:layout_alignParentRight="true"
+					  	android:orientation="vertical" 
+					  	android:layout_marginLeft ="@dimen/texttoimage_marginLeft"
+					  	>
+					    <RelativeLayout 
+					        android:id="@+id/layout_memu_cezs_itemdesc_title" 
+					        android:layout_width="match_parent"  
+					        android:layout_height="wrap_content"
+					        android:orientation="horizontal" 
+					        android:layout_alignParentTop="true"
+					        >
+					    <TextView
+      		                style="@style/widget_listview_title2"
+      		                android:layout_width="wrap_content"
+      		                android:layout_height="wrap_content"
+      		                android:layout_centerVertical="true"
+      		                android:padding="4dp"
+      		                android:text="@string/main_menu_tools_cezs" 
+      		                />
+					    </RelativeLayout>
+					    <RelativeLayout 
+					        android:layout_width="match_parent"  
+					        android:layout_height="match_parent"
+					    	android:orientation="horizontal" 
+					    	android:layout_below="@id/layout_memu_cezs_itemdesc_title"
+					    	android:layout_marginTop="2dip"
+					        >     	
+					       	<TextView
+					       	    style="@style/widget_memu_subdesc"
+					       	    android:layout_width="wrap_content"
+					       	    android:layout_height="wrap_content"
+					       	    android:layout_gravity="center_vertical"
+					       	    android:text="@string/main_menu_tools_cezs_desc"
+					       	    android:layout_marginLeft="3dip" />    			
+					    </RelativeLayout>	 
+                  </RelativeLayout>     		 
+   		</RelativeLayout>
+   		</LinearLayout>
+   		  
+		</ScrollView>
+    </LinearLayout>

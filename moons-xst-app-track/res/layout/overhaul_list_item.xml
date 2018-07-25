@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/widget_listview_Item"
+    android:layout_height="60dip"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:id="@+id/overhaul_plan_itemicon"
+        android:layout_width="60dip"
+        android:layout_height="60dip"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_vertical"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/icon_overhaul_plan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:scaleType="matrix" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/overhual_plan_itemdesc"
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/overhaul_plan_itemicon" >
+
+        <RelativeLayout
+            android:id="@+id/rl_overhaul_item_name"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true" >
+
+            <TextView
+                android:id="@+id/overhaul_item_name"
+                style="@style/widget_listview_title2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:paddingTop="5dp"
+                android:singleLine="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ll_1"
+            android:layout_width="match_parent"
+            android:layout_height="30dip"
+            android:layout_below="@id/rl_overhaul_item_name"
+            android:layout_marginTop="4dip" >
+
+            <ImageView
+                android:id="@+id/iv_overhaul_plan_coding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/count_time_icon" />
+
+            <TextView
+                android:id="@+id/overhaul_item_coding"
+                style="@style/widget_listview_subdesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="3dip"
+                android:layout_toRightOf="@id/iv_overhaul_plan_coding"
+                android:ellipsize="end"
+                android:singleLine="true" />
+
+            <ImageView
+                android:id="@+id/iv_overhaul_plan_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dip"
+                android:layout_toRightOf="@id/overhaul_item_coding"
+                android:src="@drawable/count_idpod_icon" />
+
+            <TextView
+                android:id="@+id/overhaul_item_content"
+                style="@style/widget_listview_subdesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="3dip"
+                android:layout_toRightOf="@id/iv_overhaul_plan_content"
+                android:ellipsize="end"
+                android:singleLine="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

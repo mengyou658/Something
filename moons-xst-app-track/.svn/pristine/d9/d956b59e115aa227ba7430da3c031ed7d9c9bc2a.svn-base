@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+    <ScrollView 
+    		android:layout_width="match_parent"
+	        android:layout_height="0dp"
+	        android:layout_gravity="center"
+	        android:layout_weight="1.0"
+    		android:scrollbarStyle="outsideOverlay" >
+    		<LinearLayout
+            	android:layout_width="fill_parent"
+            	android:layout_height="wrap_content"
+            	android:orientation="vertical" >
+            	<RelativeLayout
+				        android:id="@+id/rl_layout_commu_receive"
+				        android:layout_width="match_parent"
+				        android:layout_height="60dip"
+				        android:background="@drawable/btn_selected"
+				        android:clickable="true" >
+				        <ImageView
+				            android:id="@+id/img_commu_receive"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_alignParentLeft="true"
+				            android:layout_centerInParent="true"
+				            android:layout_marginLeft="15dp"
+				            android:src="@drawable/widget_bar_updown_xh" />
+				        <TextView
+				            style="@style/widget_memu_title_desc"
+				            android:id="@+id/textview_commu_receive_desc"
+        					android:layout_width="fill_parent" 
+        					android:layout_height="wrap_content"
+        					android:layout_alignParentTop="true"
+        					android:gravity="bottom|left"
+        					android:paddingLeft="10dp"
+        					android:paddingTop="10dp"
+        					android:layout_toRightOf="@id/img_commu_receive"
+        					android:text="@string/main_menu_commu_receive" />
+					   <TextView
+				       	    style="@style/widget_memu_subdesc"
+				       	    android:layout_width="wrap_content"
+				       	    android:layout_height="match_parent"
+				       	    android:layout_toRightOf="@id/img_commu_receive"
+				       	    android:layout_below="@id/textview_commu_receive_desc"
+				       	    android:text="@string/main_menu_commu_receive_desc"
+				       	    android:singleLine="true"
+				       	    android:paddingLeft="10dip" />
+				   </RelativeLayout>
+				   <include
+			           layout="@layout/vertical_split_line_1dp"
+			            />
+				   <RelativeLayout
+				        android:id="@+id/rl_layout_commu_twobilldownload"
+				        android:layout_width="match_parent"
+				        android:layout_height="60dip"
+				        android:background="@drawable/btn_selected"
+				        android:clickable="true"
+				        android:visibility="gone" >
+				        <ImageView
+				            android:id="@+id/img_commu_twobilldownload"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_alignParentLeft="true"
+				            android:layout_centerInParent="true"
+				            android:layout_marginLeft="15dp"
+				            android:src="@drawable/widget_bar_mapupdate_xh" />
+				        <TextView
+				            style="@style/widget_memu_title_desc"
+				            android:id="@+id/textview_commu_twobilldownload_desc"
+        					android:layout_width="fill_parent" 
+        					android:layout_height="wrap_content"
+        					android:layout_alignParentTop="true"
+        					android:gravity="bottom|left"
+        					android:paddingLeft="10dp"
+        					android:paddingTop="10dp"
+        					android:layout_toRightOf="@id/img_commu_twobilldownload"
+        					android:text="@string/main_menu_commu_twobilldownload" />
+					   <TextView
+				       	    style="@style/widget_memu_subdesc"
+				       	    android:layout_width="wrap_content"
+				       	    android:layout_height="match_parent"
+				       	    android:layout_toRightOf="@id/img_commu_twobilldownload"
+				       	    android:layout_below="@id/textview_commu_twobilldownload_desc"
+				       	    android:text="@string/main_menu_commu_twobilldownload_desc"
+				       	    android:singleLine="true"
+				       	    android:paddingLeft="10dip" />
+				   </RelativeLayout>
+				   <include
+				       android:id="@+id/layout_download_twobill"
+			           layout="@layout/vertical_split_line_1dp"
+			           android:visibility="gone"
+			            />
+				   <RelativeLayout
+				        android:id="@+id/rl_layout_commu_appUpdate"
+				        android:layout_width="match_parent"
+				        android:layout_height="60dip"
+				        android:background="@drawable/btn_selected"
+				        android:clickable="true" >
+				        <ImageView
+				            android:id="@+id/img_commu_appUpdate"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_alignParentLeft="true"
+				            android:layout_centerInParent="true"
+				            android:layout_marginLeft="15dp"
+				            android:src="@drawable/widget_bar_appupdate_xh" />
+				        <TextView
+				            style="@style/widget_memu_title_desc"
+				            android:id="@+id/textview_commu_appUpdate_desc"
+        					android:layout_width="fill_parent" 
+        					android:layout_height="wrap_content"
+        					android:layout_alignParentTop="true"
+        					android:gravity="bottom|left"
+        					android:paddingLeft="10dp"
+        					android:paddingTop="10dp"
+        					android:layout_toRightOf="@id/img_commu_appUpdate"
+        					android:text="@string/main_menu_commu_appUpdate" />
+					   <TextView
+				       	    style="@style/widget_memu_subdesc"
+				       	    android:layout_width="wrap_content"
+				       	    android:layout_height="match_parent"
+				       	    android:layout_toRightOf="@id/img_commu_appUpdate"
+				       	    android:layout_below="@id/textview_commu_appUpdate_desc"
+				       	    android:text="@string/main_menu_commu_appUpdate_desc"
+				       	    android:singleLine="true"
+				       	    android:paddingLeft="10dip" />
+				   </RelativeLayout>
+				   <include
+			           layout="@layout/vertical_split_line_1dp"
+			            />
+				   <RelativeLayout
+				        android:id="@+id/rl_layout_commu_mapUpdate"
+				        android:layout_width="match_parent"
+				        android:layout_height="60dip"
+				        android:background="@drawable/btn_selected"
+				        android:clickable="true"
+				        android:visibility="gone" >
+				        <ImageView
+				            android:id="@+id/img_commu_mapUpdate"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_alignParentLeft="true"
+				            android:layout_centerInParent="true"
+				            android:layout_marginLeft="15dp"
+				            android:src="@drawable/widget_bar_mapupdate_xh" />
+				        <TextView
+				            style="@style/widget_memu_title_desc"
+				            android:id="@+id/textview_commu_mapUpdate_desc"
+        					android:layout_width="fill_parent" 
+        					android:layout_height="wrap_content"
+        					android:layout_alignParentTop="true"
+        					android:gravity="bottom|left"
+        					android:paddingLeft="10dp"
+        					android:paddingTop="10dp"
+        					android:layout_toRightOf="@id/img_commu_mapUpdate"
+        					android:text="@string/main_menu_commu_mapUpdate" />
+					   <TextView
+				       	    style="@style/widget_memu_subdesc"
+				       	    android:layout_width="wrap_content"
+				       	    android:layout_height="match_parent"
+				       	    android:layout_toRightOf="@id/img_commu_mapUpdate"
+				       	    android:layout_below="@id/textview_commu_mapUpdate_desc"
+				       	    android:text="@string/main_menu_commu_mapUpdate_desc"
+				       	    android:paddingLeft="10dip" />
+				   </RelativeLayout>
+				   <include
+			           layout="@layout/vertical_split_line_1dp"
+			           android:visibility="gone"
+			            />
+            </LinearLayout>
+    </ScrollView>
+    <TextView
+    	    android:id="@+id/tv_tips_desc"
+    	    android:layout_width="fill_parent"
+    	    android:layout_height="40dp"
+    	    android:gravity="center"
+    	    android:textSize="@dimen/text_size_14"
+    	    android:text="@string/commu_type_desc"
+    	    android:textColor="@color/gray"
+    	    android:visibility="gone" />
+    <TextView 
+            android:id="@+id/txt_commu_type_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|center"
+            android:background="@color/graywhite"
+            android:text="@string/setting_head_title_sys_communicationtype"
+            android:textColor="@color/black"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textSize="@dimen/text_size_16"/>
+    
+    <LinearLayout
+            android:id="@+id/ll_commu_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical"
+            android:background="@color/white">
+    		<RelativeLayout
+                android:id="@+id/ll_commutype_wireless"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/btn_selected"
+                android:clickable="true" >
+	            <TextView
+	                android:id="@+id/tv_commutype_wireless"
+	                android:layout_width="match_parent"
+	                android:layout_height="match_parent"
+	                android:drawableLeft="@drawable/icon_drawerleft_wlan_2_xh"
+	                android:drawablePadding="35dp"
+	                android:gravity="center|left"
+	                android:paddingLeft="30dp"
+	                android:text="@string/commu_type_wireless"
+	                android:textSize="@dimen/text_size_18"
+	                android:textColor="@color/darkgray" />
+	            <ImageView 
+			        android:id="@+id/iv_wireless_selected"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginRight="40dp"
+			        android:layout_centerInParent="true"
+			        android:layout_alignParentRight="true"
+			        android:src="@drawable/icon_selected"
+			        android:visibility="gone" />
+            </RelativeLayout>
+            <View 
+                android:layout_width="match_parent"
+			    android:layout_height="1dp"
+			    android:background="@color/graywhite"
+			    android:layout_marginLeft="30dp"
+			    android:layout_marginRight="30dp"/>            
+             <RelativeLayout
+                android:id="@+id/ll_commutype_usb"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/btn_selected"
+                android:clickable="true" >
+	            <TextView
+	                android:id="@+id/tv_commutype_usb"
+	                android:layout_width="match_parent"
+	                android:layout_height="match_parent"
+	                android:drawableLeft="@drawable/icon_drawerleft_usb_xh"
+	                android:drawablePadding="30dp"
+	                android:gravity="center|left"
+	                android:paddingLeft="30dp"
+	                android:text="@string/commu_type_usb"
+	                android:textSize="@dimen/text_size_18"
+	                android:textColor="@color/darkgray" />
+	            <ImageView 
+			        android:id="@+id/iv_usb_selected"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginRight="40dp"
+			        android:layout_centerInParent="true"
+			        android:layout_alignParentRight="true"
+			        android:src="@drawable/icon_selected"
+			        android:visibility="gone" />
+            </RelativeLayout>
+            <include layout="@layout/vertical_split_line_1dp" />
+             
+        </LinearLayout>
+</LinearLayout>

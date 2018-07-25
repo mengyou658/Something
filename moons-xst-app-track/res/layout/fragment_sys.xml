@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+    <ScrollView 
+    		android:layout_width="match_parent"
+	        android:layout_height="0dp"
+	        android:layout_gravity="center"
+	        android:layout_weight="1.0"
+    		android:scrollbarStyle="outsideOverlay" >
+    		<LinearLayout
+            	android:layout_width="fill_parent"
+            	android:layout_height="wrap_content"
+            	android:orientation="vertical" >
+            	<RelativeLayout
+				        android:id="@+id/rl_layout_sys_setting"
+				        android:layout_width="match_parent"
+				        android:layout_height="60dip"
+				        android:background="@drawable/btn_selected"
+				        android:clickable="true" >
+				        <ImageView
+				            android:id="@+id/img_sys_setting"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_alignParentLeft="true"
+				            android:layout_centerInParent="true"
+				            android:layout_marginLeft="15dp"
+				            android:src="@drawable/widget_bar_sysset_xh" />
+				        <TextView
+				            style="@style/widget_memu_title_desc"
+				            android:id="@+id/textview_sys_setting_desc"
+        					android:layout_width="fill_parent" 
+        					android:layout_height="wrap_content"
+        					android:layout_alignParentTop="true"
+        					android:gravity="bottom|left"
+        					android:paddingLeft="10dp"
+        					android:paddingTop="10dp"
+        					android:layout_toRightOf="@id/img_sys_setting"
+        					android:text="@string/main_menu_system_config" />
+					   <TextView
+				       	    style="@style/widget_memu_subdesc"
+				       	    android:layout_width="wrap_content"
+				       	    android:layout_height="match_parent"
+				       	    android:layout_toRightOf="@id/img_sys_setting"
+				       	    android:layout_below="@id/textview_sys_setting_desc"
+				       	    android:text="@string/main_menu_system_config_desc"
+				       	    android:singleLine="true"
+				       	    android:paddingLeft="10dip" />
+				   </RelativeLayout>
+				   <include
+			           layout="@layout/vertical_split_line_1dp"
+			            />
+				   <RelativeLayout
+				        android:id="@+id/rl_layout_sys_aboutus"
+				        android:layout_width="match_parent"
+				        android:layout_height="60dip"
+				        android:background="@drawable/btn_selected"
+				        android:clickable="true" >
+				        <ImageView
+				            android:id="@+id/img_sys_aboutus"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_alignParentLeft="true"
+				            android:layout_centerInParent="true"
+				            android:layout_marginLeft="15dp"
+				            android:src="@drawable/widget_bar_aboutus_xh" />
+				        <TextView
+				            style="@style/widget_memu_title_desc"
+				            android:id="@+id/textview_sys_aboutus_desc"
+        					android:layout_width="fill_parent" 
+        					android:layout_height="wrap_content"
+        					android:layout_alignParentTop="true"
+        					android:gravity="bottom|left"
+        					android:paddingLeft="10dp"
+        					android:paddingTop="10dp"
+        					android:layout_toRightOf="@id/img_sys_aboutus"
+        					android:text="@string/main_menu_system_aboutus" />
+					   <TextView
+				       	    style="@style/widget_memu_subdesc"
+				       	    android:layout_width="wrap_content"
+				       	    android:layout_height="match_parent"
+				       	    android:layout_toRightOf="@id/img_sys_aboutus"
+				       	    android:layout_below="@id/textview_sys_aboutus_desc"
+				       	    android:text="@string/main_menu_system_aboutus_desc"
+				       	    android:singleLine="true"
+				       	    android:paddingLeft="10dip" />
+				   </RelativeLayout>
+				   <include
+			           layout="@layout/vertical_split_line_1dp"
+			            />
+            </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

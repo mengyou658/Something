@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/system_buginfo"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/graywhite" > 
+    <RelativeLayout 
+		android:id="@+id/layout_system_buginfo_head" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_height="50dip"
+	  	android:layout_alignParentTop="true"
+	  	android:background="@drawable/title_bar"> 
+	  	<ImageView
+	        android:id="@+id/system_buginfo_head_morebutton"        
+	        android:background="@drawable/ic_selectall"
+	        android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_alignParentRight="true"
+           	android:layout_centerInParent="true"
+	        android:layout_marginRight="10dp"
+	        android:clickable="true"
+	        />
+        <ImageButton 
+	        android:id="@+id/home_head_Rebutton"
+	        android:src="@drawable/arrow_left"
+	        android:background="@color/full_transparent"
+	        android:layout_width="wrap_content"
+	    	android:layout_height="50dip"
+	    	android:layout_alignParentLeft="true"
+           	android:layout_gravity="center_vertical"
+	        android:layout_marginRight="10dp"
+	        />
+	    <TextView 
+	        android:id="@+id/system_buginfo_head_title"
+	        android:layout_width="fill_parent" 
+		  	android:layout_height="fill_parent"
+			android:gravity="center"
+	        style="@style/main_head_title"
+			android:ellipsize="marquee" 
+	        android:marqueeRepeatLimit="marquee_forever"
+	        android:focusable="true" 
+	        android:focusableInTouchMode="true"			
+			android:text="@string/main_menu_system_aboutus_logo_hide_sysinfo_error_log"
+			/>  
+	</RelativeLayout>
+	<RelativeLayout
+	    android:id="@+id/rl_operation"
+	    android:layout_width="fill_parent"
+	    android:layout_height="35dp"
+	    android:layout_alignParentBottom="true"
+	    android:background="#b0000000" >
+	    <LinearLayout
+	        android:id="@+id/ll_operation"
+	        android:layout_width="fill_parent"
+	    	android:layout_height="fill_parent" >
+	    	<RelativeLayout
+	    	    android:id="@+id/rl_send"
+	    	    android:layout_width="fill_parent"
+	    	    android:layout_height="fill_parent"
+	    	    android:layout_weight="1"
+	    	    android:clickable="true">
+	    	    <ImageView
+	    	        android:layout_width="wrap_content"
+	    	        android:layout_height="wrap_content"
+	    	        android:layout_centerInParent="true"
+	    	        android:src="@drawable/ic_send" />
+	    	</RelativeLayout>
+	    	<View  
+		        android:id="@+id/view_2"  
+		        android:layout_width="1dp"  
+		        android:layout_height="fill_parent"  
+		        android:background="@color/gray"
+		        android:layout_marginTop="8dp"
+		        android:layout_marginBottom="8dp" />
+	    	<RelativeLayout
+	    	    android:id="@+id/rl_delete"
+	    	    android:layout_width="fill_parent"
+	    	    android:layout_height="fill_parent"
+	    	    android:layout_weight="1"
+	    	    android:clickable="true">
+	    	    <ImageView
+	    	        android:layout_width="wrap_content"
+	    	        android:layout_height="wrap_content"
+	    	        android:layout_centerInParent="true"
+	    	        android:src="@drawable/ic_delete" />
+	    	</RelativeLayout>
+	    </LinearLayout>
+	</RelativeLayout>
+	<RelativeLayout
+	    android:id="@+id/rl_buginfo_listview"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_below="@id/layout_system_buginfo_head"
+	    android:layout_above="@id/rl_operation">
+	    
+	    <ListView
+	        android:id="@+id/listview_system_buginfo"
+	        style="@style/widget_listview2"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:cacheColorHint="@color/author_text"
+		    android:divider="@color/graywhite" />
+	</RelativeLayout>
+	
+</RelativeLayout>

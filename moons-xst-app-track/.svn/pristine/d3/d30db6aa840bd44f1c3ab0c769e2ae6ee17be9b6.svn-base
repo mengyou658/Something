@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/comm_upload"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:layout_marginTop="40dip"
+    android:background="@color/graywhite" >
+
+	<RelativeLayout
+	    android:id="@+id/ll_upload_statussummary"
+	    android:layout_width="match_parent"
+	    android:layout_height="100dip"
+	    android:orientation="vertical" >
+        <TextView
+	    	android:id="@+id/comm_upload_title"
+         	android:layout_width="fill_parent" 
+         	android:layout_height="30dip"
+         	android:gravity="center" 
+         	android:textSize="@dimen/text_size_14"
+         	android:textColor="@color/black" 
+         	android:layout_marginLeft="5dip"
+	       	android:layout_marginRight="5dip"
+	       	android:textStyle="bold"
+         	android:layout_alignParentLeft="true"
+         	android:text="上传"
+	        />
+	    <TextView
+	    	android:id="@+id/comm_upload_mes"
+         	android:layout_width="fill_parent" 
+         	android:layout_height="40dip"
+         	android:gravity="left|center" 
+         	android:textSize="@dimen/text_size_14"
+         	android:textColor="@color/black" 
+         	android:layout_marginLeft="5dip"
+	       	android:layout_marginRight="5dip"
+	       	android:layout_below="@id/comm_upload_title"
+         	android:layout_alignParentLeft="true"
+	        />   
+	        <ProgressBar
+	       	    android:id="@+id/comm_upload_progressBar"
+	       	    style="@android:style/Widget.ProgressBar.Horizontal"
+	       	    android:layout_width="fill_parent"
+	       	    android:layout_height="30dip"
+	       	    android:layout_gravity="center_vertical"
+	       	    android:layout_marginLeft="5dip"
+	       	    android:layout_marginRight="5dip"
+	       	    android:layout_marginBottom="10dip"
+	       	    android:layout_below="@id/comm_upload_mes"
+	       	    android:layout_alignParentBottom="true"
+	       	    android:minHeight="10dip" />        
+
+    </RelativeLayout>
+
+</RelativeLayout>

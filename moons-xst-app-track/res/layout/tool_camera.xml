@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tool_camera"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/ll_tool_camera_head"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/title_bar" >
+
+        <ImageButton
+            android:id="@+id/home_head_Rebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:background="@color/full_transparent"
+            android:src="@drawable/arrow_left" />
+
+        <TextView
+            android:id="@+id/ll_tool_camera_title"
+            style="@style/main_head_title"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:text="@string/main_menu_tools_camera" />
+
+        <RelativeLayout
+            android:id="@+id/ll_tool_camera_select"
+            android:layout_width="60dip"
+            android:layout_height="50dip"
+            android:layout_alignParentRight="true"
+            android:clickable="true" >
+
+            <TextView
+                android:id="@+id/tool_camera_select"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="@string/main_menu_tools_camera_select"
+                android:textColor="@color/gray" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_camera_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_tool_camera_head"
+        android:background="#fff"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <RadioGroup
+                android:id="@+id/rg_tabPage_state"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:weightSum="2" >
+
+                <RadioButton
+                    android:id="@+id/tool_camera_tab_photo"
+                    style="@style/radioButton_tabpage"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:text="@string/main_menu_tools_camera_photo" />
+
+                <RadioButton
+                    android:id="@+id/tool_camera_tab_video"
+                    style="@style/radioButton_tabpage"
+                    android:layout_weight="1"
+                    android:text="@string/main_menu_tools_camera_video" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/face_bg"
+                android:weightSum="2" >
+
+                <TextView
+                    android:id="@+id/tv_tab1"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/viewpager_line_background"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/tv_tab2"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="#a9a9a9"
+                    android:visibility="invisible" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_tool_camera_tips"
+        android:layout_width="fill_parent"
+        android:layout_height="60dip"
+        android:layout_alignParentBottom="true"
+        android:background="@color/face_bg" >
+
+        <Button
+            android:id="@+id/btn_operation"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="5dip"
+            android:background="@drawable/btn_style_blue"
+            android:clickable="true"
+            android:text="@string/main_menu_tools_camera_photo"
+            android:textColor="@color/white"
+            android:textSize="20dip" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_camera_viewpager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/ll_tool_camera_tips"
+        android:layout_below="@id/layout_camera_sheet"
+        android:orientation="vertical" >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/cameraTabpager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" >
+        </android.support.v4.view.ViewPager>
+    </RelativeLayout>
+
+</RelativeLayout>

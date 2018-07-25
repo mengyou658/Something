@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#AA9E9E9E"
+    android:layout_marginTop="40dip"
+    android:orientation="vertical" >
+    
+        <RelativeLayout
+        android:id="@+id/track_listmode_cplist_Title"
+        android:layout_width="match_parent"
+        android:layout_height="30dip"
+        android:background="#AA9E9E9E"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/track_listmode_cplist_Name"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:text="@string/track_listmode_cplist_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_14"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_track_listmode_cplist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.14"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/map_track_cplist"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:cacheColorHint="#0000"
+            android:divider="@null"
+            android:dividerHeight="3dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:stackFromBottom="false" >
+        </ListView>
+    </RelativeLayout>
+</LinearLayout>

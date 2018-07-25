@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/track_inputbuginfo"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/layout_inputbug_head"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/title_bar" >
+
+        <ImageButton
+            android:id="@+id/home_head_Rebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:background="@color/full_transparent"
+            android:src="@drawable/arrow_left" />
+
+        <TextView
+            android:id="@+id/temptask_inputbug_head_title"
+            style="@style/main_head_title"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:text="@string/track_inputbug_title" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_bugbaseinfo_eventname"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/layout_inputbug_head"
+        android:background="@drawable/listview_item_selector"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/temptask_inputbug_name"
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:text="@string/temptask_event_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+
+        <EditText
+            android:id="@+id/temptask_inputbug_namedes"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toRightOf="@+id/temptask_inputbug_name"
+            android:background="@null"
+            android:gravity="center|left"
+            android:hint="@string/temptask_inputmaxlen"
+            android:maxLength="20"
+            android:selectAllOnFocus="true"
+            android:textColorHint="@color/gray"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_bugbaseinfo_locationdesc"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/ll_bugbaseinfo_eventname"
+        android:background="@drawable/listview_item_selector"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/temptask_inputbug_info"
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:text="@string/temptask_pladex"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+
+        <EditText
+            android:id="@+id/temptask_inputbug_placedes"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toRightOf="@+id/temptask_inputbug_info"
+            android:background="@null"
+            android:gravity="center|left"
+            android:hint="@string/temptask_inputmaxlen"
+            android:maxLength="20"
+            android:textColorHint="@color/gray"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_bugbaseinfo_eventtype"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/ll_bugbaseinfo_locationdesc"
+        android:background="@drawable/listview_item_selector"
+        android:clickable="true"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/event_type"
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:text="@+string/temptask_event_type"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+
+        <ImageView
+            android:id="@+id/iv_eventtype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/icon_right" />
+
+        <TextView
+            android:id="@+id/tv_eventtype_value"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toLeftOf="@id/iv_eventtype"
+            android:layout_toRightOf="@id/event_type"
+            android:gravity="center|left"
+            android:maxLines="2"
+            android:text="@string/temptask_choose"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_bugbaseinfo_gx"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/ll_bugbaseinfo_eventtype"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/gx_name"
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:text="@+string/temptask_event_gx"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+
+        <ImageView
+            android:id="@+id/btn_gx"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="5dp"
+            android:clickable="true"
+            android:src="@drawable/guanxian" />
+
+        <TextView
+            android:id="@+id/gx_name_value"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toLeftOf="@id/btn_gx"
+            android:layout_toRightOf="@id/gx_name"
+            android:gravity="center|left"
+            android:text="@string/temptask_nogain"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view_1"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:layout_below="@id/ll_bugbaseinfo_gx"
+        android:background="@color/graywhite" />
+
+    <RelativeLayout
+        android:id="@+id/ll_buginfo_Save"
+        android:layout_width="fill_parent"
+        android:layout_height="60dip"
+        android:layout_alignParentBottom="true"
+        android:background="@color/face_bg" >
+
+        <Button
+            android:id="@+id/btn_saveBugInfo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="5dip"
+            android:background="@drawable/btn_style_blue"
+            android:clickable="true"
+            android:text="@string/sure"
+            android:textColor="@color/white"
+            android:textSize="@dimen/btn_big_textsize" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_buginfo_event_desc"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/view_1"
+        android:background="@drawable/listview_item_selector" >
+
+        <TextView
+            android:id="@+id/tv_buginfo_more_eventdesc"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="@string/temptask_event_desc"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/tv_buginfo_more"
+            android:layout_width="50dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="right|bottom"
+            android:paddingBottom="10dp"
+            android:paddingRight="10dp"
+            android:textSize="@dimen/text_size_16"
+            android:text="@string/temptask_more"
+            android:textColor="@color/gray" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_buginfo_more"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/ll_buginfo_Save"
+        android:layout_below="@id/ll_buginfo_event_desc"
+        >
+
+        <EditText
+            android:id="@+id/edit_planmemo"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="left"
+            android:background="@null"
+            android:hint="@string/temptask_inputmaxlenhint"
+            android:maxLength="80"
+            android:paddingLeft="8dp"
+            android:paddingTop="5dp"
+            android:selectAllOnFocus="true"
+            android:textColorHint="@color/gray"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_buginfo_more_sheet"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/ll_buginfo_Save"
+        android:layout_below="@id/ll_buginfo_event_desc"
+        android:visibility="gone" 
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/ll_buginfo_more_sheet"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <RadioGroup
+                android:id="@+id/rg_state"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:weightSum="3" >
+
+                <RadioButton
+                    android:id="@+id/txtTab1"
+                    style="@style/radioButton_tabpage"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:text="@string/dianjian_tabtitle_audio" />
+
+                <RadioButton
+                    android:id="@+id/txtTab2"
+                    style="@style/radioButton_tabpage"
+                    android:layout_weight="1"
+                    android:text="@string/track_tabtitle_picture" />
+
+                <RadioButton
+                    android:id="@+id/txtTab3"
+                    style="@style/radioButton_tabpage"
+                    android:layout_weight="1"
+                    android:text="@string/main_menu_tools_Media" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/face_bg"
+                android:weightSum="3" >
+
+                <TextView
+                    android:id="@+id/tv_tab1"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/viewpager_line_background"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/tv_tab2"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="#a9a9a9"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/tv_tab3"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="#a9a9a9"
+                    android:visibility="invisible" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/temptaskInputBugTabpager"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@id/ll_buginfo_more_sheet"
+            android:layout_gravity="center" >
+            
+        </android.support.v4.view.ViewPager>
+    </RelativeLayout>
+
+</RelativeLayout>

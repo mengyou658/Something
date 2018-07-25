@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:layout_margin="5dp"
+    android:background="#00000000">
+
+    <RelativeLayout
+        android:id="@+id/fl_home_main_content_right"
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/pad_home_main_content_right">
+    </RelativeLayout> 
+    <RelativeLayout
+        android:id="@+id/fl_home_main_content_left"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/fl_home_main_content_right"
+        android:background="#00000000">
+        <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp" >
+
+        <TableRow
+            android:id="@+id/li_home_main_menuitem_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            <RelativeLayout
+                android:id="@+id/ll_home"
+            	android:layout_width="100dp"
+            	android:layout_height="100dp"
+              	android:gravity="center"
+              	android:clickable="true"
+              	android:orientation="vertical"
+              	android:layout_weight="1">               	
+                <ImageView
+                    android:id="@+id/pad_home_main_xj"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/pad_home_commu_item_commu" />
+                <TextView
+                    android:id="@+id/main_menu_home_txt"
+            		android:text="@string/pad_home_commu_menu_commu"
+            		android:layout_width="fill_parent"
+            		android:layout_height="wrap_content"
+            		android:gravity="center"
+            		android:layout_centerHorizontal="true"
+            		android:layout_alignParentBottom="true"
+            		android:layout_below="@id/pad_home_main_xj"
+            		style="@style/pad_main_module_name"
+            		/>                
+        	 </RelativeLayout>
+           <RelativeLayout
+                android:id="@+id/ll_home1"
+            	android:layout_width="100dp"
+            	android:layout_height="100dp"
+              	android:gravity="center"
+              	android:clickable="true"
+              	android:orientation="vertical"
+              	android:layout_weight="1">               	
+                <ImageView
+                    android:id="@+id/pad_home_main_xj1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/pad_home_commu_item_appupdate" />
+                <TextView
+                    android:id="@+id/main_menu_home_txt1"
+            		android:text="@string/pad_home_commu_menu_appupdate"
+            		android:layout_width="fill_parent"
+            		android:layout_height="wrap_content"
+            		android:gravity="center"
+            		android:layout_centerHorizontal="true"
+            		android:layout_alignParentBottom="true"
+            		android:layout_below="@id/pad_home_main_xj1"
+            		style="@style/pad_main_module_name"
+            		/>                
+        	 </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/ll_home2"
+            	android:layout_width="100dp"
+            	android:layout_height="100dp"
+              	android:gravity="center"
+              	android:clickable="true"
+              	android:orientation="vertical"
+              	android:layout_weight="1">               	
+                <ImageView
+                    android:id="@+id/pad_home_main_xj2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/pad_home_commu_item_downloadmap" />
+                <TextView
+                    android:id="@+id/main_menu_home_txt2"
+            		android:text="@string/pad_home_commu_menu_mapdownload"
+            		android:layout_width="fill_parent"
+            		android:layout_height="wrap_content"
+            		android:gravity="center"
+            		android:layout_centerHorizontal="true"
+            		android:layout_alignParentBottom="true"
+            		android:layout_below="@id/pad_home_main_xj2"
+            		style="@style/pad_main_module_name"
+            		/>                
+        	 </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/ll_home3"
+            	android:layout_width="100dp"
+            	android:layout_height="100dp"
+              	android:gravity="center"
+              	android:clickable="true"
+              	android:orientation="vertical"
+              	android:layout_weight="1">
+                
+        	 </RelativeLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/li_home_main_menuitem_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            <RelativeLayout
+                android:id="@+id/ll_home4"
+            	android:layout_width="100dp"
+            	android:layout_height="100dp"
+              	android:gravity="center"
+              	android:clickable="true"
+              	android:orientation="vertical"
+              	android:layout_weight="1">
+                
+        	 </RelativeLayout>
+           <RelativeLayout
+                android:id="@+id/ll_home5"
+            	android:layout_width="100dp"
+            	android:layout_height="100dp"
+              	android:gravity="center"
+              	android:clickable="true"
+              	android:orientation="vertical"
+              	android:layout_weight="1">
+                
+        	 </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/ll_home6"
+            	android:layout_width="100dp"
+            	android:layout_height="100dp"
+              	android:gravity="center"
+              	android:clickable="true"
+              	android:orientation="vertical"
+              	android:layout_weight="1">
+                
+        	 </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/ll_home7"
+            	android:layout_width="100dp"
+            	android:layout_height="100dp"
+              	android:gravity="center"
+              	android:clickable="true"
+              	android:orientation="vertical"
+              	android:layout_weight="1">
+                
+        	 </RelativeLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/li_home_main_menuitem_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            <RelativeLayout
+                android:id="@+id/ll_home8"
+            	android:layout_width="100dp"
+            	android:layout_height="100dp"
+              	android:gravity="center"
+              	android:clickable="true"
+              	android:orientation="vertical"
+              	android:layout_weight="1">
+                
+        	 </RelativeLayout>
+           <RelativeLayout
+                android:id="@+id/ll_home9"
+            	android:layout_width="100dp"
+            	android:layout_height="100dp"
+              	android:gravity="center"
+              	android:clickable="true"
+              	android:orientation="vertical"
+              	android:layout_weight="1">
+                
+        	 </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/ll_home10"
+            	android:layout_width="100dp"
+            	android:layout_height="100dp"
+              	android:gravity="center"
+              	android:clickable="true"
+              	android:orientation="vertical"
+              	android:layout_weight="1">               	
+                              
+        	 </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/ll_home11"
+            	android:layout_width="100dp"
+            	android:layout_height="100dp"
+              	android:gravity="center"
+              	android:clickable="true"
+              	android:orientation="vertical"
+              	android:layout_weight="1">               	              
+        	 </RelativeLayout>
+        </TableRow>
+    </TableLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

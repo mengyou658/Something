@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Notice：
+    1、versionCode为升级控制版本号
+    2、versionName为升级显示版本号
+    By LKZ
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.moons.xst.track"
+    android:versionCode="173"
+    android:versionName="1.0.0.2">
+    <!--  android:sharedUserId="android.uid.system"> -->
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+
+    <permission android:name="android.permission.BAIDU_LOCATION_SERVICE" >
+    </permission>
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.WAKE_LOCK" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false" />
+    <uses-feature android:name="android.hardware.screen.landscape" />
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <uses-permission android:name="android.permission.NFC" />
+
+    <application
+        android:name=".AppContext"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_product"
+        android:label="@string/app_name" >
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="rCQp51kaxP65ifVQGowiIGT2" />
+        <meta-data
+            android:name="com.baidu.lbsapi.Service_API_KEY"
+            android:value="35a7661b54ca14d4ac2b6645242997ed" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+        </service>
+
+        <activity
+            android:name=".AppStart"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+    	 <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>  
+        </activity>
+        <activity
+            android:name=".pad_ui.PADStart"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name=".ui.Home"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar" />
+        <activity
+            android:name=".ui.Setting"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Preference" />
+        <activity
+            android:name=".ui.About"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ZoomLight" />
+        <activity
+            android:name=".ui.LoginDialog"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HalfTranslucent"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name=".ui.CaptureActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="true"
+            android:theme="@style/Theme.SlideTop"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <activity
+            android:name=".ui.ImageDialog"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HalfTranslucent" />
+        <activity
+            android:name=".ui.ImageZoomDialog"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ZoomLight.Fullscreen" />
+        <activity
+            android:name=".ui.DianjianMain"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar" />
+        <activity
+            android:name=".ui.DianjianDjLine"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar" />
+        <activity
+            android:name=".ui.DianjianTouchIDPos"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar" />
+        <activity
+            android:name=".ui.Map_main"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar" />
+        <activity
+            android:name=".ui.CommDownload"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar" />
+
+        <receiver android:name=".ui.BroadCast" >
+            <intent-filter>
+                <action android:name="com.moons.xst.app.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+        </receiver>
+
+     <!--   <activity
+            android:name=".ui.DianJianSR"
+            android:launchMode="singleTask"
+            android:theme="@style/DialogTransparent" >
+        </activity>--> 
+        <activity
+            android:name=".ui.Tool_GPS"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar" />
+        <activity
+            android:name=".ui.Tool_VoiceInput"
+            android:theme="@style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".ui.Tool_NFC"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".ui.InputBug"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar" />
+        <activity
+            android:name=".ui.InitCheckPoint"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar" />
+        <activity
+            android:name=".ui.AboutUS"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ZoomLight" />
+        <activity
+            android:name=".ui.QueryData"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar" />
+        <activity
+            android:name=".ui.QueryDatapoPlan"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar" >
+        </activity>
+        <activity android:name=".ui.CalcCycle" >
+        </activity>
+        <activity
+            android:name=".ui.DJQueryData"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar" />
+        <activity
+            android:name=".ui.DJQueryDatapoPlan"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar" >
+        </activity>
+        <!--
+               <activity 
+             android:name=".ui.CameraActivity" 
+             android:launchMode="singleTask"
+             android:screenOrientation="portrait"
+             android:theme="@style/Theme.NoTitleBar"></activity>
+        -->
+
+        <activity
+            android:name=".ui.CameraAty"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".ui.AlbumAty"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".ui.AlbumItemAty"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar" >
+        </activity>
+
+        <service
+            android:name=".service.CommuJITService"
+            android:enabled="true" >
+            <intent-filter android:priority="1000">
+                <action android:name="com.moons.xst.track.AppStart" />
+                <action android:name="com.moons.xst.track.ui.Home" />
+                <action android:name="com.moons.xst.track.ui.CommDownload" />
+                <action android:name="com.moons.xst.track.ui.Map_main" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".service.GpsManagerService"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.moons.xst.track.AppStart" />
+                <action android:name="com.moons.xst.track.ui.Home" />
+            </intent-filter>
+        </service>
+        <service android:name=".service.CalculateCycleService" >
+            <intent-filter>
+                <action android:name="com.moons.xst.track.AppStart" />
+                <action android:name="com.moons.xst.track.ui.Home" />
+            </intent-filter>
+        </service>
+        <service android:name=".service.VoiceConvertService" >
+            <intent-filter>
+                <action android:name="com.moons.xst.track.AppStart" />
+                <action android:name="com.moons.xst.track.ui.Home" />
+                <action android:name="com.moons.xst.track.ui.Map_main" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".pad_ui.activity.Pad_Home"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".pad_ui.activity.Pad_SBDA_Activity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.NoTitleBar" >
+        </activity>
+        <activity android:name=".ui.MoonsMediaRecorder"></activity>
+        <activity android:name=".ui.GPSPlanListAty"
+            android:launchMode="singleTask"
+             android:screenOrientation="portrait"
+             android:theme="@style/Theme.NoTitleBar"></activity>  
+        
+        <activity
+            android:name=".ui.TempTask"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".ui.TempTask_inputbug"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar" >
+        </activity>
+         <activity
+            android:name=".ui.TempTaskList"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".ui.Offline_Map"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar" >
+        </activity>
+         <activity
+            android:name=".ui.MeasureSpeedActivity"
+            android:screenOrientation="portrait">
+        </activity>
+         <activity
+            android:name=".ui.VibrationActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.VibrationSetActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.TemperatureActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.TemperatureSetActivity"
+            android:screenOrientation="portrait">
+        </activity>
+    </application>
+
+</manifest>

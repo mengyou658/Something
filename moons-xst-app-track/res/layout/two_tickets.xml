@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/oeration_bill_head"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:background="@drawable/title_bar" >
+
+        <ImageButton
+            android:id="@+id/home_head_Rebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:background="@color/full_transparent"
+            android:src="@drawable/arrow_left" />
+
+        <TextView
+            style="@style/main_head_title"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:text="@string/twobill_title" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:gravity="center_vertical"
+        android:onClick="ll_operationTickets" 
+        android:background="@drawable/btn_selected"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/image_marginLeft"
+            android:scaleType="matrix"
+            android:src="@drawable/widget_bar_operatebill_xh" />
+
+        <TextView
+            style="@style/widget_listview_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/twobill_operate_ticket" />
+    </LinearLayout>
+    <include layout="@layout/vertical_split_line_1dp" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:gravity="center_vertical"
+        android:background="@drawable/btn_selected"
+        android:onClick="WorkBill"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/image_marginLeft"
+            android:scaleType="matrix"
+            android:src="@drawable/widget_bar_workbill_xh" />
+
+        <TextView
+            style="@style/widget_listview_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/twobill_work_bill" />
+    </LinearLayout>
+    <include layout="@layout/vertical_split_line_1dp" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:gravity="center_vertical"
+        android:background="@drawable/btn_selected"
+        android:onClick="dataUpdate"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/image_marginLeft"
+            android:scaleType="matrix"
+            android:src="@drawable/widget_bar_mapupdate_xh" />
+
+        <TextView
+            style="@style/widget_listview_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/twobill_datasync" />
+    </LinearLayout>
+    <include layout="@layout/vertical_split_line_1dp" />
+</LinearLayout>

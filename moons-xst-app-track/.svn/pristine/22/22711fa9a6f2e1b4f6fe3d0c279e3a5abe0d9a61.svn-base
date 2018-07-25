@@ -1,0 +1,144 @@
+package com.moons.xst.sqlite;
+
+import java.io.File;
+import java.util.List;
+
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import com.moons.xst.track.AppConst;
+import com.moons.xst.track.AppContext;
+import com.moons.xst.track.bean.Z_DJ_Plan;
+import com.moons.xst.track.common.UIHelper;
+import com.moons.xst.track.dao.DJ_PhotoByResultDao;
+import com.moons.xst.track.dao.DJ_ResultActiveDao;
+import com.moons.xst.track.dao.DJ_TaskIDPosActiveDao;
+import com.moons.xst.track.dao.GPSMobjectBugResultDao;
+import com.moons.xst.track.dao.GPSMobjectBugResultForFilesDao;
+import com.moons.xst.track.dao.GPSPositionDao;
+import com.moons.xst.track.dao.GPSPositionForInitDao;
+import com.moons.xst.track.dao.GPSPositionForResultDao;
+import com.moons.xst.track.dao.GPSXXPlanResultDao;
+import com.moons.xst.track.dao.MObject_StateDao;
+import com.moons.xst.track.dao.OverSpeedRecordDao;
+import com.moons.xst.track.dao.SRLineTreeLastResultForResultDao;
+import com.moons.xst.track.dao.Z_ConditionForResultDao;
+import com.moons.xst.track.dao.Z_DJ_PlanDao;
+import com.moons.xst.track.dao.Z_DJ_PlanForResultDao;
+import com.moons.xst.track.dao.Z_RelationForResultDao;
+
+import de.greenrobot.dao.AbstractDaoMaster;
+import de.greenrobot.dao.identityscope.IdentityScopeType;
+
+public class DJResultDAOMaster extends AbstractDaoMaster {
+
+	public static final int SCHEMA_VERSION = 1001;
+	
+	/** Creates underlying database table using DAOs. */
+	public static void createAllTables(SQLiteDatabase db, boolean ifNotExists) {
+		DJ_PhotoByResultDao.createTable(db, ifNotExists);
+		DJ_ResultActiveDao.createTable(db, ifNotExists);
+		DJ_TaskIDPosActiveDao.createTable(db, ifNotExists);
+		GPSMobjectBugResultDao.createTable(db, ifNotExists);
+		GPSPositionDao.createTable(db, ifNotExists);
+		GPSPositionForInitDao.createTable(db, ifNotExists);
+		GPSPositionForResultDao.createTable(db, ifNotExists);
+		MObject_StateDao.createTable(db, ifNotExists);
+		GPSMobjectBugResultForFilesDao.createTable(db, ifNotExists);
+		GPSXXPlanResultDao.createTable(db, ifNotExists);
+		OverSpeedRecordDao.createTable(db, ifNotExists);
+		Z_RelationForResultDao.createTable(db, ifNotExists);
+		
+		//冗余几张表，如果是条件巡检，才增加数据，否则只有表，没有数据
+		Z_DJ_PlanForResultDao.createTable(db, ifNotExists);
+		SRLineTreeLastResultForResultDao.createTable(db, ifNotExists);
+		Z_ConditionForResultDao.createTable(db, ifNotExists);
+	}
+
+	/** Drops underlying database table using DAOs. */
+	public static void dropAllTables(SQLiteDatabase db, boolean ifExists) {
+		DJ_PhotoByResultDao.dropTable(db, ifExists);
+		DJ_ResultActiveDao.dropTable(db, ifExists);
+		DJ_TaskIDPosActiveDao.dropTable(db, ifExists);
+		GPSMobjectBugResultDao.dropTable(db, ifExists);
+		GPSPositionDao.dropTable(db, ifExists);
+		GPSPositionForInitDao.dropTable(db, ifExists);
+		GPSPositionForResultDao.dropTable(db, ifExists);
+		MObject_StateDao.dropTable(db, ifExists);
+		GPSMobjectBugResultForFilesDao.dropTable(db, ifExists);
+		GPSXXPlanResultDao.dropTable(db, ifExists);
+		OverSpeedRecordDao.dropTable(db, ifExists);
+		Z_RelationForResultDao.dropTable(db, ifExists);
+		
+		//冗余几张表，如果是条件巡检，才增加数据，否则只有表，没有数据
+		Z_DJ_PlanForResultDao.dropTable(db, ifExists);
+		SRLineTreeLastResultForResultDao.dropTable(db, ifExists);
+		Z_ConditionForResultDao.dropTable(db, ifExists);
+	}
+
+	public static abstract class OpenHelper extends SQLiteOpenHelper {
+
+		public OpenHelper(Context context, String name, CursorFactory factory) {
+			super(context, name, factory, SCHEMA_VERSION);
+		}
+
+		@Override
+		public void onCreate(SQLiteDatabase db) {
+			Log.i("greenDAO", "Creating tables for schema version "
+					+ SCHEMA_VERSION);
+			createAllTables(db, false);
+		}
+	}
+
+	/** WARNING: Drops all table on Upgrade! Use only during development. */
+	public static class DevOpenHelper extends OpenHelper {
+		public DevOpenHelper(Context context, String name, CursorFactory factory) {
+			super(context, name, factory);
+		}
+
+		@Override
+		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+			Log.i("greenDAO", "Upgrading schema from version " + oldVersion
+					+ " to " + newVersion + " by dropping all tables");
+			// dropAllTables(db, true);
+			// onCreate(db);
+			//1000升级1001 GPSPOSITION表添加BDLOCATIONTYPE_TX字段
+			db.execSQL("ALTER TABLE GPSPOSITION ADD 'BDLOCATIONTYPE_TX' nvarchar(60)");
+		}
+	}
+
+	public DJResultDAOMaster(SQLiteDatabase db) {
+		super(db, SCHEMA_VERSION);
+		registerDaoClass(DJ_PhotoByResultDao.class);
+		registerDaoClass(DJ_ResultActiveDao.class);
+		registerDaoClass(DJ_TaskIDPosActiveDao.class);
+		registerDaoClass(GPSMobjectBugResultDao.class);
+		registerDaoClass(GPSPositionDao.class);
+		registerDaoClass(GPSPositionForInitDao.class);
+		registerDaoClass(GPSPositionForResultDao.class);
+		registerDaoClass(MObject_StateDao.class);
+		registerDaoClass(GPSMobjectBugResultForFilesDao.class);
+		registerDaoClass(OverSpeedRecordDao.class);
+		registerDaoClass(GPSXXPlanResultDao.class);
+		registerDaoClass(Z_RelationForResultDao.class);
+		
+		//冗余几张表，如果是条件巡检，才增加数据，否则只有表，没有数据
+		registerDaoClass(Z_DJ_PlanForResultDao.class);
+		registerDaoClass(SRLineTreeLastResultForResultDao.class);
+		registerDaoClass(Z_ConditionForResultDao.class);
+	}
+
+	@Override
+	public DJResultDAOSession newSession() {
+		return new DJResultDAOSession(db, IdentityScopeType.Session,
+				daoConfigMap);
+	}
+
+	@Override
+	public DJResultDAOSession newSession(IdentityScopeType type) {
+		return new DJResultDAOSession(db, type, daoConfigMap);
+	}
+}

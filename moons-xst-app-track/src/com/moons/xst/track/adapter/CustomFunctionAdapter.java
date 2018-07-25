@@ -1,0 +1,93 @@
+package com.moons.xst.track.adapter;
+
+import java.util.List;
+
+import com.moons.xst.track.R;
+import com.moons.xst.track.bean.custom;
+import com.moons.xst.track.common.UIHelper;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class CustomFunctionAdapter extends BaseAdapter{
+	private LayoutInflater mInflater;
+	private Context mContext;
+	List<custom> mList;
+	public CustomFunctionAdapter(Context con,List<custom> list){
+		 mInflater=LayoutInflater.from(con);  
+		 mContext=con;
+		 mList=list;
+	}
+	@Override
+	public int getCount() {
+		// TODO 自动生成的方法存根
+		return mList.size();
+	}
+
+	@Override
+	public Object getItem(int position) {
+		// TODO 自动生成的方法存根
+		return mList.get(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+		// TODO 自动生成的方法存根
+		return position;
+	}
+	public void refresh(List<custom> list){
+		 mList=list;
+		 this.notifyDataSetChanged();
+	}
+
+	@Override
+	public View getView(final int position, View convertView, ViewGroup parent) {
+		 ViewHolder vh=null;
+		 if(convertView==null){  
+			 convertView = mInflater.inflate(R.layout.custom_tag_layout, null); 
+			  vh=new ViewHolder();
+			 vh.tv_custom=(TextView) convertView.findViewById(R.id.tv_custom);
+			 vh.iv_custom=(ImageView) convertView.findViewById(R.id.iv_custom);
+			 convertView.setTag(vh);  
+		 }else{
+			 vh=(ViewHolder)convertView.getTag();  
+		 }
+		String tag=mList.get(position).getTag();
+		//vh.tv_custom.setText(mList.get(position).getQuickName());
+		 
+		 if(tag.equals("isCewen")){
+			 vh.tv_custom.setText(mContext.getResources().getString(R.string.main_menu_home_cewen));
+			 vh.iv_custom.setBackgroundResource(R.drawable.widget_custom_bar_temperature_xh);
+		 }else if(tag.equals("isCezhen")){
+			 vh.tv_custom.setText(mContext.getResources().getString(R.string.main_menu_home_cezhen));
+			 vh.iv_custom.setBackgroundResource(R.drawable.widget_custom_bar_vibration_xh);
+		 }else if(tag.equals("isTwoBill")){
+			 vh.tv_custom.setText(mContext.getResources().getString(R.string.main_menu_home_two_ticket));
+			 vh.iv_custom.setBackgroundResource(R.drawable.widget_custom_bar_twobill_xh);
+		 }else if(tag.equals("isCZS")){
+			 vh.tv_custom.setText(mContext.getResources().getString(R.string.main_menu_home_cezs));
+			 vh.iv_custom.setBackgroundResource(R.drawable.widget_custom_bar_speed_xh);
+		 }else if(tag.equals("isCamera")){
+			 vh.tv_custom.setText(mContext.getResources().getString(R.string.main_menu_home_camera));
+			 vh.iv_custom.setBackgroundResource(R.drawable.widget_custom_bar_camera_xh);
+		 }else if(tag.equals("isPlanDownLoad")){
+			 vh.tv_custom.setText(mContext.getResources().getString(R.string.main_menu_home_data_synchronization));
+			 vh.iv_custom.setBackgroundResource(R.drawable.widget_custom_bar_updown_xh);
+		 }else if(tag.equals("isOverhaul")){
+			 vh.tv_custom.setText(mContext.getString(R.string.main_menu_home_overhaul));
+			 vh.iv_custom.setBackgroundResource(R.drawable.widget_custom_bar_overhaul_xh);
+		 }
+		return convertView;
+	}
+	static class ViewHolder {
+		public TextView tv_custom;
+		public ImageView iv_custom;
+	} 
+
+}

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory 
+	    android:layout="@layout/preference_category" 
+	    android:title="@string/vibration_vibrationSetting">
+	    <Preference
+		    android:layout="@layout/preference" 
+		    android:title="@string/vibrationSetting_vibrationpackage" 
+	        android:key="vibrationpackage" 
+	        android:entries="@array/Vibrationpackage_options"    
+            android:entryValues="@array/Vibrationpackage_values"
+            android:positiveButtonText="@string/sure"
+		    android:negativeButtonText="@string/cancel" />
+	    <Preference
+		    android:layout="@layout/preference" 
+		    android:title="@string/vibrationSetting_vibrationpassageway" 
+	        android:key="vibrationpassageway"
+	        android:positiveButtonText="@string/sure"
+		    android:negativeButtonText="@string/cancel" />
+	    <Preference
+		    android:layout="@layout/preference" 
+		    android:title="@string/vibrationSetting_maxfreq" 
+	        android:key="maxfreq"
+	        android:positiveButtonText="@string/sure"
+		    android:negativeButtonText="@string/cancel" />
+	    <Preference
+		    android:layout="@layout/preference" 
+		    android:title="@string/vibrationSetting_samplepoints" 
+	        android:key="samplepoints"
+	        android:positiveButtonText="@string/sure"
+		    android:negativeButtonText="@string/cancel" />
+	    <Preference
+		    android:layout="@layout/preference" 
+		    android:title="@string/vibrationSetting_windowtype" 
+	        android:key="windowtype" 
+	        android:entries="@array/Vibrationwindowtype_options"    
+            android:entryValues="@array/Vibrationwindowtype_values"
+            android:positiveButtonText="@string/sure"
+		    android:negativeButtonText="@string/cancel" />
+	    <Preference
+		    android:layout="@layout/preference" 
+		    android:title="@string/vibrationSetting_avgnum" 
+	        android:key="avgnum" 
+	        android:entries="@array/Vibrationavgnum_options"    
+            android:entryValues="@array/Vibrationavgnum_values"
+            android:positiveButtonText="@string/sure"
+		    android:negativeButtonText="@string/cancel" />
+	    <Preference
+		    android:layout="@layout/preference" 
+		    android:title="@string/vibrationSetting_averwrap" 
+	        android:key="averwrap" 
+	        android:entries="@array/Vibrationaverwrap_options"    
+            android:entryValues="@array/Vibrationaverwrap_values"
+            android:positiveButtonText="@string/sure"
+		    android:negativeButtonText="@string/cancel" />
+	    <Preference
+		    android:layout="@layout/preference" 
+		    android:title="@string/vibrationSetting_bandwidth" 
+	        android:key="bandwidth" 
+	        android:entries="@array/Vibrationbandwidth_options"    
+            android:entryValues="@array/Vibrationbandwidth_values"
+            android:positiveButtonText="@string/sure"
+		    android:negativeButtonText="@string/cancel" />
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+        android:layout="@layout/preference_category" 
+	    android:title="@string/bluetooth_setup">
+    <Preference  
+        android:layout="@layout/preference"
+        android:title="@string/bluetooth_search"  
+        android:key="bluetooth_settings" >  
+        <intent  
+            android:action="android.intent.action.MAIN"  
+            android:targetPackage="com.moons.xst.track.ui"  
+            android:targetClass="com.moons.xst.track.ui.BluetoothDeviceAty" />  
+    </Preference> 
+    <EditTextPreference android:layout="@layout/preference" 
+	        android:title="@string/bluetooth_password" 
+	        android:key="pwd"
+	        android:positiveButtonText="@string/sure"
+		    android:negativeButtonText="@string/cancel" />
+    </PreferenceCategory>
+</PreferenceScreen>

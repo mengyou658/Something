@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    style="@style/widget_listview_Item"
+    android:orientation="horizontal" 
+  	android:layout_height="35dip"
+  	android:background="@drawable/listitem_corner1"
+	>   
+	
+	<RelativeLayout 
+		android:id="@+id/layout_listitem_radio_itemicon" 
+	  	android:layout_width="35dip" 
+	  	android:layout_height="35dip"
+	  	android:layout_alignParentLeft="true"
+	  	android:layout_alignParentTop="true"
+	    android:layout_gravity="center_vertical"
+	  	android:gravity="center"
+	  	>     
+	  	
+        <ImageView 
+            android:id="@+id/listitem_radio_icon"
+	      	android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content"
+			android:scaleType="matrix"
+	        android:layout_marginLeft="2dip"
+	        android:layout_gravity="center_vertical"
+	        />	  	
+    </RelativeLayout>
+    <RelativeLayout 
+		android:id="@+id/layout_listitem_radio_itemcheckbox" 
+	  	android:layout_width="30dip" 
+	  	android:layout_height="35dip"
+	  	android:layout_alignParentRight="true"
+	  	android:layout_alignParentTop="true"
+	    android:layout_gravity="center_vertical"
+	  	android:gravity="center"
+	  	>     
+       
+	  	<RadioButton
+	  	    android:id="@+id/listitem_radio_itemcheckbox"
+	  	    android:layout_width="35dip"
+	  	    android:layout_height="35dip"
+	  	    android:layout_alignParentRight="true"
+	  	    android:layout_gravity="center_vertical"
+	  	    android:layout_marginRight="2dip"
+	  	    android:button="@drawable/radiobutton_style_green"
+	  	    android:gravity="center"
+	  	    android:scaleType="matrix" />
+	     	
+    </RelativeLayout>
+	<RelativeLayout 
+		android:id="@+id/layout_radio_itemdesc" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_height="35dip"
+	  	android:layout_toRightOf="@id/layout_listitem_radio_itemicon"
+	  	android:layout_toLeftOf="@id/layout_listitem_radio_itemcheckbox"
+	  	android:orientation="vertical" 
+	  	>     
+	  	
+	    <RelativeLayout 
+	        android:id="@+id/layout_listitem_radio_itemdesc" 
+	        android:layout_width="fill_parent"  
+	        android:layout_height="35dip"
+	        android:orientation="horizontal" 
+	        android:layout_alignParentTop="true"
+	        >	    
+
+		    <TextView
+		        android:id="@+id/listitem_radio_itemdesc"
+		        style="@style/widget_listview_multi_des"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:gravity="center|left"
+		        android:singleLine="true" />
+		    
+	   	</RelativeLayout>	    
+	    
+    </RelativeLayout>
+	
+	
+
+
+</RelativeLayout> 

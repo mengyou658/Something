@@ -1,0 +1,524 @@
+/**
+ * DataTransHelper.java
+ * @author LKZ
+ * @created 2014-12-27
+ * */
+package com.moons.xst.track.dao;
+
+import java.io.File;
+import java.io.StringReader;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.TimeZone;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.w3c.dom.DOMException;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+
+import android.R.integer;
+
+import com.moons.xst.track.AppConst;
+import com.moons.xst.track.AppContext;
+import com.moons.xst.track.bean.DJLine;
+import com.moons.xst.track.common.DateTimeHelper;
+import com.moons.xst.track.common.FileEncryptAndDecrypt;
+import com.moons.xst.track.common.FileUtils;
+import com.moons.xst.track.common.StringUtils;
+import com.moons.xst.track.communication.DownLoad;
+
+/**
+ * 此类意在将源数据按需要再次包装
+ * 
+ */
+public class DataTransHelper {
+
+	/**
+	 * 将路线的XML转换成List<DJLine>,并只返回lineList数组中的路线信息
+	 * 
+	 * @author LKZ
+	 */
+	public static List<DJLine> ConvertLineFromXMLFile(String lineListStr) {
+		ArrayList<String> lineList = new ArrayList<String>();
+		List<DJLine> djLineList = new ArrayList<DJLine>();
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		try {
+			if ((!StringUtils.isEmpty(lineListStr))
+					&& lineListStr.contains(";")) {
+				String[] _LineList = lineListStr.split(";");
+				lineList.clear();
+				for (String _line : _LineList) {
+					if (!StringUtils.isEmpty(_line)) {
+						lineList.add(_line);
+					}
+				}
+			}
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			File f = new File(AppConst.XSTBasePath()
+					+ AppConst.DJLineXmlFile);
+			if (!f.exists())
+				return null;
+			Document doc = db.parse(f);
+			doc.normalize();
+			NodeList tableList = doc.getElementsByTagName("Table");
+			for (int i = 0; i < tableList.getLength(); i++) {
+				Node table = tableList.item(i);
+				Element elem = (Element) table;
+				DJLine _DjLine = new DJLine();
+				int LineID = 0;
+				int IdCount = 0;
+				int PlanCount = 0;
+				String LineName = "";
+				int LineType = 0;
+				Boolean buildYN = false;
+				Date BuildTime = StringUtils.toDate("1911-11-11 11:11:11");
+				for (Node node = table.getFirstChild(); node != null; node = node
+						.getNextSibling()) {
+					if (node.getNodeType() == Node.ELEMENT_NODE) {
+						if (node.getNodeName().toUpperCase().equals("LINE_ID")) {
+							LineID = Integer.valueOf(node.getTextContent())
+									.intValue();
+						} else if (node.getNodeName().toUpperCase()
+								.equals("NAME_TX")) {
+							LineName = node.getTextContent();
+						} else if (node.getNodeName().toUpperCase()
+								.equals("BUILD_TM")) {
+							if (node.getTextContent().length() > 0) {
+								SimpleDateFormat sdf = new SimpleDateFormat(
+										"yyyy-MM-dd'T'HH:mm:ss");
+								sdf.setTimeZone(TimeZone
+										.getTimeZone("GMT+08:00"));
+								BuildTime = sdf.parse(node.getTextContent());
+							}
+						} else if (node.getNodeName().toUpperCase()
+								.equals("IDCOUNT")) {
+							IdCount = Integer.valueOf(node.getTextContent())
+									.intValue();
+						} else if (node.getNodeName().toUpperCase()
+								.equals("PLANCOUNT")) {
+							PlanCount = Integer.valueOf(node.getTextContent())
+									.intValue();
+						} else if (node.getNodeName().toUpperCase()
+								.equals("PCTYPE_CD")) {
+							LineType = Integer.valueOf(node.getTextContent())
+									.intValue();
+						} else if (node.getNodeName().toUpperCase()
+								.equals("BUILD_YN")) {
+							buildYN = node.getTextContent().equals("1") ? true
+									: false;
+						}
+					}
+				}
+				_DjLine.setLineID(LineID);
+				_DjLine.setLineName(LineName);
+				_DjLine.setBuidYN(buildYN);
+				_DjLine.setBuildTime(BuildTime);
+				_DjLine.setIdCount(IdCount);
+				_DjLine.setPlanCount(PlanCount);
+				_DjLine.setlineType(LineType);
+				if (lineList.contains(String.valueOf(LineID)))
+					djLineList.add(_DjLine);
+			}
+			return djLineList;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
+	 * 将路线的XML转换成List<DJLine>
+	 * 
+	 * @author LKZ
+	 */
+	public synchronized static List<DJLine> ConvertLineFromXMLFile() {
+		boolean isDJPC = false;
+		List<DJLine> djLineList = new ArrayList<DJLine>();
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		try {
+			if (!FileUtils.checkFileExists(AppConst.XSTBasePath()
+					+ AppConst.DJLineXmlFile))
+				return null;
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			Document doc = db.parse(new File(AppConst.XSTBasePath()
+					+ AppConst.DJLineXmlFile));
+			doc.normalize();
+			NodeList tableList = doc.getElementsByTagName("Table");
+			for (int i = 0; i < tableList.getLength(); i++) {
+				Node table = tableList.item(i);
+				Element elem = (Element) table;
+				DJLine _DjLine = new DJLine();
+				int LineID = 0;
+				int IdCount = 0;
+				int PlanCount = 0;
+				String LineName = "";
+				int LineType = 0;
+				Boolean buildYN = false;
+				Date BuildTime = StringUtils.toDate("1911-11-11 11:11:11");
+				for (Node node = table.getFirstChild(); node != null; node = node
+						.getNextSibling()) {
+					if (node.getNodeType() == Node.ELEMENT_NODE) {
+						if (node.getNodeName().toUpperCase().equals("LINE_ID")) {
+							LineID = Integer.valueOf(node.getTextContent())
+									.intValue();
+						} else if (node.getNodeName().toUpperCase()
+								.equals("NAME_TX")) {
+							LineName = node.getTextContent();
+						} else if (node.getNodeName().toUpperCase()
+								.equals("BUILD_TM")) {
+							SimpleDateFormat sdf = new SimpleDateFormat(
+									"yyyy-MM-dd'T'HH:mm:ss");
+							sdf.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
+							if (!node.getTextContent().equals("")) {
+								BuildTime = sdf.parse(node.getTextContent());
+								String a = node.getTextContent();
+							}
+
+						} else if (node.getNodeName().toUpperCase()
+								.equals("IDCOUNT")) {
+							IdCount = Integer.valueOf(node.getTextContent())
+									.intValue();
+						} else if (node.getNodeName().toUpperCase()
+								.equals("PLANCOUNT")) {
+							PlanCount = Integer.valueOf(node.getTextContent())
+									.intValue();
+						} else if (node.getNodeName().toUpperCase()
+								.equals("PCTYPE_CD")) {
+							LineType = Integer.valueOf(node.getTextContent())
+									.intValue();
+						} else if (node.getNodeName().toUpperCase()
+								.equals("BUILD_YN")) {
+							buildYN = node.getTextContent().equals("1") ? true
+									: false;
+						}
+					}
+				}
+				_DjLine.setLineID(LineID);
+				_DjLine.setLineName(LineName);
+				_DjLine.setBuidYN(buildYN);
+				_DjLine.setBuildTime(BuildTime);
+				_DjLine.setIdCount(IdCount);
+				_DjLine.setPlanCount(PlanCount);
+				_DjLine.setlineType(LineType);
+				djLineList.add(_DjLine);
+			}
+			return djLineList;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
+	 * 将路线的XML字符串转换成List<DJLine>
+	 * 
+	 * @author LKZ
+	 */
+	public static List<DJLine> ConvertLineFromXML(String xmlLineStr) {
+		List<DJLine> djLineList = new ArrayList<DJLine>();
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		try {
+			StringReader stringReader = new StringReader(xmlLineStr);
+			InputSource inputSource = new InputSource(stringReader);
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			Document doc = db.parse(inputSource);
+			doc.normalize();
+			NodeList tableList = doc.getElementsByTagName("Table");
+			for (int i = 0; i < tableList.getLength(); i++) {
+				Node table = tableList.item(i);
+				Element elem = (Element) table;
+				DJLine _DjLine = new DJLine();
+				int LineID = 0;
+				int IdCount = 0;
+				int PlanCount = 0;
+				String LineName = "";
+				int LineType = 0;
+				Boolean buildYN = false;
+				Date BuildTime = StringUtils.toDate("1911-11-11 11:11:11");
+				for (Node node = table.getFirstChild(); node != null; node = node
+						.getNextSibling()) {
+					if (node.getNodeType() == Node.ELEMENT_NODE) {
+						if (node.getNodeName().toUpperCase().equals("LINE_ID")) {
+							LineID = Integer.valueOf(node.getTextContent())
+									.intValue();
+						} else if (node.getNodeName().toUpperCase()
+								.equals("NAME_TX")) {
+							LineName = node.getTextContent();
+						} else if (node.getNodeName().toUpperCase()
+								.equals("BUILD_TM")) {
+							SimpleDateFormat sdf = new SimpleDateFormat(
+									"yyyy-MM-dd'T'HH:mm:ss");
+							sdf.setTimeZone(TimeZone.getTimeZone("GMT+08:00"));
+							BuildTime = sdf.parse(node.getTextContent());
+						} else if (node.getNodeName().toUpperCase()
+								.equals("IDCOUNT")) {
+							IdCount = Integer.valueOf(node.getTextContent())
+									.intValue();
+						} else if (node.getNodeName().toUpperCase()
+								.equals("PLANCOUNT")) {
+							PlanCount = Integer.valueOf(node.getTextContent())
+									.intValue();
+						} else if (node.getNodeName().toUpperCase()
+								.equals("PCTYPE_CD")) {
+							LineType = Integer.valueOf(node.getTextContent())
+									.intValue();
+						} else if (node.getNodeName().toUpperCase()
+								.equals("BUILD_YN")) {
+							buildYN = node.getTextContent().equals("1") ? true
+									: false;
+						}
+					}
+				}
+				_DjLine.setLineID(LineID);
+				_DjLine.setLineName(LineName);
+				_DjLine.setBuidYN(buildYN);
+				_DjLine.setBuildTime(BuildTime);
+				_DjLine.setIdCount(IdCount);
+				_DjLine.setPlanCount(PlanCount);
+				_DjLine.setlineType(LineType);
+				djLineList.add(_DjLine);
+			}
+			return djLineList;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	// 删除xml中的某条路线
+	public static boolean DeleteLine(String LineListPath, String LineID) {
+		try {
+			File f = new File(LineListPath);
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			Document doc = db.parse(f);
+			doc.normalize();
+			NodeList tableList = doc.getElementsByTagName("Table");
+			for (int i = 0; i < tableList.getLength(); i++) {
+				Node table = tableList.item(i);
+				for (Node node = table.getFirstChild(); node != null; node = node
+						.getNextSibling()) {
+					if (node.getNodeName().toUpperCase().equals("LINE_ID")
+							&& node.getTextContent().equals(LineID)) {
+						doc.getElementsByTagName("NewDataSet").item(0)
+								.removeChild(table);
+						break;
+					}
+				}
+			}
+			DownLoad.write2Xml(doc, f);
+			return true;
+		} catch (Exception e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+			return false;
+		}
+
+	}
+
+	/**
+	 * 清理点检排程过期路线
+	 */
+	public static boolean ClearPastDueLine() {
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		try {
+			// LineList.xml路径
+			File tempFile = new File(AppConst.XSTBasePath()
+					+ "LineList.xml");
+			DocumentBuilder tempDocDb = dbf.newDocumentBuilder();
+			Document tempDoc = tempDocDb.parse(tempFile);
+			tempDoc.normalize();
+			NodeList tempList = tempDoc.getElementsByTagName("Table");
+			for (int i = 0; i < tempList.getLength(); i++) {
+				Node tempNode = tempList.item(i);
+				String Line_ID = "";
+				String PCTYPE_CD = "";
+				String Time = "";
+				for (Node node = tempNode.getFirstChild(); node != null; node = node
+						.getNextSibling()) {
+					if (node.getNodeName().toUpperCase().equals("LINE_ID")) {
+						Line_ID = node.getTextContent();
+					}
+					if (node.getNodeName().toUpperCase().equals("PCTYPE_CD")) {
+						PCTYPE_CD = node.getTextContent();
+					}
+					if (node.getNodeName().toUpperCase().equals("STANDARD_TM")) {
+						Time = node.getTextContent();
+					}
+				}
+				// 只清理点检排程路线
+				if (PCTYPE_CD.equals("1")) {
+					// 如果日期不是今天则视为超时（清理该路线）
+					if (!DateTimeHelper.isToday(Time)) {
+						tempDoc.getElementsByTagName("NewDataSet").item(0)
+								.removeChild(tempNode);
+						File Path = new File(AppConst.XSTDBPath() + "424DB_"
+								+ Line_ID + ".sdf");
+						Path.delete();
+					}
+				}
+			}
+			DownLoad.write2Xml(tempDoc, tempFile);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	/**
+	 * 修复NewUserlist.xml
+	 */
+	public static boolean RepairUserListXML(){
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		//临时UserList.xml(保存解密后的userlist)
+		String tempUserList=AppConst.XSTBasePath() + AppConst.tempUserXmlFile;
+		// 之前的userList路径
+		String UserFile = AppConst.XSTBasePath() + AppConst.NewUserXmlFile;
+		File UserPath=new File(UserFile);
+		//新下的UserList路径
+		String downloadUser=AppConst.XSTBasePath()+ AppConst.UserXmlFile;
+		boolean newXMlIsDamage=true;
+		try {
+			
+			//保存所有路线
+			List<String> LineList=new ArrayList<String>();
+			// LineList.xml路径
+			File tempFile = new File(AppConst.XSTBasePath()
+					+ AppConst.DJLineXmlFile);
+			DocumentBuilder LineDocDb = dbf.newDocumentBuilder();
+			Document LineDoc = LineDocDb.parse(tempFile);
+			LineDoc.normalize();
+			NodeList LineNode = LineDoc.getElementsByTagName("Table");
+			//获取LineList.xml中的所有路线
+			for(int i=0;i<LineNode.getLength();i++){
+				Node LNode = LineNode.item(i);
+				for(Node node = LNode.getFirstChild(); node != null; node = node
+						.getNextSibling()){
+					if(node.getNodeName().toUpperCase().equals("LINE_ID")){
+						LineList.add(node.getTextContent());
+					}
+				}
+			}
+			
+			//新下的userList
+			FileEncryptAndDecrypt.decrypt(downloadUser, tempUserList);
+			DocumentBuilder DDocDb = dbf.newDocumentBuilder();
+			Document DDoc = DDocDb.parse(new File(tempUserList));
+			DDoc.normalize();
+			NodeList DList = DDoc.getElementsByTagName("Z_AppUser");
+			newXMlIsDamage=false;
+			if(!UserPath.exists()){
+				DownLoad.write2Xml(DDoc, UserPath);
+				FileEncryptAndDecrypt.encrypt(UserFile);
+				return true;
+			}
+			//之前的UserList.xml
+			FileEncryptAndDecrypt.decrypt(UserFile, tempUserList);
+			DocumentBuilder tempDocDb = dbf.newDocumentBuilder();
+			Document tempDoc = tempDocDb.parse(new File(tempUserList));
+			tempDoc.normalize();
+			NodeList UserList = tempDoc.getElementsByTagName("Z_AppUser");
+			
+			//循环新下的节点和之前的节点，如果二个xml中存在同一个人则合并人员下路线否则就添加节点
+			for(int i=0;i<DList.getLength();i++){
+				Node DNode = DList.item(i);
+				for(Node node = DNode.getFirstChild(); node != null; node = node
+						.getNextSibling()){
+					if(node.getNodeName().toUpperCase().equals("APPUSER_CD")){
+						String cd=node.getTextContent();
+						
+						for(int j=0;j<UserList.getLength();j++){
+							Node UserNode = UserList.item(j);
+							for(Node node2 = UserNode.getFirstChild(); node2 != null; node2 = node2
+									.getNextSibling()){
+								if(node2.getNodeName().toUpperCase().equals("APPUSER_CD")
+										&&cd.equals(node2.getTextContent())){
+									tempDoc.getElementsByTagName("NewDataSet").item(0).removeChild(UserNode);
+								}
+							}
+						}
+					}
+				}
+					//添加节点
+					tempDoc.getElementsByTagName("NewDataSet").item(0).appendChild(tempDoc.importNode(DNode, true));
+			}
+			
+			
+			//清理LineList中不存在的下载库
+			File file=new File(AppConst.XSTDBPath());
+			File[] files=file.listFiles();
+			for (File f : files) {
+				if(!f.toString().contains("424DB")){
+					continue;
+				}
+				//根据路径截取路线id;
+				String LineFile=f.toString();
+				String LineID=LineFile.substring(LineFile.indexOf("_")+1,LineFile.indexOf("."));
+				if(!LineList.contains(LineID)){
+					f.delete();
+				}
+			}
+			
+			DownLoad.write2Xml(tempDoc, new File(tempUserList));
+			tempDoc = tempDocDb.parse(new File(tempUserList));
+			tempDoc.normalize();
+			UserList = tempDoc.getElementsByTagName("Z_AppUser");
+			
+			//循环所有人员，如果该人员能做的路线在tempLineList中不存在则删除该人员
+			for(int i=0;i<UserList.getLength();i++){
+				Node UserNode = UserList.item(i);
+				for(Node node = UserNode.getFirstChild(); node != null; node = node
+						.getNextSibling()){
+					if(node.getNodeName().toUpperCase().equals("LINELIST")){
+						boolean isDelete=true;
+						String[] Line=node.getTextContent().split(";");
+						for(int j=0;j<Line.length;j++){
+							if(LineList.contains(Line[j])){
+								isDelete=false;
+								break;
+							}
+						}
+						if(isDelete){
+							tempDoc.getElementsByTagName("NewDataSet").item(0).removeChild(UserNode);
+							//tempDoc.getElementsByTagName("NewDataSet").item(0).removeChild(tempDoc.importNode(UserNode, true));
+						}
+					}
+				}
+			}
+			DownLoad.write2Xml(tempDoc, UserPath);
+			//加密NewUserList
+			try {
+				FileEncryptAndDecrypt.encrypt(UserFile);
+			} catch (Exception e) {
+				// TODO 自动生成的 catch 块
+				e.printStackTrace();
+			}
+			//删除userList
+			File downloaFile=new File(downloadUser);
+			downloaFile.delete();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			//如果是之前的文件损坏
+			if(e.getMessage().contains("Unexpected end")&&!newXMlIsDamage){
+				FileUtils.copyFile(downloadUser, UserFile);
+			}
+			return false;
+		}finally{
+			//删除临时UserList
+			File tempUserFile=new File(tempUserList);
+			tempUserFile.delete();
+		}
+	}
+
+}

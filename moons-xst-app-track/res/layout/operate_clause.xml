@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/graywhite" >
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:text="@string/operationDetails_state"
+            android:textColor="@color/black" 
+            android:textSize="@dimen/text_size_16"/>
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/operationDetails_order"
+            android:textColor="@color/black" 
+             android:textSize="@dimen/text_size_16"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/operationDetails_content"
+            android:textColor="@color/black" 
+             android:textSize="@dimen/text_size_16"/>
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingRight="15dp"
+            android:text="@string/operationDetails_time"
+            android:textColor="@color/black"
+             android:textSize="@dimen/text_size_16" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/header"
+        android:background="@color/graywhite" />
+
+    <RelativeLayout
+        android:id="@+id/rl_data_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/view" >
+
+        <ListView
+            android:id="@+id/data_listview"
+            style="@style/widget_listview2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="@color/author_text"
+            android:divider="@color/graywhite" >
+        </ListView>
+    </RelativeLayout>
+
+</RelativeLayout>

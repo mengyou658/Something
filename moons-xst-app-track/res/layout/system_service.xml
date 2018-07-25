@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/system_service"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/graywhite" > 
+    <RelativeLayout 
+		android:id="@+id/layout_system_service_head" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_height="50dip"
+	  	android:background="@drawable/title_bar"> 
+        <ImageButton 
+	        android:id="@+id/home_head_Rebutton"
+	        android:src="@drawable/arrow_left"
+	        android:background="@color/full_transparent"
+	        android:layout_width="wrap_content"
+	    	android:layout_height="50dip"
+	    	android:layout_alignParentLeft="true"
+           	android:layout_gravity="center_vertical"
+	        android:layout_marginRight="10dp"
+	        />
+	    <TextView 
+	        android:id="@+id/system_service_head_title"
+	        android:layout_width="fill_parent" 
+		  	android:layout_height="fill_parent"
+			android:gravity="center"
+	        style="@style/main_head_title"
+			android:ellipsize="marquee" 
+	        android:marqueeRepeatLimit="marquee_forever"
+	        android:focusable="true" 
+	        android:focusableInTouchMode="true"			
+			android:text="@string/main_menu_system_aboutus_logo_hide_sysinfo_runtime_service"
+			/>  
+	</RelativeLayout>
+	<RelativeLayout
+	    android:id="@+id/rl_service"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent">
+	    <ListView
+	        android:id="@+id/listview_system_service"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:overScrollMode="always"
+	        android:cacheColorHint="#0000"
+            android:divider="@null"
+            android:scrollbarStyle="outsideOverlay"
+            android:stackFromBottom="false" />
+	</RelativeLayout>
+</LinearLayout>

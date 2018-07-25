@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <!-- share items -->
+    <string-array name="app_share_items">
+        <item>新浪微博</item>
+        <item>腾讯微博</item>
+        <item>微信朋友圈</item>
+        <item>截图分享</item>
+        <item>更多...</item>
+    </string-array>
+    <string-array name="message_list_options">
+        <item>回复</item>
+        <item>转发</item>
+        <item>删除</item>
+    </string-array>
+    <string-array name="message_detail_options">
+        <item>转发</item>
+        <item>删除</item>
+    </string-array>
+    <string-array name="comment_options_2">
+        <item>回复</item>
+        <item>删除</item>
+    </string-array>
+    <string-array name="comment_options_1">
+        <item>回复</item>
+    </string-array>
+    <string-array name="favorite_options">
+        <item>取消收藏</item>
+    </string-array>
+    <string-array name="post_pub_options">
+        <item>提问</item>
+        <item>分享</item>
+        <item>综合</item>
+        <item>职业</item>
+        <item>站务</item>
+    </string-array>
+    <string-array name="head_titles">
+        <item>资讯</item>
+        <item>问答</item>
+        <item>动弹</item>
+        <item>我的空间</item>
+        <item>留言</item>
+    </string-array>
+    <string-array name="path_op_title">
+        <item>重命名</item>
+        <item>删除</item>
+    </string-array>
+    <string-array name="updatesysdatetime_options">
+        <item>@string/setting_function_gpscorrect</item>
+        <item>@string/setting_function_webcorrect</item>
+    </string-array>
+    <string-array name="updatesysdatetime_values">
+        <item>@string/setting_function_nocorrect</item>
+        <item>@string/setting_function_commucorrect</item>
+        <!-- <item>@string/setting_function_webcorrect</item> -->
+    </string-array>
+    <string-array name="measuretype_options">
+        <item>@string/seting_sys_measuretype_defaultvalue</item>
+        <item>@string/seting_sys_measuretype_circumscribedvalue</item>
+    </string-array>
+    <string-array name="measuretype_values">
+        <item>@string/seting_sys_measuretype_defaultvalue</item>
+        <item>@string/seting_sys_measuretype_circumscribedvalue</item>
+    </string-array>
+    <string-array name="Vibrationpackage_options">
+        <item>@string/vibrationSetting_type_acceleration</item>
+        <item>@string/vibrationSetting_type_tempo</item>
+        <item>@string/vibrationSetting_type_displacement</item>
+        <item>@string/vibrationSetting_type_impact</item>
+        <!--
+        <item>加速度_速度</item>
+        <item>加速度_冲击</item>
+        <item>速度_位移</item>
+        <item>速度_冲击</item>
+        <item>加速度_速度_位移</item>
+        <item>加速度_速度_位移_冲击</item>
+        -->
+    </string-array>
+    <string-array name="Vibrationpackage_values">
+        <item>@string/vibrationSetting_type_acceleration</item>
+        <item>@string/vibrationSetting_type_tempo</item>
+        <item>@string/vibrationSetting_type_displacement</item>
+        <item>@string/vibrationSetting_type_impact</item>
+        <!--  
+        <item>加速度_速度</item>
+        <item>加速度_冲击</item>
+        <item>速度_位移</item>
+        <item>速度_冲击</item>
+        <item>加速度_速度_位移</item>
+        <item>加速度_速度_位移_冲击</item>
+        -->
+    </string-array>
+    <string-array name="Vibrationpackage_values_forOuter">
+        <item>@string/vibrationSetting_type_acceleration</item>
+        <item>@string/vibrationSetting_type_tempo</item>
+        <item>@string/vibrationSetting_type_displacement</item>
+        <!--  
+        <item>加速度_速度</item>
+        <item>速度_位移</item>
+        <item>加速度_速度_位移</item>
+        -->
+    </string-array>
+    <string-array name="Vibrationwindowtype_options">
+        <item>@string/vibrationSetting_windowtype_rectangle</item>
+        <item>@string/vibrationSetting_windowtype_defaultvalue</item>
+    </string-array>
+    <string-array name="Vibrationwindowtype_values">
+        <item>@string/vibrationSetting_windowtype_rectangle</item>
+        <item>@string/vibrationSetting_windowtype_defaultvalue</item>
+    </string-array>
+  
+    <string-array name="Vibrationavgnum_options">
+        <item>1</item>
+        <item>2</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="Vibrationavgnum_values">
+        <item>1</item>
+        <item>2</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="Vibrationaverwrap_options">
+        <item>0%</item>
+        <item>25%</item>
+        <item>50%</item>
+        <item>75%</item>
+    </string-array>
+    <string-array name="Vibrationaverwrap_values">
+        <item>0%</item>
+        <item>25%</item>
+        <item>50%</item>
+        <item>75%</item> 
+    </string-array>
+    <string-array name="Vibrationbandwidth_options">
+        <item>2KHz~4KHz</item>
+        <item>Highpass12KHz</item>
+    </string-array>
+    <string-array name="Vibrationbandwidth_values">
+        <item>0x40000</item>
+        <item>0xc0000</item>
+    </string-array>
+    <string-array name="communicationtype_options">
+        <item>@string/commu_type_wireless</item>
+        <item>@string/commu_type_usb</item>
+    </string-array>
+    <string-array name="communicationtype_values">
+        <item>@string/commu_type_wireless</item>
+        <item>@string/commu_type_usb</item>
+    </string-array>
+      <string-array name="XDJOnceUpLoadTime_options">
+        <item>30</item>
+        <item>60</item>
+    </string-array>
+    <string-array name="XXOnceUpLoadTime_options">
+        <item>30</item>
+        <item>60</item>
+    </string-array>
+    <string-array name="app_language_items">
+        <item>简体中文</item>
+        <item>English</item>
+    </string-array>
+    <string-array name="workbill_types">
+        <item>@string/workbill_type_dqyz</item>
+        <!-- <item>@string/workbill_type_dqez</item> -->
+        <item>@string/workbill_type_rljx</item>
+    </string-array>
+    <string-array name="outer_measuretypes">
+        <item>@string/outer_measuretypes_moons</item>
+        <item>@string/outer_measuretypes_soeasytest</item>
+        <item>@string/outer_measuretypes_tuosheng</item> 
+    </string-array>
+    <string-array name="plan_type">
+        <item>@string/plantype_xdj</item>
+        <item>@string/plantype_djpc</item>
+    </string-array>
+</resources>

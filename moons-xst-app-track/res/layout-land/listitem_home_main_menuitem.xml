@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00000000" 
+    android:orientation="vertical" >
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TableRow
+            android:id="@+id/li_home_main_menuitem_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+           <ImageView
+                    android:id="@+id/pad_home_main_imagebtn"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/m1" />
+           <ImageView
+                    android:id="@+id/pad_home_main_imagebtn1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/m1" />
+           <ImageView
+                    android:id="@+id/pad_home_main_imagebtn2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/m1" />
+           <ImageView
+                    android:id="@+id/pad_home_main_imagebtn3"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/m1" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/li_home_main_menuitem_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+           <ImageView
+                    android:id="@+id/pad_home_main_imagebtn4"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/m1" />
+           <ImageView
+                    android:id="@+id/pad_home_main_imagebtn5"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/m1" />
+           <ImageView
+                    android:id="@+id/pad_home_main_imagebtn6"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/m1" />
+           <ImageView
+                    android:id="@+id/pad_home_main_imagebtn7"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/m1" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/li_home_main_menuitem_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+           <ImageView
+                    android:id="@+id/pad_home_main_imagebtn8"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/m1" />
+           <ImageView
+                    android:id="@+id/pad_home_main_imagebtn9"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/m1" />
+           <ImageView
+                    android:id="@+id/pad_home_main_imagebtn10"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/m1" />
+           <ImageView
+                    android:id="@+id/pad_home_main_imagebtn11"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/m1" />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

@@ -1,0 +1,1114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/vibration_head"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/title_bar" >
+
+        <ImageButton
+            android:id="@+id/vibration_head_Rebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:background="@color/full_transparent"
+            android:src="@drawable/arrow_left" />
+
+        <TextView
+            android:id="@+id/vibration_head_title"
+            style="@style/main_head_title"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:text="@string/vibration_measure" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/topLay"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/vibration_head"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/ll_vibration_memu_more"
+            android:layout_width="50dip"
+            android:layout_height="30dip"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="0dip"
+            android:clickable="true" >
+
+            <ImageView
+                android:id="@+id/vibration_more"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/icon_down" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ll_vibration_memu_valuetitle"
+            android:layout_width="135dip"
+            android:layout_height="30dip"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="0dip" >
+
+            <TextView
+                android:id="@+id/valueTitleTxt"
+                android:layout_width="fill_parent"
+                android:layout_height="30dip"
+                android:layout_marginLeft="0dip"
+                android:gravity="right|center"
+                android:text="@string/vibration_measurevalue"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_20" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ll_vibration_memu_value"
+            android:layout_width="fill_parent"
+            android:layout_height="30dip"
+            android:layout_marginLeft="35dp"
+            android:layout_toLeftOf="@id/ll_vibration_memu_more"
+            android:layout_toRightOf="@id/ll_vibration_memu_valuetitle" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/valueTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dip"
+                    android:gravity="center"
+                    android:text="0.00"
+                    android:textSize="@dimen/text_size_25" />
+
+                <TextView
+                    android:id="@+id/valueTxtUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dip"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_25" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_chart"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/topLay" >
+
+        <RelativeLayout
+            android:id="@+id/zjLay1"
+            android:layout_width="fill_parent"
+            android:layout_height="180dip" >
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/sychart"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent" >
+            </com.github.mikephil.charting.charts.LineChart>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/infos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/zjLay1" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:id="@+id/ll_btns"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="5dp" >
+
+                    <ImageButton
+                        android:id="@+id/btn_add_sy_value"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/add" />
+
+                    <ImageButton
+                        android:id="@+id/btn_reduce_sy_value"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/reduce" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_cbs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="5dp" >
+
+                    <CheckBox
+                        android:id="@+id/tool_cbA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:button="@drawable/login_checkbox_selector"
+                        android:checked="true"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_15" />
+
+                    <CheckBox
+                        android:id="@+id/tool_cbB"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:button="@drawable/login_checkbox_selector"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_15" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="5dp"
+                            android:text="@string/vibration_lan_checkbox_name"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:id="@+id/tv_red_line_yvalue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:hint="0.0000"
+                            android:paddingLeft="5dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:id="@+id/tv_red_line_yvalue_unit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:text="m/s²"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:id="@+id/tv_red_line_xvalue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:gravity="center"
+                            android:hint=" 0.0000000"
+                            android:paddingLeft="5dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:text="ms"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="5dp"
+                            android:text="@string/vibration_zi_checkbox_name"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:id="@+id/tv_zi_line_yvalue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:hint="0.0000"
+                            android:paddingLeft="5dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:id="@+id/tv_zi_line_yvalue_unit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:text="m/s²"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:id="@+id/tv_zi_line_xvalue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:gravity="center"
+                            android:hint=" 0.0000000"
+                            android:paddingLeft="5dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:text="ms"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="5dp"
+                            android:text="△（|A-B|）"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:id="@+id/tv_two_line_different_yvalue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:hint="0.0000"
+                            android:paddingLeft="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:id="@+id/tv_two_line_different_yvalue_unit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:text="m/s²"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:id="@+id/tv_two_line_different_xvalue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:gravity="center"
+                            android:hint=" 0.0000000"
+                            android:paddingLeft="5dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:text="ms"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ll_vibration_menu_moreinfo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#AA9E9E9E" >
+
+            <RelativeLayout
+                android:id="@+id/ll_vibration_menu_moreinfo_line1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/gray" >
+
+                <RelativeLayout
+                    android:id="@+id/ll_vibration_menu_moreinfo_line1_fz"
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="0dip"
+                    android:background="@color/gray" >
+
+                    <TextView
+                        android:id="@+id/fzTitleTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dip"
+                        android:gravity="center"
+                        android:text="@string/vibration_fz"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+
+                    <TextView
+                        android:id="@+id/fzTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="25dip"
+                        android:layout_below="@id/fzTitleTxt"
+                        android:layout_marginLeft="0dip"
+                        android:gravity="center"
+                        android:text="0.0000"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ll_vibration_menu_moreinfo_line1_pjz"
+                    android:layout_width="100dip"
+                    android:layout_height="50dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="0dip"
+                    android:background="@color/gray" >
+
+                    <TextView
+                        android:id="@+id/pjzTitleTxt"
+                        android:layout_width="100dip"
+                        android:layout_height="25dip"
+                        android:gravity="center"
+                        android:text="@string/vibration_pjz"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+
+                    <TextView
+                        android:id="@+id/pjzTxt"
+                        android:layout_width="100dip"
+                        android:layout_height="25dip"
+                        android:layout_below="@id/pjzTitleTxt"
+                        android:gravity="center"
+                        android:text="0.0000"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ll_vibration_menu_moreinfo_line1_ffz"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dip"
+                    android:layout_marginLeft="0dip"
+                    android:layout_toLeftOf="@id/ll_vibration_menu_moreinfo_line1_pjz"
+                    android:layout_toRightOf="@id/ll_vibration_menu_moreinfo_line1_fz"
+                    android:background="@color/gray" >
+
+                    <TextView
+                        android:id="@+id/ffzTitleTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="25dip"
+                        android:gravity="center"
+                        android:text="@string/vibration_ffz"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+
+                    <TextView
+                        android:id="@+id/ffzTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="25dip"
+                        android:layout_below="@id/ffzTitleTxt"
+                        android:gravity="center"
+                        android:text="0.0000"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/ll_vibration_menu_moreinfo_line2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_vibration_menu_moreinfo_line1" >
+
+                <RelativeLayout
+                    android:id="@+id/ll_vibration_menu_moreinfo_line2_pjfz"
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="0dip" >
+
+                    <TextView
+                        android:id="@+id/pjfzTitleTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dip"
+                        android:gravity="center"
+                        android:text="@string/vibration_pjfz"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+
+                    <TextView
+                        android:id="@+id/pjfzTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="25dip"
+                        android:layout_below="@id/pjfzTitleTxt"
+                        android:layout_marginLeft="0dip"
+                        android:gravity="center"
+                        android:text="0.0000"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ll_vibration_menu_moreinfo_line2_yxz"
+                    android:layout_width="100dip"
+                    android:layout_height="50dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="0dip" >
+
+                    <TextView
+                        android:id="@+id/yxzTitleTxt"
+                        android:layout_width="100dip"
+                        android:layout_height="25dip"
+                        android:gravity="center"
+                        android:text="@string/vibration_yxz"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+
+                    <TextView
+                        android:id="@+id/yxzTxt"
+                        android:layout_width="100dip"
+                        android:layout_height="25dip"
+                        android:layout_below="@id/yxzTitleTxt"
+                        android:gravity="center"
+                        android:text="0.0000"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ll_vibration_menu_moreinfo_line2_fgfz"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dip"
+                    android:layout_marginLeft="0dip"
+                    android:layout_toLeftOf="@id/ll_vibration_menu_moreinfo_line2_yxz"
+                    android:layout_toRightOf="@id/ll_vibration_menu_moreinfo_line2_pjfz" >
+
+                    <TextView
+                        android:id="@+id/fgfzTitleTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/vibration_fgfz"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+
+                    <TextView
+                        android:id="@+id/fgfzTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="25dip"
+                        android:layout_below="@id/fgfzTitleTxt"
+                        android:gravity="center"
+                        android:text="0.0000"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/ll_vibration_menu_moreinfo_line3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_vibration_menu_moreinfo_line2">
+
+                <RelativeLayout
+                    android:id="@+id/ll_vibration_menu_moreinfo_line3_bxzb"
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="0dip" >
+
+                    <TextView
+                        android:id="@+id/bxzbTitleTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dip"
+                        android:gravity="center"
+                        android:text="@string/vibration_bxzb"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+
+                    <TextView
+                        android:id="@+id/bxzbTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="25dip"
+                        android:layout_below="@id/bxzbTitleTxt"
+                        android:layout_marginLeft="0dip"
+                        android:gravity="center"
+                        android:text="0.0000"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ll_vibration_menu_moreinfo_line3_fzzb"
+                    android:layout_width="100dip"
+                    android:layout_height="50dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="0dip" >
+
+                    <TextView
+                        android:id="@+id/fzzbTitleTxt"
+                        android:layout_width="100dip"
+                        android:layout_height="25dip"
+                        android:gravity="center"
+                        android:text="@string/vibration_fzzb"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+
+                    <TextView
+                        android:id="@+id/fzzbTxt"
+                        android:layout_width="100dip"
+                        android:layout_height="25dip"
+                        android:layout_below="@id/fzzbTitleTxt"
+                        android:gravity="center"
+                        android:text="0.0000"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ll_vibration_menu_moreinfo_line3_mczb"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dip"
+                    android:layout_marginLeft="0dip"
+                    android:layout_toLeftOf="@id/ll_vibration_menu_moreinfo_line3_fzzb"
+                    android:layout_toRightOf="@id/ll_vibration_menu_moreinfo_line3_bxzb"
+                     >
+
+                    <TextView
+                        android:id="@+id/mczbTitleTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="25dip"
+                        android:gravity="center"
+                        android:text="@string/vibration_mczb"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+
+                    <TextView
+                        android:id="@+id/mczbTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="25dip"
+                        android:layout_below="@id/mczbTitleTxt"
+                        android:gravity="center"
+                        android:text="0.0000"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/ll_vibration_menu_moreinfo_line4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_vibration_menu_moreinfo_line3" >
+
+                <RelativeLayout
+                    android:id="@+id/ll_vibration_menu_moreinfo_line4_ydzb"
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="0dip" >
+
+                    <TextView
+                        android:id="@+id/ydzbTitleTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dip"
+                        android:gravity="center"
+                        android:text="@string/vibration_ydzb"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+
+                    <TextView
+                        android:id="@+id/ydzbTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="25dip"
+                        android:layout_below="@id/ydzbTitleTxt"
+                        android:layout_marginLeft="0dip"
+                        android:gravity="center"
+                        android:text="0.0000"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ll_vibration_menu_moreinfo_line4_ddzb"
+                    android:layout_width="100dip"
+                    android:layout_height="50dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="0dip" >
+
+                    <TextView
+                        android:id="@+id/ddzbTitleTxt"
+                        android:layout_width="100dip"
+                        android:layout_height="25dip"
+                        android:gravity="center"
+                        android:text="@string/vibration_ddzb"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+
+                    <TextView
+                        android:id="@+id/ddzbTxt"
+                        android:layout_width="100dip"
+                        android:layout_height="25dip"
+                        android:layout_below="@id/ddzbTitleTxt"
+                        android:gravity="center"
+                        android:text="0.0000"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ll_vibration_menu_moreinfo_line4_wdzb"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dip"
+                    android:layout_marginLeft="0dip"
+                    android:layout_toLeftOf="@id/ll_vibration_menu_moreinfo_line4_ddzb"
+                    android:layout_toRightOf="@id/ll_vibration_menu_moreinfo_line4_ydzb" >
+
+                    <TextView
+                        android:id="@+id/wdzbTitleTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="25dip"
+                        android:gravity="center"
+                        android:text="@string/vibration_wdzb"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+
+                    <TextView
+                        android:id="@+id/wdzbTxt"
+                        android:layout_width="fill_parent"
+                        android:layout_height="25dip"
+                        android:layout_below="@id/wdzbTitleTxt"
+                        android:gravity="center"
+                        android:text="0.0000"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_15" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/zjLay2"
+            android:layout_width="fill_parent"
+            android:layout_height="180dip"
+            android:layout_below="@id/infos" >
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/pychart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+            </com.github.mikephil.charting.charts.LineChart>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/infos1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/zjLay2" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal" >
+ <LinearLayout
+                    android:id="@+id/ll_btn1s"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="5dp" >
+
+                    <ImageButton
+                        android:id="@+id/btn_add_py_value"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/add" />
+
+                    <ImageButton
+                        android:id="@+id/btn_reduce_py_value"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/reduce" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ll_cbs1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="5dp" >
+
+                    <CheckBox
+                        android:id="@+id/tool_cbC"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:button="@drawable/login_checkbox_selector"
+                        android:checked="true"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_15" />
+
+                    <CheckBox
+                        android:id="@+id/tool_cbD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:button="@drawable/login_checkbox_selector"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_15" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="5dp"
+                            android:text="@string/vibration_lan_checkbox_name"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:id="@+id/tv_red_line_yvalue1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:hint="0.0000"
+                            android:paddingLeft="5dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:id="@+id/tv_red_line_yvalue1_unit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="m/s²"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:id="@+id/tv_red_line_xvalue1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:gravity="center"
+                            android:hint=" 0.0000"
+                            android:paddingLeft="25dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Hz"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="5dp"
+                            android:text="@string/vibration_zi_checkbox_name"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:id="@+id/tv_zi_line_yvalue1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:hint="0.0000"
+                            android:paddingLeft="5dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:id="@+id/tv_zi_line_yvalue1_unit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="m/s²"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:id="@+id/tv_zi_line_xvalue1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:gravity="center"
+                            android:hint=" 0.0000"
+                            android:paddingLeft="25dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Hz"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="5dp"
+                            android:text="△（|A-B|）"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:id="@+id/tv_two_line_different_yvalue1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:hint="0.0000"
+                            android:paddingLeft="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:id="@+id/tv_two_line_different_yvalue1_unit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="m/s²"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:id="@+id/tv_two_line_different_xvalue1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:gravity="center"
+                            android:hint=" 0.0000"
+                            android:paddingLeft="25dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Hz"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_15" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/map_quick_memu"
+        android:layout_width="fill_parent"
+        android:layout_height="40dip"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/message_corner3"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/ll_vibration_memu_ok"
+            android:layout_width="90dip"
+            android:layout_height="40dip"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="0dip"
+            android:background="@drawable/layout_selected"
+            android:clickable="true" >
+
+            <TextView
+                android:id="@+id/vibration_memu_ok"
+                android:layout_width="fill_parent"
+                android:layout_height="25dip"
+                android:layout_marginLeft="0dip"
+                android:background="#00000000"
+                android:gravity="center|bottom"
+                android:text="@string/vibration_ok"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_16"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/vibration_memu_ok_desc"
+                android:layout_width="fill_parent"
+                android:layout_height="15dip"
+                android:layout_below="@id/vibration_memu_ok"
+                android:layout_marginLeft="0dip"
+                android:background="#00000000"
+                android:gravity="center"
+                android:text="@string/vibration_ok_desc"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_10" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ll_vibration_memu_split_1"
+            android:layout_width="1dip"
+            android:layout_height="40dip"
+            android:layout_toLeftOf="@id/ll_vibration_memu_ok"
+            android:background="#00000000" >
+
+            <TextView
+                android:id="@+id/vibration_memu_split_1"
+                android:layout_width="fill_parent"
+                android:layout_height="35dip"
+                android:layout_marginLeft="0dip"
+                android:background="#00000000"
+                android:gravity="center"
+                android:text="@string/vibration_split"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_20" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ll_vibration_memu_setup"
+            android:layout_width="90dip"
+            android:layout_height="40dip"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="0dip"
+            android:background="@drawable/layout_selected"
+            android:clickable="true" >
+
+            <TextView
+                android:id="@+id/vibration_memu_setup"
+                android:layout_width="fill_parent"
+                android:layout_height="25dip"
+                android:layout_marginRight="0dip"
+                android:background="#00000000"
+                android:gravity="center|bottom"
+                android:text="@string/vibration_setup"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_16"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/vibration_memu_setup_desc"
+                android:layout_width="fill_parent"
+                android:layout_height="15dip"
+                android:layout_below="@id/vibration_memu_setup"
+                android:layout_marginRight="0dip"
+                android:background="#00000000"
+                android:gravity="center"
+                android:text="@string/vibration_setup_desc"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_10" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ll_vibration_memu_split_2"
+            android:layout_width="1dip"
+            android:layout_height="40dip"
+            android:layout_toRightOf="@id/ll_vibration_memu_setup"
+            android:background="#00000000" >
+
+            <TextView
+                android:id="@+id/vibration_memu_split_2"
+                android:layout_width="fill_parent"
+                android:layout_height="35dip"
+                android:layout_marginLeft="0dip"
+                android:background="#00000000"
+                android:gravity="center"
+                android:text="@string/vibration_split"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_20" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ll_vibration_memu_operation"
+            android:layout_width="fill_parent"
+            android:layout_height="40dip"
+            android:layout_marginLeft="0dip"
+            android:layout_toLeftOf="@id/ll_vibration_memu_split_1"
+            android:layout_toRightOf="@id/ll_vibration_memu_split_2"
+            android:background="@drawable/layout_selected"
+            android:clickable="true" >
+
+            <TextView
+                android:id="@+id/vibration_memu_operation"
+                android:layout_width="fill_parent"
+                android:layout_height="25dip"
+                android:layout_marginRight="0dip"
+                android:background="#00000000"
+                android:gravity="center|bottom"
+                android:text="@string/vibration_start"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_16"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/vibration_memu_operation_desc"
+                android:layout_width="fill_parent"
+                android:layout_height="15dip"
+                android:layout_below="@id/vibration_memu_operation"
+                android:layout_marginRight="0dip"
+                android:background="#00000000"
+                android:gravity="center"
+                android:text="@string/vibration_start_desc"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_10" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

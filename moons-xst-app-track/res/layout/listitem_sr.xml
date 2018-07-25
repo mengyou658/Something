@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    style="@style/widget_listview_Item"
+    android:orientation="horizontal" 
+  	android:layout_height="35dip"
+  	android:background="@drawable/listitem_corner1"
+	>   
+	
+	<RelativeLayout 
+		android:id="@+id/layout_sr_itemicon" 
+	  	android:layout_width="35dip" 
+	  	android:layout_height="35dip"
+	  	android:layout_alignParentLeft="true"
+	  	android:layout_alignParentTop="true"
+	    android:layout_gravity="center_vertical"
+	  	android:gravity="center"
+	  	>     
+	  	
+        <ImageView 
+            android:id="@+id/icon_sr"
+	      	android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content"
+			android:scaleType="matrix"
+	        android:layout_marginLeft="2dip"
+	        android:layout_gravity="center_vertical"
+	        />	  	
+    </RelativeLayout>
+    
+	<RelativeLayout 
+		android:id="@+id/layout_sr_itemdesc" 
+	  	android:layout_width="match_parent" 
+	  	android:layout_height="35dip"
+	  	android:layout_toRightOf="@id/layout_sr_itemicon"
+	  	android:layout_alignParentRight="true"
+	  	android:orientation="vertical" 
+	  	>     
+	  	
+	    <RelativeLayout 
+	        android:id="@+id/layout_sr_itemdesc_title" 
+	        android:layout_width="match_parent"  
+	        android:layout_height="20dp"
+	        android:orientation="horizontal" 
+	        android:layout_alignParentTop="true"
+	        >
+	
+	    
+		    <TextView android:id="@+id/sr_listitem_title" 
+		        style="@style/widget_listview_title3"
+		        android:layout_width="fill_parent" 
+		     	android:layout_height="wrap_content"
+		     	android:singleLine="true"/> 	    
+		    
+	   	</RelativeLayout>
+	
+	    <RelativeLayout 
+	        android:layout_width="fill_parent"  
+	        android:layout_height="15dp"
+	    	android:orientation="horizontal" 
+	    	android:layout_below="@id/layout_sr_itemdesc_title"
+	        >   
+	       	      
+	       	<TextView android:id="@+id/sr_listitem_mobjectstate"  
+	    		android:layout_width="wrap_content" 
+	           	android:layout_height="wrap_content" 
+	           	android:layout_alignParentLeft="true"
+	  	        android:layout_alignParentTop="true"
+	           	android:layout_gravity="center_vertical"
+	           	style="@style/widget_listview_subdesc3"
+	            />	       			        
+	       	<TextView android:id="@+id/sr_listitem_plancount"  
+	    		android:layout_width="wrap_content" 
+	           	android:layout_height="wrap_content" 
+	           	android:layout_toRightOf="@id/sr_listitem_mobjectstate"
+	           	android:layout_marginLeft="5dip"
+	           	android:layout_gravity="center_vertical"
+	           	style="@style/widget_listview_subdesc3"
+	            />		        
+	       	<TextView android:id="@+id/sr_listitem_lasttime"  
+	    		android:layout_width="wrap_content" 
+	           	android:layout_height="wrap_content" 
+	           	android:layout_toRightOf="@id/sr_listitem_plancount"
+	           	android:layout_marginLeft="5dip"
+	           	android:layout_gravity="center_vertical"
+	           	style="@style/widget_listview_subdesc3"
+	            />
+	       	<TextView android:id="@+id/sr_listitem_currplan"  
+	    		android:layout_width="wrap_content" 
+	           	android:layout_height="wrap_content" 
+	           	android:layout_toRightOf="@id/sr_listitem_lasttime"
+	           	android:layout_marginLeft="5dip"
+	           	android:layout_gravity="center_vertical"
+	           	style="@style/widget_listview_subdesc3"
+	            />
+	       			
+	    </RelativeLayout>	    
+	    
+    </RelativeLayout>
+	
+
+
+</RelativeLayout> 

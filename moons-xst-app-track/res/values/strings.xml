@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+    界面内显示的文字类等常量要求
+       1、所有界面显示文字类常量统一在此定义，名称结构保持一致  
+       2、添加新内容时，按总体结构添加
+       3、若APP更换不同语言版本，只需在此替换
+    By LKZ
+    -->
+
+
+    <!-- APP名称 -->
+    <string name="app_name">小神探</string>
+    <!-- 首页 名称 -->
+    <string name="home_head_title">小神探</string>
+    <string name="home_head_title_qdlh">青炼巡检</string>
+    <string name="home_head_title_zhlh">镇海炼化</string>
+
+    <!-- 主菜单(Main_Page) -->
+    <string name="main_menu_home">首页</string>
+    <string name="main_menu_communication">通信</string>
+    <string name="main_menu_query">查询</string>
+    <string name="main_menu_tools">工具</string>
+    <string name="main_menu_system">系统</string>
+
+    <!-- 主菜单 -右上角菜单 -->
+    <string name="main_menu_login">登录</string>
+    <string name="main_menu_logout">注销</string>
+    <string name="main_menu_about">关于</string>
+    <string name="main_menu_quit">退出</string>
+    <!-- 登录页面 -->
+    <string name="login_dialog_logo">MOONS\'</string>
+    <string name="login_dialog_account">账号:</string>
+    <string name="login_dialog_account_hint">输入账号</string>
+    <string name="login_dialog_password">密码:</string>
+    <string name="login_dialog_password_hint">输入密码</string>
+    <string name="login_dialog_login">登  录</string>
+    <string name="login_dialog_rememberMe">记住我</string>
+    <string name="login_userinfo">账号密码登录</string>
+    <string name="login_gesture">手势密码登录</string>
+    <string name="login_othertype">其它方式登录</string>
+    <string name="login_userrfid_login">工卡登录</string>
+    <string name="login_scan_login">扫码登录</string>
+    <string name="login_rfid_close">点击屏幕关闭</string>
+    <string name="main_about_appnameXDJ">小神探巡点检客户端</string>
+    <string name="main_about_appname_ZHLH">镇海炼化巡点检客户端</string>
+    <string name="main_about_appnameXST">小神探</string>
+    <string name="main_about_appnameQDLH">青炼巡检</string>
+    <string name="main_about_appnameZHLH">镇海炼化</string>
+    <string name="main_about_copyright">Copyright ©2015 上海鸣志版权所有</string>
+    <string name="main_about_checkappversion">检查新版本</string>
+
+    <!-- 主菜单-主页栏 -->
+
+    <string name="main_menu_home_title">我的工作任务</string>
+    <string name="main_menu_home_lvMemu">路线操作</string>
+    <string name="main_menu_home_lvMemu_toXX">开始</string>
+    <string name="main_menu_home_lvMemu_Query">查询数据</string>
+    <string name="main_menu_home_lvMemu_TempTask">临时任务</string>
+    <string name="main_menu_home_Return">返回</string>
+    <string name="main_menu_home_cewen">温度测量</string>
+    <string name="main_menu_home_cezhen">振动测量</string>
+    <string name="main_menu_home_cezs">转速测量</string>
+    <string name="main_menu_home_camera">相机</string>
+    <string name="main_menu_home_data_synchronization">数据同步</string>
+    <string name="main_menu_home_two_ticket">两票管理</string>
+    <string name="main_menu_home_overhaul">检修管理</string>
+    <string name="main_menu_home_versions_info">版本信息</string>
+    <string name="main_menu_home_checkversion">检查更新</string>
+
+    <!-- 主菜单-通信栏 -->
+    <string name="main_menu_commu_receive">数据同步</string>
+    <string name="main_menu_commu_receive_desc">完成数据下载、上传等操作</string>
+    <string name="main_menu_commu_twobilldownload">两票下载</string>
+    <string name="main_menu_commu_twobilldownload_desc">下载操作票等相关数据</string>
+    <string name="main_menu_commu_appUpdate">程序更新</string>
+    <string name="main_menu_commu_appUpdate_desc">客户端软件更新操作</string>
+    <string name="commu_type_wireless">无线方式</string>
+    <string name="commu_type_usb">USB方式</string>
+
+    <!-- 主菜单-工具栏 -->
+    <string name="main_menu_tools_systool">系统工具</string>
+    <string name="main_menu_tools_measuretool">测量工具</string>
+    <string name="main_menu_about_title">关于</string>
+    <string name="main_menu_tools_capture">扫一扫</string>
+    <string name="main_menu_tools_capture_desc">扫描条形码、二维码信息等</string>
+    <string name="capture_head_title">扫一扫</string>
+    <string name="main_menu_tools_save">保存到SD卡IDTemp.txt</string>
+    <string name="main_menu_tools_hand_input">手动输入自定义编码</string>
+    <string name="main_menu_tools_scan_input">扫码读取自定义编码</string>
+    <string name="main_menu_tools_only_sava_nfc">仅保存标牌内容</string>
+    <string name="main_menu_tools_clean_save">清除文件</string>
+    <string name="main_menu_tools_machinecode">标识符</string>
+    <string name="main_menu_tools_readid">标牌识别工具</string>
+    <string name="main_menu_tools_nfc_Des">标签内容</string>
+    <string name="main_menu_tools_nfc_Title">标牌识别工具</string>
+    <string name="main_menu_tools_readid_desc">读取射频卡等</string>
+    <string name="main_menu_tools_Recorder">录音机</string>
+    <string name="main_menu_tools_Recorder_desc">录音工具，用于临时录音</string>
+    <string name="main_menu_tools_Camera">相机</string>
+    <string name="main_menu_tools_Camera_desc">系统照相机，用于拍摄临时照片</string>
+    <string name="main_menu_tools_GPS">GPS定位</string>
+    <string name="main_menu_tools_GPS_Title">GPS定位</string>
+    <string name="main_menu_tools_GPS_Satellites">状态</string>
+    <string name="main_menu_tools_GPS_Longitude">经度</string>
+    <string name="main_menu_tools_GPS_Latitude">纬度</string>
+    <string name="main_menu_tools_GPS_DateTime">授时</string>
+    <string name="main_menu_tools_GPS_Altitude">海拔</string>
+    <string name="main_menu_tools_GPS_Des">位置描述</string>
+    <string name="main_menu_tools_GPS_btnSaveGPS">保存GPS信息</string>
+    <string name="main_menu_tools_GPS_State">状态</string>
+    <string name="main_menu_tools_GPS_CheckPointDes">到位点列表</string>
+    <string name="main_menu_tools_GPS_desc">GPS工具，用于定位、采集记录GPS数据</string>
+    <string name="main_menu_tools_Voice">语音工具</string>
+    <string name="main_menu_tools_Voice_Desc">将语音转换成文字</string>
+    <string name="main_menu_tools_Voice_Title">语音工具</string>
+    <string name="main_menu_tools_Media">录像</string>
+    <string name="main_menu_tools_download_Desc">确定</string>
+    <string name="main_menu_tools_download_btn">下载</string>
+    <string name="main_menu_tools_cewen">温度测量</string>
+    <string name="main_menu_tools_cewen_desc">测温工具，用于临时测量温度</string>
+    <string name="main_menu_tools_cezhen">振动测量</string>
+    <string name="main_menu_tools_cezhen_desc">测振工具，用于临时测量振动</string>
+    <string name="main_menu_tools_cezs">转速测量</string>
+    <string name="main_menu_tools_cezs_desc">测转速工具，用于临时测量转速</string>
+    <string name="main_menu_tools_redo">重做</string>
+    <string name="main_menu_tools_camera">相机</string>
+    <string name="main_menu_tools_camera_photo">拍照</string>
+    <string name="main_menu_tools_camera_video">录像</string>
+    <string name="main_menu_tools_camera_select">选择</string>
+    <string name="main_menu_tools_camera_cancel">取消</string>
+    <string name="main_menu_tools_camera_delete">删除</string>
+
+    <!-- 主菜单-系统栏 -->
+    <string name="main_menu_system_config">参数设置</string>
+    <string name="main_menu_system_config_desc">系统参数、服务地址、巡检器标识符等设置</string>
+    <string name="setting_head_title">参数设置</string>
+    <string name="setting_head_title_comm">通信设置</string>
+    <string name="setting_head_title_comm_xjqcd">巡检器标识符</string>
+    <string name="setting_head_title_comm_webaddr">WEB服务地址(内网/WIFI)</string>
+    <string name="setting_head_title_comm_wlan_webaddr">WEB服务地址(外网/3G/4G)</string>
+    <string name="setting_head_title_comm_other_webaddr">WEB管线地址</string>
+    <string name="setting_head_title_comm_webaddr_scanbtn">扫</string>
+    <string name="setting_head_title_function">功能设置</string>
+    <string name="setting_head_title_function_voice">语音提示</string>
+    <string name="setting_head_title_function_inputlastresult">默认输入上次结果</string>
+    <string name="setting_head_title_function_checkupdae">启动检查更新</string>
+    <string name="setting_head_title_function_uploadfile">启动文件后台上传</string>
+    <string name="setting_head_title_function_checkwakelock">休眠锁设置</string>
+    <string name="setting_head_title_function_openwakelock">已开启休眠锁,锁屏后CPU继续运行</string>
+    <string name="setting_head_title_function_closewakelock">已关闭休眠锁,锁屏后CPU停止运行</string>
+    <string name="setting_head_title_function_clearcache">数据清理</string>
+    <string name="setting_head_title_function_jitupload">实时上传设置</string>
+    <string name="setting_head_title_function_gesture_setting">手势密码设置</string>
+    <string name="setting_head_title_function_show_setting">自定义快捷操作设置</string>
+    <string name="setting_head_title_function_video_setting">视频录制设置</string>
+    <string name="setting_head_title_sys">系统设置</string>
+    <string name="setting_head_title_sys_measuretype">设置测量模块接入的方式</string>
+    <string name="setting_head_title_sys_communicationtype">通信方式</string>
+    <string name="setting_head_title_sys_plantype">计划类型</string>
+    <string name="setting_head_title_sys_updatetimetype">设置校准时间的方式</string>
+    <string name="setting_head_title_sys_changedate">设置系统日期</string>
+    <string name="setting_head_title_sys_changetime">设置系统时间</string>
+    <string name="setting_head_title_sys_gps">GPS定位开启检查</string>
+    <string name="setting_head_title_sys_gps_settings">GPS定位相关设置</string>
+    <string name="setting_head_title_sys_historydatasaveddays_setting">历史数据保存天数</string>
+    <string name="main_menu_system_aboutus">关于</string>
+    <string name="main_menu_system_aboutus_desc">产品信息、版权信息、多语言等</string>
+    <string name="main_menu_system_database">数据清理</string>
+    <string name="seting_sys_measuretype_defaultvalue">内置</string>
+    <string name="seting_sys_communicationtype_defaultvalue">无线方式</string>
+    <string name="setting_function_inputlastresult_off">已关闭输入上次结果</string>
+    <string name="setting_function_inputlastresult_on">已开启输入上次结果</string>
+    <string name="setting_function_function_jitupload">实时上传所设置的数据</string>
+    <string name="setting_function_gesture_setting">使用手势密码登录系统</string>
+    <string name="setting_function_show_setting">设置主页显示哪些快捷操作功能</string>
+    <string name="setting_function_video_setting">以高清晰度还是低清晰度录制视频</string>
+    <string name="setting_function_gps_setting">GPS定位相关设置</string>
+    <string name="setting_function_gpscorrect">GPS校准</string>
+    <string name="setting_function_webcorrect">WEB校准</string>
+    <string name="setting_function_nocorrect">不校准</string>
+    <string name="setting_function_commucorrect">通信校准</string>
+    <string name="main_menu_system_hisdatasaved_unit">%s天</string>
+    <string name="main_menu_system_gpssetting_mode_highprecision">高精度定位</string>
+    <string name="main_menu_system_gpssetting_mode_lowpower">低功耗定位</string>
+    <string name="main_menu_system_gpssetting_mode_local">仅设备定位</string>
+    <string name="main_menu_system_gpssetting_modechoosetitle">选择定位模式：</string>
+    <string name="main_menu_system_gpssetting_time_intervaltitle">定位时间间隔（秒）：</string>
+    <string name="main_menu_system_gpssetting_longitude">经度：</string>
+    <string name="main_menu_system_gpssetting_latitude">纬度：</string>
+    <string name="main_menu_system_gpssetting_reverse_geocoding">反地理编码：</string>
+    <string name="main_menu_system_gpssetting_xdjrecordjw">巡点检是否记录经纬度：</string>
+    <string name="main_menu_system_gpssetting_gpsfilter">GPS坐标过滤：</string>
+    <string name="main_menu_system_gpssetting_gpsfilter_timespace">时间（分钟）：</string>
+    <string name="main_menu_system_gpssetting_gpsfilter_distancespace">距离（米）：</string>
+    <string name="setting_head_title_function_fontsize_setting">字体大小设置</string>
+    <string name="setting_function_fontsize_setting">设置巡点检相关字体大小</string>
+    <string name="setting_function_fontsize_listview_title">XX测试巡检路线</string>
+    <string name="setting_function_fontsize_plan_des">计划内容：测试用计划内容描述\n\n判断标准：测试用判断标准</string>
+    <string name="setting_function_fontsize_normal">标准</string>
+    <string name="setting_function_fontsize_big">大</string>
+    <string name="setting_function_fontsize_huge">超大</string>
+    <string name="setting_function_fontsize_tip">说明：改变字体大小只对巡点检相关内容有效</string>
+
+    <!-- 主菜单-系统栏-关于我们 -->
+    <string name="main_menu_system_aboutus_unit_type">设备型号</string>
+    <string name="main_menu_system_aboutus_mac_address">MAC地址</string>
+    <string name="main_menu_system_aboutus_imei">IMEI</string>
+    <string name="main_menu_system_aboutus_updatetime">更新时间</string>
+    <string name="main_menu_system_aboutus_language">多语言</string>
+    <string name="main_menu_system_aboutus_Check_the_new_version">检查新版本</string>
+    <string name="main_menu_system_aboutus_language_current">简体中文</string>
+    <string name="main_menu_system_aboutus_log_query">日志查询</string>
+    <string name="main_menu_system_aboutus_log_detail">日志明细</string>
+
+    <!-- 主菜单 查询 -->
+    <string name="main_menu_query_taskresponse">任务完成情况</string>
+    <string name="main_menu_query_taskresponse_desc">查看当前时间路线下的任务完成情况</string>
+    <string name="main_menu_query_uncheck">漏检统计</string>
+    <string name="main_menu_query_uncheck_desc">以图表、明细的方式统计漏检的计划信息</string>
+    <string name="main_menu_query_hisdata">历史数据查询</string>
+    <string name="main_menu_query_hisdata_desc">查询历史的结果、到位、启停状态数据</string>
+    <string name="main_menu_query_line_select">路线选择</string>
+
+    <!-- 路线界面 -->
+    <string name="line_xjmode_normal">普通巡检</string>
+    <string name="line_xjmode_spec">特别巡检</string>
+
+    <!-- 数据同步 -->
+    <string name="commu_receive_download_title">数据同步</string>
+    <string name="commu_receive_btn_download">数据同步</string>
+    <string name="commu_download_needcount">需下载</string>
+    <string name="commu_download_operatebill_title">操作票下载</string>
+    <string name="commu_download_operatebill_selectall">全选</string>
+    <string name="commu_download_operatebill_unselectall">取消全选</string>
+    <string name="commu_download_operatebill_download">下载</string>
+    <string name="commu_receive_lvMemu">路线下载操作</string>
+    <string name="commu_receive_lvMemu__toDown">下载</string>
+    <string name="commu_djpc_standardization_title">数据同步</string>
+    <string name="commu_djpc_standardization">标准化</string>
+    <string name="commu_djpc_uploading_title">上传提示</string>
+    <string name="commu_djpc_condition_hint">请输入</string>
+    <string name="commu_djpc_condition_name_number_hint">请输入姓名/工号</string>
+    <string name="commu_djpc_standardization_hint">正在标准化：</string>
+    
+    <string name="commu_errorresultback_title">上传错误详情</string>
+    <string name="commu_errorresultback_btn_remove">错误数据备份</string>
+
+    <!-- ID钮扣界面 -->
+    <string name="idpos_memu_startstop_desc">启停点</string>
+    <string name="idpos_srset_dialog_title">路线下启停点设置</string>
+    <string name="idpos_srlastresult_dialog_title">启停点默认上次结果设置</string>
+    <string name="idpos_srset_dialog_okbtn">设置</string>
+    <string name="idpos_srset_dialog_lastresultbtn">默认上次结果</string>
+    <string name="idpos_srset_dialog_cancel">关闭</string>
+    <string name="idpos_statics_total">全部</string>
+    <string name="idpos_statics_uncomplete">未完成</string>
+    <string name="idpos_statics_complete">已完成</string>
+    <string name="idpos_menu_scan">扫一扫</string>
+
+    <!-- GPS listMode -->
+    <string name="track_listmode_line_name">路线：</string>
+    <string name="djquery_data_title">任务完成情况(钮扣信息)</string>
+    <string name="query_data_hisresult">历史结果</string>
+    <string name="query_data_idposlist">钮扣列表</string>
+    <string name="query_data_resultlist">结果列表</string>
+    <string name="query_data_checkpointlist">到位点列表</string>
+    <string name="query_data_position_hisresult">到位历史</string>
+    <string name="query_data_djpoplan_title">任务完成情况(结果信息)</string>
+    <string name="query_hisdata_resulttendency">结果趋势</string>
+
+    <!-- 点检主页面-各栏目 -->
+    <string name="dianjian_optionmode_edit">修改模式</string>
+    <string name="dianjian_optionmode_check">检查模式</string>
+    <string name="dianjian_tabtitle_result">结果</string>
+    <string name="dianjian_tabtitle_memo">备注</string>
+    <string name="dianjian_tabtitle_picture">拍照</string>
+    <string name="dianjian_tabtitle_audio">录音</string>
+    <string name="dianjian_sr_title">启停点列表</string>
+    <string name="dianjian_sr_btn_ok">关闭</string>
+    <string name="dianjian_sr_btn_set">设置</string>
+    <string name="dianjian_lk_title">主控点-</string>
+    <string name="dianjian_lk_btn_ok">批量处理选中计划</string>
+    <string name="dianjian_resitem_dialog_title">结果选项</string>
+    <string name="dianjian_plan_details">查看明细</string>
+    <string name="dianjian_tempcl">临测</string>
+    <string name="dianjian_sr">启停点</string>
+    <string name="dianjian_hisdata">历史结果</string>
+    <string name="dianjian_quickback">快速返回</string>
+    <string name="dianjian_memo_hint">最多输入80字</string>
+    <string name="dianjian_modify">改</string>
+
+    <!-- 地图页 -右上角菜单 -->
+    <string name="todo">TODO</string>
+
+    <!-- 临时任务 -->
+    <string name="temptask_title">临时任务</string>
+    <string name="temptask_name">名称</string>
+    <string name="temptask_create_name">创建人</string>
+    <string name="temptask_create_time">任务时间</string>
+    <string name="temptask_type">任务类型</string>
+    <string name="temptask_des">任务描述</string>
+    <string name="temptask_res">任务结果</string>
+    <string name="temptask_true">正常</string>
+    <string name="temptask_false">异常</string>
+    <string name="temptask_query_title">临时任务列表</string>
+
+    <!-- 巡视任务 -->
+    <string name="xxplan_title">巡线任务</string>
+    <string name="xxplan_point">到位点</string>
+    <string name="xxplan_type">到位状态 </string>
+    <string name="xxplan_point_type">类型 </string>
+    <string name="xxplan_des">描述 </string>
+
+    <!-- 设置手势密码 -->
+    <string name="setup_gesture_code">手势密码设置</string>
+    <string name="setup_gesture_pattern">绘制解锁图案</string>
+    <string name="setup_gesture_pattern_again">再次绘制解锁图案</string>
+    <string name="set_gesture_pattern_reason">设置手势密码，防止他人未经授权查看</string>
+    <string name="reset_gesture_code">重新设置手势密码</string>
+
+    <!-- 测温界面 -->
+    <string name="tool_temperature_title_tv">温度测量</string>
+    <string name="tool_temperature_cursor_display_tv">游标温度显示</string>
+    <string name="tool_temperature_unit">℃</string>
+    <string name="tool_temperature_accuracy_two">0.00</string>
+    <string name="temperature_currurrentTemperature">当前温度</string>
+    <string name="temperature_maxTemperature">最大值</string>
+    <string name="temperature_minTemperature">最小值</string>
+    <string name="temperature_setup">设置</string>
+    <string name="temperature_setup_desc">Setup</string>
+    <string name="temperature_start">启动</string>
+    <string name="temperature_start_desc">Start</string>
+    <string name="temperature_stop">暂停</string>
+    <string name="temperature_stop_desc">Pause</string>
+    <string name="temperature_ok">确定</string>
+    <string name="temperature_ok_desc">OK</string>
+    <string name="temperature_split">|</string>
+    <string name="temperature_start_process">启动中···</string>
+    <string name="temperature_start_bluetooth_hint">无法打开蓝牙，请确认是否有蓝牙功能！</string>
+    <string name="temperature_underway_start_bluetooth"> 打开蓝牙中···</string>
+    <string name="temperature_no_bluetooth">没有设置外接设备</string>
+    <string name="temperature_bluetooth_connect_hint1">连接  %s 成功！</string>
+    <string name="temperature_bluetooth_connect_hint2">连接失败！确认外接设备正确打开或重新设置外接设备</string>
+    <string name="temperature_bluetooth_connect_hint3">(2)连接失败！确认外接设备正确打开或重新设置外接设备</string>
+    <string name="temperature_reception_defeated">接收数据失败！</string>
+
+    <!-- 测温设置界面 -->
+    <string name="temperature_fsl">发射率</string>
+    <string name="temperature_fsl_desc">发射率(取值范围0~1之间)</string>
+    <string name="temperature_savetype">保存类型</string>
+    <string name="temperature_current">当前温度</string>
+    <string name="temperature_max">最高温度</string>
+    <string name="temperature_min">最低温度</string>
+    <string name="temperature_power_scope">发射率在0~1之间</string>
+    <string name="temperature_power_mistake">发射率输入错误</string>
+
+    <!-- 测振界面 -->
+    <string name="vibration_measurevalue">测量值</string>
+    <string name="vibration_setup">设置</string>
+    <string name="vibration_setup_desc">Setup</string>
+    <string name="vibration_start">启动</string>
+    <string name="vibration_start_desc">Start</string>
+    <string name="vibration_stop">停止</string>
+    <string name="vibration_stop_desc">Stop</string>
+    <string name="vibration_ok">确定</string>
+    <string name="vibration_ok_desc">OK</string>
+    <string name="vibration_split">|</string>
+    <string name="vibration_up">∧</string>
+    <string name="vibration_down">∨</string>
+    <string name="vibration_fz">峰值</string>
+    <string name="vibration_pjz">平均值</string>
+    <string name="vibration_ffz">峰峰值</string>
+    <string name="vibration_pjfz">平均幅值</string>
+    <string name="vibration_yxz">有效值</string>
+    <string name="vibration_fgfz">方根幅值</string>
+    <string name="vibration_bxzb">波形指标</string>
+    <string name="vibration_mczb">脉冲指标</string>
+    <string name="vibration_fzzb">峰值指标</string>
+    <string name="vibration_ydzb">裕度指标</string>
+    <string name="vibration_wdzb">歪度指标</string>
+    <string name="vibration_ddzb">陡度指标</string>
+    <string name="vibration_lan_checkbox_name">游标(蓝)</string>
+    <string name="vibration_hon_checkbox_name">游标(红)</string>
+    <string name="vibration_zi_checkbox_name">游标(紫)</string>
+    <string name="vibration_type_acceleration">加速度</string>
+    <string name="vibration_type_accelerationvalue">加速度(峰值)</string>
+    <string name="vibration_type_tempovalue">速度(有效值)</string>
+    <string name="vibration_type_displacementvalue">位移(峰峰值)</string>
+    <string name="vibration_type_impactvalue">冲击(峰值)</string>
+    <string name="vibration_start_process">启动中···</string>
+    <string name="vibration_import_name">请输入储存名称</string>
+    <string name="vibration_save_name">储存名称</string>
+    <string name="vibration_measure">振动测量</string>
+    <string name="vibration_playback">振动回放</string>
+    <string name="seting_sys_measuretype_circumscribedvalue">外接</string>
+    <string name="playback">回放</string>
+    <string name="vibration_playback_none_value">没有测量值</string>
+    <string name="vibration_choice_record">请选择回放记录</string>
+    <string name="vibration_playback_save_name">储存名称：</string>
+    <string name="vibration_playback_save_time">测量时间：</string>
+    
+
+    <!-- 测振设置界面 -->
+    <string name="vibration_vibrationSetting">测振设置</string>
+    <string name="vibrationSetting_vibrationpackage">测量包</string>
+    <string name="vibrationSetting_vibrationtype">测量类型</string>
+    <string name="vibrationSetting_vibrationpassageway">通道</string>
+    <string name="vibrationSetting_maxfreq">最大频率</string>
+    <string name="vibrationSetting_samplepoints">采样点数</string>
+    <string name="vibrationSetting_windowtype">窗类型</string>
+    <string name="vibrationSetting_avgnum">平均次数</string>
+    <string name="vibrationSetting_averwrap">重叠率</string>
+    <string name="vibrationSetting_bandwidth">冲击带宽</string>
+    <string name="vibrationSetting_sensitivity">灵敏度</string>
+    <string name="vibrationSetting_windowtype_defaultvalue">汉宁窗</string>
+    <string name="vibrationSetting_windowtype_rectangle">矩形窗</string>
+    <string name="vibrationSetting_avgnum_defaultvalue">1</string>
+    <string name="vibrationSetting_averwrap_defaultvalue">50%</string>
+    <string name="vibrationSetting_type_acceleration">加速度</string>
+    <string name="vibrationSetting_type_tempo">速度</string>
+    <string name="vibrationSetting_type_displacement">位移</string>
+    <string name="vibrationSetting_type_impact">冲击</string>
+
+    <!-- 蓝牙搜索界面 -->
+    <string name="bluetooth_device_search_head_title">设备列表</string>
+    <string name="bluetooth_device_search_btn_search">设备搜索</string>
+    <string name="bluetooth_device_search_tv_devicename">设备名</string>
+    <string name="bluetooth_device_search_tv_is_pair">是否配对</string>
+    <string name="bluetooth_device_search_tv_mac_address">MAC地址：</string>
+    <string name="bluetooth_device_search_tv_address_str">address</string>
+    <string name="bluetooth_setup">蓝牙设置</string>
+    <string name="bluetooth_search">蓝牙地址</string>
+    <string name="bluetooth_password">配对秘钥</string>
+    <string name="bluetooth_paried">已配对</string>
+    <string name="bluetooth_unparied">未配对</string>
+    <string name="setting_videoquality_setting_head_title">视频录制设置</string>
+    <string name="setting_videoquality_setting_lowquality">低清晰度视频</string>
+    <string name="setting_videoquality_setting_highquality">高清晰度视频</string>
+    <string name="setting_videoquality_setting_desc1">单个视频最长30秒</string>
+    <string name="setting_videoquality_setting_desc2">单个视频最长5秒</string>
+    <string name="track_inputbug_picture_btn">拍照</string>
+
+    <!-- 实时上传设置界面 -->
+    <string name="setting_jitupload_head_title">实时上传设置</string>
+    <string name="setting_jitupload">是否开启实时上传</string>
+    <string name="setting_jitupload_xdjresult">上传巡点检相关内容</string>
+    <string name="setting_jitupload_xxresult">上传巡线相关内容</string>
+    <string name="setting_jitupload_state_on">已开启</string>
+    <string name="setting_jitupload_state_off">已关闭</string>
+    <string name="setting_jitupload_once_unmber_title">单次上传条数（条）：</string>
+    <string name="setting_jitupload_once_upload_time_title">单次上传时间（秒）：</string>
+    <string name="system_hardware_state_on">已开启</string>
+    <string name="system_hardware_state_off">已关闭</string>
+    <string name="setting_jitupload_xdjresult_once_defaultload">10</string>
+    <string name="setting_jitupload_xdjresult_defaultload_time">60</string>
+    <string name="setting_jitupload_xxresult_defaultload_time">60</string>
+
+    <!-- 检修界面 -->
+    <string name="overhaul_title">检修管理</string>
+    <string name="overhaul_managerment_login">检修管理登录</string>
+    <string name="overhaul_plan">检修计划</string>
+    <string name="overhaul_project">检修项目</string>
+    <string name="overhaul_datasync">检修数据同步</string>
+    <string name="overhaul_plan_search">搜索检修计划</string>
+    <string name="overhaul_project_search">搜索检修项目</string>
+    <string name="overhaul_plan_coding">计划编号 </string>
+    <string name="overhaul_plan_name">计划名称 </string>
+    <string name="overhaul_plan_content">计划内容 </string>
+    <string name="overhaul_project_coding">编号 </string>
+    <string name="overhaul_project_coding_1">项目编号 </string>
+    <string name="overhaul_project_state">状态 </string>
+    <string name="overhaul_project_name">项目名称 </string>
+    <string name="overhaul_project_content">项目内容 </string>
+    <string name="overhaul_project_examine">项目审核</string>
+    <string name="overhaul_project_implementation">项目实施</string>
+    <string name="overhaul_project_implementation_sign">签名:</string>
+    <string name="overhaul_project_memo_maxsize">备注最多输入250字</string>
+    <string name="overhaul_project_examine_one">一审</string>
+    <string name="overhaul_project_examine_two">二审</string>
+    <string name="overhaul_project_examine_three">三审</string>
+    <string name="overhaul_project_memo">备注</string>
+
+    <!-- 两票界面 -->
+    <string name="twobill_title">两票管理</string>
+    <string name="twobill_operate_ticket">操作票</string>
+    <string name="twobill_work_bill">工作票</string>
+    <string name="twobill_datasync">两票数据同步</string>
+
+    <!-- 操作票界面 -->
+    <string name="operationbill_title">操作票</string>
+    <string name="operationbill_search">搜索操作票</string>
+    <string name="workingbill_search">搜索工作票</string>
+
+    <!-- 工作票界面 -->
+    <string name="workbill_type_dqyz">电气一种工作票</string>
+    <string name="workbill_type_dqez">电气二种工作票</string>
+    <string name="workbill_type_rljx">热力机械工作票</string>
+    <string name="workbill_search_hint">搜索工作票</string>
+
+    <!-- 工作票详情页面 -->
+    <string name="workdetail_title">工作票详情</string>
+    <string name="workdetail_table_measure">隔离措施</string>
+
+    <!-- 通知 -->
+    <string name="Notification_TempTask_ID">临时任务</string>
+
+    <!-- 语音API ID 科大讯飞申请审核通过后的ID -->
+    <string name="kdxf_app_id">550cf15e</string>
+
+    <!-- 通用多选弹出框 -->
+    <string name="simple_multi_dialog_btnok">确定</string>
+    <!-- 通用文本弹出框 -->
+    <string name="simple_text_dialog_btnok">确定</string>
+    <!-- 通用文本弹出框 -->
+    <string name="simple_text_dialog_btncancel">取消</string>
+    <string name="simple_text_dialog_checkall">全选</string>
+
+    <!-- 存储文件文件夹 -->
+    <string name="Files">Files</string>
+    <!-- 图像文件夹 -->
+    <string name="Image">Image</string>
+    <!-- 缩略图文件夹 -->
+    <string name="Thumbnail">Thumbnail</string>
+
+    <!-- Map_main -->
+    <string name="track_mapmain_title_mapmode">地图模式</string>
+    <string name="track_mapmain_title_splitline">|</string>
+    <string name="track_mapmain_title_listmode">列表模式</string>
+    <string name="track_listmode_currcp_name">最近到位点：</string>
+    <string name="track_map_title_timeunit">耗时(mm:ss)</string>
+    <string name="track_map_title_distanceunit">里程(km)</string>
+    <string name="track_map_title_speedunit">时速(km/h)</string>
+    <string name="track_map_quickmemu_plan">计划</string>
+    <string name="track_map_quickmemu_plan_desc">Plan</string>
+    <string name="track_map_quickmemu_bug">报缺</string>
+    <string name="track_map_quickmemu_bug_desc">Bug</string>
+    <string name="track_map_quickmemu_history">初始化</string>
+    <string name="track_map_quickmemu_history_desc">InitCP</string>
+    <string name="track_listmode_cplist_title">到位点列表</string>
+    <string name="title_activity_temp_task">临时任务</string>
+
+    <!-- 报缺 -->
+    <string name="track_inputbug_title">填写报缺单</string>
+    <string name="track_tabtitle_picture">拍照</string>
+    <string name="track_tabtitle_audio">录音</string>
+    <string name="track_inputbug_vedio_btn">录像</string>
+    <string name="temptask_event_name">事件名称</string>
+    <string name="temptask_pladex">位置描述</string>
+    <string name="temptask_event_type">事件类型</string>
+    <string name="temptask_event_gx">管线名称</string>
+    <string name="temptask_event_desc">事件描述</string>
+    <string name="temptask_inputmaxlen">最多输入20字</string>
+    <string name="temptask_choose">请选择</string>
+    <string name="temptask_nogain">未获取</string>
+    <string name="temptask_inputmaxlenhint">最多输入80字</string>
+
+    <!-- 初始化 -->
+    <string name="initcp_longitude">经度</string>
+    <string name="initcp_latitude">纬度</string>
+    <string name="initcp_importhint">请输入考核点</string>
+    <string name="initcp_noinitialize">未初始化</string>
+    <string name="track_initcp_title">初始化到位点</string>
+    <string name="track_init_all">全部</string>
+    <string name="track_init_uninit">未初始化</string>
+    <string name="search_str">请输入到位点名称</string>
+
+    <!-- 离线地图下载 -->
+    <string name="offmap_offdownload">离线地图下载</string>
+    <string name="offmap_citylist">城市列表</string>
+    <string name="offmap_downloadmanage">下载管理</string>
+    <string name="statistics_uncheck_title">漏检统计</string>
+    <string name="statistics_uncheck_details_title">漏检明细</string>
+    <string name="statistics_uncheck_details_select">筛选</string>
+    <string name="statistics_select_conditions">筛选条件:</string>
+    <string name="statistics_select_conditions_idpos">ID钮扣选择</string>
+    <string name="statistics_select_conditions_time">时间选择</string>
+    <string name="statistics_select_conditions_content">计划内容</string>
+    <string name="query_hisdata_all_title">历史数据查询</string>
+    <string name="query_hisdate_date_select">选择日期</string>
+    <string name="query_start_time">开始时间</string>
+    <string name="query_end_time">结束时间</string>
+    <string name="query_content_screen_hint">请输入搜索内容</string>
+    <string name="query_hisdata_all_hisresult">点检结果</string>
+    <string name="query_hisdata_all_hisabsence">到位数据</string>
+    <string name="query_hisdata_all_hismobjectstate">启停状态</string>
+    <string name="query_hisdata_select_idpos">ID钮扣选择</string>
+    <string name="query_hisdata_type_title">数据类型</string>
+    <string name="query_hisdata_type_observe">观察类</string>
+    <string name="query_hisdata_type_record">记录类</string>
+    <string name="query_hisdata_type_cezhen">测振类</string>
+    <string name="query_hisdata_type_cewen">测温类</string>
+    <string name="query_hisdata_type_zhuansu">测速类</string>
+    <string name="defect_report_title">缺陷上报</string>
+    <string name="defect_report_eventdesc_hint">事件描述：最多输入80字</string>
+
+    <!-- 外接测量类型 -->
+    <string name="outer_measuretypes_moons">MS-101</string>
+    <string name="outer_measuretypes_soeasytest">SU-100A</string>
+    <string name="outer_measuretypes_tuosheng">TOCEL</string>
+    
+    <!-- 计划类型 -->
+    <string name="plantype_xdj">巡点检</string>
+    <string name="plantype_djpc">点检排程</string>
+
+    <!-- 翻译到此结束，以下为程序中不再使用的描述，无需翻译 -->
+
+    <string name="main_menu_home_lvMemu_toDJ">点检</string>
+    <string name="main_menu_home_lvMemu_toXJ">巡检</string>
+    <string name="main_about_appnameXX">小神探巡线客户端</string>
+    <!-- <string name="main_about_appnameXDJ">鸣志巡视管理移动版</string> -->
+    <string name="main_about_appnamePAD">小神探移动办公系统</string>
+    <string name="main_menu_commu_mapUpdate">地图下载</string>
+    <string name="main_menu_commu_mapUpdate_desc">下载离线地图数据（全国概图、区域详图）</string>
+    <string name="main_menu_commu_temptask">临时任务</string>
+    <string name="commu_type_desc">Tips:  切换只对当次通信有效</string>
+    <string name="main_menu_tools_readid_content">射频卡描述</string>
+    <string name="main_menu_tools_nfc_btnSaveNFC">保存标牌信息</string>
+    <string name="main_menu_tools_Media_Desc">录制视频工具</string>
+    <string name="main_menu_tools_Media_Title">录像工具</string>
+    <string name="setting_head_title_function_scroll">计划任务左右滑动</string>
+    <string name="setting_head_title_function_powersave_setting">节电设置</string>
+    <string name="main_menu_system_applog">系统日志</string>
+    <string name="main_menu_system_applog_desc">用于查看系统日志信息</string>
+    <string name="main_menu_system_database_desc">完成清理程序缓存数据</string>
+    <string name="setting_function_powersave_setting">启动或退出程序时,由程序开启或关闭设置的相应模块</string>
+    <string name="main_menu_system_aboutus_logo_hide_sysinfo_runtime_service">当前运行服务</string>
+    <string name="main_menu_system_aboutus_logo_hide_sysinfo_runtime_service_des">小神探后台相关服务</string>
+    <string name="main_menu_system_aboutus_logo_hide_sysinfo_filefind">文件查看</string>
+    <string name="main_menu_system_aboutus_logo_hide_sysinfo_filefinddes">小神探系统文件</string>
+    <string name="main_menu_system_aboutus_logo_hide_sysinfo_error_log">错误日志</string>
+    <string name="main_menu_system_aboutus_logo_hide_sysinfo_error_log_des">系统崩溃记录的日志</string>
+    <string name="main_menu_system_aboutus_logo_hide_sysinfo_restore">一键还原</string>
+    <string name="main_menu_system_aboutus_logo_hide_sysinfo_restore_des">将软件还原到最初始状态</string>
+    <string name="main_menu_system_aboutus_logo_hide_sysinfo_settingjurisdiction">参数权限设置</string>
+    <string name="main_menu_system_aboutus_logo_hide_sysinfo_settingjurisdiction_des">小神探系统的参数权限配置</string>
+    <string name="idpos_scan_desc">按住靠近钮扣标牌</string>
+    <string name="idpos_memu_startstop">启停设置</string>
+    <string name="idpos_memu_idposselect"> 钮扣筛选</string>
+    <string name="idpos_memu_idposselect_desc">ID Filter</string>
+    <!-- 长按考核点listitem -->
+    <string name="track_menu_cp_lvMemu">巡线到位点操作</string>
+    <string name="track_menu_cp_lvMemu_toPlan">去做计划</string>
+    <string name="track_menu_cp_lvMemu_Query">查询数据</string>
+    <string name="track_menu_cp_Return">返回</string>
+
+    <!-- 数据查询 -->
+    <string name="query_data_title">任务完成情况(到位点信息)</string>
+    <string name="query_data_placepo">已到位</string>
+    <string name="query_data_unpalcepo">未到位</string>
+    <!-- 数据查询，到位点计划 -->
+    <string name="query_data_poplan_idname">钮扣：</string>
+    <!-- 分页列表页面 -->
+    <string name="pull_to_refresh_pull_label">下拉可以刷新</string>
+    <string name="pull_to_refresh_release_label">松开可以刷新</string>
+    <string name="pull_to_refresh_refreshing_label">加载中...</string>
+    <string name="pull_to_refresh_tap_label">下拉可以刷新</string>
+    <string name="pull_to_refresh_update">最近更新：</string>
+    <string name="dianjian_sr_plancout"> 受控计划:</string>
+    <string name="dianjian_sr_lasttime"> 修改时间：</string>
+    <string name="dianjian_sr_mobjectstate"> 状态：</string>
+
+    <!-- 对讲机界面 -->
+    <string name="walkie_talkie_btn_speaking">按住说话</string>
+    <string name="walkie_talkie_tips_line1">状态</string>
+    <string name="walkie_talkie_tips_line2">长按F1退出对讲机</string>
+    <string name="walkie_talkie_tips_line3">按住F2进行对讲，释放取消对讲</string>
+
+    <!-- 对讲机设置界面 -->
+    <string name="walkie_talkie_setting_btn_additems">+新建信道</string>
+    <string name="walkie_talkie_setting_head_title">设置</string>
+    <string name="walkie_talkie_setting_recovery">恢复默认</string>
+    <string name="walkie_talkie_setting_defaultvalue">设为默认</string>
+    <string name="track_inputbug_audio_btn">录音</string>
+
+    <!-- 对讲机信道添加修改界面 -->
+    <string name="walkie_talkie_xdnfo_add">添加</string>
+    <string name="walkie_talkie_xdnfo_modify">修改</string>
+    <string name="walkie_talkie_xdnfo_name">信道别名</string>
+    <string name="walkie_talkie_xdnfo_name_hint">输入信道别名</string>
+    <string name="walkie_talkie_xdnfo_frequency">频率</string>
+    <string name="walkie_talkie_xdnfo_frequency_hint">输入频率</string>
+    <string name="walkie_talkie_xdnfo_save">保存</string>
+    <string name="walkie_talkie_xdinfo_desc1">频率取值范围400.0000MHz～480.0000MHz</string>
+    <string name="walkie_talkie_xdinfo_desc2">并且必须为6.25KHz或5KHz的整数倍</string>
+
+    <!-- 节电设置界面 -->
+    <string name="setting_powersave_setting_head_title">节电设置</string>
+    <string name="setting_powersave_setting_wifi">是否由程序控制Wifi开启或关闭</string>
+    <string name="setting_powersave_setting_gps">是否由程序控制GPS开启或关闭</string>
+    <string name="setting_powersave_setting_on">是</string>
+    <string name="setting_powersave_setting_off">否</string>
+    <string name="Notification_APPUpdate_ID">程序更新</string>
+    <string name="Notification_LineUpdate_ID">数据同步</string>
+    <string name="Notification_JITUpload_ID">实时上传</string>
+
+    <!-- 视频文件夹 -->
+    <string name="Video">Video</string>
+    <string name="album_enter_select">选择</string>
+    <string name="api_cancel">取消</string>
+    <string name="album_photo_select_tip">项</string>
+    <string name="album_phoot_select_all">全选</string>
+    <string name="album_phoot_unselect_all">取消全选</string>
+    <string name="album_title">我的相册</string>
+    <string name="pgcommon_share">分享</string>
+    <string name="common_cut">移动</string>
+    <string name="common_delete">删除</string>
+    <string name="common_edit">编辑</string>
+    <string name="album_message">图片&amp;视频</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="input_equipment_name">请输入设备名称</string>
+    <string name="track_tabtitle_desc">描述</string>
+    <string name="track_inputbug_desc_btn">保存</string>
+    <string name="track_tabtitle_his">历史</string>
+
+    <!-- PAD功能模块 -->
+    <string name="pad_main_menu_home">我的首页</string>
+    <string name="pad_main_menu_wdzl">文档资料</string>
+    <string name="pad_main_menu_sbda">设备档案</string>
+    <string name="pad_main_menu_xjgl">巡检管理</string>
+    <string name="pad_main_menu_yxgl">运行管理</string>
+    <string name="pad_main_menu_ztjc">状态监测</string>
+    <string name="pad_main_menu_qxgl">缺陷管理</string>
+    <string name="pad_main_menu_jxcl">检修处理</string>
+    <string name="pad_main_menu_lpgl">两票管理</string>
+    <string name="pad_main_menu_xtsz">系统设置</string>
+    <!-- 主页 -->
+    <string name="pad_home_main_menu_dj">巡检管理</string>
+    <string name="pad_home_main_menu_xx">巡线管理</string>
+    <string name="pad_home_main_menu_oa">企业办公</string>
+    <string name="pad_home_main_menu_wd">文档管理</string>
+    <string name="pad_home_main_menu_sb">设备档案</string>
+    <string name="pad_home_main_menu_sc">生产运行</string>
+    <string name="pad_home_main_menu_czp">操作票</string>
+    <string name="pad_home_main_menu_gd">工单管理</string>
+    <string name="pad_home_main_menu_wifichart">即时通信</string>
+    <string name="pad_home_main_menu_menuset">模块设置</string>
+    <!-- 通信 -->
+    <string name="pad_home_commu_menu_commu">数据通信</string>
+    <string name="pad_home_commu_menu_appupdate">程序升级</string>
+    <string name="pad_home_commu_menu_mapdownload">地图更新</string>
+    <!-- 工具 -->
+    <string name="pad_home_tools_menu_cw">测温</string>
+    <string name="pad_home_tools_menu_cz">测振</string>
+    <string name="pad_home_tools_menu_nfc">读取纽扣</string>
+    <string name="pad_home_tools_menu_ly">录音</string>
+    <string name="pad_home_tools_menu_camera">照相机</string>
+    <string name="pad_home_tools_menu_scan">扫一扫</string>
+    <!-- 系统 -->
+    <string name="pad_home_sys_menu_sysset">系统设置</string>
+    <string name="pad_home_sys_menu_userset">用户信息</string>
+    <string name="pad_home_sys_menu_aboutus">关于我们</string>
+    <string name="pad_home_sys_menu_updata_vision_info">更新日志</string>
+
+    <!-- 数据查询，到位点计划 -->
+    <string name="query_data_poplan_title">数据查询--到位点相关信息</string>
+    <string name="query_data_poplan_placepo">已完成</string>
+    <string name="query_data_poplan_unpalcepo">未完成</string>
+    <string name="query_data_poplan_pointname">到位点:</string>
+    <string name="query_data_poplan_planinfo">计划信息</string>
+    <string name="query_data_poplan_btntext">查询相关信息</string>
+    <string name="query_data_poplan_btninfo">(查询相关历史记录等)</string>
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新数据</string>
+    <string name="xlistview_header_hint_loading">正在加载...</string>
+    <string name="xlistview_header_last_time">上次更新时间：</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+
+</resources>

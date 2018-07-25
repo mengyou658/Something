@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <!-- sina weibo sdk -->
+    <dimen name="dialog_left_margin">10dp</dimen>
+    <dimen name="dialog_top_margin">30dp</dimen>
+    <dimen name="dialog_right_margin">10dp</dimen>
+    <dimen name="dialog_bottom_margin">10dp</dimen>
+    <dimen name="dialog_btn_close_right_margin">10dp</dimen>
+    <dimen name="dialog_btn_close_top_margin">10dp</dimen>
+    <dimen name="dialog_title_logo_left_margin">5dp</dimen>
+    <dimen name="dialog_title_height">30dp</dimen>
+
+    <!-- GreenDroid UI Tool -->
+    <dimen name="gd_arrow_offset">5dp</dimen>
+
+    <!-- Xiaoshentan APP -->
+    <dimen name="text_size_50">50.0dip</dimen>
+    <dimen name="text_size_40">40.0dip</dimen>
+    <dimen name="text_size_36">36.0dip</dimen>
+    <dimen name="text_size_32">32.0dip</dimen>
+    <dimen name="text_size_31">31.0dip</dimen>
+    <dimen name="text_size_30">30.0dip</dimen>
+    <dimen name="text_size_29">29.0dip</dimen>
+    <dimen name="text_size_28">28.0dip</dimen>
+    <dimen name="text_size_27">27.0dip</dimen>
+    <dimen name="text_size_26">26.0dip</dimen>
+    <dimen name="text_size_25">25.0dip</dimen>
+    <dimen name="text_size_24">24.0dip</dimen>
+    <dimen name="text_size_23">23.0dip</dimen>
+    <dimen name="text_size_22">22.0dip</dimen>
+    <dimen name="text_size_21">21.0dip</dimen>
+    <dimen name="text_size_20">20.0dip</dimen>
+    <dimen name="text_size_19">19.0dip</dimen>
+    <dimen name="text_size_18">18.0dip</dimen>
+    <dimen name="text_size_17">17.0dip</dimen>
+    <dimen name="text_size_16">16.0dip</dimen>
+    <dimen name="text_size_15">15.0dip</dimen>
+    <dimen name="text_size_14">14.0dip</dimen>
+    <dimen name="text_size_13">13.0dip</dimen>
+    <dimen name="text_size_12">12.0dip</dimen>
+    <dimen name="text_size_11">11.0dip</dimen>
+    <dimen name="text_size_10">10.0dip</dimen>
+    <dimen name="text_size_9">9.0dip</dimen>
+    <dimen name="text_size_8">8.0dip</dimen>
+    <dimen name="text_size_7">7.0dip</dimen>
+    <dimen name="space_30">30.0dip</dimen>
+    <dimen name="space_29">29.0dip</dimen>
+    <dimen name="space_28">28.0dip</dimen>
+    <dimen name="space_27">27.0dip</dimen>
+    <dimen name="space_26">26.0dip</dimen>
+    <dimen name="space_25">25.0dip</dimen>
+    <dimen name="space_24">24.0dip</dimen>
+    <dimen name="space_23">23.0dip</dimen>
+    <dimen name="space_22">22.0dip</dimen>
+    <dimen name="space_21">21.0dip</dimen>
+    <dimen name="space_20">20.0dip</dimen>
+    <dimen name="space_19">19.0dip</dimen>
+    <dimen name="space_18">18.0dip</dimen>
+    <dimen name="space_17">17.0dip</dimen>
+    <dimen name="space_16">16.0dip</dimen>
+    <dimen name="space_15">15.0dip</dimen>
+    <dimen name="space_14">14.0dip</dimen>
+    <dimen name="space_13">13.0dip</dimen>
+    <dimen name="space_12">12.0dip</dimen>
+    <dimen name="space_11">11.0dip</dimen>
+    <dimen name="space_10">10.0dip</dimen>
+    <dimen name="space_9">9.0dip</dimen>
+    <dimen name="space_8">8.0dip</dimen>
+    <dimen name="space_7">7.0dip</dimen>
+    <dimen name="space_6">6.0dip</dimen>
+    <dimen name="space_5">5.0dip</dimen>
+    <dimen name="space_4">4.0dip</dimen>
+    <dimen name="space_3">3.0dip</dimen>
+    <dimen name="space_2">2.0dip</dimen>
+    <dimen name="space_1">1.0dip</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="thumbnail_imageview_size">41.0dip</dimen>
+    <dimen name="bottom_bar_height">75.0dip</dimen>
+    <dimen name="top_menu_bar_height">45.0dip</dimen>
+    <dimen name="shutter_bottom_size">62.0dip</dimen>
+    <dimen name="album_header_bar_height">50.0dip</dimen>
+    <dimen name="title_view_left_back_padding_left">12.0dip</dimen>
+    <dimen name="title_view_left_back_padding_right">12.0dip</dimen>
+    <dimen name="album_header_btn_width">48.0dip</dimen>
+    <dimen name="album_rooter_bar_height">48.0dip</dimen>
+    <dimen name="album_rooter_bar_text_size">16.0sp</dimen>
+    <dimen name="videodetails_textsize_time">13.0dip</dimen>
+    <dimen name="video_bottom_bar_height">40.0dip</dimen>
+    <dimen name="btn_big_textsize">24dip</dimen>
+    <dimen name="btn_small_textsize">18dip</dimen>
+
+    <!-- 点检 -->
+    <dimen name="dj_result_textsize">28dip</dimen>
+    <dimen name="dj_result_textsize_cl">32dip</dimen>
+    <dimen name="dj_plandesc_textsize">22dip</dimen>
+    <dimen name="dj_planhis_result_textsize">20dip</dimen>
+    <dimen name="dj_planhis_datetime_textsize">12dip</dimen>
+    <dimen name="dj_touchidpostips_textsize">32dip</dimen>
+    <dimen name="image_marginLeft">16dip</dimen>
+    <dimen name="texttoimage_marginLeft">10dip</dimen>
+    
+     <dimen name="statistics_in_circle_txt">15dp</dimen>
+    <dimen name="statistics_circle_radius">7dp</dimen>
+    
+    
+
+</resources>

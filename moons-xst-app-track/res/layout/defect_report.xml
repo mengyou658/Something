@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/layout_defectreport_head"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:background="@drawable/title_bar" >
+
+        <ImageButton
+            android:id="@+id/home_head_Rebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:background="@color/full_transparent"
+            android:src="@drawable/arrow_left" />
+
+        <TextView
+            android:id="@+id/temptask_defectreport_head_title"
+            style="@style/main_head_title"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:text="@string/defect_report_title" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_defectreport_locationdesc"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/defectreport_location_info"
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:text="@string/temptask_pladex"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+
+        <EditText
+            android:id="@+id/defectreport_location_placedes"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toRightOf="@+id/defectreport_location_info"
+            android:background="@null"
+            android:gravity="center|left"
+            android:hint="@string/temptask_inputmaxlen"
+            android:maxLength="20"
+            android:textColorHint="@color/gray"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+    
+    <include
+           layout="@layout/vertical_split_line_1dp"
+            />
+    
+    <RelativeLayout
+        android:id="@+id/ll_defectreport_eventtype"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/btn_selected"
+        android:clickable="true"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_defectreport_eventtype"
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:text="@+string/temptask_event_type"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+
+        <ImageView
+            android:id="@+id/iv_defectreport_eventtype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/icon_right" />
+
+        <TextView
+            android:id="@+id/tv_defectreport_eventtype_value"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toLeftOf="@id/iv_defectreport_eventtype"
+            android:layout_toRightOf="@id/tv_defectreport_eventtype"
+            android:gravity="center|left"
+            android:maxLines="2"
+            android:text="@string/temptask_choose"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+    
+    <include layout="@layout/vertical_split_line_10dp"/>
+    
+    <RelativeLayout
+            android:id="@+id/layout_event_desc"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="1dp"
+            android:orientation="vertical"
+            android:visibility="visible" >
+
+            <LinearLayout
+                android:id="@+id/layout_files"
+                android:layout_width="fill_parent"
+                android:layout_height="70dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5dp" >
+
+                <ImageView
+                    android:id="@+id/imageview_addfile"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:src="@drawable/icon_addpic_unfocused" />
+
+                    <com.moons.xst.track.widget.HorizontalListView
+                        android:id="@+id/grid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" 
+                        />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/eventdesc_editor_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/layout_files"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:text="0/80"
+                android:textSize="@dimen/text_size_13" />
+
+            <EditText
+                android:id="@+id/editview_event_desc"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_above="@id/eventdesc_editor_title"
+                android:layout_marginBottom="5dp"
+                android:background="@null"
+                android:gravity="left"
+                android:hint="@string/defect_report_eventdesc_hint"
+                android:maxLength="80"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:selectAllOnFocus="true"
+                android:textColorHint="@color/gray"
+                android:textSize="@dimen/text_size_16" />
+        </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_defectreport_Save"
+        android:layout_width="fill_parent"
+        android:layout_height="60dip"
+        android:background="@color/face_bg" >
+
+        <Button
+            android:id="@+id/btn_saveDefectReport"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="5dip"
+            android:background="@drawable/btn_style_blue"
+            android:clickable="true"
+            android:text="@string/sure"
+            android:textColor="@color/white"
+            android:textSize="@dimen/btn_big_textsize" />
+    </RelativeLayout>
+
+</LinearLayout>

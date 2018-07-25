@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    style="@style/widget_listview_Item"
+    android:orientation="horizontal" 
+  	android:layout_height="50dip"
+  	android:background="@drawable/select_box_itme_background"
+	>   
+	
+	<RelativeLayout 
+		android:id="@+id/layout_alertdialog__itemicon" 
+	  	android:layout_width="50dip" 
+	  	android:layout_height="50dip"
+	  	android:layout_alignParentRight="true"
+	    android:layout_gravity="center_vertical"
+	    android:paddingRight="10dp"
+	  	android:gravity="center"
+	  	>     
+	  	
+        <ImageView
+              android:id="@+id/radio"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@drawable/icon_radiobutton_unchecked"
+              android:gravity="center"
+	  	      android:scaleType="matrix"
+	  	      android:focusable="false"/>	  	
+    </RelativeLayout>
+    
+	<RelativeLayout 
+		android:id="@+id/layout_alertdialog_itemdesc" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_height="fill_parent"
+	  	android:layout_marginRight="15dp"
+	  	android:layout_toLeftOf="@id/layout_alertdialog__itemicon"
+	  	android:gravity="center"
+	  	android:layout_gravity="center_vertical"
+	  	android:orientation="vertical" 
+	  	>        
+	    <TextView 
+	        android:id="@+id/alertdialog_itemdesc" 
+	        android:layout_width="fill_parent" 
+	     	android:layout_height="50dp"
+	     	android:gravity="left|center"     	
+        	android:paddingLeft="15dp"
+	     	android:textSize="@dimen/text_size_18"
+	     	android:textColor="@color/black"
+	     	android:singleLine="true"/> 	        
+    </RelativeLayout>	
+	
+
+
+</RelativeLayout> 

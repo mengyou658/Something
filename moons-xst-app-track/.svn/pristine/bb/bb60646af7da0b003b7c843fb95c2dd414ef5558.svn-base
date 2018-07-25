@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout 
+		android:id="@+id/offmap_head" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_height="50dip"
+	  	android:layout_alignParentTop="true"
+	  	android:background="@drawable/title_bar"> 
+	  	<ImageButton 
+	        android:id="@+id/offmap_head_Rebutton"
+	        android:src="@drawable/arrow_left"
+	        android:background="@color/full_transparent"
+	        android:layout_width="wrap_content"
+	    	android:layout_height="50dip"
+	    	android:layout_alignParentLeft="true"
+           	android:layout_gravity="center_vertical"
+	        android:layout_marginRight="10dp"
+	        />
+	    <TextView 
+	        android:id="@+id/offmap_head_title"
+		  	android:layout_width="fill_parent" 
+		  	android:layout_height="fill_parent"
+			android:gravity="center"
+	        style="@style/main_head_title"
+			android:ellipsize="marquee" 
+	        android:marqueeRepeatLimit="marquee_forever"
+	        android:focusable="true" 
+	        android:focusableInTouchMode="true"					
+			android:text = "@string/offmap_offdownload"
+			/>
+	</RelativeLayout>
+	
+   
+
+       <RelativeLayout
+        android:id="@+id/offmap_Serach"
+        android:layout_width="match_parent"
+        android:layout_height="40dip"
+        android:visibility="gone"
+        android:orientation="vertical" >
+        <RelativeLayout 
+		android:id="@+id/offmap_query_tab" 
+	  	android:layout_width="wrap_content" 
+	  	android:layout_height="40dip"> 
+	    
+         <TextView 
+	        android:id="@+id/all_tab"
+		  	android:layout_width="150dip" 
+		  	android:layout_height="40dip"
+		  	android:layout_centerVertical="true"
+		  	android:gravity="center"
+	        android:text="@string/offmap_citylist"
+	        style="@style/List_query_tab"
+	        android:clickable="true"
+			/>
+	    <TextView 
+	        android:id="@+id/splitline"
+		  	android:layout_width="wrap_content" 
+		  	android:layout_height="40dip"
+		  	android:layout_centerVertical="true"
+			android:gravity="center"
+	        android:text="@string/track_mapmain_title_splitline"
+	        android:textColor="@color/black"
+	        android:layout_toRightOf="@id/all_tab"		
+			/>
+	   
+	    <TextView 
+	        android:id="@+id/place_tab"
+		  	android:layout_width="150dip" 
+		  	android:layout_height="40dip"
+		  	android:layout_centerVertical="true"
+		  	android:gravity="center"
+	        android:text="@string/offmap_downloadmanage"	
+			style="@style/List_query_tab"
+			android:layout_toRightOf="@id/splitline"
+			android:clickable="true"
+			/>
+
+	</RelativeLayout>
+     </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/offmap_TextDesValue"
+        android:layout_width="wrap_content"
+        android:layout_height="266dp"
+        android:layout_above="@+id/offmap_tips"
+        android:layout_below="@+id/offmap_CheckPointTitle"
+        android:layout_weight="1.14"
+        android:orientation="vertical" >
+
+        <ExpandableListView 
+            android:id="@+id/offmap_listview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            style="@style/widget_listview2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:cacheColorHint="@color/author_text"
+        	android:divider="@color/graywhite"
+            android:scrollbarStyle="outsideOverlay"
+            android:stackFromBottom="false" >
+        </ExpandableListView>
+    </RelativeLayout>
+
+
+</LinearLayout>

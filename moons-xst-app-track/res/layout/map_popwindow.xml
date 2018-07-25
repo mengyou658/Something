@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="horizontal"
+              android:background="#ccccff" >
+             >
+  	<RelativeLayout 
+		android:id="@+id/layout_checkpoint_itemdesc" 
+	  	android:layout_width="match_parent" 
+	  	android:layout_height="50dip"
+	  	android:layout_alignParentRight="true"
+	  	android:orientation="vertical" 
+	  	>     
+	  	
+	    <RelativeLayout 
+	        android:id="@+id/layout_map_popwindow_cpname" 
+	        android:layout_width="match_parent"  
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal" 
+	        android:layout_alignParentTop="true"
+	        >
+		    <TextView android:id="@+id/map_popwindow_cpname" 
+		        style="@style/widget_listview_title2"
+		        android:layout_width="fill_parent" 
+		     	android:layout_height="wrap_content"
+		     	android:singleLine="true"/>     		    
+	   	</RelativeLayout>
+	
+	    <RelativeLayout 
+	        android:layout_width="match_parent"  
+	        android:layout_height="match_parent"
+	    	android:orientation="horizontal" 
+	    	android:layout_below="@id/layout_map_popwindow_cpname"
+	    	android:layout_marginTop="4dip"
+	        >   	        
+	       	<TextView android:id="@+id/map_popwindow_jd"  
+	    		android:layout_width="100dip" 
+	           	android:layout_height="wrap_content" 
+	           	android:layout_gravity="center_vertical"
+	           	style="@style/widget_listview_subdesc"
+	            />       			        
+	       	<TextView android:id="@+id/map_popwindow_txt_wd"  
+	    		android:layout_width="100dip" 
+	           	android:layout_height="wrap_content" 
+	           	android:layout_toRightOf="@id/map_popwindow_jd"
+	           	android:layout_marginLeft="3dip"
+	           	android:layout_gravity="center_vertical"
+	           	style="@style/widget_listview_subdesc"
+	            />					
+	       	<TextView android:id="@+id/map_popwindow_txt_time"  
+	    		android:layout_width="wrap_content" 
+	           	android:layout_height="wrap_content"
+	           	android:layout_toRightOf="@id/map_popwindow_txt_wd"
+	           	android:layout_marginLeft="3dip" 
+	           	android:textColor="#003399"
+	           	android:layout_gravity="center_vertical"
+	           	style="@style/widget_listview_subdesc"
+	           	android:clickable="true"
+	            />
+	       			
+	    </RelativeLayout>	    
+	    
+    </RelativeLayout>	
+</RelativeLayout>

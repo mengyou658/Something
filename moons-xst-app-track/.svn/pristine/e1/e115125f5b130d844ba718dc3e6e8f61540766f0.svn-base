@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fontsize_setting"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/graywhite"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/ll_geture_setting_head"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/title_bar" >
+
+        <ImageButton
+            android:id="@+id/home_head_Rebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:background="@color/full_transparent"
+            android:src="@drawable/arrow_left" />
+
+        <TextView
+            android:id="@+id/ll_geture_setting_head_title"
+            style="@style/main_head_title"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:text="@string/setting_head_title_function_fontsize_setting" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/setting_function_fontsize_tip"
+            android:textColor="@color/listitem_bulewhite"
+            android:layout_margin="10dp"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/overhaul_project_background" >
+
+        <ImageView
+            android:id="@+id/djline_listitem_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/image_marginLeft"
+            android:scaleType="matrix"
+            android:src="@drawable/widget_bar_xj_line_xh" />
+
+        <RelativeLayout
+            android:id="@+id/layout_djline_itemdesc"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/texttoimage_marginLeft"
+            android:layout_toRightOf="@id/djline_listitem_icon" >
+
+            <RelativeLayout
+                android:id="@+id/layout_djline_itemdesc_title"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true" >
+
+                <TextView
+                    android:id="@+id/fontsize_listitem_title"
+                    style="@style/widget_listview_title2"
+	                android:layout_width="fill_parent"
+	                android:layout_height="fill_parent"
+	                android:gravity="center|left"
+	                android:paddingLeft="4dp"
+	                android:singleLine="true"
+                    android:text="@string/setting_function_fontsize_listview_title" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="25dp"
+                android:layout_below="@id/layout_djline_itemdesc_title" >
+
+                <TextView
+                    android:id="@+id/fontsize_listitem_BuildTime"
+                    style="@style/widget_listview_subdesc"
+	                android:layout_width="wrap_content"
+	                android:layout_height="fill_parent"
+	                android:gravity="top|left"
+	                android:paddingLeft="3dip" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/overhaul_project_background"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/fontsize_txt_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:padding="15dp"
+            android:text="@string/setting_function_fontsize_plan_des"
+            android:textColor="#000"
+            android:textSize="@dimen/text_size_22" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/tv_textsize_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:text="@string/setting_function_fontsize_normal"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_14" />
+
+        <TextView
+            android:id="@+id/tv_textsize_big"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            android:text="@string/setting_function_fontsize_big"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_14" />
+
+        <TextView
+            android:id="@+id/tv_textsize_huge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="30dp"
+            android:text="@string/setting_function_fontsize_huge"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_14" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="40dp"
+        android:gravity="center_vertical" >
+
+        <SeekBar
+            android:id="@+id/textsize_seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:max="100"
+            android:maxHeight="5dp"
+            android:minHeight="2dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:thumb="@drawable/slidingblock" />
+    </RelativeLayout>
+
+</LinearLayout>

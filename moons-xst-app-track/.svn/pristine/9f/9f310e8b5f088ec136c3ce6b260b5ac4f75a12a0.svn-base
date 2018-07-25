@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/btn_selected"
+    android:layout_height="55dip"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:id="@+id/layout_point_itemicon"
+        android:layout_width="50dip"
+        android:layout_height="55dip"
+        android:layout_alignParentLeft="true"
+        android:layout_gravity="center_vertical"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/icon_point"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:scaleType="matrix" />
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/layout_point_distanceTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="55dip"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dip"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/point_listitem_distanceTxt"
+            style="@style/widget_listview_subdesc"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="5dip"
+             />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_point_itemdesc"
+        android:layout_width="match_parent"
+        android:layout_height="55dip"
+        android:layout_toRightOf="@id/layout_point_itemicon"
+        android:layout_toLeftOf="@id/layout_point_distanceTxt"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/layout_point_itemdesc_title"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/point_listitem_title"
+                style="@style/widget_listview_title2"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="left|bottom"
+                android:singleLine="true" 
+                android:ellipsize="end"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_below="@id/layout_point_itemdesc_title"
+            android:layout_marginTop="4dip"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/point_itemdesc_pointtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/count_idpod_icon" />
+
+            <TextView
+                android:id="@+id/point_listitem_time"
+                style="@style/widget_listview_subdesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_toRightOf="@id/point_itemdesc_pointtime" />
+
+            <ImageView
+                android:id="@+id/point_itemdesc_spend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dip"
+                android:layout_toRightOf="@id/point_listitem_time"
+                android:src="@drawable/count_plan_icon" />
+
+            <TextView
+                android:id="@+id/point_listitem_spendCount"
+                style="@style/widget_listview_subdesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="3dip"
+                android:layout_toRightOf="@id/point_itemdesc_spend" />
+
+           
+        </RelativeLayout>
+    </RelativeLayout>
+
+    
+
+</RelativeLayout>

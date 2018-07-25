@@ -1,0 +1,377 @@
+package com.moons.xst.track.ui;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.baidu.location.BDLocation;
+import com.baidu.mapapi.SDKInitializer;
+import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.search.core.SearchResult;
+import com.baidu.mapapi.search.geocode.GeoCodeResult;
+import com.baidu.mapapi.search.geocode.GeoCoder;
+import com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListener;
+import com.baidu.mapapi.search.geocode.ReverseGeoCodeOption;
+import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
+import com.moons.xst.track.AppContext;
+import com.moons.xst.track.AppManager;
+import com.moons.xst.track.R;
+import com.moons.xst.track.service.BDGpsManagerService;
+
+public class BaiduLocationAty extends BaseActivity implements OnClickListener {
+
+	private EditText etLatitude;
+	private EditText etLongitude;
+	private EditText etTimeInterval;
+	private RadioGroup bgMode;
+	private RadioButton locationAccurate;
+	private RadioButton locationLowPowerConsumption;
+	private RadioButton locationOnlyEquipment;
+	private TextView locationmodedesc;
+	private AppContext appcontext;
+	private ImageButton rebutton;
+	private GeoCoder geoCoder;
+	private String latitude;
+	private String longitude;
+	private EditText etTimeSpaceFilter;
+	private EditText etDistanceSpaceFilter;
+	private RelativeLayout rl_xdj_recordyn;
+	private CheckBox chk_xdjrecordjw;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		// 添加Activity到堆栈
+		AppManager.getAppManager().addActivity(this);
+		//SDKInitializer.initialize(getApplicationContext());
+		setContentView(R.layout.activity_baidu_location);
+		appcontext = (AppContext) getApplication();
+		geoCoder = GeoCoder.newInstance();
+		geoCoder.setOnGetGeoCodeResultListener(geoCoderResultListener);// 设置地理编码检索监听者
+		init();
+		registerBoradcastReceiver();
+	}
+
+	private void init() {
+		initView();
+		initData();
+		initListener();
+	}
+
+	private void initView() {
+		etLatitude = (EditText) findViewById(R.id.et_latitude);
+		etLongitude = (EditText) findViewById(R.id.et_longitude);
+		locationInfo = (TextView) findViewById(R.id.tv_locationinfo);
+		etTimeInterval = (EditText) findViewById(R.id.et_time_interval);
+		locationmodedesc = (TextView) findViewById(R.id.tv_location_mode_desc);
+		bgMode = (RadioGroup) findViewById(R.id.bg_mode);
+		locationAccurate = (RadioButton) findViewById(R.id.location_accurate);
+		locationLowPowerConsumption = (RadioButton) findViewById(R.id.location_low_power_consumption);
+		locationOnlyEquipment = (RadioButton) findViewById(R.id.location_only_equipment);
+		rebutton = (ImageButton) findViewById(R.id.gpssettings_head_Rebutton);
+		etTimeSpaceFilter = (EditText) findViewById(R.id.et_time_space_filter);
+		tvLocationFilterDetail = (TextView) findViewById(R.id.tv_location_filter_detail);
+		chk_xdjrecordjw = (CheckBox) findViewById(R.id.chk_xdjrecordjw);
+		rl_xdj_recordyn = (RelativeLayout) findViewById(R.id.rl_xdj_recordyn);
+		rl_xdj_recordyn.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO 自动生成的方法存根
+				boolean state = chk_xdjrecordjw.isChecked();
+				chk_xdjrecordjw.setChecked(!state);
+				AppContext.setXDJRecordJWYN(!state);
+			}
+		});
+		etTimeSpaceFilter.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+					tvLocationFilterDetail.setText(getString(R.string.setting_sys_gpssetting_gpsfilter_promptinfo,(s.toString().isEmpty()?String.valueOf(0):s.toString()),(etDistanceSpaceFilter.getText().toString().isEmpty()?String.valueOf(0):etDistanceSpaceFilter.getText().toString())));
+			}
+
+			@Override 
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+				// InputTools.HideKeyboard(etDistanceSpaceFilter);
+			}
+		});
+		etDistanceSpaceFilter = (EditText) findViewById(R.id.et_diatance_space_filter);
+		etDistanceSpaceFilter.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+					tvLocationFilterDetail.setText(
+							getString(R.string.setting_sys_gpssetting_gpsfilter_promptinfo,(etTimeSpaceFilter.getText().toString().isEmpty()?String.valueOf(0):etTimeSpaceFilter.getText().toString()),(s.toString().isEmpty()?String.valueOf(0):s.toString())));
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+				// InputTools.HideKeyboard(etDistanceSpaceFilter);
+			}
+		});
+	}
+
+	private void initData() {
+		int gpsSavedTimeSpase = AppContext.getGPSSavedTimeSpase();
+		etTimeInterval.setText(String.valueOf(gpsSavedTimeSpase));
+		int gpsSavedMode = AppContext.getGPSSavedMode();
+		int id = gpsSavedMode;
+		if (0 == id) {
+			locationAccurate.setChecked(true);
+			locationmodedesc.setText(getResources().getString(
+					R.string.setting_gpssetting_mode_highprecision));
+		} else if (1 == id) {
+			locationLowPowerConsumption.setChecked(true);
+			locationmodedesc.setText(getResources().getString(
+					R.string.setting_gpssetting_mode_lowpower));
+		} else {
+			locationOnlyEquipment.setChecked(true);
+			locationmodedesc.setText(getResources().getString(
+					R.string.setting_gpssetting_mode_local));
+		}
+		int onLocationCheckedTimeSpase = AppContext
+				.getOnLocationCheckedTimeSpase();
+		etTimeSpaceFilter.setText(String.valueOf(onLocationCheckedTimeSpase));
+		int onLocationCheckedDistanceSpase = AppContext
+				.getOnLocationCheckedDistanceSpase();
+		etDistanceSpaceFilter.setText(String
+				.valueOf(onLocationCheckedDistanceSpase));
+		tvLocationFilterDetail.setText(
+				getString(R.string.setting_sys_gpssetting_gpsfilter_promptinfo,onLocationCheckedTimeSpase,onLocationCheckedDistanceSpase));
+		chk_xdjrecordjw.setChecked(AppContext.getXDJRecordJWYN());
+	}
+
+	private void initListener() {
+		bgMode.setOnCheckedChangeListener(listener);
+		locationAccurate.setOnClickListener(this);
+		locationLowPowerConsumption.setOnClickListener(this);
+		locationOnlyEquipment.setOnClickListener(this);
+		rebutton.setOnClickListener(this);
+	}
+
+	private void initLocation() {
+		if (AppContext.getCurrLocation() != null) {
+			longitude = String.valueOf(AppContext.getCurrLocation()
+					.getLongitude());
+			latitude = String.valueOf(AppContext.getCurrLocation()
+					.getLatitude());
+			int locType = AppContext.getCurrLocation().getLocType();
+			if (locType == BDLocation.TypeGpsLocation) {
+				etLatitude.setText(latitude);
+				etLongitude.setText(longitude);
+			} else if (locType == BDLocation.TypeNetWorkLocation) {
+				etLatitude.setText(latitude);
+				etLongitude.setText(longitude);
+				LatLng latLng = new LatLng((Float.valueOf(latitude)),
+						(Float.valueOf(longitude)));
+				geoCoder.reverseGeoCode(new ReverseGeoCodeOption()
+						.location(latLng));
+			} else {
+				etLatitude.setText("");
+				etLongitude.setText("");
+			}
+		} else {
+			etLatitude.setText("");
+			etLongitude.setText("");
+		}
+	}
+
+	private OnGetGeoCoderResultListener geoCoderResultListener = new OnGetGeoCoderResultListener() {
+		// 反地理编码查询结果回调函数
+		@Override
+		public void onGetReverseGeoCodeResult(ReverseGeoCodeResult result) {
+
+			if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
+				// 没有检测到结果
+				Toast.makeText(BaiduLocationAty.this,
+						getString(R.string.setting_sys_gpssetting_geocodingerror_promptinfo) + result.error, Toast.LENGTH_LONG)
+						.show();
+
+				return;
+			}
+			locationInfo.setText(result.getAddress());
+		}
+
+		// 地理编码查询结果回调函数
+		@Override
+		public void onGetGeoCodeResult(GeoCodeResult result) {
+			if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
+				// 没有检测到结果
+			}
+		}
+	};
+
+	// 1. 高精度定位模式：同时使用网络定位和GPS定位，优先返回最高精度的定位结果。
+	// 2. 低功耗定位模式：不使用GPS,只使用网络定位（WiFi和基站）。
+	// 3. 仅用设备定位模式： 不适用网络定位，只使用GPS进行定位。但是此模式下不支持室内环境的定位。
+	private OnCheckedChangeListener listener = new OnCheckedChangeListener() {
+
+		@Override
+		public void onCheckedChanged(RadioGroup group, int checkedId) {
+			int id = group.getCheckedRadioButtonId();
+			int indexOfChild = group
+					.indexOfChild(group.findViewById(checkedId));
+			//boolean isGPSClose = appcontext.isGPSClose();
+
+			switch (id) {
+			// 精确定位
+			case R.id.location_accurate:
+				/*if (isGPSClose == true) {
+					appcontext.setGPSClose(false);
+
+				}*/
+				locationmodedesc.setText(getResources().getString(
+						R.string.setting_gpssetting_mode_highprecision));
+				// saveCheckMode(indexOfChild);
+				break;
+			// 低功耗
+			case R.id.location_low_power_consumption:
+				locationmodedesc.setText(getResources().getString(
+						R.string.setting_gpssetting_mode_lowpower));
+				// saveCheckMode(indexOfChild);
+				break;
+			// 仅设备
+			case R.id.location_only_equipment:
+				/*if (isGPSClose == true) {
+					appcontext.setGPSClose(false);
+				}*/
+				locationmodedesc.setText(getResources().getString(
+						R.string.setting_gpssetting_mode_local));
+				// saveCheckMode(indexOfChild);
+				break;
+			default:
+				break;
+			}
+		}
+
+	};
+	private TextView locationInfo;
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.location_accurate:
+			break;
+		case R.id.location_low_power_consumption:
+			break;
+		case R.id.location_only_equipment:
+			break;
+		case R.id.gpssettings_head_Rebutton:
+			goBack();
+			break;
+		default:
+			break;
+		}
+	}
+
+	private void goBack() {
+		// 释放地理编码检索实例
+		// geoCoder.destroy();
+		if (!TextUtils.isEmpty(etTimeInterval.getText().toString())) {
+			if (!etTimeInterval.getText().toString()
+					.equals(AppContext.getGPSSavedTimeSpase())
+					|| bgMode.getCheckedRadioButtonId() != AppContext
+							.getGPSSavedMode()) {
+				int checkedRadioButtonId = bgMode.getCheckedRadioButtonId();
+				View checkedView = bgMode.findViewById(checkedRadioButtonId);
+				int indexOfChild = bgMode.indexOfChild(checkedView);
+				// 保存定位模式到配置文件
+				appcontext.setConfigGPSSavedMode(String.valueOf(indexOfChild));
+				//saveCheckMode(indexOfChild);
+				// 保存定位时间到配置文件
+				String timeSpase = etTimeInterval.getText().toString();
+				appcontext.setConfigGPSSavedTimeSpase(timeSpase);
+				Intent intent = new Intent(this, BDGpsManagerService.class);
+				startService(intent);
+			}
+		}
+		if (!TextUtils.isEmpty(etTimeSpaceFilter.getText().toString())
+				&& !TextUtils.isEmpty(etDistanceSpaceFilter.getText()
+						.toString())) {
+			String timeSpaceFilter = etTimeSpaceFilter.getText().toString();
+			appcontext.setConfigOnLocationCheckedTimeSpase(timeSpaceFilter);
+			String distanceSpaceFilter = etDistanceSpaceFilter.getText()
+					.toString();
+			appcontext.setConfigOnLocationCheckedDistanceSpase(distanceSpaceFilter);
+		}
+		appcontext.setConfigXDJRecordJWYN(AppContext.getXDJRecordJWYN());
+		// if (AppContext._currLocation != null)
+		// AppContext._currLocation = null;
+		unregisterBoradcastReceiver();
+		AppManager.getAppManager().finishActivity(BaiduLocationAty.this);
+
+	}
+
+	public void unregisterBoradcastReceiver() {
+		try {
+			if (myBroadcastReceiver != null)
+				this.unregisterReceiver(myBroadcastReceiver);
+		} catch (IllegalArgumentException e) {
+		}
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			goBack();
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
+
+	}
+
+	private BroadcastReceiver myBroadcastReceiver = new BroadcastReceiver() {
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			if (intent.getAction().equals(
+					"com.xst.track.service.updataCurrentLoction")) {
+				initLocation();
+			}
+		}
+	};
+	private TextView tvLocationFilterDetail;
+
+	private void registerBoradcastReceiver() {
+		IntentFilter intentFilter = new IntentFilter();
+		intentFilter.addAction("com.xst.track.service.updataCurrentLoction");
+		registerReceiver(myBroadcastReceiver, intentFilter);
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		AppManager.getAppManager().finishActivity(this);
+	}
+}

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:orientation="horizontal" 
+  	android:layout_height="25dip"
+  	android:background="#00000000"
+	>   
+	
+	<RelativeLayout 
+		android:id="@+id/pad_layout_listitem_message_itemicon" 
+	  	android:layout_width="25dip" 
+	  	android:layout_height="25dip"
+	  	android:layout_alignParentLeft="true"
+	  	android:layout_alignParentTop="true"
+	    android:layout_gravity="center_vertical"
+	  	android:gravity="center"
+	  	>     
+        <ImageView 
+            android:id="@+id/pad_listitem_home_message_icon"
+	      	android:layout_width="25dip" 
+	        android:layout_height="25dip"
+			android:scaleType="matrix"
+	        android:layout_marginLeft="2dip"
+	        android:layout_gravity="center_vertical"
+	        />	  	
+    </RelativeLayout>
+    <RelativeLayout 
+		android:id="@+id/pad_layout_listitem_message_item_go" 
+	  	android:layout_width="0dip" 
+	  	android:layout_height="25dip"
+	  	android:layout_alignParentRight="true"
+	  	android:layout_alignParentTop="true"
+	    android:layout_gravity="center_vertical"
+	  	android:gravity="center"
+	  	>     
+	  	<TextView
+		        android:id="@+id/pad_listitem_home_message_item_go"
+		        style="@style/widget_listview_multi_des"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:gravity="center|left"
+		        android:singleLine="true" />
+	     	
+    </RelativeLayout>
+	<RelativeLayout 
+		android:id="@+id/pad_layout_message_itemdesc" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_height="25dip"
+	  	android:layout_toRightOf="@id/pad_layout_listitem_message_itemicon"
+	  	android:layout_toLeftOf="@id/pad_layout_listitem_message_item_go"
+	  	android:orientation="vertical" 
+	  	>     
+	  	
+	    <RelativeLayout 
+	        android:id="@+id/pad_layout_listitem_message_itemdesc" 
+	        android:layout_width="fill_parent"  
+	        android:layout_height="25dip"
+	        android:orientation="horizontal" 
+	        android:layout_alignParentTop="true"
+	        >	    
+
+		    <TextView
+		        android:id="@+id/pad_listitem_home_message_itemdesc1"
+		        style="@style/pad_home_listview_des_style"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:gravity="center|left"
+		        android:singleLine="true" />
+		    
+	   	</RelativeLayout>	    
+	    
+    </RelativeLayout>
+	
+	
+
+
+</RelativeLayout> 

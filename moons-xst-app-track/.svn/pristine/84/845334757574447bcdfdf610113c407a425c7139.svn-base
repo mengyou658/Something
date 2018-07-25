@@ -1,0 +1,202 @@
+package com.moons.xst.track.common;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import android.content.Context;
+import android.util.Log;
+
+import com.moons.xst.track.AppConst;
+import com.moons.xst.track.AppContext;
+import com.moons.xst.track.R;
+
+/**
+ * 自定义的日志输出
+ */
+public class OperatingConfigHelper {
+
+	public enum LogType {
+		debug, error, info, verbose, warn
+	}
+
+	private static final String TAG = "operatelog_";
+	private static OperatingConfigHelper log;
+	private static String userName = AppContext.getUserName();
+
+	/** 是否打印调试日志 */
+	private static boolean isPrintDebugLog = false;
+	/** 是否写日志到本地 */
+	private static boolean isWriteToSdcard = true;
+	/** 项目文件夹 */
+	private final static String projectDirectory = AppConst.XSTLogFilePath();
+
+	/**
+	 * 单例模式
+	 * 
+	 * @param context
+	 *            上下文
+	 */
+	private OperatingConfigHelper() {
+	}
+
+	/**
+	 * 初始化单例模式
+	 * 
+	 * @param context
+	 *            上下文
+	 * @return 日志的单例模式
+	 */
+	public static OperatingConfigHelper getInstance() {
+		if (log == null) {
+			log = new OperatingConfigHelper();
+		}
+		if (StringUtils.isEmpty(userName))
+			userName = "Not Logged in";
+		else
+			userName = AppContext.getUserName();
+		return log;
+	}
+
+	public void d(String tag, String msg) {
+		if (isPrintDebugLog) {
+			Log.d(TAG + tag, msg);
+		}
+
+		if (isWriteToSdcard) {
+			writeLogToSdCard(LogType.debug, tag, msg);
+		}
+	}
+
+	public void e(String tag, String msg) {
+		if (isPrintDebugLog)
+			Log.e(TAG + tag, msg);
+
+		if (isWriteToSdcard) {
+			writeLogToSdCard(LogType.error, tag, msg);
+		}
+	}
+
+	public void i(String tag, String msg) {
+		if (isPrintDebugLog)
+			Log.i(TAG + tag, msg);
+
+		if (isWriteToSdcard) {
+			writeLogToSdCard(LogType.info, tag, msg);
+		}
+	}
+
+	public void v(String tag, String msg) {
+		if (isPrintDebugLog)
+			Log.v(TAG + tag, msg);
+
+		if (isWriteToSdcard) {
+			writeLogToSdCard(LogType.verbose, tag, msg);
+		}
+	}
+
+	public void w(String tag, String msg) {
+		if (isPrintDebugLog)
+			Log.w(TAG + tag, msg);
+
+		if (isWriteToSdcard) {
+			writeLogToSdCard(LogType.warn, tag, msg);
+		}
+	}
+
+	public static OperatingConfigHelper getLog() {
+		return log;
+	}
+
+	public static void setLog(OperatingConfigHelper log) {
+		OperatingConfigHelper.log = log;
+	}
+
+	/***
+	 * 设置日志文件的名称，日志文件的名称按照日期来设置，如2015-12-29
+	 * 
+	 * @return 日志文件的名称
+	 */
+	private static String setLogFileName() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		return TAG + dateFormat.format(new Date()) + ".txt";
+	}
+
+	/***
+	 * 写日志到
+	 * 
+	 * @param logType
+	 * @param tag
+	 * @param msg
+	 */
+	private static void writeLogToSdCard(LogType logType, String tag, String msg) {
+
+		String dir = projectDirectory + setLogFileName();
+		File file = new File(dir);
+		if (!file.exists()) {
+			try {
+				file.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		writeLogMsg(file, tag, msg);
+	}
+
+	/**
+	 * 按照固定格式设置日志内容
+	 * 
+	 * @param tag
+	 * @param msg
+	 * @return
+	 */
+	private static String setLogContent(String tag, String msg) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String time = dateFormat.format(new Date());
+		return time + " " + tag + " " + userName + " " + msg + "\r\n";
+	}
+
+	/***
+	 * 写日志信息
+	 * 
+	 * @param file
+	 * @param tag
+	 * @param msg
+	 */
+	private static void writeLogMsg(File file, String tag, String msg) {
+		FileWriter fileWriter = null;
+		BufferedWriter bufferedWriter = null;
+
+		try {
+			fileWriter = new FileWriter(file, true);
+			bufferedWriter = new BufferedWriter(fileWriter);
+
+			bufferedWriter.write(setLogContent(tag, msg));
+
+			bufferedWriter.flush();
+			bufferedWriter.close();
+			fileWriter.close();
+		} catch (IOException e) {
+			try {
+				if (bufferedWriter != null)
+					bufferedWriter.close();
+				if (fileWriter != null)
+					fileWriter.close();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}
+	}
+
+	/***
+	 * 清理日志文件夹
+	 */
+	public static void clearLogDir() {
+		// TODO:待完成
+	}
+
+}

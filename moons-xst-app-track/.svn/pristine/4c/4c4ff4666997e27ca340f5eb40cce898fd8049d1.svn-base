@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/graywhite"
+    android:orientation="vertical" >
+
+    <RelativeLayout 
+		android:id="@+id/layout_query_hisdata_all_head" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_height="50dip"
+	  	android:background="@drawable/title_bar"> 
+        <ImageButton 
+	        android:id="@+id/home_head_Rebutton"
+	        android:src="@drawable/arrow_left"
+	        android:background="@color/full_transparent"
+	        android:layout_width="wrap_content"
+	    	android:layout_height="50dip"
+	    	android:layout_alignParentLeft="true"
+           	android:layout_gravity="center_vertical"
+	        android:layout_marginRight="10dp"
+	        />
+	    <TextView 
+	        android:id="@+id/query_hisdata_all_head_title"
+	        android:layout_width="fill_parent" 
+		  	android:layout_height="fill_parent"
+			android:gravity="center"
+	        style="@style/main_head_title"
+			android:ellipsize="marquee" 
+	        android:marqueeRepeatLimit="marquee_forever"
+	        android:focusable="true" 
+	        android:focusableInTouchMode="true"			
+			android:text="@string/query_hisdata_all_title"
+			/>  
+	    <RelativeLayout
+            android:id="@+id/ll_query_hisdata_select"
+            android:layout_width="60dip"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:clickable="true" >
+
+            <TextView
+                android:id="@+id/query_hisdata_all_select"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:text="@string/statistics_uncheck_details_select"
+                android:textColor="@color/gray" />
+        </RelativeLayout>
+	</RelativeLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_tabPage_hisdata"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:weightSum="3" >
+
+        <RadioButton
+            android:id="@+id/rb_hisresult"
+            style="@style/radioButton_tabpage"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:text="@string/query_hisdata_all_hisresult" />
+
+        <RadioButton
+            android:id="@+id/rb_hisabsence"
+            style="@style/radioButton_tabpage"
+            android:layout_weight="1"
+            android:text="@string/query_hisdata_all_hisabsence" />
+
+        <RadioButton
+            android:id="@+id/rb_hismobjectstate"
+            style="@style/radioButton_tabpage"
+            android:layout_weight="1"
+            android:text="@string/query_hisdata_all_hismobjectstate" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:weightSum="3" >
+
+        <TextView
+            android:id="@+id/tv_hisresult"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/viewpager_line_background"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_hisabsence"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_weight="1"
+            android:background="#a9a9a9"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/tv_hismobjectstate"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_weight="1"
+            android:background="#a9a9a9"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <com.moons.xst.track.widget.MyViewPager
+        android:id="@+id/viewpager_hisdata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" >
+    </com.moons.xst.track.widget.MyViewPager>
+
+</LinearLayout>

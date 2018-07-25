@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+<!-- 主控 -->
+   <RelativeLayout
+       android:id="@+id/ll_dj_lk"
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       android:layout_marginRight="0dp"
+       android:layout_centerHorizontal="true"
+       android:layout_centerVertical="true"
+       android:background="#AA9E9E9E"
+       android:orientation="vertical" >
+    
+        <RelativeLayout
+        android:id="@+id/ll_dj_lk_title"
+        android:layout_width="match_parent"
+        android:layout_height="30dip"
+        android:background="#AA888888"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/dj_lk_title"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="left|center"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_14"
+            android:singleLine="true" 
+            android:textStyle="bold" />
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/ll_dj_lk_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
+        <Button
+	       android:id="@+id/btn_lk_ok"
+	       android:layout_width="fill_parent"
+	       android:layout_height="wrap_content"
+	       android:layout_margin="3dip"
+	       android:background="@drawable/btn_style_green"
+	       android:clickable="true"
+	       android:text="@string/dianjian_lk_btn_ok"
+	       android:textColor="@color/white"
+	       android:textSize="20dip" />
+       <Button
+	       android:id="@+id/btn_lk_cancel"
+	       android:layout_width="fill_parent"
+	       android:layout_height="wrap_content"
+	       android:layout_margin="3dip"
+	       android:layout_below="@id/btn_lk_ok"
+	       android:background="@drawable/btn_style_green"
+	       android:clickable="true"
+	       android:text="@string/cancel"
+	       android:textColor="@color/white"
+	       android:textSize="20dip" />
+    </RelativeLayout>    
+
+    <RelativeLayout
+        android:id="@+id/ll_dj_lk_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_dj_lk_title"
+        android:layout_above="@id/ll_dj_lk_ok"
+        android:orientation="vertical" >
+        <ListView
+            android:id="@+id/dj_lk_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:cacheColorHint="#0000"
+            android:divider="@null"
+            android:dividerHeight="5dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:stackFromBottom="false" >
+        </ListView>
+    </RelativeLayout>
+</RelativeLayout>
+</RelativeLayout>

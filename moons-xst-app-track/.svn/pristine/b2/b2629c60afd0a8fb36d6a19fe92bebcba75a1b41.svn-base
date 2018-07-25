@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+
+    <View
+        android:id="@+id/view_1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+    <!-- 点检入口 -->
+
+    <RelativeLayout
+        android:id="@+id/rl_search_mywork"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:background="@color/face_bg"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <RelativeLayout
+            android:id="@+id/rlSearchFrameDelete"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical" >
+
+            <EditText
+                android:id="@+id/search_content"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/search_frame"
+                android:hint="@string/main_menu_home_title"
+                android:paddingLeft="32dp"
+                android:singleLine="true"
+                android:textColor="@color/graywhite"
+                android:textSize="11sp" />
+        </RelativeLayout>
+        <!--
+	    <TextView
+	        android:id="@+id/home_txt_tipsdj"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:layout_marginLeft="10dip"
+	        android:gravity="left|center"
+	        android:text="@string/main_menu_home_title"
+	        android:textColor="@color/catefory_text"
+	        android:textSize="@dimen/text_size_16"
+	        android:textStyle="bold" />
+        -->
+        <!--
+		<Button 
+	        android:id="@+id/btn_goto_dj" 
+	        android:layout_width="fill_parent" 
+	        android:layout_height="48dip" 
+	        android:layout_margin="10dip"
+	        android:textSize="@dimen/btn_big_textsize"
+	        android:text="@string/main_menu_home_toDJ" 
+	        android:background="@drawable/btn_style_green" 
+	        android:textColor="@color/white"
+	        
+	        android:clickable="true"
+	        android:onClick="btn_gotoDJ"
+	        />        
+        -->
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+	
+        <RelativeLayout
+            android:id="@+id/rl_cewen"
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            android:background="@drawable/listview_item_selector"
+            android:clickable="true"
+            android:onClick="btn_cewen"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/widget_bar_temperature"
+                android:gravity="center"
+                android:text="@string/main_menu_home_cewen"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+
+       <RelativeLayout
+            android:id="@+id/rl_cezhen"
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            android:background="@drawable/listview_item_selector"
+            android:clickable="true"
+            android:onClick="btn_cezhen"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/widget_bar_vibration"
+                android:gravity="center"
+                android:text="@string/main_menu_home_cezhen"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_camera"
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            android:background="@drawable/listview_item_selector"
+            android:clickable="true"
+            android:onClick="btn_capture"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/img_tools_carema"
+                android:gravity="center"
+                android:text="@string/main_menu_home_camera"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rl_two"
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            android:background="@drawable/listview_item_selector"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="tv_twoTickets" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/widget_bar_readid"
+                android:gravity="center"
+                android:text="@string/main_menu_home_two_ticket"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_five"
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            
+            android:background="@drawable/listview_item_selector"
+            android:clickable="true"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:drawableTop="@drawable/widget_bar_readid"
+                android:text="五票通"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <ListView
+            android:id="@+id/home_listview_djline"
+            style="@style/widget_listview2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="@color/author_text"
+            android:divider="@color/graywhite" />
+    </LinearLayout>
+
+</LinearLayout>

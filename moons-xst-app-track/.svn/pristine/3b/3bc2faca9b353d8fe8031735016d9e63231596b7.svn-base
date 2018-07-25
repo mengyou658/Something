@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/widget_listview_Item"
+    android:layout_height="fill_parent"
+    android:background="@color/graywhite"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/oeration_bill_head"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/title_bar" >
+
+        <ImageButton
+            android:id="@+id/home_head_Rebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:background="@color/full_transparent"
+            android:src="@drawable/arrow_left" />
+
+        <TextView
+            android:id="@+id/oeration_bill_head_title"
+            style="@style/main_head_title"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:text="@string/workdetail_title" />
+    </RelativeLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_tabPage_state"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/rb_tabPage1"
+            style="@style/radioButton_tabpage"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:text="@string/twobill_work_bill" />
+
+        <RadioButton
+            android:id="@+id/rb_tabPage2"
+            style="@style/radioButton_tabpage"
+            android:layout_weight="1"
+            android:text="@string/workdetail_table_measure" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000" >
+
+        <TextView
+            android:id="@+id/tv_tab1"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/viewpager_line_background"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_tab2"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_weight="1"
+            android:background="#a9a9a9"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <com.moons.xst.track.widget.MyViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" >
+    </com.moons.xst.track.widget.MyViewPager>
+
+</LinearLayout>

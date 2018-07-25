@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_gravity="bottom" >
+    <FrameLayout 
+        android:id="@+id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+    </FrameLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/alertdialog_line" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_neg"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/alertdialog_left_selector"
+            android:gravity="center"
+            android:textColor="@color/actionsheet_gray"
+            android:text="@string/cancel"
+            android:textSize="@dimen/text_size_16" />      
+
+        <ImageView
+            android:id="@+id/img_line"
+            android:layout_width="0.5dp"
+            android:layout_height="50dp"
+            android:background="@color/alertdialog_line" />
+
+        <Button
+            android:id="@+id/btn_pos"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/alertdialog_right_selector"
+            android:gravity="center"
+            android:textColor="@color/xstblue"
+            android:text="@string/sure"
+            android:textSize="@dimen/text_size_16" />
+        
+        
+    </LinearLayout>
+    
+</LinearLayout>

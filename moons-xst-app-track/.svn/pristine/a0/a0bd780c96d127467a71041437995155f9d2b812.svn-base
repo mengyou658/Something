@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#fff"
+    android:orientation="vertical" >    
+    <RelativeLayout
+        android:id="@+id/layout_plan_his"
+        android:layout_width="fill_parent"
+    	android:layout_gravity="center_vertical" 
+        android:layout_height="40dip"
+    	android:background="@color/face_bg"
+    	android:layout_alignParentTop="true"
+    	>
+	    <ImageView
+     		android:id="@+id/img_plandatatype"
+ 			android:layout_width="wrap_content"
+ 			android:layout_height="wrap_content"        	     	
+    		android:layout_alignParentLeft="true"
+    		android:layout_centerVertical="true"
+    		android:layout_marginLeft="5dip"
+ 			android:scaleType="matrix"
+ 			android:src="@drawable/widget_bar_plandatacode" />            
+
+        <ImageView
+            android:id="@+id/img_plan_his"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dip"
+            android:scaleType="matrix"
+            android:src="@drawable/widget_bar_his_result" />
+        
+		<RelativeLayout
+		        android:id="@+id/layout_plandata_lastdatetime"
+		        android:layout_width="100dip"
+	       		android:layout_height="match_parent"
+	       		android:gravity="center"
+	       		android:layout_marginRight="30dip"
+	        	android:layout_toLeftOf="@id/img_plan_his"
+	        	android:orientation="vertical" 
+		    	>       	    
+		    
+			<RelativeLayout
+			        android:id="@+id/layout_plandata_lasttime"
+			        android:layout_width="match_parent"
+		       		android:layout_height="20dip"
+		       		android:layout_alignParentBottom="true"
+		       		android:gravity="center|top"
+			    	>       		    
+			<TextView
+	     		android:id="@+id/plandata_lasttime"
+	       		android:layout_width="match_parent" 
+	       		android:layout_height="match_parent"
+	        	android:layout_gravity="center_vertical" 
+	   			android:gravity="top|center"
+	       		android:textSize="@dimen/dj_planhis_datetime_textsize"		
+				android:textColor="#000" />
+			</RelativeLayout>			    
+		    
+			<RelativeLayout
+			        android:layout_width="match_parent"
+		       		android:layout_height="match_parent"
+		       		android:layout_alignParentTop="true"
+		       		android:layout_above="@id/layout_plandata_lasttime"
+		       		android:gravity="center|bottom"
+			    	>       		    
+		    <TextView
+	     		android:id="@+id/plandata_lastdate"
+	       		android:layout_width="match_parent" 
+	       		android:layout_height="match_parent"
+	       		android:layout_weight="1"
+	        	android:layout_gravity="center_vertical" 
+	   			android:gravity="center"
+	       		android:textSize="@dimen/dj_planhis_datetime_textsize"		
+				android:textColor="#000" />	    
+			</RelativeLayout>
+							
+  	    
+		</RelativeLayout>	    
+        
+        
+	    <RelativeLayout
+	        android:id="@+id/layout_plandata_lastresult"
+	        android:layout_width="match_parent"
+       		android:layout_height="match_parent"
+        	android:layout_toRightOf="@id/img_plandatatype"
+        	android:layout_toLeftOf="@id/layout_plandata_lastdatetime"
+        	android:layout_marginLeft="10dip"
+	    	android:layout_alignParentTop="true"
+	    	>        
+        
+	    <TextView
+     		android:id="@+id/plandata_lastresult"
+       		android:layout_width="match_parent" 
+       		android:layout_height="match_parent"
+        	android:layout_gravity="center_vertical" 
+        	android:maxLines="2"
+        	android:gravity="center"
+       		android:singleLine="true" 
+       		android:textSize="@dimen/dj_planhis_result_textsize"		
+			android:textColor="#000" />
+	    
+
+		</RelativeLayout>
+		
+                 
+	</RelativeLayout>
+	
+    <RelativeLayout
+        android:id="@+id/layout_plan_input_base_mes"
+        android:layout_width="fill_parent"
+        android:layout_height="25dip"
+       	android:layout_gravity="left|center" 
+       	android:layout_below="@+id/layout_plan_his"
+       	>
+		<TextView
+       		android:id="@+id/plan_input_base_mes_desc"
+       		android:layout_width="fill_parent" 
+       		android:layout_height="25dip"
+	    	android:gravity="center|left"
+			/>
+	 </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layout_plan_input_mes"
+        android:layout_width="fill_parent"
+        android:layout_height="25dip"
+       	android:layout_gravity="left" 
+       	android:layout_below="@id/layout_plan_input_base_mes"
+       	>
+		<TextView
+       		android:id="@+id/plan_input_mes_almlevel"
+       		android:layout_width="fill_parent" 
+       		android:layout_height="25dip"
+	    	android:layout_alignParentLeft="true"
+	    	android:layout_marginLeft="10dp"
+	    	android:gravity="center|left"
+       		android:text=""
+       		android:textSize="@dimen/text_size_14"		
+			android:textColor="@color/red" 
+			
+			/>
+		<TextView
+       		android:id="@+id/plan_input_mes_desc"
+       		android:layout_width="10dip" 
+       		android:layout_height="25dip"
+	    	android:layout_toRightOf="@id/plan_input_mes_almlevel"
+	    	android:gravity="center|left"
+       		android:text=""
+       		android:textSize="@dimen/text_size_14"		
+			android:textColor="@color/red" 
+			
+			/>
+	 </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layout_plan_input_jl"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+       	android:layout_gravity="center_vertical" 
+       	android:gravity="center"
+    	android:layout_below="@id/layout_plan_input_mes"
+       	>
+	     
+	 
+	 <RelativeLayout
+        android:id="@+id/layout_plan_input_jl_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+       	android:layout_gravity="center_vertical" 
+       	android:gravity="center"
+       	>
+		<EditText
+		    android:id="@+id/plan_result_jl"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:layout_gravity="center_vertical"
+		    android:gravity="center|left"
+            android:singleLine="true"
+            android:background="@drawable/input_layout_bg"
+            android:layout_marginBottom="3dip"
+            android:paddingLeft="10dip"
+		    android:hint=""
+		    android:maxLength="10"
+		    android:visibility="invisible"
+		    android:textSize="@dimen/dj_result_textsize" />
+	 </RelativeLayout>
+     </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_plan_input_others"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/layout_plan_input_mes" >
+
+        <Button
+            android:id="@+id/btn_start_others"
+            android:layout_width="60dip"
+            android:layout_height="60dip"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_datagroup"
+            android:layout_marginRight="1dip"
+            android:layout_marginBottom="3dip"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/btn_small_textsize" />
+
+        <TextView
+            android:id="@+id/plan_result_others"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignTop="@+id/btn_start_others"
+            android:layout_marginBottom="3dip"
+            android:layout_marginLeft="1dip"
+            android:layout_toLeftOf="@id/btn_start_others"
+            android:background="@drawable/input_layout_bg"
+            android:gravity="center|left"
+            android:singleLine="true"
+            android:paddingLeft="10dip"
+            android:maxLines="2"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dj_result_textsize" />
+    </RelativeLayout>
+        
+</RelativeLayout>
+    

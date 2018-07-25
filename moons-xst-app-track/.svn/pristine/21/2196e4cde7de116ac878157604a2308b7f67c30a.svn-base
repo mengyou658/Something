@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    style="@style/widget_listview_Item"
+    android:orientation="horizontal" 
+	>        
+    <ImageView
+  	 	android:id="@+id/querydata_poplan_listitem_icon"
+        android:layout_width="wrap_content"
+       	android:layout_height="wrap_content"        	     	
+       	android:scaleType="matrix"
+       	android:layout_centerVertical="true"
+       	android:layout_alignParentLeft="true"
+    	android:layout_marginLeft="@dimen/image_marginLeft"/> 	  	  
+	<RelativeLayout 
+		android:id="@+id/layout_querydata_poplan_itemdesc" 
+	  	android:layout_width="match_parent" 
+	  	android:layout_height="50dip"
+	  	android:layout_toRightOf="@id/querydata_poplan_listitem_icon"
+	  	android:layout_alignParentRight="true"
+	  	android:layout_marginLeft ="@dimen/texttoimage_marginLeft"
+	  	android:orientation="vertical" 
+	  	>     
+	  	
+	    <RelativeLayout 
+	        android:id="@+id/layout_querydata_poplan_itemdesc_title" 
+	        android:layout_width="match_parent" 
+		  	android:layout_height="wrap_content"
+		  	android:layout_alignParentRight="true"
+		  	android:orientation="vertical" 
+	        >
+	
+	    
+		    <TextView android:id="@+id/querydata_poplan_listitem_title" 
+		        style="@style/widget_listview_title2"
+		        android:layout_width="fill_parent" 
+		     	android:layout_height="wrap_content"
+		     	android:padding="4dp" 
+		     	android:singleLine="true"/>     	    
+	   	</RelativeLayout>
+	
+	    <RelativeLayout 
+	        android:layout_width="fill_parent"  
+	        android:layout_height="match_parent"
+	    	android:orientation="horizontal" 
+	    	android:layout_below="@id/layout_querydata_poplan_itemdesc_title"
+	    	android:layout_marginTop="2dip"
+	        >   
+	       	
+	        
+			<ImageView 
+			    android:id="@+id/querydata_poplan_itemdesc_typeicon" 
+		      	android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content"
+		        android:layout_alignParentLeft="true"
+	           	android:layout_gravity="center_vertical"
+	           	android:layout_marginLeft="3dip"
+		        android:src="@drawable/count_idpod_icon"/>
+	        
+	       	<TextView android:id="@+id/querydata_poplan_listitem_type"  
+	    		android:layout_width="wrap_content" 
+	           	android:layout_height="wrap_content" 
+	           	android:layout_toRightOf="@id/querydata_poplan_itemdesc_typeicon"
+	           	android:layout_gravity="center_vertical"
+	           	style="@style/widget_listview_subdesc"
+	            />
+	
+	       	
+			<ImageView 
+			    android:id="@+id/querydata_poplan_itemdesc_planicon" 
+		      	android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content"
+	           	android:layout_toRightOf="@id/querydata_poplan_listitem_type"
+		        android:layout_marginLeft="10dip"
+	           	android:layout_gravity="center_vertical"
+		        android:src="@drawable/count_plan_icon"/>
+	       			        
+	       	<TextView android:id="@+id/querydata_poplan_listitem_PlanResult"  
+	    		android:layout_width="wrap_content" 
+	           	android:layout_height="wrap_content" 
+	           	android:layout_toRightOf="@id/querydata_poplan_itemdesc_planicon"
+	           	android:layout_marginLeft="3dip"
+	           	android:layout_gravity="center_vertical"
+	           	style="@style/widget_listview_subdesc"
+	            />
+			<ImageView 
+			    android:id="@+id/querydata_poplan_itemdesc_timeicon" 
+		      	android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content"
+	           	android:layout_toRightOf="@id/querydata_poplan_listitem_PlanResult"
+		        android:layout_marginLeft="10dip"
+	           	android:layout_gravity="center_vertical"
+		        android:src="@drawable/count_time_icon"/>
+	       	
+	       					
+	       	<TextView android:id="@+id/querydata_poplan_listitem_BuildTime"  
+	    		android:layout_width="wrap_content" 
+	           	android:layout_height="wrap_content"
+	           	android:layout_toRightOf="@id/querydata_poplan_itemdesc_timeicon"
+	           	android:layout_marginLeft="3dip" 
+	           	android:layout_gravity="center_vertical"
+	           	style="@style/widget_listview_subdesc"
+	            />
+	       			
+	    </RelativeLayout>	    
+	    
+    </RelativeLayout>	
+	
+
+
+</RelativeLayout> 

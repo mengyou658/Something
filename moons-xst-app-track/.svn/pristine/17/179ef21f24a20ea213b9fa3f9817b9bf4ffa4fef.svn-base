@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white" >
+    <RelativeLayout 
+		android:id="@+id/ll_comm_download_operatebill_head" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_height="50dip"
+	  	android:background="@drawable/title_bar"> 
+	  	<ImageButton 
+	        android:id="@+id/home_head_Rebutton"
+	        android:src="@drawable/arrow_left"
+	        android:background="@color/full_transparent"
+	        android:layout_width="wrap_content"
+	    	android:layout_height="50dip"
+	    	android:layout_alignParentLeft="true"
+           	android:layout_gravity="center_vertical"
+	        android:layout_marginRight="10dp"
+	        />
+	    <TextView 
+	        android:id="@+id/ll_comm_download_operatebill_head_title"
+		  	android:layout_width="fill_parent" 
+		  	android:layout_height="fill_parent"
+			android:gravity="center"
+	        style="@style/main_head_title"
+			android:ellipsize="marquee" 
+	        android:marqueeRepeatLimit="marquee_forever"
+	        android:focusable="true" 
+	        android:focusableInTouchMode="true"
+	        android:text="@string/commu_download_operatebill_title"								
+			/>
+	    <TextView 
+	        android:id="@+id/tv_comm_download_operatebill_selectall"
+		  	android:layout_width="80dp" 
+		  	android:layout_height="fill_parent"
+			android:gravity="center"
+			android:layout_alignParentRight="true"
+			android:paddingTop="5dp"
+			android:textColor="@color/gray"
+			android:clickable="true"
+			android:textSize="@dimen/text_size_15"
+			android:text="@string/commu_download_operatebill_selectall"/>
+	</RelativeLayout>
+	<RelativeLayout
+        android:id="@+id/rl_comm_download_operatebill_search"
+        android:layout_width="match_parent"
+        android:layout_height="55dip"
+        android:background="@color/graywhite"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <RelativeLayout
+            android:id="@+id/rlSearchFrameDelete"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical" >
+
+            <EditText
+                android:id="@+id/search_content"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/search_frame"
+                android:hint="@string/operationbill_search"
+                android:imeOptions="actionSearch"
+                android:paddingLeft="32dp"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_14" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/lv_comm_download_operatebill"
+        style="@style/widget_listview2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:cacheColorHint="@color/author_text"
+        android:divider="@color/graywhite" >
+    </ListView>
+    <RelativeLayout
+        android:id="@+id/rl_comm_download_operatebill"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/face_bg">
+
+        <Button
+            android:id="@+id/btn_comm_download_operatebill"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="5dip"
+            android:background="@drawable/btn_style_blue"
+            android:clickable="true"
+            android:text="@string/commu_download_operatebill_download"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_20" />
+    </RelativeLayout>
+</LinearLayout>

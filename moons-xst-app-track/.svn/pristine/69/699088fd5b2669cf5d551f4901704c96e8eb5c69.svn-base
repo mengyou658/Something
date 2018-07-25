@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rl_search_mywork"
+        android:layout_width="fill_parent"
+        android:layout_height="55dip"
+        android:layout_alignParentTop="true"
+        android:background="@color/face_bg"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <RelativeLayout
+            android:id="@+id/rl_search_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="40dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:text="@string/cancel"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_16"
+                 />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlSearchFrameDelete"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/rl_search_cancel"
+            android:gravity="center_vertical" >
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/search_frame"
+                android:imeOptions="actionSearch"
+                android:paddingLeft="32dp"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_14" />
+
+            <ImageView
+                android:id="@+id/iv_search_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:paddingLeft="5dp"
+                android:paddingRight="20dp"
+                android:src="@drawable/delete"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

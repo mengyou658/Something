@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/graywhite" >
+
+    <RelativeLayout
+        android:id="@+id/oeration_bill_head"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/title_bar" >
+
+        <ImageButton
+            android:id="@+id/home_head_Rebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:background="@color/full_transparent"
+            android:src="@drawable/arrow_left" />
+
+        <TextView
+            android:id="@+id/oeration_bill_head_title"
+            style="@style/main_head_title"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:text="@string/operationbill_title" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_search_mywork"
+        android:layout_width="match_parent"
+        android:layout_height="55dip"
+        android:layout_below="@id/oeration_bill_head"
+        android:background="@color/graywhite"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <RelativeLayout
+            android:id="@+id/rlSearchFrameDelete"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:id="@+id/search_content"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/search_frame"
+                android:hint="@string/operationbill_search"
+                android:paddingLeft="32dp"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_14" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_data_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/rl_search_mywork"
+        android:background="#ffffff" >
+
+        <ListView
+            android:id="@+id/data_listview"
+            style="@style/widget_listview2"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:cacheColorHint="@color/author_text"
+		    android:divider="@color/graywhite" >
+        </ListView>
+    </RelativeLayout>
+
+</RelativeLayout>

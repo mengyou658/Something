@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout 
+		android:id="@+id/setting_powersave_setting_head" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_height="50dip"
+	  	android:layout_alignParentTop="true"
+	  	android:background="@drawable/title_bar"> 
+	  	<ImageButton 
+	        android:id="@+id/home_head_Rebutton"
+	        android:src="@drawable/arrow_left"
+	        android:background="@color/full_transparent"
+	        android:layout_width="wrap_content"
+	    	android:layout_height="50dip"
+	    	android:layout_alignParentLeft="true"
+           	android:layout_gravity="center_vertical"
+	        android:layout_marginRight="10dp"
+	        />
+	    <TextView 
+	        android:id="@+id/setting_powersave_setting_head_title"
+		  	android:layout_width="fill_parent" 
+		  	android:layout_height="fill_parent"
+			android:gravity="center"
+	        style="@style/main_head_title"
+			android:ellipsize="marquee" 
+	        android:marqueeRepeatLimit="marquee_forever"
+	        android:focusable="true" 
+	        android:focusableInTouchMode="true"					
+			android:text="@string/setting_powersave_setting_head_title"
+			/>
+	</RelativeLayout>     
+      <RelativeLayout
+        android:id="@+id/ll_setting_powersave_setting_wifi"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:layout_below="@+id/setting_powersave_setting_head"
+        android:orientation="vertical" >
+	    <RelativeLayout
+            android:id="@+id/ll_setting_powersave_setting_wifi_checked"
+	        android:layout_width="30dp"
+	        android:layout_height="50dip"
+	        android:layout_alignParentRight="true"      
+	        android:orientation="vertical" >
+            <CheckBox
+                android:id="@+id/setting_powersave_setting_wifi_checked"
+                style="@style/App.Preference.CheckBox"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:checked="true" />
+
+         </RelativeLayout>
+         
+        <RelativeLayout
+            android:id="@+id/ll_setting_powersave_setting_wifi_desc"
+	        android:layout_width="fill_parent"
+	        android:layout_height="50dip"
+	        android:orientation="vertical"
+	        android:layout_toLeftOf="@+id/ll_setting_powersave_setting_wifi_checked" >
+         <TextView
+             android:id="@+id/setting_powersave_setting_wifi_desc"
+             android:layout_width="fill_parent"
+             android:layout_height="30dip"
+             android:layout_alignParentRight="true"
+             android:gravity="bottom|left"
+             android:textSize="@dimen/text_size_16"
+             android:layout_marginLeft="10dp"
+             android:textColor="@color/black"
+             android:text="@string/setting_powersave_setting_wifi" />
+         <TextView
+             android:id="@+id/setting_powersave_setting_wifi_state"
+             android:layout_width="fill_parent"
+             android:layout_height="20dip"
+             android:layout_alignParentRight="true"
+             android:gravity="center|left"
+             android:textSize="@dimen/text_size_12"
+             android:layout_below="@+id/setting_powersave_setting_wifi_desc"
+             android:layout_marginLeft="12dp"
+             android:text="@string/setting_powersave_setting_off" />
+         </RelativeLayout>
+         
+       </RelativeLayout>
+       <View  
+        android:id="@+id/view_1"  
+        android:layout_width="match_parent"  
+        android:layout_height="1dp"  
+        android:layout_below="@+id/ll_setting_powersave_setting_wifi"
+        android:layout_marginLeft="8dp" 
+        android:background="@color/graywhite"/>
+       
+       <RelativeLayout
+        android:id="@+id/ll_setting_powersave_setting_gps"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:layout_below="@+id/view_1"
+        android:orientation="vertical" >
+        <RelativeLayout
+            android:id="@+id/ll_setting_powersave_setting_gps_checked"
+	        android:layout_width="30dip"
+	        android:layout_height="50dip"
+	        android:layout_alignParentRight="true"
+	        android:orientation="vertical" >
+
+            <CheckBox
+                android:id="@+id/setting_powersave_setting_gps_checked"
+                style="@style/App.Preference.CheckBox"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:checked="true" />
+         </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/ll_setting_powersave_setting_gps_desc"
+	        android:layout_width="fill_parent"
+	        android:layout_height="50dip"
+	        android:layout_toLeftOf="@+id/ll_setting_powersave_setting_gps_checked"
+	        android:orientation="vertical" >
+         <TextView
+             android:id="@+id/setting_powersave_setting_gps_desc"
+             android:layout_width="fill_parent"
+             android:layout_height="30dip"
+             android:layout_alignParentRight="true"
+             android:gravity="bottom|left"
+             android:textSize="@dimen/text_size_16"
+             android:layout_marginLeft="10dp"
+             android:textColor="@color/black"
+             android:text="@string/setting_powersave_setting_gps" />
+         <TextView
+             android:id="@+id/setting_powersave_setting_gps_state"
+             android:layout_width="fill_parent"
+             android:layout_height="20dip"
+             android:layout_alignParentRight="true"
+             android:gravity="center|left"
+             android:textSize="@dimen/text_size_12"
+             android:layout_below="@+id/setting_powersave_setting_gps_desc"
+             android:layout_marginLeft="12dp"
+             android:text="@string/setting_powersave_setting_off" />
+         </RelativeLayout>
+       </RelativeLayout>
+       <View  
+        android:id="@+id/view_2"  
+        android:layout_width="match_parent"  
+        android:layout_height="1dp"  
+        android:layout_below="@+id/ll_setting_powersave_setting_gps"
+        android:background="@color/graywhite"/>
+</LinearLayout>

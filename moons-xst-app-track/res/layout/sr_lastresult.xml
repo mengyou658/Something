@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="300dp"
+    android:orientation="vertical" >
+    
+<!-- 启停上次结果 -->
+   <RelativeLayout
+       android:id="@+id/ll_sr_lastresult"
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       android:layout_marginRight="0dp"
+       android:layout_centerHorizontal="true"
+       android:layout_centerVertical="true"
+       android:background="#AA9E9E9E"
+       android:orientation="vertical" >
+    
+        <RelativeLayout
+        android:id="@+id/ll_sr_lastresult_title"
+        android:layout_width="match_parent"
+        android:layout_height="30dip"
+        android:background="#AA888888"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/sr_lastresult_title"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="left|center"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_14"
+            android:singleLine="true" 
+            android:textStyle="bold" />
+    </RelativeLayout>    
+    <LinearLayout
+          android:id="@+id/ll_sr_lastresult_ok"
+          android:layout_width="match_parent"
+	      android:layout_height="wrap_content"
+	      android:orientation="horizontal"
+	      android:layout_margin="3dp"
+	      android:layout_alignParentBottom="true"
+	      android:layout_centerHorizontal ="true" >
+
+        <Button
+	       android:id="@+id/btn_sr_lastresult_dialog_ok"
+	       android:layout_width="match_parent"
+	       android:layout_height="wrap_content"
+	       android:background="@drawable/btn_style_green"
+	       android:layout_weight="1"
+	       android:clickable="true"
+	       android:text="@string/simple_text_dialog_btnok"
+	       android:textColor="@color/white"
+	       android:textSize="@dimen/text_size_20" />
+        <Button
+            android:id="@+id/btn_sr_lastresult_dialog_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_style_green"
+            android:clickable="true"
+            android:text="@string/simple_text_dialog_btncancel"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_20" />
+
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/ll_sr_lastresult_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_sr_lastresult_title"
+        android:layout_above="@id/ll_sr_lastresult_ok"
+        android:orientation="vertical" >
+        <ListView
+            android:id="@+id/sr_lastresult_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:cacheColorHint="#0000"
+            android:divider="@null"
+            android:dividerHeight="5dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:stackFromBottom="false" >
+        </ListView>
+    </RelativeLayout>
+</RelativeLayout>
+</RelativeLayout>

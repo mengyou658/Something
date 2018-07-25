@@ -1,0 +1,61 @@
+package com.moons.xst.track.bean;
+
+import com.moons.xst.track.AppConfig;
+import com.moons.xst.track.AppContext;
+import com.moons.xst.track.common.StringUtils;
+
+public class ResponseLogInfo {
+	private String commType;// 日志类型
+	private String userAccount;// 操作人账号
+	private String userName;// 登陆人
+	private String logStatus;// 是否成功
+	private String logInfo;// 提示信息
+	private String connectionType;// 通信方式
+	private String XJQCD;// 巡检器CD
+	private String XJQType;// 仪器类型
+	private String GUID;// GUID
+
+	public ResponseLogInfo() {
+		super();
+		userAccount = StringUtils.isEmpty(AppContext.getUserAccount()) ? "Guest"
+				: AppContext.getUserAccount();
+		userName = StringUtils.isEmpty(AppContext.getUserName()) ? AppConfig.USERNAME_CALLER
+				: AppContext.getUserName();
+		XJQCD = AppContext.GetxjqCD();
+		XJQType = AppConfig.XJQTYPE;
+		GUID = AppContext.GetUniqueID();
+	}
+
+	public String getCommType() {
+		return commType;
+	}
+
+	public void setCommType(String commType) {
+		this.commType = commType;
+	}
+
+	public String getLogStatus() {
+		return logStatus;
+	}
+
+	public void setLogStatus(String logStatus) {
+		this.logStatus = logStatus;
+	}
+
+	public String getLogInfo() {
+		return logInfo;
+	}
+
+	public void setLogInfo(String logInfo) {
+		this.logInfo = logInfo;
+	}
+
+	public String getConnectionType() {
+		return connectionType;
+	}
+
+	public void setConnectionType(String connectionType) {
+		this.connectionType = connectionType;
+	}
+
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical" >
+
+   <TextView 
+	android:id="@+id/title" 
+	android:layout_width="fill_parent" 
+	android:layout_height="40dip"
+	android:textSize="@dimen/text_size_16" 
+	android:textStyle="bold" 
+	android:textColor="@color/black" 
+	android:gravity="left|center" 
+	android:background="@color/listitem_lightgray" 
+	android:paddingLeft="10.0dip" />
+
+    <RelativeLayout
+        style="@style/widget_listview2"
+        android:layout_height="50dip" >
+
+        <TextView
+            android:id="@+id/listitem_systemsettingauth_value"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center|left"
+            android:paddingRight="20dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_18" />
+
+        <TextView
+            android:id="@+id/listitem_systemsettingauth_itemdesc"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toLeftOf="@id/listitem_systemsettingauth_value"
+            android:gravity="center|left"
+            android:paddingLeft="20dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_18" />
+    </RelativeLayout>
+
+</LinearLayout>

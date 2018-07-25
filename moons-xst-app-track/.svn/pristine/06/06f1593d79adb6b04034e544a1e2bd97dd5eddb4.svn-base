@@ -1,0 +1,264 @@
+package com.moons.xst.track.ui;
+
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ListView;
+
+import com.moons.xst.buss.BluetoothHelper;
+import com.moons.xst.track.AppManager;
+import com.moons.xst.track.R;
+import com.moons.xst.track.adapter.BluetoothAdapterManager;
+import com.moons.xst.track.common.UIHelper;
+
+public class BluetoothDeviceAty extends BaseActivity {
+
+	// 返回时数据标签
+	public static String EXTRA_DEVICE_ADDRESS = "EXTRA_DEVICE_ADDRESS";
+
+	public static final int REQUEST_ENABLE = 10000; // 打开蓝牙 请求码
+
+	private BluetoothAdapterManager mAdapterManager; // Adapter管理器
+
+	ListView mDeviceListView;
+	Button mSearchDeviceBtn;
+	ImageButton returnbtn;
+
+	private BluetoothAdapter mBluetoothAdapter;
+	private AlertDialog mAlertDialog; // 确定打开蓝牙 dialog
+	private ProgressDialog mProgressDialog;
+	private StringBuilder sb = new StringBuilder();
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.bluetooth_device_search);
+		mDeviceListView = (ListView) findViewById(R.id.bluetooth_device_search_listview_device);
+		mSearchDeviceBtn = (Button) findViewById(R.id.btn_search);
+
+		// 实例化Adapter管理器并设置到Application
+		mAdapterManager = new BluetoothAdapterManager(this);
+
+		//
+		mDeviceListView.setAdapter(mAdapterManager.getDeviceListAdapter());
+
+		returnbtn = (ImageButton) findViewById(R.id.home_head_Rebutton);
+		returnbtn.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				unregisterReceiver(mReceiver);
+				finish();
+			}
+		});
+
+		mSearchDeviceBtn.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// 清空蓝牙设备列表
+				mAdapterManager.clearDevice();
+				mAdapterManager.updateDeviceAdapter();
+
+				if (mBluetoothAdapter == null) {
+					// 取得蓝牙适配器
+					mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+				}
+				if (!mBluetoothAdapter.isEnabled()) {
+					// 蓝牙未打开, 打开蓝牙
+					LayoutInflater factory = LayoutInflater.from(BluetoothDeviceAty.this);
+					final View view = factory.inflate(R.layout.textview_layout,
+							null);
+					new com.moons.xst.track.widget.AlertDialog(BluetoothDeviceAty.this)
+							.builder()
+							.setTitle(getString(R.string.system_notice))
+							.setView(view)
+							.setMsg(getString(R.string.msg_bluetooth_open_message))
+							.setPositiveButton(getString(R.string.sure),
+									new OnClickListener() {
+										@Override
+										public void onClick(View v) {
+											// 发送请求，打开蓝牙
+											Intent startBluetoothIntent = new Intent(
+													BluetoothAdapter.ACTION_REQUEST_ENABLE);
+											startActivityForResult(
+													startBluetoothIntent,
+													REQUEST_ENABLE);
+										}
+									})
+							.setNegativeButton(getString(R.string.cancel),
+									new OnClickListener() {
+										@Override
+										public void onClick(View v) {
+											return;
+										}
+									}).show();
+					/*if (mAlertDialog == null) {
+						mAlertDialog = new AlertDialog.Builder(
+								BluetoothDeviceAty.this)
+								.setTitle("打开蓝牙")
+								.setPositiveButton("确定",
+										new Dialog.OnClickListener() {
+
+											@Override
+											public void onClick(
+													DialogInterface dialog,
+													int which) {
+												// 发送请求，打开蓝牙
+												Intent startBluetoothIntent = new Intent(
+														BluetoothAdapter.ACTION_REQUEST_ENABLE);
+												startActivityForResult(
+														startBluetoothIntent,
+														REQUEST_ENABLE);
+											}
+
+										})
+								.setNeutralButton("取消",
+										new Dialog.OnClickListener() {
+
+											@Override
+											public void onClick(
+													DialogInterface dialog,
+													int which) {
+												mAlertDialog.dismiss();
+											}
+
+										}).create();
+					}
+					mAlertDialog.setMessage("蓝牙未打开，是否打开？");
+					mAlertDialog.show();*/
+				} else {
+					// 蓝牙已打开， 开始搜索设备
+					stopDiscovery();
+					beginDiscovery();
+				}
+			}
+		});
+
+		mDeviceListView
+				.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+					public void onItemClick(AdapterView<?> parent, View view,
+							int position, long id) {
+						// mBluetoothAdapter.cancelDiscovery();
+
+						final BluetoothDevice info = (BluetoothDevice) mAdapterManager
+								.getDeviceListAdapter().getItem(position);
+						if (info == null)
+							return;
+
+						// 设置返回数据
+						Intent intent = new Intent();
+						intent.putExtra(EXTRA_DEVICE_ADDRESS, info.getAddress());
+
+						// 设置返回值并结束程序
+						setResult(RESULT_OK, intent);
+						unregisterReceiver(mReceiver);
+						finish();
+					}
+				});
+
+		// 注册蓝牙扫描监听器
+		IntentFilter intentFilter = new IntentFilter();
+		intentFilter.addAction(BluetoothDevice.ACTION_FOUND);
+		intentFilter.addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
+		registerReceiver(mReceiver, intentFilter);
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		switch (keyCode) {
+		case KeyEvent.KEYCODE_BACK:
+			unregisterReceiver(mReceiver);
+			AppManager.getAppManager().finishActivity(this);
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == REQUEST_ENABLE) {
+			// 请求为 "打开蓝牙"
+			if (resultCode == RESULT_OK) {
+				// 打开蓝牙成功
+				beginDiscovery();
+			} else {
+				// 打开蓝牙失败
+				// Toast.makeText(this, "打开蓝牙失败！", Toast.LENGTH_LONG).show();
+				UIHelper.ToastMessage(this, getString(R.string.msg_bluetootn_open_fail));
+			}
+		}
+	}
+
+	/**
+	 * 开始搜索设备...
+	 */
+	public void beginDiscovery() {
+		// if(null == mProgressDialog){
+		// mProgressDialog = new ProgressDialog(BluetoothDeviceAty.this);
+		// mProgressDialog.setMessage("搜索设备中...");
+		// }
+		// mProgressDialog.show();
+
+		mBluetoothAdapter.startDiscovery();
+	}
+
+	/**
+	 * 停止搜索设备...
+	 */
+	public void stopDiscovery() {
+		if(mProgressDialog==null){
+			mProgressDialog = new ProgressDialog(BluetoothDeviceAty.this);
+		}
+		mProgressDialog.setMessage(getString(R.string.msg_bluetootn_search));
+		mProgressDialog.show();
+		
+		if (mBluetoothAdapter.isDiscovering()) {
+			mBluetoothAdapter.cancelDiscovery();
+		}
+	}
+
+	// 查找到设备和搜索完成action监听器
+	private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
+
+		@Override
+		public void onReceive(Context context, final Intent intent) {
+			if (intent.getAction().equals(BluetoothDevice.ACTION_FOUND)) {
+				// 扫描到蓝牙
+				// 取得扫描到的蓝牙，添加到设备列表，更新列表
+				BluetoothDevice bluetoothDevice = intent
+						.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+				if (!sb.toString().contains(bluetoothDevice.getAddress())) {
+					sb.append(bluetoothDevice.getAddress());
+					mAdapterManager.addDevice(bluetoothDevice);
+					mAdapterManager.updateDeviceAdapter();
+				}
+			} else if (intent.getAction().equals(
+					BluetoothAdapter.ACTION_DISCOVERY_FINISHED)) {
+				// 扫描设备结束
+				mProgressDialog.dismiss();
+				if (mAdapterManager.getDeviceList().size() == 0) {
+					// 扫描到的设备数为0
+					UIHelper.ToastMessage(BluetoothDeviceAty.this,
+							getString(R.string.msg_bluetootn_search_notfound));
+				}
+			}
+		}
+	};
+
+}

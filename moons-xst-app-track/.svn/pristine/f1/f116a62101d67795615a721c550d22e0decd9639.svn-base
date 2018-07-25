@@ -1,0 +1,851 @@
+package com.moons.xst.track.ui;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.UUID;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.Matrix;
+import android.hardware.Camera;
+import android.media.MediaRecorder;
+import android.media.ThumbnailUtils;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.provider.MediaStore;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.format.DateFormat;
+import android.view.Display;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.animation.TranslateAnimation;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.GridView;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.moons.xst.buss.TempMeasureDBHelper;
+import com.moons.xst.track.AppConst;
+import com.moons.xst.track.AppContext;
+import com.moons.xst.track.AppManager;
+import com.moons.xst.track.R;
+import com.moons.xst.track.adapter.Tool_Camera_ImageGirdViewAdapter;
+import com.moons.xst.track.adapter.Tool_Camera_VideoGirdViewAdapter;
+import com.moons.xst.track.bean.TempMeasureBaseInfo;
+import com.moons.xst.track.common.DateTimeHelper;
+import com.moons.xst.track.common.FileUtils;
+import com.moons.xst.track.common.UIHelper;
+
+public class Tool_Camera extends BaseActivity {
+
+	private ViewPager mTabPager;
+	private View viewPhoto, viewVideo;
+	private RadioButton txtTab1, txtTab2;
+	private TextView tv_tab1;
+	private RadioGroup rg_tabPage_state;
+	private RelativeLayout ll_Select;
+	private TextView txtSelect;
+	private GridView mImageGirdView;
+	private GridView mVideoGridView;
+	private Button btnOperation;
+	private ImageButton rebutton;
+
+	private int currIndex = 0;// 当前页卡编号
+	private int one;// 单个水平动画位移
+	private int two;
+	private String imagePath;
+	private String thumbnailImagePath;
+
+	public static final int REQCODE_PICTURE = 0; // 拍照
+	public static final int REQCODE_VEDIO = 1; // 录像
+	public static final int REQCODE_PREVIEW = 2; // 浏览
+
+	private String SELECT = "";
+	private String CANCEL = "";
+	private String DELETE = "";
+
+	private File mImgDir, mVideoDir;
+	private List<String> mImgs, mVideos;
+	private Tool_Camera_ImageGirdViewAdapter mAdapter;
+	private Tool_Camera_VideoGirdViewAdapter mVideoAdapter;
+
+	private TempMeasureBaseInfo mTempMeasureBaseInfo;
+
+	private UUID uuid;
+	private AppContext appContext;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.tool_camera);
+		SELECT = getString(R.string.camera_choose);
+		CANCEL = getString(R.string.camera_cancel);
+		DELETE = getString(R.string.camera_delete);
+		appContext = (AppContext) this.getApplication();
+		/* 初始化TAB页 */
+		initViewPager();
+		/* 初始化控件 */
+		initView();
+		// /* 获取照片 */
+		// getImages();
+		// /* 获取录像 */
+		// getVideos();
+		changeViewPager(currIndex);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		/* 获取照片 */
+		getImages();
+		/* 获取录像 */
+		getVideos();
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		switch (keyCode) {
+		case KeyEvent.KEYCODE_BACK:
+			clearBuffer();
+			AppManager.getAppManager().finishActivity(Tool_Camera.class);
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
+	@SuppressLint("SdCardPath")
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		switch (requestCode) {
+		case REQCODE_PICTURE:
+			if (resultCode == RESULT_OK) {
+				try {
+					saverevitionImageSize(imagePath, 800);
+					saveTempMeasureBaseInfo();
+					// mImgs = Arrays.asList(mImgDir.list());
+					// mAdapter.refresh(mImgs,
+					// this.txtSelect.getText().toString());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			if (resultCode == Activity.RESULT_CANCELED) {
+				File file = new File(imagePath);
+				file.delete();
+			}
+			break;
+		case REQCODE_VEDIO:
+			if (resultCode == RESULT_OK) {
+				try {
+					saveVideoFromCamera(imagePath);
+					Bitmap bm = this.getVideoThumbnail(imagePath, 100, 100,
+							ThumbnailUtils.OPTIONS_RECYCLE_INPUT);
+					this.saveBitmap(bm);
+					saveTempMeasureBaseInfo();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			if (resultCode == Activity.RESULT_CANCELED) {
+				File file = new File(imagePath);
+				file.delete();
+			}
+			break;
+		}
+	}
+
+	private void initView() {
+		rebutton = (ImageButton) findViewById(R.id.home_head_Rebutton);
+		rebutton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO 自动生成的方法存根
+				clearBuffer();
+				AppManager.getAppManager().finishActivity(Tool_Camera.class);
+			}
+		});
+		btnOperation = (Button) findViewById(R.id.btn_operation);
+		btnOperation.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO 自动生成的方法存根
+				if (btnOperation.getText().equals(DELETE))
+					deleteFiles();
+				else {
+					switch (currIndex) {
+					case 0:
+						getImageByCamera();
+						break;
+					case 1:
+						getVideoByCamera();
+						break;
+					}
+				}
+			}
+		});
+		mImageGirdView = (GridView) viewPhoto
+				.findViewById(R.id.camera_photo_gridView);
+		mVideoGridView = (GridView) viewVideo
+				.findViewById(R.id.camera_video_gridView);
+		txtSelect = (TextView) findViewById(R.id.tool_camera_select);
+		ll_Select = (RelativeLayout) findViewById(R.id.ll_tool_camera_select);
+		ll_Select.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO 自动生成的方法存根
+				String txt = txtSelect.getText().toString().equals(SELECT) ? CANCEL
+						: SELECT;
+				txtSelect.setText(txt);
+				if (txt.equals(SELECT)) {
+					switch (currIndex) {
+					case 0:
+						btnOperation
+								.setText(R.string.main_menu_tools_camera_photo);
+						break;
+					case 1:
+						btnOperation
+								.setText(R.string.main_menu_tools_camera_video);
+						break;
+					}
+				} else
+					btnOperation
+							.setText(R.string.main_menu_tools_camera_delete);
+				switch (currIndex) {
+				case 0:
+					mAdapter.refresh(mImgs, txt);
+					break;
+				case 1:
+					mVideoAdapter.refresh(mVideos, txt);
+					break;
+				}
+
+			}
+		});
+	}
+
+	private void initViewPager() {
+		mTabPager = (ViewPager) findViewById(R.id.cameraTabpager);
+		mTabPager.setOnPageChangeListener(new MyOnPageChangeListener());
+		mTabPager.setPageTransformer(false, new ViewPager.PageTransformer() {
+		    @Override
+		    public void transformPage(View page, float position) {
+		    	final float normalizedposition = Math.abs(Math.abs(position) - 1);
+		        page.setAlpha(normalizedposition);
+	        }
+		});
+
+		txtTab1 = (RadioButton) findViewById(R.id.tool_camera_tab_photo);
+		txtTab2 = (RadioButton) findViewById(R.id.tool_camera_tab_video);
+
+		txtTab1.setOnClickListener(new MyOnClickListener(0));
+		txtTab2.setOnClickListener(new MyOnClickListener(1));
+
+		// tab下面的那条下划线
+		tv_tab1 = (TextView) findViewById(R.id.tv_tab1);
+		rg_tabPage_state = (RadioGroup) findViewById(R.id.rg_tabPage_state);
+
+		Display currDisplay = getWindowManager().getDefaultDisplay();// 获取屏幕当前分辨率
+		int displayWidth = currDisplay.getWidth();
+		int displayHeight = currDisplay.getHeight();
+		one = displayWidth / 2; // 设置水平动画平移大小
+		two = one * 2;
+		// Log.i("info", "获取的屏幕分辨率为" + one + two + three + "X" + displayHeight);
+
+		// InitImageView();//使用动画
+		// 将要分页显示的View装入数组中
+		LayoutInflater mLi = LayoutInflater.from(this);
+		viewPhoto = mLi.inflate(R.layout.tool_camera_tab_photo, null);
+		viewVideo = mLi.inflate(R.layout.tool_camera_tab_video, null);
+
+		// 每个页面的view数据
+		final ArrayList<View> views = new ArrayList<View>();
+		views.add(viewPhoto);
+		views.add(viewVideo);
+		// 填充ViewPager的数据适配器
+		PagerAdapter mPagerAdapter = new PagerAdapter() {
+
+			@Override
+			public boolean isViewFromObject(View arg0, Object arg1) {
+				return arg0 == arg1;
+			}
+
+			@Override
+			public int getCount() {
+				return views.size();
+			}
+
+			@Override
+			public void destroyItem(View container, int position, Object object) {
+				((ViewPager) container).removeView(views.get(position));
+			}
+
+			// @Override
+			// public CharSequence getPageTitle(int position) {
+			// return titles.get(position);
+			// }
+
+			@Override
+			public Object instantiateItem(View container, int position) {
+				((ViewPager) container).addView(views.get(position));
+				return views.get(position);
+			}
+		};
+		mTabPager.setAdapter(mPagerAdapter);
+		mTabPager.setCurrentItem(0);
+	}
+
+	private void deleteFiles() {
+		LayoutInflater factory = LayoutInflater.from(this);
+		final View view = factory.inflate(R.layout.textview_layout, null);
+		switch (currIndex) {
+		case 0:
+			if (AppContext.selectedPhotoBuffer.size() <= 0) {
+				UIHelper.ToastMessage(getApplication(),
+						R.string.camera_delete_picture_hint);
+				return;
+			}
+
+			new com.moons.xst.track.widget.AlertDialog(this)
+					.builder()
+					.setTitle(getString(R.string.camera_delete_picture))
+					.setView(view)
+					.setMsg(getString(R.string.camera_confirm_delete))
+					.setPositiveButton(getString(R.string.sure),
+							new android.view.View.OnClickListener() {
+								@Override
+								public void onClick(View v) {
+
+									// TODO 自动生成的方法存根
+									for (int i = 0; i < AppContext.selectedPhotoBuffer
+											.size(); i++) {
+										File file = new File(
+												AppContext.selectedPhotoBuffer
+														.get(i));
+										String fileName = file.getName();
+										mTempMeasureBaseInfo = new TempMeasureBaseInfo();
+										mTempMeasureBaseInfo.setGUID(FileUtils
+												.getFileNameNoFormat(fileName));
+										file.delete();
+										TempMeasureDBHelper.GetIntance()
+												.DeleteTempMeasureBaseInfo(
+														Tool_Camera.this,
+														mTempMeasureBaseInfo);
+									}
+									txtSelect.setText(SELECT);
+									btnOperation
+											.setText(R.string.main_menu_tools_camera_photo);
+									// mImgs = Arrays.asList(mImgDir.list());
+									mImgs = new ArrayList<String>();
+									for (String str : Arrays.asList(mImgDir
+											.list())) {
+										File file = new File(str);
+										if (FileUtils.getFileFormat(
+												file.getName())
+												.equalsIgnoreCase("jpg"))
+											mImgs.add(str);
+									}
+									mAdapter.refresh(mImgs, txtSelect.getText()
+											.toString());
+								}
+							})
+					.setNegativeButton(getString(R.string.cancel),
+							new android.view.View.OnClickListener() {
+								@Override
+								public void onClick(View v) {
+								}
+							}).setCanceledOnTouchOutside(false).show();
+			break;
+		case 1:
+			if (AppContext.selectedVideoBuffer.size() <= 0) {
+				UIHelper.ToastMessage(getApplication(),
+						R.string.camera_delete_video_hint);
+				return;
+			}
+
+			new com.moons.xst.track.widget.AlertDialog(this)
+					.builder()
+					.setTitle(getString(R.string.camera_delete_video))
+					.setView(view)
+					.setMsg(getString(R.string.camera_confirm_delete))
+					.setPositiveButton(getString(R.string.sure),
+							new android.view.View.OnClickListener() {
+								@Override
+								public void onClick(View v) {
+
+									// TODO 自动生成的方法存根
+									for (int i = 0; i < AppContext.selectedVideoBuffer
+											.size(); i++) {
+										/* 删除缩略图 */
+										File file = new File(
+												AppContext.selectedVideoBuffer
+														.get(i));
+										file.delete();
+										/* 删除视频 */
+										/* 获取视频名称 */
+										int start = AppContext.selectedVideoBuffer
+												.get(i).lastIndexOf("/") + 1;
+										int end = AppContext.selectedVideoBuffer
+												.get(i).length();
+										String videoName = AppContext.selectedVideoBuffer
+												.get(i).substring(start, end);
+										videoName = videoName.replaceAll("jpg",
+												"3gp");
+										File videoFile = new File(AppConst
+												.XSTTempVideosPath()
+												+ videoName);
+										String fileName = videoFile.getName();
+										mTempMeasureBaseInfo = new TempMeasureBaseInfo();
+										mTempMeasureBaseInfo.setGUID(FileUtils
+												.getFileNameNoFormat(fileName));
+										videoFile.delete();
+										TempMeasureDBHelper.GetIntance()
+												.DeleteTempMeasureBaseInfo(
+														Tool_Camera.this,
+														mTempMeasureBaseInfo);
+									}
+									txtSelect.setText(SELECT);
+									btnOperation
+											.setText(R.string.main_menu_tools_camera_video);
+									// mVideos =
+									// Arrays.asList(mVideoDir.list());
+									mVideos = new ArrayList<String>();
+									for (String str : Arrays.asList(mVideoDir
+											.list())) {
+										File file = new File(str);
+										if (FileUtils.getFileFormat(
+												file.getName())
+												.equalsIgnoreCase("jpg"))
+											mVideos.add(str);
+									}
+									mVideoAdapter.refresh(mVideos, txtSelect
+											.getText().toString());
+								}
+							})
+					.setNegativeButton(getString(R.string.cancel),
+							new android.view.View.OnClickListener() {
+								@Override
+								public void onClick(View v) {
+								}
+							}).setCanceledOnTouchOutside(false).show();
+
+			break;
+		}
+	}
+
+	private void clearBuffer() {
+		AppContext.selectedPhotoBuffer.clear();
+		AppContext.selectedVideoBuffer.clear();
+	}
+
+	// [start] 获取照片线程
+	private void getImages() {
+		if (!Environment.getExternalStorageState().equals(
+				Environment.MEDIA_MOUNTED)) {
+			return;
+		}
+
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				mImgDir = new File(AppConst.XSTTempImagePath());
+				mHandler.sendEmptyMessage(0x110);
+			}
+		}).start();
+	}
+
+	private Handler mHandler = new Handler() {
+		public void handleMessage(android.os.Message msg) {
+			data2ViewImages();
+		}
+	};
+
+	private void data2ViewImages() {
+		if (mImgDir == null) {
+			UIHelper.ToastMessage(getApplicationContext(),
+					R.string.camera_no_sdcard);
+			return;
+		}
+
+		// mImgs = Arrays.asList(mImgDir.list());
+		mImgs = new ArrayList<String>();
+		for (String str : Arrays.asList(mImgDir.list())) {
+			File file = new File(str);
+			if (FileUtils.getFileFormat(file.getName()).equalsIgnoreCase("jpg"))
+				mImgs.add(str);
+		}
+		mAdapter = new Tool_Camera_ImageGirdViewAdapter(
+				getApplicationContext(), mImgs,
+				R.layout.griditem_tool_camera_photo, mImgDir.getAbsolutePath(),
+				this.txtSelect.getText().toString());
+		mImageGirdView.setAdapter(mAdapter);
+	};
+
+	// [end]
+
+	// [start] 获取视频线程
+	private void getVideos() {
+		if (!Environment.getExternalStorageState().equals(
+				Environment.MEDIA_MOUNTED))
+			return;
+
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				mVideoDir = new File(AppConst.XSTTempThumbnailImagePath());
+				mHandlerVideo.sendEmptyMessage(0x110);
+			}
+		}).start();
+	}
+
+	private Handler mHandlerVideo = new Handler() {
+		public void handleMessage(android.os.Message msg) {
+			data2ViewVideos();
+		}
+	};
+
+	private void data2ViewVideos() {
+		if (mVideoDir == null) {
+			UIHelper.ToastMessage(getApplicationContext(),
+					R.string.camera_no_sdcard);
+			return;
+		}
+
+		// mVideos = Arrays.asList(mVideoDir.list());
+		mVideos = new ArrayList<String>();
+		for (String str : Arrays.asList(mVideoDir.list())) {
+			File file = new File(str);
+			if (FileUtils.getFileFormat(file.getName()).equalsIgnoreCase("jpg"))
+				mVideos.add(str);
+		}
+		mVideoAdapter = new Tool_Camera_VideoGirdViewAdapter(
+				getApplicationContext(), mVideos,
+				R.layout.griditem_tool_camera_video,
+				mVideoDir.getAbsolutePath(), this.txtSelect.getText()
+						.toString());
+		mVideoGridView.setAdapter(mVideoAdapter);
+	};
+
+	// [end]
+
+	// [start] TAB页操作
+	/**
+	 * 页卡切换监听(原作者:D.Winter)
+	 */
+	public class MyOnPageChangeListener implements OnPageChangeListener {
+		@Override
+		public void onPageSelected(int arg0) {
+			changeViewPager(arg0);
+
+			txtSelect.setText(SELECT);
+			switch (arg0) {
+			case 0:
+				mAdapter.refresh(mImgs, txtSelect.getText().toString());
+				break;
+			case 1:
+				mVideoAdapter.refresh(mVideos, txtSelect.getText().toString());
+				break;
+			}
+		}
+
+		@Override
+		public void onPageScrolled(int arg0, float arg1, int arg2) {
+			if (arg2 == 0) {
+				return;
+			}
+			tvMoveTo(arg0, arg1);
+		}
+
+		@Override
+		public void onPageScrollStateChanged(int arg0) {
+		}
+	}
+
+	// 上次移动的x坐标
+	private int fromX = 0;
+
+	// tab下面那条线的移动动画
+	private void tvMoveTo(int index, float f) {
+		RadioButton button = (RadioButton) rg_tabPage_state.getChildAt(index);
+		int location[] = new int[2];
+		button.getLocationInWindow(location);
+		TranslateAnimation animation = new TranslateAnimation(fromX,
+				location[0] + f * button.getWidth(), 0, 0);
+		animation.setDuration(50);
+		animation.setFillAfter(true);
+		fromX = (int) (location[0] + f * button.getWidth());
+		// 开启动画
+		tv_tab1.startAnimation(animation);
+
+	}
+
+	/**
+	 * ViewPager图标点击监听
+	 */
+	public class MyOnClickListener implements View.OnClickListener {
+		private int index = 0;
+
+		public MyOnClickListener(int i) {
+			index = i;
+		}
+
+		@Override
+		public void onClick(View v) {
+			mTabPager.setCurrentItem(index);
+		}
+	};
+
+	/**
+	 * 切换Page
+	 */
+	private void changeViewPager(int arg0) {
+
+		switch (arg0) {
+		case 0:// 拍照
+			txtTab1.setEnabled(false);
+			txtTab2.setEnabled(true);
+			// txtTab1.setTextColor(0xff3a77e9);
+			// txtTab2.setTextColor(Color.BLACK);
+
+			btnOperation.setText(R.string.main_menu_tools_camera_photo);
+			break;
+		case 1:// 录像
+			txtTab1.setEnabled(true);
+			txtTab2.setEnabled(false);
+			// txtTab2.setTextColor(0xff3a77e9);
+			// txtTab1.setTextColor(Color.BLACK);
+
+			btnOperation.setText(R.string.main_menu_tools_camera_video);
+			break;
+		}
+		currIndex = arg0;
+	}
+
+	// [end]
+
+	// [start] 打开拍照或录像，并保存
+	private void getImageByCamera() {
+		Intent getImageByCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//		Intent getImageByCamera = new Intent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA);
+		// String picname = DateFormat.format("yyyyMMddhhmmss",
+		// Calendar.getInstance(Locale.CHINA))
+		// + ".jpg";
+		uuid = UUID.randomUUID();
+		Date createTime = DateTimeHelper.GetDateTimeNow();
+		String picname = uuid.toString() + "_"
+				+ DateTimeHelper.DateToString(createTime, "yyyyMMddHHmmss")
+				+ ".jpg";
+
+		mTempMeasureBaseInfo = new TempMeasureBaseInfo();
+		mTempMeasureBaseInfo.setGUID(uuid.toString());
+		mTempMeasureBaseInfo.setFileName(picname);
+		mTempMeasureBaseInfo.setCreateTime(DateTimeHelper.DateToString(
+				createTime, "yyyy-MM-dd HH:mm:ss"));
+		mTempMeasureBaseInfo.setMeasureType("ZP");
+		mTempMeasureBaseInfo.setExpand1("");
+		mTempMeasureBaseInfo.setExpand2("LC");
+		mTempMeasureBaseInfo.setExpand3("");
+		mTempMeasureBaseInfo.setExpand4("");
+		mTempMeasureBaseInfo.setExpand5("");
+
+		imagePath = AppConst.XSTTempImagePath() + picname;
+		File f = new File(imagePath);
+		try {
+			f.createNewFile();
+			// 这行代码很重要，没有的话会因为写入权限不够出一些问题
+			f.setWritable(true, false);
+		} catch (IOException e) {
+		}
+		getImageByCamera.putExtra("camerasensortype", 2);
+		getImageByCamera.putExtra("return-data", true);
+		getImageByCamera.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+		getImageByCamera.putExtra("outputFormat",
+				Bitmap.CompressFormat.JPEG.toString());
+		getImageByCamera.putExtra("noFaceDetection", true);
+		startActivityForResult(getImageByCamera, REQCODE_PICTURE);
+	}
+
+	private void getVideoByCamera() {
+		Intent getVideoByCamera = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+		// String videoname = DateFormat.format("yyyyMMddhhmmss",
+		// Calendar.getInstance(Locale.CHINA)).toString();
+		uuid = UUID.randomUUID();
+		String videoname = uuid.toString();
+
+		mTempMeasureBaseInfo = new TempMeasureBaseInfo();
+		mTempMeasureBaseInfo.setGUID(uuid.toString());
+		mTempMeasureBaseInfo.setFileName(videoname + ".3gp");
+		mTempMeasureBaseInfo.setCreateTime(DateTimeHelper.DateToString(
+				DateTimeHelper.GetDateTimeNow(), "yyyy-MM-dd HH:mm:ss"));
+		mTempMeasureBaseInfo.setMeasureType("LX");
+		mTempMeasureBaseInfo.setExpand2("LC");
+
+		imagePath = AppConst.XSTTempVideosPath() + videoname + ".3gp";
+		thumbnailImagePath = AppConst.XSTTempThumbnailImagePath() + videoname
+				+ ".jpg";
+		File fi = new File(imagePath);
+		try {
+			fi.createNewFile();
+			// 这行代码很重要，没有的话会因为写入权限不够出一些问题
+			fi.setWritable(true, false);
+		} catch (IOException e) {
+		}
+		getVideoByCamera.putExtra("return-data", true);
+		getVideoByCamera.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(fi));
+		getVideoByCamera.putExtra("outputFormat",
+				Bitmap.CompressFormat.JPEG.toString());
+		// 低清晰度
+		if (AppContext.getVideoQuality().equalsIgnoreCase("LOW")) {
+			getVideoByCamera.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 0);
+			getVideoByCamera.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 30);
+		} else {
+			getVideoByCamera.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+			getVideoByCamera.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 5);
+		}
+		getVideoByCamera.putExtra("noFaceDetection", true);
+		startActivityForResult(getVideoByCamera, REQCODE_VEDIO);
+	}
+
+	private void saverevitionImageSize(String path, int size)
+			throws IOException {
+		// 取得图片
+		File file = new File(path);
+		FileInputStream temp = new FileInputStream(file);
+		BitmapFactory.Options options = new BitmapFactory.Options();
+		// 这个参数代表，不为bitmap分配内存空间，只记录一些该图片的信息（例如图片大小），说白了就是为了内存优化
+		options.inJustDecodeBounds = true;
+		// 通过创建图片的方式，取得options的内容（这里就是利用了java的地址传递来赋值）
+		BitmapFactory.decodeStream(temp, null, options);
+		// 关闭流
+		temp.close();
+		// 生成压缩的图片
+		int i = 0;
+		Bitmap bitmap = null;
+		while (true) {
+			// 这一步是根据要设置的大小，使宽和高都能满足
+			if ((options.outWidth >> i <= size)
+					&& (options.outHeight >> i <= size)) {
+				// 重新取得流，注意：这里一定要再次加载，不能二次使用之前的流！
+				temp = new FileInputStream(file);
+				// 这个参数表示 新生成的图片为原始图片的几分之一。
+				options.inSampleSize = (int) Math.pow(2.0D, i);
+				// 这里之前设置为了true，所以要改为false，否则就创建不出图片
+				options.inJustDecodeBounds = false;
+
+				bitmap = BitmapFactory.decodeStream(temp, null, options);
+				break;
+			}
+			i += 1;
+		}
+		temp.close();
+
+		FileOutputStream out = new FileOutputStream(path);
+		if (AppContext.getRotateCameraYN()) {
+			Matrix matrix = new Matrix();
+			matrix.postRotate(90);
+			Bitmap returnbm = Bitmap.createBitmap(bitmap, 0, 0,
+					bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+
+			returnbm.compress(Bitmap.CompressFormat.PNG, 90, out);
+		} else {
+			bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
+		}
+		out.close();
+	}
+
+	private void saveVideoFromCamera(String path) {
+		// 创建mediarecorder对象
+		MediaRecorder mediarecorder = new MediaRecorder();
+		// 设置录制视频源为Camera(相机)
+		mediarecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
+		// 设置录制完成后视频的封装格式THREE_GPP为3gp.MPEG_4为mp4
+		mediarecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+		// 设置录制的视频编码h263 h264
+		mediarecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
+		// 设置视频录制的分辨率。必须放在设置编码和格式的后面，否则报错
+		mediarecorder.setVideoSize(176, 144);
+		// 设置录制的视频帧率。必须放在设置编码和格式的后面，否则报错
+		mediarecorder.setVideoFrameRate(20);
+		// mediarecorder.setPreviewDisplay(surfaceView.getHolder().getSurface());
+		// 设置视频文件输出的路径
+		mediarecorder.setOutputFile(path);
+	}
+
+	/**
+	 * 根据视频路径获取视频缩略图
+	 * 
+	 * @param videoPath
+	 * @param width
+	 * @param height
+	 * @param kind
+	 * @return
+	 */
+	private Bitmap getVideoThumbnail(String videoPath, int width, int height,
+			int kind) {
+		Bitmap bitmap = null;
+		// 获取视频的缩略图
+		bitmap = ThumbnailUtils.createVideoThumbnail(videoPath, kind);
+		bitmap = ThumbnailUtils.extractThumbnail(bitmap, width, height,
+				ThumbnailUtils.OPTIONS_RECYCLE_INPUT);
+		return bitmap;
+	}
+
+	/**
+	 * 保存缩略图
+	 * 
+	 * @param bm
+	 */
+	private void saveBitmap(Bitmap bm) {
+		File f = new File(thumbnailImagePath);
+		if (f.exists()) {
+			f.delete();
+		}
+		try {
+			FileOutputStream out = new FileOutputStream(f);
+			bm.compress(Bitmap.CompressFormat.PNG, 90, out);
+			out.flush();
+			out.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private void saveTempMeasureBaseInfo() {
+		TempMeasureDBHelper.GetIntance().InsertTempMeasureBaseInfo(
+				Tool_Camera.this, mTempMeasureBaseInfo);
+	}
+	// [end]
+}

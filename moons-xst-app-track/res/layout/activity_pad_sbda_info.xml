@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="0dp"
+    android:background="#00000000" >
+ 
+    <RelativeLayout
+        android:id="@+id/fl_home_main_content_right"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="#00000000"> 
+        <RelativeLayout
+        android:id="@+id/fl_home_main_content_right_view2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/half_transparent_white">
+              <RelativeLayout
+		        android:id="@+id/fl_home_main_content_right_view1_title"
+		        style="@style/pad_home_content_title_style"
+		        android:orientation="vertical"
+		        >
+			    <TextView
+			        android:id="@+id/home_txt_tipsdj"
+			        android:layout_width="fill_parent"
+			        android:layout_height="fill_parent"
+			        android:layout_marginLeft="10dip"
+			        android:gravity="left|center"
+			        android:text="消息提醒"
+			        style="@style/pad_home_content_title_txt_style" />
+		    </RelativeLayout>
+		    <RelativeLayout 
+		        android:id="@+id/fl_home_main_content_right_view1_messagelist"
+			  	android:layout_width="fill_parent" 
+			  	android:layout_height="wrap_content"
+			  	android:layout_margin="5dp"
+			  	android:layout_below="@id/fl_home_main_content_right_view1_title"
+		        >
+				<RelativeLayout
+			        android:id="@+id/layout_memu"
+			        android:layout_width="fill_parent"
+			        android:layout_height="match_parent"
+			        android:gravity="center|top" >
+			
+			        <LinearLayout
+			            android:id="@+id/layout_home"
+			            style="@style/pad_home_content_title_style"
+			            android:background="@drawable/pad_item_press">
+			            <RelativeLayout
+			                android:layout_width="match_parent"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:gravity="center"
+			                android:orientation="vertical" >
+			
+			                <ImageView
+			                    android:id="@+id/pad_home_main_imagebtn"
+			                    android:layout_width="20dp"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    android:src="@drawable/pad_item_icon_white" />
+			
+			                <TextView
+			                    android:id="@+id/pad_home_main_txt"
+			                    android:layout_width="wrap_content"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    style="@style/PagerMenuTextStyle"
+			            		android:text="@string/pad_main_menu_home"
+			            		android:layout_toRightOf="@id/pad_home_main_imagebtn"
+			            		android:layout_marginLeft="5dp"
+			                    android:textColor="#82858b" />
+			            </RelativeLayout>
+			        </LinearLayout>
+			        <LinearLayout
+			            android:id="@+id/layout_home1"
+			            style="@style/pad_home_content_title_style"
+			            android:layout_below="@id/layout_home"
+			            android:background="@drawable/pad_item_press">
+			            <RelativeLayout
+			                android:layout_width="match_parent"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:gravity="center"
+			                android:orientation="vertical" >
+			
+			                <ImageView
+			                    android:id="@+id/pad_home_main_imagebtn1"
+			                    android:layout_width="20dp"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    android:src="@drawable/pad_item_icon_white" />
+			
+			                <TextView
+			                    android:id="@+id/pad_home_main_txt1"
+			                    android:layout_width="wrap_content"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    style="@style/PagerMenuTextStyle"
+			            		android:text="@string/pad_main_menu_home"
+			            		android:layout_toRightOf="@id/pad_home_main_imagebtn1"
+			            		android:layout_marginLeft="5dp"
+			                    android:textColor="#82858b" />
+			            </RelativeLayout>
+			        </LinearLayout>
+			        <LinearLayout
+			            android:id="@+id/layout_home2"
+			            style="@style/pad_home_content_title_style"
+			            android:layout_below="@id/layout_home1"
+			            android:background="@drawable/pad_item_press">
+			            <RelativeLayout
+			                android:layout_width="match_parent"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:gravity="center"
+			                android:orientation="vertical" >
+			
+			                <ImageView
+			                    android:id="@+id/pad_home_main_imagebtn2"
+			                    android:layout_width="20dp"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    android:src="@drawable/pad_item_icon_white" />
+			
+			                <TextView
+			                    android:id="@+id/pad_home_main_txt2"
+			                    android:layout_width="wrap_content"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    style="@style/PagerMenuTextStyle"
+			            		android:text="@string/pad_main_menu_home"
+			            		android:layout_toRightOf="@id/pad_home_main_imagebtn2"
+			            		android:layout_marginLeft="5dp"
+			                    android:textColor="#82858b" />
+			            </RelativeLayout>
+			        </LinearLayout>
+			        <LinearLayout
+			            android:id="@+id/layout_home3"
+			            android:layout_below="@id/layout_home2"
+			            style="@style/pad_home_content_title_style"
+			            android:background="@drawable/pad_item_press">
+			            <RelativeLayout
+			                android:layout_width="match_parent"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:gravity="center"
+			                android:orientation="vertical" >
+			
+			                <ImageView
+			                    android:id="@+id/pad_home_main_imagebtn3"
+			                    android:layout_width="20dp"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    android:src="@drawable/pad_item_icon_white" />
+			
+			                <TextView
+			                    android:id="@+id/pad_home_main_txt3"
+			                    android:layout_width="wrap_content"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    style="@style/PagerMenuTextStyle"
+			            		android:text="@string/pad_main_menu_home"
+			            		android:layout_toRightOf="@id/pad_home_main_imagebtn3"
+			            		android:layout_marginLeft="5dp"
+			                    android:textColor="#82858b" />
+			            </RelativeLayout>
+			        </LinearLayout>
+			        <LinearLayout
+			            android:id="@+id/layout_home4"
+			            android:layout_below="@id/layout_home3"
+			            style="@style/pad_home_content_title_style"
+			            android:background="@drawable/pad_item_press">
+			            <RelativeLayout
+			                android:layout_width="match_parent"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:gravity="center"
+			                android:orientation="vertical" >
+			
+			                <ImageView
+			                    android:id="@+id/pad_home_main_imagebtn4"
+			                    android:layout_width="20dp"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    android:src="@drawable/pad_item_icon_white" />
+			
+			                <TextView
+			                    android:id="@+id/pad_home_main_txt4"
+			                    android:layout_width="wrap_content"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    style="@style/PagerMenuTextStyle"
+			            		android:text="@string/pad_main_menu_home"
+			            		android:layout_toRightOf="@id/pad_home_main_imagebtn4"
+			            		android:layout_marginLeft="5dp"
+			                    android:textColor="#82858b" />
+			            </RelativeLayout>
+			        </LinearLayout>
+			        <LinearLayout
+			            android:id="@+id/layout_home5"
+			            android:layout_below="@id/layout_home4"
+			            style="@style/pad_home_content_title_style"
+			            android:background="@drawable/pad_item_press">
+			            <RelativeLayout
+			                android:layout_width="match_parent"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:gravity="center"
+			                android:orientation="vertical" >
+			
+			                <ImageView
+			                    android:id="@+id/pad_home_main_imagebtn5"
+			                    android:layout_width="20dp"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    android:src="@drawable/pad_item_icon_white" />
+			
+			                <TextView
+			                    android:id="@+id/pad_home_main_txt5"
+			                    android:layout_width="wrap_content"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    style="@style/PagerMenuTextStyle"
+			            		android:text="@string/pad_main_menu_home"
+			            		android:layout_toRightOf="@id/pad_home_main_imagebtn5"
+			            		android:layout_marginLeft="5dp"
+			                    android:textColor="#82858b" />
+			            </RelativeLayout>
+			        </LinearLayout>
+			        <LinearLayout
+			            android:id="@+id/layout_home6"
+			            android:layout_below="@id/layout_home5"
+			            style="@style/pad_home_content_title_style"
+			            android:background="@drawable/pad_item_press">
+			            <RelativeLayout
+			                android:layout_width="match_parent"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:gravity="center"
+			                android:orientation="vertical" >
+			
+			                <ImageView
+			                    android:id="@+id/pad_home_main_imagebtn6"
+			                    android:layout_width="20dp"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    android:src="@drawable/pad_item_icon_white" />
+			
+			                <TextView
+			                    android:id="@+id/pad_home_main_txt6"
+			                    android:layout_width="wrap_content"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    style="@style/PagerMenuTextStyle"
+			            		android:text="@string/pad_main_menu_home"
+			            		android:layout_toRightOf="@id/pad_home_main_imagebtn6"
+			            		android:layout_marginLeft="5dp"
+			                    android:textColor="#82858b" />
+			            </RelativeLayout>
+			        </LinearLayout>
+			        <LinearLayout
+			            android:id="@+id/layout_home7"
+			            android:layout_below="@id/layout_home6"
+			            style="@style/pad_home_content_title_style"
+			            android:background="@drawable/pad_item_press">
+			            <RelativeLayout
+			                android:layout_width="match_parent"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:gravity="center"
+			                android:orientation="vertical" >
+			
+			                <ImageView
+			                    android:id="@+id/pad_home_main_imagebtn7"
+			                    android:layout_width="20dp"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    android:src="@drawable/pad_item_icon_white" />
+			
+			                <TextView
+			                    android:id="@+id/pad_home_main_txt7"
+			                    android:layout_width="wrap_content"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    style="@style/PagerMenuTextStyle"
+			            		android:text="@string/pad_main_menu_home"
+			            		android:layout_toRightOf="@id/pad_home_main_imagebtn7"
+			            		android:layout_marginLeft="5dp"
+			                    android:textColor="#82858b" />
+			            </RelativeLayout>
+			        </LinearLayout>
+			        <LinearLayout
+			            android:id="@+id/layout_home8"
+			            android:layout_below="@id/layout_home7"
+			            style="@style/pad_home_content_title_style"
+			            android:background="@drawable/pad_item_press">
+			            <RelativeLayout
+			                android:layout_width="match_parent"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:gravity="center"
+			                android:orientation="vertical" >
+			
+			                <ImageView
+			                    android:id="@+id/pad_home_main_imagebtn8"
+			                    android:layout_width="20dp"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    android:src="@drawable/pad_item_icon_white" />
+			
+			                <TextView
+			                    android:id="@+id/pad_home_main_txt8"
+			                    android:layout_width="wrap_content"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    style="@style/PagerMenuTextStyle"
+			            		android:text="@string/pad_main_menu_home"
+			            		android:layout_toRightOf="@id/pad_home_main_imagebtn8"
+			            		android:layout_marginLeft="5dp"
+			                    android:textColor="#82858b" />
+			            </RelativeLayout>
+			        </LinearLayout>
+			        <LinearLayout
+			            android:id="@+id/layout_home9"
+			            android:layout_below="@id/layout_home8"
+			            style="@style/pad_home_content_title_style"
+			            android:background="@drawable/pad_item_press">
+			            <RelativeLayout
+			                android:layout_width="match_parent"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:gravity="center"
+			                android:orientation="vertical" >
+			
+			                <ImageView
+			                    android:id="@+id/pad_home_main_imagebtn9"
+			                    android:layout_width="20dp"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    android:src="@drawable/pad_item_icon_white" />
+			
+			                <TextView
+			                    android:id="@+id/pad_home_main_txt9"
+			                    android:layout_width="wrap_content"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    style="@style/PagerMenuTextStyle"
+			            		android:text="@string/pad_main_menu_home"
+			            		android:layout_toRightOf="@id/pad_home_main_imagebtn9"
+			            		android:layout_marginLeft="5dp"
+			                    android:textColor="#82858b" />
+			            </RelativeLayout>
+			        </LinearLayout>
+			        <LinearLayout
+			            android:id="@+id/layout_home10"
+			            android:layout_below="@id/layout_home9"
+			            style="@style/pad_home_content_title_style"
+			            android:background="@drawable/pad_item_press">
+			            <RelativeLayout
+			                android:layout_width="match_parent"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="center"
+			                android:gravity="center"
+			                android:orientation="vertical" >
+			
+			                <ImageView
+			                    android:id="@+id/pad_home_main_imagebtn10"
+			                    android:layout_width="20dp"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    android:src="@drawable/pad_item_icon_white" />
+			
+			                <TextView
+			                    android:id="@+id/pad_home_main_txt10"
+			                    android:layout_width="wrap_content"
+			                    android:layout_height="18dp"
+			                    android:layout_gravity="center_horizontal"
+			                    style="@style/PagerMenuTextStyle"
+			            		android:text="@string/pad_main_menu_home"
+			            		android:layout_toRightOf="@id/pad_home_main_imagebtn10"
+			            		android:layout_marginLeft="5dp"
+			                    android:textColor="#82858b" />
+			            </RelativeLayout>
+			        </LinearLayout>
+			    </RelativeLayout>         
+		    </RelativeLayout>
+        </RelativeLayout> 
+    </RelativeLayout> 
+    
+    <ScrollView 
+        android:id="@+id/layout_home_main_part_scrollview"
+        android:layout_width="fill_parent"  
+        android:layout_height="fill_parent"  
+        android:scrollbars="none"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toLeftOf="@id/fl_home_main_content_right"
+        android:background="@drawable/pad_item_unpress"
+        android:fadingEdge="vertical"> 
+    <RelativeLayout
+        android:id="@+id/fl_home_main_content_left"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:background="#00000000">
+        
+        <RelativeLayout
+            android:id="@+id/fl_home_main_content_left_view1"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/half_transparent_white" >
+
+	          <RelativeLayout
+		        android:id="@+id/fl_home_main_content_left_view1_title"
+		        style="@style/pad_home_content_title_style"
+		        android:orientation="vertical"
+		        >
+			    <TextView
+			        android:id="@+id/fl_home_main_content_left_view1_title_txt"
+			        android:layout_width="fill_parent"
+			        android:layout_height="fill_parent"
+			        android:layout_marginLeft="10dip"
+			        android:gravity="left|center"
+			        android:text="设备档案"
+			        style="@style/pad_home_content_title_txt_style" />
+		    </RelativeLayout>
+		    <RelativeLayout 
+		        android:id="@+id/fl_home_main_content_left_view1_todo"
+			  	android:layout_width="fill_parent" 
+			  	android:layout_height="wrap_content"
+			  	android:layout_margin="5dp"
+			  	android:layout_below="@id/fl_home_main_content_left_view1_title"
+		        >       
+		    </RelativeLayout>
+        </RelativeLayout> 
+        
+        <RelativeLayout
+            android:id="@+id/fl_home_main_content_left_view2"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@id/fl_home_main_content_left_view1"
+            android:background="@color/half_transparent_white" >
+
+	          <RelativeLayout
+		        android:id="@+id/fl_home_main_content_left_view1_title1"
+		        style="@style/pad_home_content_title_style"
+		        android:orientation="vertical"
+		        >
+			    <TextView
+			        android:id="@+id/fl_home_main_content_left_view1_title_txt1"
+			        android:layout_width="fill_parent"
+			        android:layout_height="fill_parent"
+			        android:layout_marginLeft="10dip"
+			        android:gravity="left|center"
+			        android:text="设备档案"
+			        style="@style/pad_home_content_title_txt_style" />
+		    </RelativeLayout>
+		    <RelativeLayout 
+		        android:id="@+id/fl_home_main_content_left_view1_todo1"
+			  	android:layout_width="fill_parent" 
+			  	android:layout_height="wrap_content"
+			  	android:layout_margin="5dp"
+			  	android:layout_below="@id/fl_home_main_content_left_view1_title1"
+		        >       
+		    </RelativeLayout>
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/fl_home_main_content_left_view3"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@id/fl_home_main_content_left_view2"
+            android:background="@color/half_transparent_white" >
+
+	          <RelativeLayout
+		        android:id="@+id/fl_home_main_content_left_view1_title2"
+		        style="@style/pad_home_content_title_style"
+		        android:orientation="vertical"
+		        >
+			    <TextView
+			        android:id="@+id/fl_home_main_content_left_view1_title_txt2"
+			        android:layout_width="fill_parent"
+			        android:layout_height="fill_parent"
+			        android:layout_marginLeft="10dip"
+			        android:gravity="left|center"
+			        android:text="设备档案"
+			        style="@style/pad_home_content_title_txt_style" />
+		    </RelativeLayout>
+		    <RelativeLayout 
+		        android:id="@+id/fl_home_main_content_left_view1_todo2"
+			  	android:layout_width="fill_parent" 
+			  	android:layout_height="wrap_content"
+			  	android:layout_margin="5dp"
+			  	android:layout_below="@id/fl_home_main_content_left_view1_title2"
+		        >       
+		    </RelativeLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/fl_home_main_content_left_view4"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@id/fl_home_main_content_left_view3"
+            android:background="@color/half_transparent_white" >
+
+	          <RelativeLayout
+		        android:id="@+id/fl_home_main_content_left_view1_title3"
+		        style="@style/pad_home_content_title_style"
+		        android:orientation="vertical"
+		        >
+			    <TextView
+			        android:id="@+id/fl_home_main_content_left_view1_title_txt3"
+			        android:layout_width="fill_parent"
+			        android:layout_height="fill_parent"
+			        android:layout_marginLeft="10dip"
+			        android:gravity="left|center"
+			        android:text="设备档案"
+			        style="@style/pad_home_content_title_txt_style" />
+		    </RelativeLayout>
+		    <RelativeLayout 
+		        android:id="@+id/fl_home_main_content_left_view1_todo3"
+			  	android:layout_width="fill_parent" 
+			  	android:layout_height="wrap_content"
+			  	android:layout_margin="5dp"
+			  	android:layout_below="@id/fl_home_main_content_left_view1_title3"
+		        >       
+		    </RelativeLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/fl_home_main_content_left_view5"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@id/fl_home_main_content_left_view4"
+            android:background="@color/half_transparent_white" >
+
+	          <RelativeLayout
+		        android:id="@+id/fl_home_main_content_left_view1_title4"
+		        style="@style/pad_home_content_title_style"
+		        android:orientation="vertical"
+		        >
+			    <TextView
+			        android:id="@+id/fl_home_main_content_left_view1_title_txt4"
+			        android:layout_width="fill_parent"
+			        android:layout_height="fill_parent"
+			        android:layout_marginLeft="10dip"
+			        android:gravity="left|center"
+			        android:text="设备档案"
+			        style="@style/pad_home_content_title_txt_style" />
+		    </RelativeLayout>
+		    <RelativeLayout 
+		        android:id="@+id/fl_home_main_content_left_view1_todo4"
+			  	android:layout_width="fill_parent" 
+			  	android:layout_height="wrap_content"
+			  	android:layout_margin="5dp"
+			  	android:layout_below="@id/fl_home_main_content_left_view1_title4"
+		        >       
+		    </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
+</RelativeLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="MyArray">
+        <item welcomepic="welcome" mainpagelogo="ic_logo" loginlogo="company_logo" 
+            aboutlogo="ic_company" hometitle="home_head_title" aboutname="main_about_appnameXST"
+            welcomenamevisible="true" welcomename="main_about_appnameXDJ" copyrightvisible="true"
+            copyrightstr="main_about_copyright">小神探</item>
+    </string-array>
+</resources>

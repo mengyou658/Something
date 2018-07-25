@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    style="@style/widget_listview_Item"
+    android:orientation="horizontal" 
+  	android:layout_height="55dip"
+	>   
+	
+
+    
+	<RelativeLayout 
+		android:id="@+id/layout_faoffmap_itemdesc" 
+	  	android:layout_width="match_parent" 
+	  	android:layout_height="55dip"
+	  	android:layout_alignParentRight="true"
+	  	android:orientation="vertical" 
+	  	>     
+	  	
+	
+	    
+		    <TextView android:id="@+id/faoffmap_listitem_title" 
+		        style="@style/widget_listview_title2"
+		        android:layout_width="wrap_content" 
+		     	android:layout_height="wrap_content"
+		     	android:layout_alignParentLeft="true"
+		     	android:text="title"
+		     	android:textSize ="@dimen/text_size_20"
+		     	android:layout_marginLeft="35dp"
+		     	android:layout_marginTop="6dp"
+		     	android:singleLine="true"/> 
+		     	
+		  	<ImageView
+			    android:id="@+id/faoffmap_listitem_image" 
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"        	     	
+				android:scaleType="matrix"
+				android:layout_alignParentRight="true"
+				android:layout_marginRight="10dip"
+				android:layout_centerInParent="true"
+				android:src="@drawable/icon_right" />      				
+	
+	    
+	    
+    </RelativeLayout>	
+	
+
+
+</RelativeLayout> 

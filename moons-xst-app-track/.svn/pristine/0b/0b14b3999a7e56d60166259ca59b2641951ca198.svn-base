@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dianjian_main"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/graywhite"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/layout_dianjian_head"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/title_bar" >
+
+        <ImageButton
+            android:id="@+id/dianjian_head_morebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_marginRight="5dp"
+            android:background="@color/full_transparent"
+            android:src="@drawable/widget_bar_option_edit" />
+
+        <ImageButton
+            android:id="@+id/home_head_Rebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center"
+            android:background="@color/full_transparent"
+            android:src="@drawable/arrow_left" />
+
+        <TextView
+            android:id="@+id/dianjian_head_title"
+            style="@style/main_head_title"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_toLeftOf="@id/dianjian_head_morebutton"
+            android:layout_toRightOf="@+id/home_head_Rebutton"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever" />
+
+        <ViewAnimator
+            android:id="@+id/animator"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/dianjian_head_title"
+            android:layout_marginBottom="3dp"
+            android:layout_toLeftOf="@id/dianjian_head_morebutton"
+            android:layout_toRightOf="@+id/home_head_Rebutton" >
+            
+            <TextView
+                android:id="@+id/dianjian_main_cyclename"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="@dimen/text_size_15"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/dianjian_main_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/login_account"
+                android:drawablePadding="5dp"
+                android:textSize="@dimen/text_size_15"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/dianjian_main_gpsinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_15"
+                android:text="@string/plan_positioning" />
+            
+            
+        </ViewAnimator>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_plan_move"
+        android:layout_width="fill_parent"
+        android:layout_height="40dip"
+        android:layout_below="@id/layout_dianjian_head"
+        android:layout_gravity="center_vertical"
+        android:background="@color/graywhite" >
+
+        <Button
+            android:id="@+id/btn_goto_pre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dip"
+            android:background="@drawable/arrow_left_plan"
+            android:clickable="true"
+            android:onClick="btn_pre_djplan" />
+
+        <Button
+            android:id="@+id/btn_goto_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dip"
+            android:background="@drawable/arrow_right_plan"
+            android:clickable="true"
+            android:onClick="btn_next_djplan"
+            android:textSize="@dimen/text_size_20" />
+
+        <TextView
+            android:id="@+id/plan_index"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toLeftOf="@id/btn_goto_next"
+            android:layout_toRightOf="@id/btn_goto_pre"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="--/--"
+            android:textColor="#000"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_result_demo"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/frame_layout_bg" >
+
+        <LinearLayout
+            android:id="@+id/ll_layout_plan_result_memo"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:baselineAligned="false"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:id="@+id/layout_plan_result_tab"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:clickable="true" >
+
+                <View
+                    android:id="@+id/view_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@color/buttombuttonColor" />
+
+                <TextView
+                    android:id="@+id/text_result_desc"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_above="@id/view_result"
+                    android:gravity="center"
+                    android:text="@string/dianjian_tabtitle_result"
+                    android:textColor="@color/buttombuttonColor"
+                    android:textSize="@dimen/text_size_15" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="@color/graywhite" />
+
+            <RelativeLayout
+                android:id="@+id/layout_plan_memo_tab"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:clickable="true" >
+
+                <View
+                    android:id="@+id/view_memo"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@color/buttombuttonColor"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/text_memo_desc"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_above="@id/view_memo"
+                    android:gravity="center"
+                    android:text="@string/dianjian_tabtitle_memo"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_15" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/ll_layout_plan_result_memo"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/face_bg" />
+
+        <RelativeLayout
+            android:id="@+id/layout_plan_result"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/view"
+            android:orientation="vertical"
+            android:visibility="invisible" >
+
+            <Button
+                android:id="@+id/btn_saveResult_data"
+                android:layout_width="70dip"
+                android:layout_height="50dip"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="5dip"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dip"
+                android:background="@drawable/btn_style_blue"
+                android:clickable="true"
+                android:text="@string/sure"
+                android:textColor="@color/white"
+                android:textSize="@dimen/btn_big_textsize" />
+            
+            <TextView
+                android:id="@+id/plan_result_others"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5dip"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@id/btn_saveResult_data"
+                android:background="@drawable/input_layout_bg"
+                android:clickable="true"
+                android:gravity="center|left"
+                android:maxLines="2"
+                android:paddingLeft="10dip"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="@dimen/dj_result_textsize"
+                android:visibility="visible" />
+
+            <EditText
+                android:id="@+id/plan_result_jl"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="5dip"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@id/btn_saveResult_data"
+                android:background="@drawable/input_layout_bg"
+                android:gravity="center|left"
+                android:maxLength="10"
+                android:paddingLeft="10dip"
+                android:singleLine="true"
+                android:textColorHint="@color/gray"
+                android:textSize="@dimen/dj_result_textsize"
+                android:visibility="invisible" />
+            
+            <TextView
+                android:id="@+id/plan_result_unit"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5dip"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@id/btn_saveResult_data"
+                android:gravity="center"
+                android:textColor="@color/gray"
+                android:singleLine="true"
+                android:textSize="@dimen/text_size_18" />
+
+            <TextView
+                android:id="@+id/plan_input_mes_almlevel"
+                android:layout_width="fill_parent"
+                android:layout_height="25dip"
+                android:layout_above="@id/plan_result_others"
+                android:gravity="center|left"
+                android:paddingLeft="10dp"
+                android:text=""
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_14" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/plan_input_mes_almlevel"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textview_plan_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_plantype"
+                    android:drawablePadding="10dp"
+                    android:gravity="left|center"
+                    android:paddingLeft="40dp"
+                    android:textSize="@dimen/text_size_15"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/textview_plan_lastresult"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawableLeft="@drawable/ic_lastresult"
+                        android:drawablePadding="10dp"
+                        android:ellipsize="marquee"
+                        android:gravity="left|center"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:textSize="@dimen/text_size_15"
+                        android:textColor="@color/gray"
+                        android:paddingLeft="30dp" />
+
+                    <TextView
+                        android:id="@+id/textview_plan_lasttime"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawableLeft="@drawable/ic_lastdate"
+                        android:drawablePadding="10dp"
+                        android:textSize="@dimen/text_size_15"
+                        android:textColor="@color/gray"
+                        android:gravity="left|center" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/graywhite" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_plan_memo"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/ll_layout_plan_result_memo"
+            android:layout_margin="1dp"
+            android:orientation="vertical"
+            android:visibility="visible" >
+
+            <LinearLayout
+                android:id="@+id/layout_plan_files"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5dp" >
+
+                <ImageView
+                    android:id="@+id/imageview_plan_addfile"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:src="@drawable/icon_addpic_unfocused" />
+
+               <!--  <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" 
+                    > -->
+
+                    <com.moons.xst.track.widget.HorizontalListView
+                        android:id="@+id/grid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" 
+                        />
+                    <!--
+                   <GridView
+		               android:id="@+id/grid"
+		               android:layout_width="match_parent"
+		               android:layout_height="match_parent"
+		               android:gravity="center"
+		               android:numColumns="auto_fit"
+		               android:stretchMode="spacingWidthUniform" >
+		           </GridView>
+                    -->
+                <!-- </HorizontalScrollView> -->
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/planmemo_editor_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/layout_plan_files"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:text="0/80"
+                android:textSize="@dimen/text_size_14" />
+
+            <EditText
+                android:id="@+id/editview_plan_memo"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_above="@id/planmemo_editor_title"
+                android:layout_marginBottom="5dp"
+                android:background="@null"
+                android:gravity="left"
+                android:hint="@string/dianjian_memo_hint"
+                android:maxLength="80"
+                android:paddingLeft="8dp"
+                android:paddingTop="5dp"
+                android:selectAllOnFocus="true"
+                android:textColorHint="@color/gray"
+                android:textSize="@dimen/text_size_16" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_plan_operate"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_above="@id/layout_result_demo"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/textview_plan_operate_tempcl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/btn_selected"
+            android:drawableTop="@drawable/ic_tempcl"
+            android:gravity="center"
+            android:text="@string/dianjian_tempcl"
+            android:textColor="@color/black"
+            android:maxLines="1"
+            android:textSize="@dimen/text_size_15" />
+
+        <TextView
+            android:id="@+id/textview_plan_operate_srset"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/btn_selected"
+            android:drawableTop="@drawable/ic_srset"
+            android:gravity="center"
+            android:text="@string/dianjian_sr"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_15" />
+
+        <TextView
+            android:id="@+id/textview_plan_operate_history"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/btn_selected"
+            android:drawableTop="@drawable/ic_historyres"
+            android:gravity="center"
+            android:text="@string/dianjian_hisdata"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_15" />
+
+        <TextView
+            android:id="@+id/textview_plan_operate_back"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/btn_selected"
+            android:drawableTop="@drawable/ic_back"
+            android:gravity="center"
+            android:text="@string/dianjian_quickback"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_15" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_plan_desc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/layout_plan_operate"
+        android:layout_below="@id/layout_plan_move"
+        android:background="@drawable/gradient_background" >
+
+        <TextView
+            android:id="@+id/textview_plandetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/dianjian_plan_details"
+            android:textSize="@dimen/text_size_14" />
+
+        <TextView
+            android:id="@+id/textview_remain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_size_14" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/textview_plandetail"
+            android:fillViewport="true" >
+
+            <TextView
+                android:id="@+id/plan_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:textColor="#000"
+                android:textSize="@dimen/text_size_22" />
+        </ScrollView>
+
+        <com.moons.xst.track.widget.SuperscriptView
+            android:id="@+id/plan_neworedit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|left"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/red"
+            android:gravity="center_horizontal|bottom"
+            android:text="@string/dianjian_modify"
+            android:textColor="@android:color/white"
+            android:textSize="13.333dp"
+            android:visibility="invisible" />
+    </RelativeLayout>
+    <com.moons.xst.track.widget.TimerTextView
+        android:id="@+id/idpos_mincost"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="90dp"
+        android:textColor="@color/red"
+        android:textSize="@dimen/text_size_14"
+        android:gravity="center"
+        android:visibility="gone"
+        android:background="@drawable/icon_write_xh" />
+</RelativeLayout>

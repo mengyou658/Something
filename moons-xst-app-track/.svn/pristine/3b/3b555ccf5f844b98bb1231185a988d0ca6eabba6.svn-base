@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#b0000000"
+    android:clickable="true"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp" >
+
+        <TextView
+            android:id="@+id/drawer_left_user_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/icon_login"
+            android:gravity="center"
+            android:text="@string/mainpage_message_clicklogin"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_drawerleft_commusetting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/setting_head_title_comm"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_15" />
+
+        <include layout="@layout/vertical_split_line_1dp" />
+
+        <RelativeLayout
+            android:id="@+id/rl_drawerleft_communicationtype"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:background="@drawable/btn_selected"
+            android:clickable="true" >
+
+            <ImageView
+                android:id="@+id/img_drawerleft_communicationtype"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/icon_drawerleft_commutype_xh" />
+
+            <TextView
+                android:id="@+id/textview_drawerleft_communicationtype"
+                android:layout_width="fill_parent"
+                android:layout_height="25dp"
+                android:layout_toRightOf="@id/img_drawerleft_communicationtype"
+                android:gravity="center|left"
+                android:paddingLeft="10dp"
+                android:text="@string/setting_head_title_sys_communicationtype"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:id="@+id/textview_drawerleft_communicationtype_value"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_below="@id/textview_drawerleft_communicationtype"
+                android:layout_toRightOf="@id/img_drawerleft_communicationtype"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:textColor="@color/gray" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_drawerleft_xjqcd"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:background="@drawable/btn_selected"
+            android:clickable="true" >
+
+            <ImageView
+                android:id="@+id/img_drawerleft_xjqcd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/icon_drawerleft_xjqcd_xh" />
+
+            <TextView
+                android:id="@+id/textview_drawerleft_xjqcd"
+                android:layout_width="fill_parent"
+                android:layout_height="25dp"
+                android:layout_toRightOf="@id/img_drawerleft_xjqcd"
+                android:gravity="center|left"
+                android:paddingLeft="10dp"
+                android:text="@string/setting_head_title_comm_xjqcd"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:id="@+id/textview_drawerleft_xjqcd_value"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_below="@id/textview_drawerleft_xjqcd"
+                android:layout_toRightOf="@id/img_drawerleft_xjqcd"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:textColor="@color/gray" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_drawerleft_wsaddress"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:background="@drawable/btn_selected"
+            android:clickable="true" >
+
+            <ImageView
+                android:id="@+id/img_drawerleft_wsaddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/icon_drawerleft_wlan_xh" />
+
+            <TextView
+                android:id="@+id/textview_drawerleft_wsaddress"
+                android:layout_width="fill_parent"
+                android:layout_height="25dp"
+                android:layout_toRightOf="@id/img_drawerleft_wsaddress"
+                android:gravity="center|left"
+                android:paddingLeft="10dp"
+                android:text="@string/setting_head_title_comm_webaddr"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:id="@+id/textview_drawerleft_wsaddress_value"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_below="@id/textview_drawerleft_wsaddress"
+                android:layout_toRightOf="@id/img_drawerleft_wsaddress"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:textColor="@color/gray" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_drawerleft_wlan_wsaddress"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:background="@drawable/btn_selected"
+            android:clickable="true" >
+
+            <ImageView
+                android:id="@+id/img_drawerleft_wlan_wsaddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/icon_drawerleft_internet_xh" />
+
+            <TextView
+                android:id="@+id/textview_drawerleft_wlan_wsaddress"
+                android:layout_width="fill_parent"
+                android:layout_height="25dp"
+                android:layout_toRightOf="@id/img_drawerleft_wlan_wsaddress"
+                android:gravity="center|left"
+                android:paddingLeft="10dp"
+                android:text="@string/setting_head_title_comm_wlan_webaddr"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:id="@+id/textview_drawerleft_wlan_wsaddress_value"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_below="@id/textview_drawerleft_wlan_wsaddress"
+                android:layout_toRightOf="@id/img_drawerleft_wlan_wsaddress"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:textColor="@color/gray" />
+        </RelativeLayout>
+
+        <include layout="@layout/vertical_split_line_10dp" />
+
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="20dp"
+            android:scrollbars="none" >
+
+            <LinearLayout
+                android:id="@+id/ll_comm_hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:orientation="vertical" >
+            </LinearLayout>
+        </ScrollView>
+
+        <include layout="@layout/vertical_split_line_1dp" />
+
+        <RelativeLayout
+            android:id="@+id/rl_drawerleft_login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/graywhite"
+            android:clickable="true"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/tv_drawer_left_user_login"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/main_menu_login"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_18" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp" >
+
+            <com.moons.xst.track.widget.ProgressButton
+                android:id="@+id/progress_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:textsize="@dimen/text_size_16"
+                app:text="@string/drawleft_btn_syncdata" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

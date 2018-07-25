@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+  android:id="@+id/calc_cycle"
+  android:layout_width="fill_parent"  
+  android:layout_height="fill_parent"  
+  android:orientation="vertical"  
+  >  
+  <Spinner android:id="@+id/Cycle_Spinner"    
+           android:layout_width="fill_parent"  
+           android:layout_height="wrap_content"></Spinner>
+  <TextView android:id="@+id/spinnerText"
+            android:layout_width="fill_parent"    
+            android:layout_height="wrap_content"></TextView>
+
+  <EditText
+      android:id="@+id/calac_datatime"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:ems="10"
+      android:inputType="datetime" >
+      <requestFocus />
+  </EditText>
+   <TextView android:id="@+id/calac_result"
+            android:layout_width="fill_parent"  
+            android:layout_height="300dp"></TextView>
+
+   <Button
+       android:id="@+id/btn_calac"
+       style="?android:attr/buttonStyleSmall"
+       android:layout_width="306dp"
+       android:layout_height="wrap_content"
+       android:text="Button" />
+
+</LinearLayout> 

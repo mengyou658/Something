@@ -1,0 +1,299 @@
+package com.moons.xst.track.ui;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.SystemClock;
+import android.provider.Settings;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.moons.xst.track.AppConst;
+import com.moons.xst.track.AppContext;
+import com.moons.xst.track.AppManager;
+import com.moons.xst.track.AppStart;
+import com.moons.xst.track.R;
+import com.moons.xst.track.common.DateTimeHelper;
+import com.moons.xst.track.common.HexUtils;
+import com.moons.xst.track.common.NetWorkHelper;
+import com.moons.xst.track.common.UIHelper;
+import com.moons.xst.track.common.UpdateManager;
+
+import de.greenrobot.event.EventBus;
+
+/**
+ * 关于我们
+ * 
+ * @author gaojun
+ * @version 1.0
+ * @created 2012-3-21
+ */
+public class AboutXST extends BaseActivity {
+
+	private RelativeLayout mUpdate, mLanguage, mBuildModel;
+	private TextView mVersion, buildVsersion, buildModel, macTextView, imeiTextView, currCity,
+			app_name;
+	private ImageButton returnButton;
+	private ImageView LogoImage;
+	
+	private AppContext appContext;
+	public static int index = 0;
+	
+	// 数组长度代表点击次数  
+    long[] mHits = new long[5];
+    
+	private com.moons.xst.track.widget.AlertDialog dialog;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.aboutxst);
+
+		appContext = (AppContext) getApplication();
+		// 获取客户端版本信息
+		try {
+			PackageInfo info = getPackageManager().getPackageInfo(
+					getPackageName(), 0);
+			app_name = (TextView) findViewById(R.id.aboutus_app_name);
+			app_name.setText(R.string.main_about_appnameXST);
+			mVersion = (TextView) findViewById(R.id.about_version);
+			mVersion.setText("V" + info.versionName + "(" + info.versionCode
+					+ ")");
+			buildVsersion = (TextView) findViewById(R.id.about_phonebuildversion);
+			buildModel = (TextView) findViewById(R.id.about_phonebuildmodel);
+			macTextView = (TextView) findViewById(R.id.about_phonemac);
+			macTextView.setText(AppContext.GetMAC());
+			imeiTextView = (TextView) findViewById(R.id.about_phoneimei);
+			imeiTextView.setText(AppContext.GetIMEI());
+			if (info.lastUpdateTime > 0) {
+				String lastUpdateDateTimeString = DateTimeHelper
+						.DateToString(new Date(info.lastUpdateTime));
+				buildVsersion.setText(lastUpdateDateTimeString);
+			}
+			buildModel.setText(AppContext.getModel());
+			currCity = (TextView) findViewById(R.id.about_currCity);
+			currCity.setText(AppContext.getCurrCityName() + "("
+					+ AppContext.getCurrCityCode() + ")");
+		} catch (NameNotFoundException e) {
+			e.printStackTrace(System.err);
+		}
+		
+		returnButton = (ImageButton) findViewById(R.id.home_head_Rebutton);
+		returnButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO 自动生成的方法存根
+				AppManager.getAppManager().finishActivity(AboutXST.this);
+			}
+		});
+		
+		LogoImage = (ImageView) findViewById(R.id.iv_logo);
+		LogoImage.setOnLongClickListener(new View.OnLongClickListener() {
+			
+			@Override
+			public boolean onLongClick(View v) {
+				// TODO 自动生成的方法存根
+				UIHelper.showSystemManager(AboutXST.this);
+				return true;
+			}
+		});
+		LogoImage.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (AppContext.getShieldOSSetTimeYN()) {
+					System.arraycopy(mHits, 1, mHits, 0, mHits.length - 1);  
+			        mHits[mHits.length - 1] = SystemClock.uptimeMillis();// 开机后运行时间  
+			        if (mHits[0] >= (mHits[mHits.length - 1] - 1000)) {
+			        	String currState = Settings.System.getString(AboutXST.this.getContentResolver(),
+			        			"modifytime");
+			        	if (currState.equalsIgnoreCase("No")) {
+			        		UIHelper.ToastMessage(AboutXST.this, R.string.os_timeset_hadclose);
+			        		return;
+			        	} else {
+				        	LayoutInflater factory = LayoutInflater.from(AboutXST.this);
+							final View view = factory.inflate(R.layout.textview_layout,
+									null);
+							new com.moons.xst.track.widget.AlertDialog(AboutXST.this)
+									.builder()
+									.setTitle(getString(R.string.system_notice))
+									.setView(view)
+									.setMsg(getString(R.string.os_timeset_close))
+									.setPositiveButton(getString(R.string.sure),
+											new OnClickListener() {
+												@Override
+												public void onClick(View v) {
+													try {
+											            String db_name = Environment.getDownloadCacheDirectory().getPath() + "/androidsqlite1.db";
+											            String table_name1 = "deviceconfig";
+											            int ret;
+											            SQLiteDatabase db;
+											            db=SQLiteDatabase.openOrCreateDatabase(db_name, null);
+											            ContentValues cv = new ContentValues();
+											            cv.put("Name", "modifytime");
+											            cv.put("Value", "No");
+											            ret = db.update(table_name1, cv, "Name='modifytime'", null);
+											            db.close();
+											            if (ret > 0) {
+											            	ContentResolver resolver = AboutXST.this.getContentResolver();
+											            	String modifytimeV = "No";
+											            	Settings.System.putString(resolver, "modifytime", modifytimeV);
+											            	UIHelper.ToastMessageForSaveOK(AboutXST.this,
+																	R.string.plan_edit_ok);
+											            } else {
+											            	UIHelper.ToastMessage(AboutXST.this, R.string.initcp_message_savedefeated);
+											            }
+										        	} catch (Exception e) {
+										        		e.printStackTrace();
+										        		UIHelper.ToastMessage(AboutXST.this, e.getMessage());
+										        	}
+												}
+											})
+									.setNegativeButton(getString(R.string.cancel),
+											new OnClickListener() {
+												@Override
+												public void onClick(View v) {
+		
+												}
+											}).show(); 
+			        	}
+			        }
+				} else {
+					if (!NetWorkHelper.isNetworkAvailable(AboutXST.this)) {
+						UIHelper.ToastMessage(AboutXST.this,
+								R.string.network_not_connected);
+						return;
+					}
+					Intent intent =new Intent(AboutXST.this,ShowVisionUpDataAty.class);
+					startActivity(intent);
+				}
+			}
+		});
+		
+		mBuildModel = (RelativeLayout) findViewById(R.id.rl_phonebuildmodel);
+		mBuildModel.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO 自动生成的方法存根
+				System.arraycopy(mHits, 1, mHits, 0, mHits.length - 1);  
+		        mHits[mHits.length - 1] = SystemClock.uptimeMillis();// 开机后运行时间  
+		        if (mHits[0] >= (mHits[mHits.length - 1] - 1000)) {
+		        	UIHelper.ToastMessage(AboutXST.this, 
+		        			HexUtils.convert10to12(Integer.parseInt(DateTimeHelper.getDateTimeNow3())));
+		        }
+			}
+		});
+		
+		mUpdate = (RelativeLayout) findViewById(R.id.rl_checkversion);
+		mUpdate.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				if (!NetWorkHelper.isNetworkAvailable(getBaseContext())) {
+					UIHelper.ToastMessage(getBaseContext(),
+							R.string.network_not_connected);
+					return;
+				}
+				UpdateManager.getUpdateManager().checkAppUpdate(AboutXST.this,
+						true);
+			}
+		});
+		
+		mLanguage = (RelativeLayout) findViewById(R.id.rl_language);
+		mLanguage.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO 自动生成的方法存根
+				showsinglechoicelistdialog();
+			}
+		});
+	}
+	
+	private void showsinglechoicelistdialog() {
+
+		 
+		final String[] language = getResources().getStringArray(R.array.app_language_items);
+		int checkitem = 0;
+		
+		if (AppContext.getAppLanguage().equalsIgnoreCase("zh")) {
+			checkitem = 0;
+		} else if (AppContext.getAppLanguage().equalsIgnoreCase("en")) {
+			checkitem = 1;
+		} else if (AppContext.getAppLanguage().equalsIgnoreCase("vi")) {
+			checkitem = 2;
+		}
+		index = checkitem;
+		
+		final List<String> listData = new ArrayList<String>();
+		for (String str : language) {
+			listData.add(str);
+		}
+		LayoutInflater factory = LayoutInflater
+				.from(AboutXST.this);
+		final View view = factory.inflate(R.layout.listview_layout, null);
+		dialog = new com.moons.xst.track.widget.AlertDialog(AboutXST.this).builder()
+			.setTitle(getString(R.string.main_menu_system_aboutus_language))
+			.setView(view)
+			.setListViewItems(listData, checkitem, new AdapterView.OnItemClickListener() {
+				public void onItemClick(AdapterView<?> parent, View view,
+						int position, long id) {
+					index = position;
+					dialog.refresh(listData, index);
+				}
+			})
+			.setPositiveButton(getString(R.string.sure), new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					switch (index) {
+					case 0:
+						appContext.setConfigAppLanguage(AppConst.AppLanguage.zh.toString());
+						break;
+					case 1:
+						appContext.setConfigAppLanguage(AppConst.AppLanguage.en.toString());
+						break;
+					case 2:
+						appContext.setConfigAppLanguage(AppConst.AppLanguage.vi.toString());
+						break;
+					}
+					changeAppLanguage();
+					EventBus.getDefault().post("REFRESHLANGUAGE");
+					AppManager.getAppManager().finishActivity(AboutXST.this);
+				}
+			}).setNegativeButton(getString(R.string.cancel), new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					
+				}
+			});
+		dialog.show();
+	}
+	
+	private void changeAppLanguage() {
+ 		 String sta = AppContext.getAppLanguage();
+ 		 // 本地语言设置
+ 		 Locale myLocale = new Locale(sta);
+ 		 Resources res = getResources();
+ 		 DisplayMetrics dm = res.getDisplayMetrics();
+ 		 Configuration conf = res.getConfiguration();
+ 		 conf.locale = myLocale;
+ 		 res.updateConfiguration(conf, dm);
+ 	}
+}

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?><RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/temptask"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/white" >
+    <RelativeLayout 
+		android:id="@+id/layout_temptask_head" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_height="50dip"
+	  	android:layout_alignParentTop="true"
+	  	android:background="@drawable/title_bar"> 
+        <ImageButton 
+	        android:id="@+id/temptask_head_Rebutton"
+	        android:src="@drawable/arrow_left"
+	        android:background="@color/full_transparent"
+	        android:layout_width="wrap_content"
+	    	android:layout_height="50dip"
+	    	android:layout_alignParentLeft="true"
+           	android:layout_gravity="center_vertical"
+	        android:layout_marginRight="10dp"
+	        />
+	    <TextView 
+	        android:id="@+id/temptask_head_title"
+	        android:layout_width="fill_parent" 
+		  	android:layout_height="fill_parent"
+			android:gravity="center"
+	        style="@style/main_head_title"
+			android:ellipsize="marquee" 
+	        android:marqueeRepeatLimit="marquee_forever"
+	        android:focusable="true" 
+	        android:focusableInTouchMode="true"			
+			android:text="@string/temptask_title"
+			/>  
+		 <ImageButton 
+	        android:id="@+id/home_head_mapbutton"
+	        android:src="@drawable/mapicon"
+	        android:background="@color/full_transparent"
+	        android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:layout_alignParentRight="true"
+           	android:layout_centerInParent="true"
+	        android:layout_marginRight="5dp"
+	        />
+	</RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/rl_temptask_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:layout_below="@+id/layout_temptask_head"
+        android:background="@drawable/listview_item_selector"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/temptask_name"
+            android:layout_width="100dip"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"            	
+		    android:textSize="@dimen/text_size_16"
+         	android:textColor="@color/black" 
+            android:text="@string/temptask_name" />
+
+        <TextView
+            android:id="@+id/temptask_name_value"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toRightOf="@id/temptask_name"
+            android:gravity="center|left"
+            android:maxLines="2"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+    
+        <RelativeLayout
+        android:id="@+id/rl_temptask_creat_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:background="@drawable/listview_item_selector"
+        android:layout_below="@+id/rl_temptask_name"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/temptask_creat_name"
+            android:layout_width="100dip"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:text="@string/temptask_create_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/temptask_creat_name_value"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toRightOf="@id/temptask_creat_name"
+            android:gravity="center|left"
+            android:maxLines="2"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+    
+     <RelativeLayout
+        android:id="@+id/rl_temptask_time"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:background="@drawable/listview_item_selector"
+        android:layout_below="@+id/rl_temptask_creat_name"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/temptask_time"
+            android:layout_width="100dip"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:text="@string/temptask_create_time"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/temptask_time_value"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toRightOf="@id/temptask_time"
+            android:gravity="center|left"
+            android:maxLines="2"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+    
+      <RelativeLayout
+        android:id="@+id/rl_temptask_type"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:background="@drawable/listview_item_selector"
+        android:layout_below="@+id/rl_temptask_time"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/temptask_type"
+            android:layout_width="100dip"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:text="@string/temptask_type"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/temptask_type_value"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_toRightOf="@id/temptask_type"
+            android:gravity="center|left"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16"
+            android:text="临时任务" />
+    </RelativeLayout>
+     <RelativeLayout
+        android:id="@+id/rl_temptask_des"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rl_temptask_choose"
+        android:layout_below="@+id/rl_temptask_type"
+        android:background="@drawable/listview_item_selector"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/temptask_des"
+            android:layout_width="100dip"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:text="@string/temptask_des"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+
+        <TextView
+            android:id="@+id/temptask_des_value"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|left"
+            android:layout_toRightOf="@+id/temptask_des"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+    <RelativeLayout 
+		android:id="@+id/ll_temptask_Save" 
+	  	android:layout_width="fill_parent" 
+	  	android:layout_height="60dip"
+	  	android:layout_alignParentBottom="true"
+	  	android:background="@color/face_bg" >
+	   <Button 
+		    android:id="@+id/temptask_ok" 
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content" 
+	        android:layout_gravity="center"
+		    android:layout_alignParentBottom="true"
+	        android:layout_alignParentTop="true"
+	        android:layout_margin="5dip"
+	        android:clickable="true"
+		    android:textSize="@dimen/btn_big_textsize"
+		    android:text="@string/sure" 
+		    android:textColor="@color/white"
+		    android:background="@drawable/btn_style_blue" />
+	</RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_temptask_choose"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:layout_above="@id/ll_temptask_Save"
+        android:background="@drawable/listview_item_selector"
+        android:orientation="vertical" >
+        
+        <TextView
+            android:id="@+id/temptask_choose"
+            android:layout_width="100dip"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"    
+            android:text="@string/temptask_res"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16" />
+        <RadioGroup
+            android:id="@+id/temptask_rg"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center|left"
+            android:layout_toRightOf="@+id/temptask_choose"
+            android:orientation="horizontal"
+            android:textColor="@color/black" >
+
+            <RadioButton
+                android:id="@+id/radioture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/temptask_true"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/radiofalse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:text="@string/temptask_false"
+                android:textColor="@color/black" />
+        </RadioGroup>        
+    </RelativeLayout> 
+  <RelativeLayout
+        android:id="@+id/rl_temptask_map"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/layout_temptask_head"
+        android:visibility="invisible" >
+
+   <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true" 
+        />
+      <ImageButton
+        android:id="@+id/btn_pomode"
+        android:layout_width="33dip"
+        android:layout_height="33dip"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="35dip"
+        android:src="@drawable/po_nor"  />
+      <ImageButton
+        android:id="@+id/btn_temp_native"
+        android:layout_width="33dip"
+        android:layout_height="33dip"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="60dip"
+        android:src="@drawable/bd_native"/>
+   </RelativeLayout>
+</RelativeLayout>

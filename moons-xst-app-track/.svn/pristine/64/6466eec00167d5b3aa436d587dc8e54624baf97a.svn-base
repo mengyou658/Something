@@ -1,0 +1,360 @@
+package com.moons.xst.track.ui;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import com.moons.xst.track.AppConfig;
+import com.moons.xst.track.AppConst;
+import com.moons.xst.track.AppContext;
+import com.moons.xst.track.bean.DJLine;
+import com.moons.xst.track.common.DateTimeHelper;
+import com.moons.xst.track.common.FileEncryptAndDecrypt;
+import com.moons.xst.track.common.FileUtils;
+import com.moons.xst.track.common.ResponseLogInfoHelper;
+import com.moons.xst.track.common.StringUtils;
+import com.moons.xst.track.common.SystemControlHelper;
+import com.moons.xst.track.common.UIHelper;
+import com.moons.xst.track.communication.DownLoad;
+import com.moons.xst.track.communication.USBDataCommDownload;
+import com.moons.xst.track.dao.DataTransHelper;
+
+import android.R.bool;
+import android.R.integer;
+import android.R.string;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Handler;
+import android.os.Message;
+import android.provider.MediaStore.Video;
+import android.renderscript.Sampler.Value;
+
+public class CommUSBTcpConnect implements Runnable {
+
+	private Socket mSocket;
+	private Handler mRefreshHandler;
+	private Boolean mIsRun = true;
+	//xml文件是否已经修复
+	private boolean isRepairXML=false;
+	BufferedOutputStream out = null;
+
+	String mCMD = "";
+	String mSplitChar = "@";
+	String mAppVersion = "";
+	int LineID=-1;
+	int uploadingId=-1;
+	
+	private List<String> SelectedDJPCLineID=new ArrayList<String>();
+	public boolean isDJPC=false;
+
+	public CommUSBTcpConnect(Socket socket, Handler refershHandle,
+			String appVersion) {
+		isRepairXML=false;
+		mAppVersion = appVersion;
+		mSocket = socket;
+		this.mRefreshHandler = refershHandle;
+
+		try {
+			out = new BufferedOutputStream(mSocket.getOutputStream());
+
+		} catch (Exception e) {
+
+			System.out.println("TcpConnect" + e.getMessage());
+		}
+	}
+
+	private String GetSendData(boolean isSucc, String cmd, String data) {
+		String result = cmd + mSplitChar + data;
+		if (isSucc)
+			result = "true" + mSplitChar + result;
+		else
+			result = "false" + mSplitChar + result;
+		return result + mSplitChar;
+	}
+
+	private void ReceiveInfo(String info) {
+		String[] tempList = info.split(mSplitChar);
+		String isSuc = "false";
+		String cmd = "";
+		String data = "";
+		String attach = "";
+		if (tempList.length >= 1)
+			isSuc = tempList[0];
+		if (tempList.length >= 2)
+			cmd = tempList[1];
+		if (tempList.length >= 3)
+			data = tempList[2];
+		if (tempList.length >= 4) {
+			attach = tempList[3];
+		}
+		if (isSuc.equals("true")) {
+			if (cmd.equals("pc-connect")) {// 连接成功
+				ShowInfo(info);
+				String pdaGUID = AppContext.getMac();
+				String xjqCD = AppContext.GetxjqCD();
+				String sendData = GetSendData(true, "pda-connect", xjqCD + ";"
+						+ pdaGUID + ";" + mAppVersion);
+				// 处理发送数据逻辑
+				SendData(sendData);
+			}
+			if (cmd.equals("pc-uploaddataend")) {// 上传成功
+				RefreshHandle(info);
+				// 插入操作日志
+				ResponseLogInfoHelper.getHelper(AppConfig.ANDROID_DATA_UPLOADING, 
+						true, 
+						AppConfig.DATA_UPLOADING_SUCCEED+"["+uploadingId+"]",
+						AppConst.CommunicationType_USB)
+						.ResponseLogInfoToServer();
+			} else if (cmd.equals("pc-initdataend")) {// 初始化成功
+				isDJPC=data.equals("true");
+				SelectedDJPCLineID.clear();
+				String time="";
+				String[] temp=attach.split(",");
+				for(int i=0;i<temp.length;i++){
+					if(i==0){
+						time=temp[i];
+					}else{
+						SelectedDJPCLineID.add(temp[i]);
+					}
+				}
+				
+				// 更新时间
+				if (!StringUtils.isEmpty(time) 
+						&& AppContext.getUpdateSysDateType()
+							.equals(AppConst.UpdateSysDate_Commu)) {
+					DateTimeHelper.setSystemDatatime(DateTimeHelper
+							.StringToDate(time).getTime());
+					/*SystemControlHelper.setSystemDatatime(DateTimeHelper
+							.StringToDate(time).getTime());*/
+				}
+
+				InitLinesData();
+
+				RefreshHandle(info);
+
+				String sendData = GetSendData(true, "pda-initdataend", "");
+
+				SendData(sendData);
+
+			} else if (cmd.equals("pc-downloadplanend")) {// 下载成功
+				// 插入操作日志
+				ResponseLogInfoHelper.getHelper(AppConfig.ANDROID_DATA_DOWNLOAD, 
+						true, 
+						AppConfig.DATA_DOWNLOAD_SUCCEED+"["+LineID+"]",
+						AppConst.CommunicationType_USB)
+						.ResponseLogInfoToServer();
+				if(!isRepairXML){
+					boolean Line=DownLoad.UpdateLineListFile(isDJPC);
+					boolean User=DataTransHelper.RepairUserListXML();
+					isRepairXML=Line&&User;
+				}
+				RefreshHandle(info);
+
+			}else if(cmd.equals("pc-error")){//通信程序出错
+				RefreshHandle(info);
+			}
+		}
+
+	}
+
+	public void SendUpLoadEnd() {
+		String sendData = GetSendData(true, "pda-uploaddataend", "");
+		SendData(sendData);
+	}
+
+	public void SendDownLoadEnd() {
+		String sendData = GetSendData(true, "pda-downloadplanend", "");
+		SendData(sendData);
+	}
+
+	public void SendDisConnect() {
+		String sendData = GetSendData(true, "pda-disconnect", "");
+		SendData(sendData);
+	}
+
+	private void InitLinesData() {
+		try {
+			FileEncryptAndDecrypt.encrypt(AppConst.XSTBasePath()
+					+ AppConst.UserXmlFile);
+			FileUtils.CreationNewUserXML();
+			
+			String filePathString = AppConst.XSTBasePath()
+					+ AppConst.EventTypeXmlFile;
+			String eventTypeResultStr = FileUtils.read(filePathString);
+			DownLoad.loadEventTypeList(eventTypeResultStr);
+
+			FileEncryptAndDecrypt.encrypt(AppConst.XSTBasePath()
+					+ AppConst.SettingxmlFile);
+
+			FileEncryptAndDecrypt.encrypt(AppConst.XSTBasePath()
+					+ AppConst.ModuleSettingxmlFile);
+			filePathString = AppConst.XSTBasePath()
+					+ AppConst.DJLineTempXmlFile;
+			String djlineXmlString = FileUtils.read(filePathString);
+			if (!StringUtils.isEmpty(djlineXmlString)) {
+				AppContext.CommDJLineBuffer = DataTransHelper
+						.ConvertLineFromXML(djlineXmlString);
+				List<DJLine> lastDJLineList = DataTransHelper
+						.ConvertLineFromXMLFile();
+				for(int i=AppContext.CommDJLineBuffer.size()-1;i>=0;i--){
+					DJLine djLine=AppContext.CommDJLineBuffer.get(i);
+					//点检排程只加载勾选的路线
+					/*if(!SelectedDJPCLineID.contains(String.valueOf(djLine.getLineID()))&&isDJPC.equals("true")){
+						AppContext.CommDJLineBuffer.remove(djLine);
+						continue;
+					}*/
+					if (lastDJLineList != null) {
+						if (lastDJLineList.contains(djLine)) {
+							File file=new File(AppConst.XSTDBPath()+"424DB_"+djLine.getLineID()+".sdf");
+							if(!file.exists()) {
+								djLine.setneedUpdate(true);
+							} else {
+								djLine.setneedUpdate(false);
+							}
+						} else {
+							djLine.setneedUpdate(djLine.getBuidYN() ? true : false);
+						}
+						
+						/*boolean b = lastDJLineList.contains(djLine) ? false
+								: djLine.getBuidYN() ? true : false;
+						
+						File file=new File(AppConst.XSTDBPath()+"424DB_"+djLine.getLineID()+".sdf");
+						
+						djLine.setneedUpdate(!(b && file.exists()));*/
+						/*if(!file.exists()){
+							djLine.setneedUpdate(true);
+						}*/
+						// djLine.setneedUpdate(!lastDJLineList.contains(djLine));
+					} else {
+						djLine.setneedUpdate(djLine.getBuidYN() ? true : false);
+					}
+				}
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+	}
+
+	public void UpLoadLineData(int lineID, String filePath) {
+		uploadingId=lineID;
+		String sendData = GetSendData(true, "pda-uploaddata",
+				String.valueOf(lineID) + ";" + filePath);
+		SendData(sendData);
+	}
+
+	// 下载路线
+	public void DownloadPlan(int lineID) {
+		LineID=lineID;
+		String sendData = GetSendData(true, "pda-downloadplan",
+				String.valueOf(lineID));
+		SendData(sendData);
+	}
+
+	private void RefreshHandle(String str) {
+		if (mRefreshHandler != null) {
+			Message msg = new Message();
+			msg.obj = str;
+			msg.arg1 = 1;
+			mRefreshHandler.sendMessage(msg);
+		}
+	}
+
+	private void ShowInfo(String str) {
+		if (mRefreshHandler != null) {
+			Message msg = new Message();
+			msg.obj = str;
+			msg.arg1 = 10;
+			mRefreshHandler.sendMessage(msg);
+		}
+	}
+
+	public void SendData(String info) {
+		if (mSocket == null)
+			return;
+		try {
+			String recordStr = info;
+			out.write(recordStr.getBytes("utf-8"));
+			out.flush();
+		} catch (Exception e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} finally {
+
+		}
+	}
+
+	public void CloseRecSocket() {
+		mIsRun = false;
+
+		if (out != null)
+			try {
+				out.close();
+				out = null;
+			} catch (IOException e) {
+				// TODO 自动生成的 catch 块
+				e.printStackTrace();
+			}
+		try {
+			if (mSocket != null) {
+				System.out.println("Close mSocket");
+				mSocket.close();
+				mSocket = null;
+			}
+		} catch (Exception e) {
+
+		}
+	}
+
+	@Override
+	public void run() {
+		InputStream in = null;
+		try {
+			mIsRun = true;
+			String recmsg = "";
+			while (mIsRun) {
+				in = mSocket.getInputStream();
+
+				byte[] buffer = new byte[1024];
+				int len = in.read(buffer, 0, 1024);
+				if (len == -1) {
+					Message msg = new Message();
+					msg.what = -2;
+					mRefreshHandler.sendMessage(msg);
+					continue;
+				}
+				recmsg = new String(buffer, "UTF-8");
+				recmsg = recmsg.trim();
+				if (recmsg != null) {
+					ReceiveInfo(recmsg);
+				}
+			}
+		} catch (Exception e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} finally {
+			try {
+				if (in != null) {
+					in.close();
+				}
+			} catch (Exception e) {
+				// TODO 自动生成的 catch 块
+				e.printStackTrace();
+			}
+			CloseRecSocket();
+		}
+	}
+
+}

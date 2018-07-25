@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory 
+	    android:layout="@layout/preference_category"
+	    android:title="@string/temperature_fsl">
+	    <Preference android:layout="@layout/preference" 
+	        android:title="@string/temperature_fsl_desc" 
+	        android:key="fsl"
+	        android:positiveButtonText="@string/sure"
+		    android:negativeButtonText="@string/cancel" />
+    </PreferenceCategory>
+    <PreferenceCategory 
+	    android:layout="@layout/preference_category" 
+	    android:title="@string/temperature_savetype">
+	    <CheckBoxPreference 
+		    android:layout="@layout/preference" 
+		    android:title="@string/temperature_current" 
+	        android:key="Current" 
+		    android:defaultValue="false"/>
+		<CheckBoxPreference 
+		    android:layout="@layout/preference" 
+		    android:title="@string/temperature_max" 
+	        android:key="MAX" 
+		    android:defaultValue="false"/>
+		<CheckBoxPreference 
+		    android:layout="@layout/preference" 
+		    android:title="@string/temperature_min" 
+	        android:key="MIN" 
+		    android:defaultValue="false"/>
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+        android:layout="@layout/preference_category" 
+	    android:title="@string/bluetooth_setup">
+    <Preference  
+        android:layout="@layout/preference"
+        android:title="@string/bluetooth_search"  
+        android:key="bluetooth_settings" >  
+        <intent  
+            android:action="android.intent.action.MAIN"  
+            android:targetPackage="com.moons.xst.track.ui"  
+            android:targetClass="com.moons.xst.track.ui.BluetoothDeviceAty" />  
+    </Preference> 
+    <Preference android:layout="@layout/preference" 
+	        android:title="@string/bluetooth_password" 
+	        android:key="pwd"
+	        android:positiveButtonText="@string/sure"
+		    android:negativeButtonText="@string/cancel" />
+    </PreferenceCategory>
+     
+</PreferenceScreen>
